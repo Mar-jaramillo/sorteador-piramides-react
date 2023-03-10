@@ -14,6 +14,7 @@ export default function SelectFliter({ setKeysCode, setgroupsByCode }) {
 
     const groupsByCode = createGroupsByCode(dataFromLocalStorage);
     setgroupsByCode(groupsByCode)
+    localStorage.setItem("groupsByCode", JSON.stringify(groupsByCode))
 
     const keys = Object.keys(groupsByCode)
     setKeysCode(keys)
