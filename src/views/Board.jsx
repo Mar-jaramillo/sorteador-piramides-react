@@ -14,22 +14,13 @@ export default function Board() {
   const [numPyramid, setNumPyramid] = useState(3);
 
   return (
-    <>
-      <Layout>
-        <div id="board" className="px-32 pt-10 text-white">
-          <BreadCrumb />
-          <HeaderBoard amount={keysCode.length} />
-          <SelectFliter
-            setKeysCode={setKeysCode}
-            setgroupsByCode={setgroupsByCode}
-          />
-          <CardsBoard
-             
-            groupsByCode={groupsByCode}
-            keysCode={keysCode}
-          />
-        </div>
-      </Layout>
-    </>
+    <Layout>
+      <div id="board" className="px-32 pt-10 text-white ">
+        <BreadCrumb/>
+        <HeaderBoard amount={keysCode.length} />
+        <SelectFliter setKeysCode={setKeysCode} setgroupsByCode={setgroupsByCode} />
+        <CardsBoard  groupsByCode={groupsByCode} keysCode={keysCode} />
+      </div>
+    </Layout>
   );
 }

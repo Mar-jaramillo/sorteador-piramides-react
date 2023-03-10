@@ -4,8 +4,23 @@ export default function CardIndividual({ keyName, groupByCode, }) {
   const [isReady, setIsReady] = useState(false);
   const handleIsReady = () => {
     setIsReady(true);
-    
-  }
+    const cantidad = groupByCode.length;
+    let tipo = null;
+    if (cantidad === 1) {
+      tipo = "No se puede sortear";
+    } else if (cantidad <= 3) {
+      tipo = "piramide-3";
+    } else if (cantidad <= 4) {
+      tipo = "piramide-4";
+    } else if (cantidad <= 8) {
+      tipo = "piramide-8";
+    } else if (cantidad <= 16) {
+      tipo = "piramide-16";
+    } else if (cantidad <= 32) {
+      tipo = "piramide-32";
+    }
+    console.log({ cantidad, tipo });
+  };
 
   return (
     <div className="col-span-6 mx-3 my-3  bg-white/20 border-2 border-gray-200 rounded-2xl shadow">
@@ -22,67 +37,68 @@ export default function CardIndividual({ keyName, groupByCode, }) {
       </div>
 
       {/*Card interior*/}
-      <div className="p-2 grid  grid-cols-12">
-        <div className="col-span-6 text-white p-2">
+      <div className="p-2 grid grid-cols-12 text-white">
+        <div className="col-span-6 ">
           <ul className="h-36 overflow-auto">
             {groupByCode.map((deportista, index) => (
               <div key={index} className="">
-                <li className="text-sm">
+                <li className="text-md">
                   {index + 1} {deportista["Nombre Deportista"]}
                 </li>
-                <p className="pl-12 mb-2 text-xs">{deportista["Delegación"]}</p>
+                <p className="pl-12 mb-2 text-sm">{deportista["Delegación"]}</p>
               </div>
             ))}
           </ul>
         </div>
 
-        <div className="col-span-6">
-          <div className="">
-            <table className="text-center">
-              <tbody className="text-sm">
-                <tr className="">
-                  <th
-                    scope="row"
-                    className=" px-5 rounded-xl font-medium bg-white/20 text-white"
-                  >
-                    CATEGORÍA
-                  </th>
-                  <td className="rounded-xl px-6 border-white  bg-white/30 text-white">
-                    {groupByCode[0]["Categoría"]}
-                  </td>
-                </tr>
-                <tr className="">
-                  <th className="px-5 rounded-xl font-medium bg-white/20 text-white">
-                    GRADO
-                  </th>
-                  <td className="rounded-xl px-6 border-white  bg-white/30 text-white">
-                    {groupByCode[0]["Grado"]}
-                  </td>
-                </tr>
-                <tr className="">
-                  <th
-                    scope="row"
-                    className="px-5 rounded-xl font-medium bg-white/20 text-white"
-                  >
-                    RAMA
-                  </th>
-                  <td className="rounded-xl px-6 border-white  bg-white/30 text-white">
-                    {groupByCode[0]["Rama"]}
-                  </td>
-                </tr>
-                <tr className="">
-                  <th
-                    scope="row"
-                    className="px-5 rounded-xl font-medium bg-white/20 text-white"
-                  >
-                    DIVISIÓN
-                  </th>
-                  <td className="rounded-xl px-6 border-white  bg-white/30 text-white">
-                    {groupByCode[0]["División"]}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <div className="col-span-6 p-2">
+          <div className="grid grid-cols-12 my-2 bg-white/30  rounded-lg ">
+            <div className="col-span-6">
+              <p className="mx-2 font-medium">CATEGORÍA:</p>
+            </div>
+            <div className="col-span-6">
+              <p className="text-center bg-white/30 rounded-lg">
+                {" "}
+                {groupByCode[0]["Categoría"]}
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-12 my-2 bg-white/30  rounded-lg ">
+            <div className="col-span-6">
+              <p className="mx-2 font-medium">GRADO:</p>
+            </div>
+            <div className="col-span-6">
+              <p className="text-center bg-white/30 rounded-lg">
+                {" "}
+                {groupByCode[0]["Grado"]}
+              </p>
+              </div>
+              </div>
+
+            
+            <div className="grid grid-cols-12 my-2 bg-white/30  rounded-lg ">
+            <div className="col-span-6">
+              <p className="mx-2 font-medium">RAMA:</p>
+            </div>
+            <div className="col-span-6">
+              <p className="text-center bg-white/30 rounded-lg">
+                {" "}
+                {groupByCode[0]["Rama"]}
+              </p>
+            </div>
+            </div>
+
+            <div className="grid grid-cols-12 my-2 bg-white/30  rounded-lg ">
+            <div className="col-span-6">
+              <p className="mx-2 font-medium">DIVISIÓN:</p>
+            </div>
+            <div className="col-span-6">
+              <p className="text-center bg-white/30 rounded-lg">
+                {" "}
+                {groupByCode[0]["División"]}
+              </p>
+            </div>
           </div>
           <div>
             <span className="grid grid-cols 12 justify-end">

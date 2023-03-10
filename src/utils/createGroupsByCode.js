@@ -1,4 +1,4 @@
-export const createGroupsByCode =(dataFromLocalStorage)=>{
+export const createGroupsByCode=(dataFromLocalStorage)=>{
     const datosPorCodigo = {};
     dataFromLocalStorage.forEach((deportista) => {
       const codigo = deportista["CBTE IND"];

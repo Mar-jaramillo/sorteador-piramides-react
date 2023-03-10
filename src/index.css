@@ -38,7 +38,7 @@ thead{
  
  /* ancho de la barra */
 ::-webkit-scrollbar {
-    width: 1px;
+    width: 7px;
     height: 15px;       
   }
   
@@ -50,6 +50,7 @@ thead{
   /* color del relleno de la barra */
   ::-webkit-scrollbar-thumb {
     background-color: #0047A0;
+    border-radius: 10px;
   }
   
   /* color del relleno de la barra cuando está en hover */
