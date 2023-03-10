@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
-export default function CardIndividual({ keyName, groupByCode }) {
+export default function CardIndividual({ keyName, groupByCode, }) {
   const [isReady, setIsReady] = useState(false);
-  const handleIsReady = () => setIsReady(true);
+  const handleIsReady = () => {
+    setIsReady(true);
+    
+  }
 
   return (
     <div className="col-span-6 mx-3 my-3  bg-white/20 border-2 border-gray-200 rounded-2xl shadow">
