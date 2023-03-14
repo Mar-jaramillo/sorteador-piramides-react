@@ -6,7 +6,7 @@ export default function TablePositions() {
     <table className="text-left rounded-md">
         <tbody className="py-2 text-sm">
             <tr className=" border border-gray-500 ">
-                <th scope="row" className="px-6  font-medium   border border-gray-500  text-white">
+                <th scope="row" className="px-6  font-medium   border border-gray-500   ">
                 Primer puesto
                 </th>
                 <td className="border border-gray-500 px-4 py-4">

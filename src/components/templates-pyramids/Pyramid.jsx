@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Bracket } from "react-brackets";
 import * as Generator from "../../utils/GeneratorsParticipants";
-import { getLocalStorage } from "../../utils/getLocalStorage";
+import GlobalContext from "../../utils/GlobalContext";
 
-export default function Pyramid({ typePyramid}) {
-  const data = getLocalStorage("groupsByCode");
+export default function Pyramid({ typePyramid }) {
+
+  const context = useContext(GlobalContext);
+ 
   let pyramid;
-
   switch (typePyramid) {
     case 3:
       pyramid = 6;
@@ -28,10 +29,9 @@ export default function Pyramid({ typePyramid}) {
 
   const rounds = [
     {
-      seeds: Generator.firstRound(pyramid),
+      seeds: Generator.firstRound(pyramid, context.groupNow),
     },
   ];
-
   pyramid === 6 &&
     rounds.push({
       seeds: Generator.secondRound(pyramid),
@@ -72,11 +72,21 @@ export default function Pyramid({ typePyramid}) {
         seeds: Generator.fifthRound(pyramid),
       }
     );
+  pyramid === 32 &&
+    rounds.push(
+      {
+        seeds: Generator.secondRound(pyramid),
+      },
+      {
+        seeds: Generator.thirdRound(pyramid),
+      },
+      {
+        seeds: Generator.fourthRound(pyramid),
+      },
+      {
+        seeds: Generator.fifthRound(pyramid),
+      }
+    );
 
-  return (
-
-
-      <Bracket rounds={rounds} />
-   
-  );
+  return <Bracket rounds={rounds} />;
 }

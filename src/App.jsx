@@ -25,6 +25,10 @@ export default function App() {
 
   const authValue = {
     onLogin: () => setIsLogin(true),
+    amountParticipants : 0,
+    groupNow :{},
+    typePyramid :0,
+
   };
 
   return (
