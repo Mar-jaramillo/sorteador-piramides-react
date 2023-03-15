@@ -32,6 +32,12 @@ body {
   background-size: cover;
 }
 
+#data{
+  background-image: url('../src/assets/bgdata.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 thead{
     background-color: rgba(47, 0, 255, 0.25) 
   }

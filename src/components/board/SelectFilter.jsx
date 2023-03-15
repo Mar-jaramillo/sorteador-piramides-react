@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { selectFiltersKeys } from "../../consts/selectFiltersKeys";
-import { createGroupsByCode } from "../../utils/createGroupsByCode";
-import { getLocalStorage } from "../../utils/getLocalStorage";
-import obtenerPropiedadesUnicas from "../../utils/obtenerPropiedadesUnicas";
+import GlobalContext from "../../utils/GlobalContext";
 
-export default function SelectFliter({ setKeysCode, setgroupsByCode }) {
+export default function SelectFliter({ setgroupsByCode }) {
+  const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
 
   useEffect(() => {
-    const dataFromLocalStorage = getLocalStorage("excelData");
-    const valuesUniques = obtenerPropiedadesUnicas(dataFromLocalStorage);
-    setValuesSelect(valuesUniques);
-
-    const groupsByCode = createGroupsByCode(dataFromLocalStorage);
-    setgroupsByCode(groupsByCode)
-    localStorage.setItem("groupsByCode", JSON.stringify(groupsByCode))
-
-    const keys = Object.keys(groupsByCode)
-    setKeysCode(keys)
+    setValuesSelect(context.valuesUniques);
+ 
+ 
+    setgroupsByCode(context.groupsByCode);
+ 
   }, []);
 
   return (

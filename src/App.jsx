@@ -25,10 +25,12 @@ export default function App() {
 
   const authValue = {
     onLogin: () => setIsLogin(true),
-    amountParticipants : 0,
-    groupNow :{},
-    typePyramid :0,
-
+    nameEvent : "",
+    totalGroups: 0,
+    totalDelegations: 0,
+    groupsByCode: {},
+    keysOfGroups: [],
+    ValuesSelect: {},
   };
 
   return (

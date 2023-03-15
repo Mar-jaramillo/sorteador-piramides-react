@@ -115,14 +115,16 @@ export default function CardIndividual({
             <span className="grid grid-cols 12 justify-end">
               {isReady ? (
                 <div>
-                  <button className="col-span-6 text-white m-4 px-5 py-2  underline">
+                  <button className="col-span-6  text-white m-4 px-5 py-2  underline">
                     Ver sorteo
                   </button>
                 </div>
               ) : (
                 <button
                   onClick={handleIsReady}
-                  className=" m-4 px-5 py-2 rounded-lg  text-white bg-redbuttons"
+ 
+                  className=" m-4 px-5 py-2 rounded-lg font-medium border-2 border-white hover:bg-redbuttons hover:border-2 hover:border-redbuttons text-white bg-white/30"
+ 
                 >
                   Sortear
                 </button>

@@ -22,7 +22,7 @@ export default function Login() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col">
       <h1 className="text-md text-left mb-3 font-normal">
-        Ingresa tu código de acceso
+        Ingrese su código de acceso
       </h1>
 
       <div className="flex">

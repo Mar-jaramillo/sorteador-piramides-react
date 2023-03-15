@@ -12,7 +12,7 @@ export default function Welcome() {
       <div className="col-span-6 flex flex-col justify-end   h-full">
         <div className=" flex flex-col justify-center items-center py-12">
           <img className="h-12 mb-4" src={iconhapkido} alt="" />
-          <p className="font-bold text-2xl mb-10  max-w-md">
+          <p className="text-center font-bold text-2xl mb-10  max-w-md">
             Bienvenido al Sorteador de Pirámides de Competencias para Hapkido
           </p>
 
