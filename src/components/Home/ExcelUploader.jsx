@@ -64,7 +64,9 @@ export default function ExcelUploader({ setIsLoading, setError }) {
         <div className="max-w-xl">
           <div className="flex flex-col mb-12">
             <label className="text-white font-normal  text-lg mb-2">
+
               Ingrese el nombre del evento: *
+
             </label>
             <input
               required
@@ -77,7 +79,9 @@ export default function ExcelUploader({ setIsLoading, setError }) {
 
           <div className="flex flex-col  gap-3 mb-3">
             <label className="text-white text-left   text-lg">
+
               Cargue el listado de competidores: *
+
             </label>
             <input
               required
@@ -114,6 +118,7 @@ export default function ExcelUploader({ setIsLoading, setError }) {
                 Cargar deportistas
               </button>
             </div>
+
           </div>
         </div>
       </form>

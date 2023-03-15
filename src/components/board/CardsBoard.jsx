@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardIndividual from "./CardIndividual";
 
-export default function CardsBoard({ keysCode, groupsByCode}) {
+export default function CardsBoard({ keysCode, groupsByCode, setisActive, }) {
   const [isLoad, setisLoad] = useState(false);
 
   useEffect(() => {
@@ -12,11 +12,7 @@ export default function CardsBoard({ keysCode, groupsByCode}) {
     <div className="grid grid-cols-12">
       {isLoad ? (
         keysCode.map((key) => (
-          <CardIndividual key={key} keyName={key} groupByCode={groupsByCode[key]}/>
-          // <div key={key}>
-          //   {groupsByCode[key] &&
-          //     groupsByCode[key].map((deportista) => <h1>deportista</h1>)}
-          // </div>
+          <CardIndividual setisActive={setisActive}  key={key} keyName={key} groupByCode={groupsByCode[key]} />
         ))
       ) : (
         // Loader

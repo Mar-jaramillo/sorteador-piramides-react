@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BreadCrumb from "../components/layout/BreadCrumb";
-import Header from "../components/layout/Header";
-import TableCategories from "../components/layout/pyramid/TableCategories";
-import TablePositions from "../components/layout/pyramid/TablePositions";
 import HeaderTemplates from "../components/templates-pyramids/HeaderTemplates";
 
+import BodyTemplate from "../components/templates-pyramids/BodyTemplate";
+
 export default function Templates() {
+  const [typePyramid, setTypePyramid] = useState(3);
+
   return (
     <>
-      <div id="" className="px-32 pt-10 text-white ">
-        <BreadCrumb/>
-        <HeaderTemplates />
-        <TableCategories/>
-        <TablePositions />
+      <div id="" className="p-10 text-white ">
+        <BreadCrumb />
+        <HeaderTemplates typePyramid={typePyramid} setTypePyramid={setTypePyramid} />
+        <BodyTemplate typePyramid={typePyramid} />
       </div>
     </>
   );

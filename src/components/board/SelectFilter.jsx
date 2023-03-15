@@ -8,8 +8,10 @@ export default function SelectFliter({ setgroupsByCode }) {
 
   useEffect(() => {
     setValuesSelect(context.valuesUniques);
-
+ 
+ 
     setgroupsByCode(context.groupsByCode);
+ 
   }, []);
 
   return (
