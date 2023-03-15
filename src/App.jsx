@@ -25,6 +25,12 @@ export default function App() {
 
   const authValue = {
     onLogin: () => setIsLogin(true),
+    nameEvent : "",
+    totalGroups: 0,
+    totalDelegations: 0,
+    groupsByCode: {},
+    keysOfGroups: [],
+    ValuesSelect: {},
   };
 
   return (

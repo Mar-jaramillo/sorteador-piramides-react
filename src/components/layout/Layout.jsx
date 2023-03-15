@@ -12,7 +12,7 @@ export default function Layout({ children }) {
     <div className="">
       {/* Mostrar el componente BreadCrumb si la ubicación es /data o /board */}
       
-      <section className="h-screen">
+      <section className="">
       {/* {location.pathname === "/data" || location.pathname === "/board" ? <BreadCrumb /> : null} */}
         {children}
       </section>
