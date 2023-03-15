@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Bracket } from "react-brackets";
 import * as Generator from "../../utils/GeneratorsParticipants";
 import GlobalContext from "../../utils/GlobalContext";
@@ -32,61 +32,61 @@ export default function Pyramid({ typePyramid }) {
       seeds: Generator.firstRound(pyramid, context.groupNow),
     },
   ];
-  pyramid === 6 &&
-    rounds.push({
-      seeds: Generator.secondRound(pyramid),
-    });
-  pyramid === 4 &&
-    rounds.push(
-      {
-        seeds: Generator.secondRound(pyramid),
-      },
-      {
-        seeds: Generator.thirdRound(pyramid),
-      }
-    );
-  pyramid === 8 &&
-    rounds.push(
-      {
-        seeds: Generator.secondRound(pyramid),
-      },
-      {
-        seeds: Generator.thirdRound(pyramid),
-      },
-      {
-        seeds: Generator.fourthRound(pyramid),
-      }
-    );
-  pyramid === 16 &&
-    rounds.push(
-      {
-        seeds: Generator.secondRound(pyramid),
-      },
-      {
-        seeds: Generator.thirdRound(pyramid),
-      },
-      {
-        seeds: Generator.fourthRound(pyramid),
-      },
-      {
-        seeds: Generator.fifthRound(pyramid),
-      }
-    );
-  pyramid === 32 &&
-    rounds.push(
-      {
-        seeds: Generator.secondRound(pyramid),
-      },
-      {
-        seeds: Generator.thirdRound(pyramid),
-      },
-      {
-        seeds: Generator.fourthRound(pyramid),
-      },
-      {
-        seeds: Generator.fifthRound(pyramid),
-      }
-    );
+  // pyramid === 6 &&
+  //   rounds.push({
+  //     seeds: Generator.secondRound(pyramid),
+  //   });
+  // pyramid === 4 &&
+  //   rounds.push(
+  //     {
+  //       seeds: Generator.secondRound(pyramid),
+  //     },
+  //     {
+  //       seeds: Generator.thirdRound(pyramid),
+  //     }
+  //   );
+  // pyramid === 8 &&
+  //   rounds.push(
+  //     {
+  //       seeds: Generator.secondRound(pyramid),
+  //     },
+  //     {
+  //       seeds: Generator.thirdRound(pyramid),
+  //     },
+  //     {
+  //       seeds: Generator.fourthRound(pyramid),
+  //     }
+  //   );
+  // pyramid === 16 &&
+  //   rounds.push(
+  //     {
+  //       seeds: Generator.secondRound(pyramid),
+  //     },
+  //     {
+  //       seeds: Generator.thirdRound(pyramid),
+  //     },
+  //     {
+  //       seeds: Generator.fourthRound(pyramid),
+  //     },
+  //     {
+  //       seeds: Generator.fifthRound(pyramid),
+  //     }
+  //   );
+  // pyramid === 32 &&
+  //   rounds.push(
+  //     {
+  //       seeds: Generator.secondRound(pyramid),
+  //     },
+  //     {
+  //       seeds: Generator.thirdRound(pyramid),
+  //     },
+  //     {
+  //       seeds: Generator.fourthRound(pyramid),
+  //     },
+  //     {
+  //       seeds: Generator.fifthRound(pyramid),
+  //     }
+  //   );
 
   return <Bracket rounds={rounds} />;
 }

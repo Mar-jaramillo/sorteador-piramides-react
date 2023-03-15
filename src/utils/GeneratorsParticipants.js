@@ -1,33 +1,22 @@
-export const firstRound = (pyramid, Group) => {
-  const copyGroup = Group.slice(); // Creo una copia
-  const raffleGroup = copyGroup.sort(() => Math.random() - 0.5); // lo rifo
-  const participantesPairs = new Array(pyramid).fill({}); //creo arrray vacio con las posiciones
+import { finalArrayPyramid } from "./finalArrayPyramid";
 
-  let indexWhile = 0;
-  while (indexWhile < participantesPairs.length) {
-    const obj1 = raffleGroup[indexWhile]; //0,2
-    const obj2 = raffleGroup[indexWhile + 1]; //1,3
-    if (obj1["Delegación"] !== obj2["Delegación"]) {
-      participantesPairs[indexWhile] = obj1
-      participantesPairs[indexWhile + 1] = obj2
-      console.log(participantesPairs[indexWhile]);j
-      console.log(participantesPairs[indexWhile+1]);
-    }
-    indexWhile += 2;
+export const firstRound = (pyramid, group) => {
+  const newPyramid = finalArrayPyramid(pyramid, group)
+console.log(newPyramid);
+  const participantes = [];
+  for (let i = 0; i < newPyramid.length; i++) {
+
+      participantes.push({
+        id: i,
+        teams: [
+          { name: `${newPyramid[i][0]["Nombre Deportista"]}`},
+          { name: `${newPyramid[i][1]["Delegación"]}`},
+        ],
+      });
+    
+    
   }
-
-console.log(participantesPairs);
-  const renderizadoParticipants = [];
-  // for (let i = 0; i < copyGroup.length; i++) {
-  //   renderizadoParticipants.push({
-  //     id: i,
-  //     teams: [
-  //       { name: `${participantesPairs[i]["Nombre Deportista"]}` },
-  //       { name: `${participantesPairs[i]["Delegación"]}` },
-  //     ],
-  //   });
-  // }
-  return renderizadoParticipants;
+  return participantes;
 };
 
 export const secondRound = (pyramid) => {
