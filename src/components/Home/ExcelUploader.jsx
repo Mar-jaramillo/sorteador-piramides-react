@@ -40,9 +40,9 @@ export default function ExcelUploader({ setIsLoading, setError }) {
       localStorage.setItem("nameEvent", nameEvent);
       localStorage.setItem("totalGroups", totalGroups);
       localStorage.setItem("totalDelegations", totalDelegations);
-      localStorage.setItem("groupsByCode", groupsByCode);
+      localStorage.setItem("groupsByCode", JSON.stringify(groupsByCode));
       localStorage.setItem("keysOfGroups", keysOfGroups);
-      localStorage.setItem("valuesUniques", valuesUniques);
+      localStorage.setItem("valuesUniques", JSON.stringify(valuesUniques));
       localStorage.setItem("excelData", JSON.stringify(excelData));
       // const eventData = {
       //   nameEvent: nameEvent,

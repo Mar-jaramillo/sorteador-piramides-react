@@ -69,7 +69,7 @@ export default function Table({ dataExcel, filteredPerson }) {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 text-xs  h-60 overflow-auto">
+      <div id='tableBody' className="grid grid-cols-12 text-xs  h-60 overflow-auto">
         {filteredPerson.length > 0
           ? filteredPerson.map(renderTableRows)
           : dataExcel.map(renderTableRows)}

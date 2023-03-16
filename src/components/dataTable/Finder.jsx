@@ -22,7 +22,7 @@ export default function Finder({
   };
 
   return (
-    <div className="col-span-4 ">
+    <div className=" w-80 ">
       <div className="relative ">
         <div className="absolute inset-y-0 rigth-0 flex items-center pl-3 ">
           <svg
@@ -40,7 +40,7 @@ export default function Finder({
           </svg>
         </div>
         <input
-        autoComplete="off"
+          autoComplete="off"
           onChange={handleSearch}
           type="text"
           id="table-search"

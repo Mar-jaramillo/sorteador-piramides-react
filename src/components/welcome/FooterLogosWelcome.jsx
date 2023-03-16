@@ -4,8 +4,8 @@ import logoqubulowhite from "../../assets/logos/logoqubulowhite.png";
 
 export default function FooterLogosWelcome() {
   return (
-    <div className="flex  justify-center  w-full  ">
-      <div className="mr-16">
+    <div className="flex  justify-center gap-16 w-full  ">
+      <div className="">
         <p className="col-span-6 text-sm mb-3">Un producto de:</p>
         <img className="col-span-6  h-20 " src={logofederacion} alt="" />
       </div>

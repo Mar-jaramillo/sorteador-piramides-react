@@ -18,9 +18,11 @@ export default function Home() {
           <Loader />
         ) : (
           <div id="home" className="h-screen text-white">
-            <BreadCrumb />
+           
             <h2 className="text-left  px-32 text-3xl font-bold">
+            <BreadCrumb />
               Cargar Consolidado de Deportistas
+
             </h2>
             <ExcelUploader setIsLoading={setIsLoading} setError={setError} />
             <img
