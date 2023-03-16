@@ -2,17 +2,19 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { KEY_ACCESS } from "../../consts/keysAccess";
 import GlobalContext from "../../utils/GlobalContext";
+import iconhapkido from "../../assets/icons/iconhapkido.svg";
 
-export default function Login() {
+export default function LoginForm() {
+  
+  const context = useContext(GlobalContext);
   const [value, setValues] = useState(null);
-  const authContext = useContext(GlobalContext);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (KEY_ACCESS.includes(value)) {
-      authContext.onLogin();
+      context.onLogin();
       navigate("/home");
     } else {
       setError(true);
@@ -20,6 +22,11 @@ export default function Login() {
   };
 
   return (
+    <div className="flex flex-col justify-between items-center mb-28">
+    <img className="h-12 mb-4" src={iconhapkido} alt="" />
+    <p className="text-center font-bold text-2xl mb-10  max-w-md">
+      Bienvenido al Sorteador de Pirámides de Competencias para Hapkido
+    </p>
     <form onSubmit={handleSubmit} className="flex flex-col">
       <h1 className="text-md text-left mb-3 font-normal">
         Ingrese su código de acceso
@@ -47,5 +54,6 @@ export default function Login() {
         </button>
       </div>
     </form>
+    </div>
   );
 }

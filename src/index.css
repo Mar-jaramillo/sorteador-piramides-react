@@ -68,3 +68,8 @@ thead{
     background-color: #0047A0;
     color: #FFFFFF;
   }
+
+  .btnPrimary{
+    @apply  bg-redbuttons border-2 border-redborderbuttons text-white p-3 rounded-xl
+
+  }

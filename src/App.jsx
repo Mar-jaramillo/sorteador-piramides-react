@@ -17,10 +17,7 @@ const routes = [
 ];
 
 export default function App() {
-  const [isLogin, setIsLogin] = useState(
-    localStorage.getItem("isLogin") === "true"
-  );
-
+  const [isLogin, setIsLogin] = useState(localStorage.getItem("isLogin") === "true");
   useEffect(() => localStorage.setItem("isLogin", isLogin), [isLogin]);
 
   const authValue = {

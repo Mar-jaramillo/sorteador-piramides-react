@@ -1,35 +1,29 @@
-/* 
-recibe la data (lista con obj de los deportista ) 
-retorna un objeto con las nombres de las propiedades y 
-los valores son listas con todos los valores unicos de todos los valores de la data eje con 2 propiedades.
+/**
 
-  {
-    Grado:['Avanzados', 'Principiantes', 'Intermedios', 'Inermedios'],
-    Rama: ['Masculino', 'Femenino'],
-  }
-  
-*/
-function obtenerPropiedadesUnicas(dataFromLocalStorage) {
-    let propiedades = {};
-    dataFromLocalStorage.forEach((obj) => {
-      for (let key in obj) {
-        if (
-          key !== "CodDep" &&
-          key !== "Nombre Deportista" &&
-          key !== "Doc. Identificación"
-        ) {
-          let value = obj[key];
-          if (Array.isArray(propiedades[key])) {
-            if (!propiedades[key].includes(value)) {
-              propiedades[key].push(value);
-            }
-          } else {
-            propiedades[key] = [value];
+Retorna un objeto con las propiedades únicas de los objetos de un array de datos
+@param {Array} excelData - Array de objetos con datos a procesar
+@returns {Object} - Objeto con las propiedades únicas y sus valores del array de datos
+**/
+
+export const obtenerPropiedadesUnicas = (excelData) => {
+  let propiedades = {};
+  excelData.forEach((obj) => {
+    for (let key in obj) {
+      if (
+        key !== "CodDep" &&
+        key !== "Nombre Deportista" &&
+        key !== "Doc. Identificación"
+      ) {
+        let value = obj[key];
+        if (Array.isArray(propiedades[key])) {
+          if (!propiedades[key].includes(value)) {
+            propiedades[key].push(value);
           }
+        } else {
+          propiedades[key] = [value];
         }
       }
-    });
-    return propiedades;
-  }
-
-export default obtenerPropiedadesUnicas
+    }
+  });
+  return propiedades;
+};

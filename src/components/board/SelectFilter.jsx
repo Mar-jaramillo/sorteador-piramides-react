@@ -2,17 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { selectFiltersKeys } from "../../consts/selectFiltersKeys";
 import GlobalContext from "../../utils/GlobalContext";
 
-export default function SelectFliter({ setgroupsByCode }) {
+
+export default function SelectFilter({ setgroupsByCode }) {
   const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
 
   useEffect(() => {
-    setValuesSelect(context.valuesUniques);
- 
- 
-    setgroupsByCode(context.groupsByCode);
- 
-  }, []);
+    setValuesSelect(context.valuesUniques)
+    setgroupsByCode(context.groupsByCode || {});
+  }, [context.valuesUniques, context.groupsByCode]);
 
   return (
     <div className="flex items-center justify-center min-w-full mb-16">
@@ -30,7 +28,8 @@ export default function SelectFliter({ setgroupsByCode }) {
                     <option key={j} value={option}>
                       {option}
                     </option>
-                  ))}
+                  ))
+                }
               </select>
             </div>
           ))}

@@ -9,9 +9,6 @@ export default function CardIndividual({
 
   const [isReady, setIsReady] = useState(false);
   const context = useContext(GlobalContext);
-
-
-
   const handleIsReady = () => {
     context.groupNow = groupByCode
     const cantidad = groupByCode.length;
