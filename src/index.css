@@ -31,6 +31,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+#pyramid{
+  background-image: url('../src/assets/bgPyramid.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 #data{
   background-image: url('../src/assets/bgdata.png');
@@ -88,6 +93,6 @@ thead{
   }
 
   .btnPrimary{
-    @apply  bg-redbuttons border-2 border-redborderbuttons text-white p-3 rounded-xl
+    @apply  bg-redbuttons border-2 border-redborderbuttons text-white p-3 rounded-lg
 
   }

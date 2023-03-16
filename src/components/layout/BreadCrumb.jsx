@@ -30,9 +30,9 @@ export default function BreadCrumb() {
         {location.pathname === "/templates" ? (
           <li aria-current="page">
             <div className="flex items-center">
-              <span className="ml-1 text-sm  md:ml-2">
+              <Link to="/board" className="ml-1 text-sm  md:ml-2">
                 Grupos de deportistas /
-              </span>
+              </Link>
             </div>
           </li>
         ) : null}
