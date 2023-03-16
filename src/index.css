@@ -30,11 +30,13 @@ body {
   background-image: url('../src/assets/bgboard.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 #pyramid{
   background-image: url('../src/assets/bgPyramid.svg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 #data{
