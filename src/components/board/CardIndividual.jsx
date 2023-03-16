@@ -1,16 +1,13 @@
 import React, { useContext, useState } from "react";
 import GlobalContext from "../../utils/GlobalContext";
+import iconRaffled from "../../assets/icons/iconRaffled.svg";
 
-export default function CardIndividual({
-  keyName,
-  groupByCode,
-  setisActive,
-}) {
-
+export default function CardIndividual({ keyName, groupByCode, setisActive }) {
   const [isReady, setIsReady] = useState(false);
   const context = useContext(GlobalContext);
+  
   const handleIsReady = () => {
-    context.groupNow = groupByCode
+    context.groupNow = groupByCode;
     const cantidad = groupByCode.length;
     let tipo = null;
     if (cantidad === 1) {
@@ -31,12 +28,17 @@ export default function CardIndividual({
     setisActive(true);
   };
 
+  const greenCard =
+    "text-center grid grid-cols-12 p-4 border-b-2 rounded-t-2xl bg-green-500";
+  const grayCard =
+    "text-center grid grid-cols-12 p-4 border-b-2 rounded-t-2xl bg-white/30";
   return (
-    <div className="col-span-12 lg:col-span-6 text-sm lg:text-md mx-3 my-3  bg-white/20 border-2 border-gray-200 rounded-2xl shadow">
+    <div className="col-span-12 lg:col-span-6 text-sm lg:text-md mx-3 my-3 bg-white/20 border-2 border-gray-200 rounded-2xl shadow">
       {/*Card exterior*/}
-      <div className="text-center grid grid-cols-12 p-4 border-b-2 rounded-t-2xl bg-white/30">
-        <div className=" col-span-6">
-          <p className=" text-white"> Grupo {keyName}</p>
+      <div className={isReady ? greenCard : grayCard}>
+        <div className=" col-span-6 flex gap-2 items-center">
+          <p className="text-left text-white"> Grupo {keyName}</p>
+          {isReady ? <img src={iconRaffled} alt="icon" /> : null}
         </div>
         <div className="col-span-6 flex justify-end">
           <p className="text-white font-normal">
@@ -119,9 +121,7 @@ export default function CardIndividual({
               ) : (
                 <button
                   onClick={handleIsReady}
- 
-                  className=" m-4 px-5 py-2 rounded-lg font-medium border-2 border-white hover:bg-redbuttons hover:border-2 hover:border-redbuttons text-white bg-white/30"
- 
+                  className=" m-4 px-5 py-2 rounded-lg font-medium border-2 border-white bg-white/30 transition duration-500 ease-in-out hover:bg-redbuttons hover:border-2 hover:border-redbuttons text-white "
                 >
                   Sortear
                 </button>

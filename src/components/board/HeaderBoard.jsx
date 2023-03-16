@@ -3,15 +3,12 @@ import NavBar from "../layout/NavBar";
 
 export default function HeaderBoard({amount}) {
   return (
-    <div className="flex justify-between  mb-12">
+    <div className="flex justify-between   mb-12">
       {/* Section Title and menu header*/}
       <div>
-        <h2 className="text-2xl font-bold ">
+        <h2 className="text-3xl font-bold ">
           Grupos de competidores
         </h2>
-        <span className="flex justify-end font-bold ">
-          2 de {amount} grupos sorteados
-        </span>
       </div>
       <div className="text-right">
         <NavBar/>

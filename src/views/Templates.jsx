@@ -8,12 +8,12 @@ export default function Templates() {
   const [typePyramid, setTypePyramid] = useState(2);
 
   return (
-    <>
+
       <div id="" className="p-10 text-white ">
         <BreadCrumb />
         <HeaderTemplates typePyramid={typePyramid} setTypePyramid={setTypePyramid} />
         <BodyTemplate typePyramid={typePyramid} />
       </div>
-    </>
+
   );
 }

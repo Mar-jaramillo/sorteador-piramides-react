@@ -34,7 +34,7 @@ export default function DataTable() {
   return (
     <Layout>
       {isLoading ? (
-        <Loader />
+        <Loader mensaje='Cargando Grupos de Deportistas'/>
       ) : (
         <div id="data" className="h-screen text-white">
           <div className="h-full grid place-content-center ">

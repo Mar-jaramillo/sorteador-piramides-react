@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loader from "../layout/Loader";
 import CardIndividual from "./CardIndividual";
 
 export default function CardsBoard({ keysCode, groupsByCode, setisActive, }) {
@@ -17,27 +18,7 @@ export default function CardsBoard({ keysCode, groupsByCode, setisActive, }) {
       ) : (
         // Loader
         <div className="col-span-12 grid place-content-center">
-          <svg
-            className="animate-spin h-12 w-12"
-            viewBox="0 0 24 24"
-            style={{ animationDuration: "0.75s" }}
-          >
-            <defs>
-              <linearGradient id="gradient" x1="0" x2="1">
-                <stop offset="0%" stopColor="#FF3602" />
-                <stop offset="100%" stopColor="#FFF" />
-              </linearGradient>
-            </defs>
-            <circle
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="url(#gradient)"
-              strokeWidth="3"
-              fill="none"
-              strokeDasharray="80 50"
-            />
-          </svg>
+      <Loader mensaje="Cargando Grupos de Deportistas"/>
         </div>
       )}
     </div>

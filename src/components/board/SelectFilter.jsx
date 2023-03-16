@@ -6,9 +6,9 @@ import GlobalContext from "../../utils/GlobalContext";
 export default function SelectFilter({ setgroupsByCode }) {
   const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
-  
+
   useEffect(() => {
-    setValuesSelect(context.valuesUniques || getLocalStorage("valuesUniques"))
+    setValuesSelect(context.valuesUniques || getLocalStorage("valuesUniques"));
     setgroupsByCode(context.groupsByCode || getLocalStorage("groupsByCode"));
   }, []);
 
@@ -18,18 +18,16 @@ export default function SelectFilter({ setgroupsByCode }) {
         <div className="flex">
           {selectFiltersKeys.map((filter, i) => (
             <div key={i} className="flex flex-col mx-5">
-              <label className="mb-2 text-sm font-medium text-center">
-                {filter}
-              </label>
-              <select className="w-36 border-2 bg-white/20  rounded-lg py-3 px-4 shadow-lg text-sm">
-                <option value=""></option>
+              <select className="w-40 border-2 bg-white/50 font-semibold uppercase text-center rounded-lg py-3 px-4 shadow-lg text-md">
+                <option className="">
+                  {filter}
+                </option>
                 {valuesSelect[filter] &&
                   valuesSelect[filter].map((option, j) => (
                     <option key={j} value={option}>
                       {option}
                     </option>
-                  ))
-                }
+                  ))}
               </select>
             </div>
           ))}

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Loader() {
+export default function Loader({mensaje}) {
   return (
     <>
        <div className="fixed top-0 left-0 w-screen h-screen flex flex-col items-center justify-center ">
@@ -25,7 +25,7 @@ export default function Loader() {
           strokeDasharray="80 50"
         />
       </svg>
-        <span className="mt-10 text-white">Estamos cargando tu archivo</span>
+        <span className="mt-10 text-white">{mensaje}</span>
         </div>
 
  

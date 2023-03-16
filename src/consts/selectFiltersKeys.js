@@ -4,6 +4,4 @@ export const selectFiltersKeys = [
     "Rama",
     "Grado",
     "División",
-    "CBTE IND",
-    "Estado",
   ];

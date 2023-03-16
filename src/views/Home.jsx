@@ -15,7 +15,7 @@ export default function Home() {
     return (
       <>
         {isLoading ? (
-          <Loader />
+          <Loader mensaje='Cargando consolidado de deportistas...'/>
         ) : (
           <div id="home" className="h-screen text-white">
            

@@ -31,7 +31,6 @@ export default function Pyramid({ typePyramid }) {
   }
  
   const rounds = [
-
     {
       seeds: Generator.firstRound(pyramid, context.groupNow),
     },
