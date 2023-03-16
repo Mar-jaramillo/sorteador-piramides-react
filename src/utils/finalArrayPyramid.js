@@ -2,7 +2,6 @@ import { createArrayAndObjects } from "./createArrayAndObjects";
 import { raffledGroup } from "./raffledGroup";
 
 
-
   // resultado * 2 me dira cuantas participantes de la misma delegacion se van a enfrentar 
   // sacar los que van a pelear
   // sortear como lo hicimos

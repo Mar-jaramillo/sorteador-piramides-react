@@ -10,8 +10,8 @@ export default function BodyTemplate({ typePyramid }) {
       className="grid place-content-center rounded-b-md bg-white  mb-7"
     >
       <details>
-        <summary>
-       Expandir piramide
+        <summary className="text-gray-700">
+       Expandir piramide 
         </summary>
         <Pyramid typePyramid={typePyramid} />
       </details>

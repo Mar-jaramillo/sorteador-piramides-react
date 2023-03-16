@@ -1,21 +1,29 @@
 import { finalArrayPyramid } from "./finalArrayPyramid";
 
 export const firstRound = (pyramid, group) => {
-  const newPyramid = finalArrayPyramid(pyramid, group)
-console.log(newPyramid);
   const participantes = [];
-  for (let i = 0; i < newPyramid.length; i++) {
 
+  if (group === undefined) {
+    for (let index = 0; index < pyramid; index++) {
+      participantes.push({
+        id: index,
+        teams: [{ name: "" }, { name: "" }],
+      });
+    }
+  }
+  else{
+    const raffledPartipants = finalArrayPyramid(pyramid, group);
+    for (let i = 0; i < raffledPartipants.length; i++) {
       participantes.push({
         id: i,
         teams: [
-          { name: `${newPyramid[i][0]["Nombre Deportista"]}`},
-          { name: `${newPyramid[i][1]["Delegación"]}`},
+          { name: `${raffledPartipants[i][0]["Nombre Deportista"]}` },
+          { name: `${raffledPartipants[i][1]["Delegación"]}` },
         ],
       });
-    
-    
+    }
   }
+
   return participantes;
 };
 

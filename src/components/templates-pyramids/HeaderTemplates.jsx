@@ -1,7 +1,7 @@
 import React from "react";
 import { handleCapture } from "../../utils/handleCapture";
 
-const pyramidsTypes = [3, 4, 8, 16, 32];
+const pyramidsTypes = [2,3, 4, 8, 16, 32];
 
 function HeaderTemplates({ typePyramid, setTypePyramid }) {
   return (

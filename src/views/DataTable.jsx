@@ -36,15 +36,17 @@ export default function DataTable() {
       {isLoading ? (
         <Loader />
       ) : (
-        <div id="data" className=" h-screen text-white">
+        <div id="data" className=" text-white">
           <BreadCrumb />
+
+          <div className="h-screen grid place-content-center ">
           <div className="grid grid-cols-12">
             <div className="col-span-6">
-              <h2 className="text-left bg-red-400 pb-6 px-32 text-3xl font-bold">
+              <h2 className="text-left text-3xl font-bold">
                 Visualización de deportistas
               </h2>
             </div>
-            <div className="text-right font-medium mr-36 col-span-6 bg-blue-900">
+            <div className="text-right font-medium col-span-6 ">
               <h3>{context.nameEvent}</h3>
               <div>
                 <h3 alt="" />
@@ -63,8 +65,6 @@ export default function DataTable() {
               </div>
             </div>
           </div>
-
-          <div className="grid place-content-center">
             <div className="max-w-5xl grid grid-cols-12 mb-4">
               <Finder
                 dataExcel={dataExcel}

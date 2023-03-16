@@ -5,7 +5,7 @@ import HeaderTemplates from "../components/templates-pyramids/HeaderTemplates";
 import BodyTemplate from "../components/templates-pyramids/BodyTemplate";
 
 export default function Templates() {
-  const [typePyramid, setTypePyramid] = useState(3);
+  const [typePyramid, setTypePyramid] = useState(2);
 
   return (
     <>
