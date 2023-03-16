@@ -6,10 +6,7 @@ import Layout from "../components/layout/Layout";
 import Loader from "../components/layout/Loader";
 import BreadCrumb from "../components/layout/BreadCrumb";
 import GlobalContext from "../utils/GlobalContext";
-import obtenerPropiedadesUnicas from "../utils/obtenerPropiedadesUnicas";
-import { createGroupsByCode } from "../utils/createGroupsByCode";
-import { getLocalStorage } from "../utils/getLocalStorage";
-
+ 
 export default function DataTable() {
   const context = useContext(GlobalContext);
   const [dataExcel, setDataExcel] = useState([]);
@@ -20,29 +17,11 @@ export default function DataTable() {
 
   useEffect(() => {
     const json = localStorage.getItem("excelData");
-
     if (json !== null) {
       const data = JSON.parse(json);
-
       setDataExcel(data);
     }
   }, []);
-
-  useEffect(() => {
-    const dataFromLocalStorage = getLocalStorage("excelData");
-    const valuesUniques = obtenerPropiedadesUnicas(dataFromLocalStorage);
-
-    const groupsByCode = createGroupsByCode(dataFromLocalStorage); //esto nos trae un objeto con objetos organizados por el código
-
-    const keys = Object.keys(groupsByCode);
-
-    context.totalGroups = keys.length;
-    context.totalDelegations = valuesUniques["Delegación"].length;
-    context.groupsByCode = groupsByCode;
-    context.keysOfGroups = keys;
-    context.valuesUniques = valuesUniques;
-  }, []);
-
   const navigateBoard = (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -61,11 +40,11 @@ export default function DataTable() {
           <BreadCrumb />
           <div className="grid grid-cols-12">
             <div className="col-span-6">
-              <h2 className="text-left pb-6 px-32 text-3xl font-bold">
+              <h2 className="text-left bg-red-400 pb-6 px-32 text-3xl font-bold">
                 Visualización de deportistas
               </h2>
             </div>
-            <div className="text-right font-medium mr-36 col-span-6">
+            <div className="text-right font-medium mr-36 col-span-6 bg-blue-900">
               <h3>{context.nameEvent}</h3>
               <div>
                 <h3 alt="" />

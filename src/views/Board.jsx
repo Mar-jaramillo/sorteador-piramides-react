@@ -4,7 +4,7 @@ import CardsBoard from "../components/board/CardsBoard";
 import HeaderBoard from "../components/board/HeaderBoard";
 import SelectFliter from "../components/board/SelectFilter";
 import BreadCrumb from "../components/layout/BreadCrumb";
-import Layout from "../components/layout/Layout";l
+import Layout from "../components/layout/Layout";
 import ModalTemplate from "../components/templates-pyramids/ModalTemplate";
 import GlobalContext from "../utils/GlobalContext";
 
@@ -19,10 +19,8 @@ export default function Board() {
   useEffect(() => {
     setTypePyramid(context.typePyramid);
     setAmountParticipants(context.amountParticipants);
-
+    setKeysCode(context.keysOfGroups)
   }, [context.amountParticipants, context.typePyramid]);
-
-
 
   return (
     <Layout>
