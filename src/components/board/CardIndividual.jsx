@@ -12,8 +12,10 @@ export default function CardIndividual({ keyName, groupByCode, setisActive }) {
     let type = null;
     if (cantidad === 1) {
       type = null;
+    } else if (cantidad <= 2) {
+      type = 2;
     } else if (cantidad <= 3) {
-      return;
+      type = 6;
     } else if (cantidad <= 4) {
       type = 4;
     } else if (cantidad <= 8) {
