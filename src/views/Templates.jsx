@@ -4,8 +4,10 @@ import HeaderTemplates from "../components/templatesPyramids/HeaderTemplates";
 
 import BodyTemplate from "../components/templatesPyramids/BodyTemplate";
 import { handleCapture } from "../utils/handleCapture";
+import { useNavigate } from "react-router-dom";
 
 export default function Templates() {
+  const navigate = useNavigate()
   const [typePyramid, setTypePyramid] = useState(3);
 
   return (
@@ -26,7 +28,7 @@ export default function Templates() {
       </div>
       <BodyTemplate typePyramid={typePyramid} />
       <div className="grid place-content-center">
-      <button className="w-40 border py-2 bg-white/25 rounded-lg"> &lt;&lt; Volver</button>
+      <button  onClick={()=>navigate('/board')} className="w-40 border py-2 bg-white/25 transition duration-500 ease-in-out hover:bg-redbuttons rounded-lg"> &lt;&lt; Volver</button>
       </div>
     
     </div>

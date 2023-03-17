@@ -3,7 +3,7 @@ import { selectFiltersKeys } from "../../consts/selectFiltersKeys";
 import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 
-export default function SelectFilter({ setgroupsByCode }) {
+export default function SelectFilter({setKeysOfGroups, setgroupsByCode }) {
   const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
 
@@ -18,7 +18,7 @@ export default function SelectFilter({ setgroupsByCode }) {
         <div className="flex">
           {selectFiltersKeys.map((filter, i) => (
             <div key={i} className="flex flex-col mx-5">
-              <select className="w-40 border-2 bg-white/50 font-semibold uppercase text-center rounded-lg py-3 px-4 shadow-lg text-md">
+              <select className="w-40 border-2 bg-white/50 transition duration-500 hover:bg-white/10 font-semibold uppercase text-center rounded-lg py-3 px-4 shadow-lg text-md">
                 <option className="">
                   {filter}
                 </option>

@@ -28,6 +28,8 @@ export default function ExcelUploader({ setIsLoading, setError }) {
       const totalGroups = keysOfGroups.length;
       const totalDelegations = valuesUniques["Delegación"].length;
 
+      console.log();
+
       //Guardados en contexto
       context.nameEvent = nameEvent;
       context.totalGroups = totalGroups;
@@ -37,11 +39,11 @@ export default function ExcelUploader({ setIsLoading, setError }) {
       context.valuesUniques = valuesUniques;
 
       //Guardados en LocalStorage
-      localStorage.setItem("nameEvent", nameEvent);
-      localStorage.setItem("totalGroups", totalGroups);
-      localStorage.setItem("totalDelegations", totalDelegations);
+      localStorage.setItem("nameEvent", JSON.stringify(nameEvent));
+      localStorage.setItem("totalGroups", JSON.stringify(totalGroups));
+      localStorage.setItem("totalDelegations", JSON.stringify(totalDelegations));
       localStorage.setItem("groupsByCode", JSON.stringify(groupsByCode));
-      localStorage.setItem("keysOfGroups", keysOfGroups);
+      localStorage.setItem("keysOfGroups", JSON.stringify(keysOfGroups));
       localStorage.setItem("valuesUniques", JSON.stringify(valuesUniques));
       localStorage.setItem("excelData", JSON.stringify(excelData));
       // const eventData = {
@@ -53,7 +55,7 @@ export default function ExcelUploader({ setIsLoading, setError }) {
       setTimeout(() => {
         setIsLoading(false);
         navigate("/data");
-      }, 1500);
+      }, 1000);
     }
   };
 
