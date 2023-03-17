@@ -18,8 +18,8 @@ export const firstRound = (pyramid, group) => {
       participantes.push({
         id: i,
         teams: [
-          { name: `${raffledPartipants[i][0]["Nombre Deportista"]}` },
-          { name: `${raffledPartipants[i][1]["Delegación"]}` },
+          { name: `${raffledPartipants[i][0]["CodDep"]} - ${raffledPartipants[i][0]["Nombre Deportista"]}` },
+          { name: `${raffledPartipants[i][1]["CodDep"]} - ${raffledPartipants[i][1]["Nombre Deportista"]}` },
         ],
       });
     }

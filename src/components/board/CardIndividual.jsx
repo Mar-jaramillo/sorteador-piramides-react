@@ -9,22 +9,22 @@ export default function CardIndividual({ keyName, groupByCode, setisActive }) {
   const handleIsReady = () => {
     context.groupNow = groupByCode;
     const cantidad = groupByCode.length;
-    let tipo = null;
+    let type = null;
     if (cantidad === 1) {
-      tipo = null;
+      type = null;
     } else if (cantidad <= 3) {
       return;
     } else if (cantidad <= 4) {
-      tipo = 4;
+      type = 4;
     } else if (cantidad <= 8) {
-      tipo = 8;
+      type = 8;
     } else if (cantidad <= 16) {
-      tipo = 16;
+      type = 16;
     } else if (cantidad <= 32) {
-      tipo = 32;
+      type = 32;
     }
     setIsReady(true);
-    context.typePyramid = tipo;
+    context.typePyramid = type;
     setisActive(true);
   };
 

@@ -12,7 +12,7 @@ export default function Board() {
   const context = useContext(GlobalContext);
   const [keysOfGroups, setKeysOfGroups] = useState({});
   const [groupsByCode, setgroupsByCode] = useState({});
-  const [typePyramid, setTypePyramid] = useState(3);
+  const [typePyramid, setTypePyramid] = useState(2);
   const [isActive, setisActive] = useState(false);
 
   useEffect(() => {
@@ -23,6 +23,9 @@ export default function Board() {
     setKeysOfGroups(keysOfGroups);
     setgroupsByCode(groupsByCode);
   }, []);
+  useEffect(() => {
+    setTypePyramid(context.typePyramid);
+  }, [context.typePyramid]);
 
   return (
     <Layout>
