@@ -5,7 +5,7 @@ import HeaderBoard from "../components/board/HeaderBoard";
 import SelectFliter from "../components/board/SelectFilter";
 import BreadCrumb from "../components/layout/BreadCrumb";
 import Layout from "../components/layout/Layout";
-import ModalTemplate from "../components/templates-pyramids/ModalTemplate";
+import ModalTemplate from "../components/templatesPyramids/ModalTemplate";
 import GlobalContext from "../utils/GlobalContext";
 
 export default function Board() {

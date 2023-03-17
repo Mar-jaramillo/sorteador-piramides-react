@@ -42,7 +42,8 @@ export default function Pyramid({ typePyramid }) {
   pyramid === 6 &&
     rounds.push({
       seeds: Generator.secondRound(pyramid),
-    });
+    }
+    );
   pyramid === 4 &&
     rounds.push(
       {

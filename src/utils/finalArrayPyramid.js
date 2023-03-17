@@ -25,10 +25,11 @@ export function finalArrayPyramid(pyramid, group) {
 
   const pares = [];
   console.log(finalPyramid);
-  while (i < finalPyramid.length) {
+  while (i + 1 < finalPyramid.length) {
     const participante1 = finalPyramid[i];
     const participante2 = finalPyramid[i + 1];
-    console.log("por aqui paso");
+    i += 2;
+  
     if (
       !participante2 ||
       participante1["Nombre Deportista"] ===
@@ -40,9 +41,7 @@ export function finalArrayPyramid(pyramid, group) {
       pares.length = 0;
       continue;
     }
-
-    
-    i += 2;
+  
     pares.push([participante1, participante2]);
   }
   console.log("por aqui paso 2");
