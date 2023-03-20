@@ -21,7 +21,6 @@ export default function SelectFilter({
     setGroupsByCode(context.groupsByCode || getLocalStorage("groupsByCode"));
     setKeysGroups(context.keysGroups);
   }, []);
-  console.log(keysOfGroups);
   const keyFiltered = [];
   const handleSearch = (e) => {
     const valueSearch = e.target.value;
@@ -33,11 +32,13 @@ export default function SelectFilter({
           filteredKeys.push(key);
         }
       });
+
     }
     setFilteredKeys(filteredKeys);
     setFilteredKeysOfGroups(filteredKeys);
     setsearchValue(valueSearch);
   };
+ 
 
   return (
     <div className="flex items-center justify-center min-w-full mb-16">
