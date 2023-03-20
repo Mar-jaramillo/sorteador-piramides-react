@@ -16,7 +16,11 @@ export default function Board() {
   const [searchValue, setsearchValue] = useState(""); // el valor que viene del componente Selects
   const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]); // lo que le vamos a mandar a Selects
   const [typePyramid, setTypePyramid] = useState(2);
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState({
+    active: false,
+  
+  });
+  console.log(isActive.amount);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -45,8 +49,19 @@ export default function Board() {
           groupsByCode={groupsByCode}
           setFilteredKeysOfGroups={setFilteredKeysOfGroups}
         />
+        <div className="flex gap-3">
+          <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
+            Todos {keysOfGroups.length}{" "}
+          </div>
+          <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
+            Sorteado {" "}
+          </div>
+          <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
+            Sin sortear{" "}
+          </div>
+        </div>
         <CardsBoard
-        filteredKeysOfGroups={filteredKeysOfGroups}
+          filteredKeysOfGroups={filteredKeysOfGroups}
           keysOfGroups={keysOfGroups}
           groupsByCode={groupsByCode}
           setIsActive={setIsActive}
@@ -56,6 +71,7 @@ export default function Board() {
         <div className="fixed top-0  left-0 w-full h-full grid place-content-center">
           <div className="z-10 bg-white rounded-lg w-full  overflow-auto p-8">
             <ModalTemplate
+              keysOfGroups={keysOfGroups}
               setIsActive={setIsActive}
               typePyramid={typePyramid}
             />

@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { handleCapture } from "../../utils/handleCapture";
 import BodyTemplate from "./BodyTemplate";
 
-export default function ModalTemplate({ typePyramid, setIsActive }) {
+export default function ModalTemplate({ typePyramid, setIsActive, keysOfGroups }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -14,7 +14,7 @@ export default function ModalTemplate({ typePyramid, setIsActive }) {
     <>
       <div className="flex justify-between gap-5 items-center mb-6">
         <p className="text-xl flex flex-col justify-end font-semibold">
-          2 de 18 grupos sorteados
+          2 de {keysOfGroups.length} grupos sorteados
         </p>
         <div className="flex gap-5">
           <button

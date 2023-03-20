@@ -2,21 +2,19 @@ import React, { useContext, useState } from "react";
 import GlobalContext from "../../utils/GlobalContext";
 import iconRaffled from "../../assets/icons/iconRaffled.svg";
 
-export default function CardIndividual({
-  keyName,
-  groupByCode,
-  setIsActive
-}) {
+export default function CardIndividual({ keyName, groupByCode, setIsActive }) {
   const [isReady, setIsReady] = useState(false);
   const context = useContext(GlobalContext);
 
   const handleIsReady = () => {
     context.groupNow = groupByCode;
     const amountParticipantsCard = groupByCode.length;
- 
-    localStorage.setItem("groupNow ", JSON.stringify(groupByCode));
-    localStorage.setItem("amountParticipantsCard ", JSON.stringify(amountParticipantsCard));
 
+    localStorage.setItem("groupNow ", JSON.stringify(groupByCode));
+    localStorage.setItem(
+      "amountParticipantsCard ",
+      JSON.stringify(amountParticipantsCard)
+    );
 
     let typePyramid = 0;
     if (amountParticipantsCard === 1) {
@@ -35,8 +33,10 @@ export default function CardIndividual({
       typePyramid = 32;
     }
     context.typePyramid = typePyramid;
-    localStorage.setItem("typePyramid", JSON.stringify(typePyramid))
-    setIsActive(true)
+    localStorage.setItem("typePyramid", JSON.stringify(typePyramid));
+    setIsActive({
+      active: true,
+    });
     setIsReady(true);
   };
 
