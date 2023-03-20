@@ -28,8 +28,12 @@ export default function SelectFilter({
       const array = groupsByCode[key];
       array.forEach((element) => {
         if (
-          element["Delegación"]  === valueSearch &&
-          !filteredKeys.includes(key)
+          element["Delegación"] === valueSearch ||
+          element["Rama"] === valueSearch ||
+          element["Categoría"] === valueSearch ||
+          element["Grado"] === valueSearch ||
+          element["División"] === valueSearch ||
+          !filteredKeys.includes(key) 
         ) {
           filteredKeys.push(key);
         }
