@@ -19,9 +19,6 @@ export default function Board() {
     setGroupsByCode(getLocalStorage("groupsByCode") || context.groupsByCode);
   }, []);
 
-  useEffect(() => {
-    setTypePyramid(context.typePyramid);
-  }, [isActive]);
 
    return (
     <>

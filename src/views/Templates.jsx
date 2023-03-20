@@ -1,14 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import BreadCrumb from "../components/layout/BreadCrumb";
-import HeaderTemplates from "../components/templatesPyramids/HeaderTemplates";
-
-import BodyTemplate from "../components/templatesPyramids/BodyTemplate";
-import { handleCapture } from "../utils/handleCapture";
-import { useNavigate } from "react-router-dom";
 import ModalTemplate from "../components/templatesPyramids/ModalTemplate";
 
 export default function Templates() {
-  const [typePyramid, setTypePyramid] = useState(3);
+  const [typePyramid, setTypePyramid] = useState(6);
 
   return (
     <div id="pyramid" className="p-10 text-white min-h-screen h-full px-32">

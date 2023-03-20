@@ -10,7 +10,7 @@ export default function Welcome() {
       
       {/* section rigth */}
       <div className="col-span-6 flex flex-col justify-end h-full">
-        <div className="flex flex-col justify-between items-center py-12 h-full">
+        <div className="flex flex-col justify-between items-center py-12">
           <LoginForm />
           <FooterLogosWelcome />
         </div>

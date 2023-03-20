@@ -13,6 +13,7 @@ export default function CardIndividual({
   const handleIsReady = () => {
     context.groupNow = groupByCode;
     const amountParticipantsCard = groupByCode.length;
+ 
     localStorage.setItem("groupNow ", JSON.stringify(groupByCode));
     localStorage.setItem("amountParticipantsCard ", JSON.stringify(amountParticipantsCard));
 
@@ -33,11 +34,10 @@ export default function CardIndividual({
     } else if (amountParticipantsCard <= 32) {
       typePyramid = 32;
     }
-
-    setIsReady(true);
     context.typePyramid = typePyramid;
     localStorage.setItem("typePyramid", JSON.stringify(typePyramid))
     setIsActive(true)
+    setIsReady(true);
   };
 
   const greenCard =

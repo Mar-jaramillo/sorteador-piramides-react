@@ -47,9 +47,9 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
   );
 };
 
-export default function Pyramid({ typePyramid }) {
+export default function Pyramid() {
   const context = useContext(GlobalContext);
-
+ const typePyramid = context.typePyramid
   let pyramid;
   switch (typePyramid) {
     case 2:

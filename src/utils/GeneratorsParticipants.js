@@ -14,6 +14,7 @@ export const firstRound = (pyramid, group) => {
     const raffledPartipants = finalArrayPyramid(pyramid, group);
  
     for (let i = 0; i < raffledPartipants.length; i++) {
+      
       participantes.push({
         id: i,
         teams: [

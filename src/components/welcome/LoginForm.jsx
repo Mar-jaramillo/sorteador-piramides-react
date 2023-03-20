@@ -7,7 +7,7 @@ import iconhapkido from "../../assets/icons/iconhapkido.svg";
 export default function LoginForm() {
   
   const context = useContext(GlobalContext);
-  const [value, setValues] = useState(null);
+  const [value, setValues] = useState("");
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
