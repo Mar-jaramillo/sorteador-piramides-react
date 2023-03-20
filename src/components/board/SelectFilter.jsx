@@ -23,7 +23,7 @@ export default function SelectFilter({
   }, []);
   const handleSearch = (e) => {
     const valueSearch = e.target.value;
-    const filteredKeys = [];
+    const filteredKeys = {};
     for (const key of keysOfGroups) {
       const array = groupsByCode[key];
       array.forEach((element) => {
@@ -32,18 +32,18 @@ export default function SelectFilter({
           element["Rama"] === valueSearch ||
           element["Categoría"] === valueSearch ||
           element["Grado"] === valueSearch ||
-          element["División"] === valueSearch ||
-          !filteredKeys.includes(key) 
+          element["División"] === valueSearch
         ) {
-          filteredKeys.push(key);
+          filteredKeys[key] = true; // Agregar el grupo a la lista de filtrados
         }
       });
     }
-    context.totalGroupsFiltered=filteredKeys.length;
-    console.log(filteredKeys);
-
-    setFilteredKeys(filteredKeys);
-    setFilteredKeysOfGroups(filteredKeys);
+    const filteredKeysList = Object.keys(filteredKeys); // Convertir el objeto en una lista
+    context.totalGroupsFiltered = filteredKeysList.length;
+    console.log(filteredKeysList);
+  
+    setFilteredKeys(filteredKeysList);
+    setFilteredKeysOfGroups(filteredKeysList);
     setsearchValue(valueSearch);
   };
 
