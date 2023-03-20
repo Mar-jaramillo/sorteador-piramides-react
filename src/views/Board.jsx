@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import CardsBoard from "../components/board/CardsBoard";
 import HeaderBoard from "../components/board/HeaderBoard";
 import SelectFliter from "../components/board/SelectFilter";
@@ -13,14 +14,22 @@ export default function Board() {
   const [groupsByCode, setGroupsByCode] = useState({});
   const [typePyramid, setTypePyramid] = useState(2);
   const [isActive, setIsActive] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const changePageTitle = () => {
+      const newPageTitle = "Grupos de deportistas";
+      pathname === "/board" && (document.title = newPageTitle);
+    };
+    changePageTitle();
+  }, []);
 
   useEffect(() => {
     setKeysOfGroups(getLocalStorage("keysOfGroups") || context.keysOfGroups);
     setGroupsByCode(getLocalStorage("groupsByCode") || context.groupsByCode);
   }, []);
 
-
-   return (
+  return (
     <>
       <div id="board" className="px-32 pt-10 text-white">
         <BreadCrumb />

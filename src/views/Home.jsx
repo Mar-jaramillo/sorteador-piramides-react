@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ExcelUploader from "../components/Home/ExcelUploader";
 import logoqubulowhite from "../assets/logos/logoqubulowhite.png";
 import Loader from "../components/layout/Loader";
 import ErrorComponent from "../components/layout/error/ErrorComponent";
 import BreadCrumb from "../components/layout/BreadCrumb";
+import { useLocation } from "react-router-dom";
 
 export default function Home() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+   const changePageTitle = () => {
+     const newPageTitle = "Cargar Archivo";
+     pathname === "/home" && (document.title = newPageTitle) 
+   };
+   changePageTitle()
+  }, [])
+  
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 

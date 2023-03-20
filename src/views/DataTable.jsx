@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Finder from "../components/dataTable/Finder";
 import Table from "../components/dataTable/Table";
 import Layout from "../components/layout/Layout";
@@ -8,6 +8,18 @@ import BreadCrumb from "../components/layout/BreadCrumb";
 import GlobalContext from "../utils/GlobalContext";
 
 export default function DataTable() {
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+   const changePageTitle = () => {
+     const newPageTitle = "Tabla Deportistas";
+     pathname === "/data" && (document.title = newPageTitle) 
+   };
+   changePageTitle()
+  }, [])
+  
+
   const context = useContext(GlobalContext);
   const [dataExcel, setDataExcel] = useState([]);
   const [searchValue, setSearchValue] = useState("");
