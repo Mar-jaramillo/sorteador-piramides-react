@@ -51,7 +51,7 @@ export default function Board() {
         />
         <div className="flex gap-3">
           <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-            Todos {keysOfGroups.length}{" "}
+            Todos {context.totalGroupsFiltered >0 ? context.totalGroupsFiltered : keysOfGroups.length }{" "}
           </div>
           <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
             Sorteado {" "}

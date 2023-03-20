@@ -21,24 +21,27 @@ export default function SelectFilter({
     setGroupsByCode(context.groupsByCode || getLocalStorage("groupsByCode"));
     setKeysGroups(context.keysGroups);
   }, []);
-  const keyFiltered = [];
   const handleSearch = (e) => {
     const valueSearch = e.target.value;
     const filteredKeys = [];
     for (const key of keysOfGroups) {
       const array = groupsByCode[key];
       array.forEach((element) => {
-        if (element["Delegación"] === valueSearch && !filteredKeys.includes(key)) {
+        if (
+          element["Delegación"]  === valueSearch &&
+          !filteredKeys.includes(key)
+        ) {
           filteredKeys.push(key);
         }
       });
-
     }
+    context.totalGroupsFiltered=filteredKeys.length;
+    console.log(filteredKeys);
+
     setFilteredKeys(filteredKeys);
     setFilteredKeysOfGroups(filteredKeys);
     setsearchValue(valueSearch);
   };
- 
 
   return (
     <div className="flex items-center justify-center min-w-full mb-16">

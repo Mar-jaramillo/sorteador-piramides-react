@@ -28,7 +28,8 @@ export default function App() {
     groupsByCode: {}, // Se espera los grupos de deportistas por codigo
     keysOfGroups: [], // Se espera los codigos CBTE-IN de los grupos de deportistas
     ValuesSelect: {}, // Se espera valores unicos de las propiedades de todos los deportistas
-    typePyramid: 0 //Se espera numeros 2, 3, 4, 8, 16, 32
+    typePyramid: 0, //Se espera numeros 2, 3, 4, 8, 16, 32
+    totalGroupsFiltered: 0
   };
 
   return (
