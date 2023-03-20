@@ -2,7 +2,6 @@ import { finalArrayPyramid } from "./finalArrayPyramid";
 
 export const firstRound = (pyramid, group) => {
   const participantes = [];
-
   if (group === undefined) {
     for (let index = 0; index < pyramid; index++) {
       participantes.push({
@@ -13,13 +12,13 @@ export const firstRound = (pyramid, group) => {
   }
   else{
     const raffledPartipants = finalArrayPyramid(pyramid, group);
-    console.log(raffledPartipants);
+ 
     for (let i = 0; i < raffledPartipants.length; i++) {
       participantes.push({
         id: i,
         teams: [
-          { name: `${raffledPartipants[i][0]["CodDep"]} - ${raffledPartipants[i][0]["Nombre Deportista"]}` },
-          { name: `${raffledPartipants[i][1]["CodDep"]} - ${raffledPartipants[i][1]["Nombre Deportista"]}` },
+          { name: `${raffledPartipants[i][0]["CodDep"]|| ''} - ${raffledPartipants[i][0]["Nombre Deportista"]}` },
+          { name: `${raffledPartipants[i][1]["CodDep"] || ''} - ${raffledPartipants[i][1]["Nombre Deportista"]}` },
         ],
       });
     }

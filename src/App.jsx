@@ -28,6 +28,8 @@ export default function App() {
     groupsByCode: {},
     keysOfGroups: [],
     ValuesSelect: {},
+    isActive: false,
+    typePyramid: 0
   };
 
   return (

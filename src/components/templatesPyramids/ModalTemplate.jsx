@@ -1,28 +1,43 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { handleCapture } from "../../utils/handleCapture";
 import BodyTemplate from "./BodyTemplate";
-import errorIcon from "../../assets/icons/erroricon.svg"
 
-export default function ModalTemplate({ typePyramid, setisActive }) {
+export default function ModalTemplate({ typePyramid, setIsActive }) {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const close = () => setIsActive(false);
+  const toBoard = () => navigate("/board");
+
   return (
-    <div className="fixed p-5 overflow-auto top-0 w-screen h-screen  ">
-      <div className="w-full bg-white rounded-t-md flex justify-end ">
-        {typePyramid >=3 && <button className="fixed bottom-10 right-3 py-2 px-7 rounded-md bg-redbuttons text-white " onClick={()=>handleCapture(typePyramid)}>Descargar Piramide</button>}
-        <button className="p-3" onClick={() => setisActive(false)}>
-          X
+    <>
+      <div className="flex justify-between gap-5 items-center mb-6">
+        <p className="text-xl flex flex-col justify-end font-semibold">
+          2 de 18 grupos sorteados
+        </p>
+        <div className="flex gap-5">
+          <button
+            onClick={() => handleCapture(typePyramid)}
+            className="btnPrimary w-32"
+          >
+            Imprimir PDF
+          </button>
+          <button className="w-36 rounded-lg bg-green-500 ">
+            Siguiente Sorteo{" "}
+          </button>
+        </div>
+      </div>
+      <BodyTemplate typePyramid={typePyramid} />
+      <div className="grid place-content-center">
+        <button
+          onClick={pathname === "/templates" ? toBoard : close}
+          className="w-40 border py-2 bg-white/25 transition duration-500 ease-in-out hover:bg-redbuttons rounded-lg"
+        >
+          {" "}
+          &lt;&lt; Volver
         </button>
       </div>
-      {
-        typePyramid < 3 ?
-        (<div className="bg-white h-52 grid place-content-center ">
-          <div className="flex justify-center">
-          <img src={errorIcon} alt="" />
-          </div>
-          <h1>Cantidad de deportistas Insuficientes para generar Piramide</h1>
-        </div>)
-      :
-     ( <BodyTemplate   setisActive={setisActive} typePyramid={typePyramid} />)
-    }
-    </div>
+    </>
   );
 }

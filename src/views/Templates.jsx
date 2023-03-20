@@ -5,9 +5,9 @@ import HeaderTemplates from "../components/templatesPyramids/HeaderTemplates";
 import BodyTemplate from "../components/templatesPyramids/BodyTemplate";
 import { handleCapture } from "../utils/handleCapture";
 import { useNavigate } from "react-router-dom";
+import ModalTemplate from "../components/templatesPyramids/ModalTemplate";
 
 export default function Templates() {
-  const navigate = useNavigate()
   const [typePyramid, setTypePyramid] = useState(3);
 
   return (
@@ -17,20 +17,7 @@ export default function Templates() {
         Pirámide de {typePyramid} competidores ( Grupo XXXXXXX ){" "}
       </h2>
       {/* <HeaderTemplates typePyramid={typePyramid} setTypePyramid={setTypePyramid} /> */}
-      <div className="flex justify-between  mb-6">
-        <p className="text-xl flex flex-col justify-end font-semibold">2 de 18 grupos sorteados</p>
-        <div className="flex gap-5">
-          <button  onClick={()=>handleCapture(typePyramid)}  className="btnPrimary w-32">Imprimir PDF</button>
-          <button className="w-36 rounded-lg bg-green-500 ">
-            Siguiente Sorteo{" "}
-          </button>
-        </div>
-      </div>
-      <BodyTemplate typePyramid={typePyramid} />
-      <div className="grid place-content-center">
-      <button  onClick={()=>navigate('/board')} className="w-40 border py-2 bg-white/25 transition duration-500 ease-in-out hover:bg-redbuttons rounded-lg"> &lt;&lt; Volver</button>
-      </div>
-    
+      <ModalTemplate typePyramid={typePyramid} />
     </div>
   );
 }

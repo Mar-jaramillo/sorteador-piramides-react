@@ -41,7 +41,7 @@ export default function LoginForm() {
             type="text"
           />
           {error ? (
-            <span className="text-yellow-500 text-sm mb-5">
+            <span className="text-yellow-500 text-sm py-1 mb-3">
               Clave de acceso incorrecta, por favor inténtalo nuevamente.
             </span>
           ) : null}

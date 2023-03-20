@@ -28,7 +28,6 @@ export default function ExcelUploader({ setIsLoading, setError }) {
       const totalGroups = keysOfGroups.length;
       const totalDelegations = valuesUniques["Delegación"].length;
 
-      console.log();
 
       //Guardados en contexto
       context.nameEvent = nameEvent;

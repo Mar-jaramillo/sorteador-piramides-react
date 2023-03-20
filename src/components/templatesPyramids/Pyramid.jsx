@@ -4,9 +4,6 @@ import * as Generator from "../../utils/GeneratorsParticipants";
 import GlobalContext from "../../utils/GlobalContext";
 
 const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
-  // ------ assuming rounds is the losers brackets rounds ------
-  // losers rounds usually got some identical seeds amount like (2 - 2 - 1 - 1)
-
   const isLineConnector = rounds;
 
   const Wrapper = Seed;
@@ -15,32 +12,38 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
   return (
     <Wrapper mobileBreakpoint={breakpoint} style={{ fontSize: 13 }}>
       {/* caja padre */}
-      <SeedItem style={{ fontSize: 13, boxShadow: "none", margin: "2px" }}>
+      <SeedItem
+        key={`seeditem-${seedIndex}`}
+        style={{ fontSize: 13, boxShadow: "none", margin: "2px" }}
+      >
         <div style={{ fontSize: 13 }}>
           <SeedTeam
+            key={`team1-${seedIndex}`}
             style={{
               color: "black",
               border: "1px solid gray",
               backgroundColor: "white",
-              width: "250px",
+              minWidth: "230px",
+              height:'25px'
             }}
           >
-            {seed.teams[0]?.name || "NO TEAM "}
+            {seed.teams[0]?.name || ""}
           </SeedTeam>
           <SeedTeam
+            key={`team2-${seedIndex}`}
             style={{
               color: "black",
               border: "1px solid gray",
               backgroundColor: "white",
-              width: "250px",
+              minWidth: "230px",
+              height: "25px"
             }}
           >
-            {seed.teams[1]?.name || "NO TEAM "}
+            {seed.teams[1]?.name || " "}
           </SeedTeam>
         </div>
       </SeedItem>
     </Wrapper>
-    
   );
 };
 
@@ -69,7 +72,6 @@ export default function Pyramid({ typePyramid }) {
       break;
     default:
   }
-
   const rounds = [
     {
       key: "round1",
@@ -77,16 +79,12 @@ export default function Pyramid({ typePyramid }) {
     },
   ];
   pyramid === 2 &&
-    rounds.push(
-
-      {
-        key: "round2",
-        seeds: Generator.secondRound(pyramid),
-      }
-    );
+    rounds.push({
+      key: "round2",
+      seeds: Generator.secondRound(pyramid),
+    });
   pyramid === 6 &&
     rounds.push(
-
       {
         key: "round2",
         seeds: Generator.secondRound(pyramid),
@@ -98,7 +96,6 @@ export default function Pyramid({ typePyramid }) {
     );
   pyramid === 4 &&
     rounds.push(
-
       {
         key: "round2",
         seeds: Generator.secondRound(pyramid),
@@ -114,7 +111,6 @@ export default function Pyramid({ typePyramid }) {
     );
   pyramid === 8 &&
     rounds.push(
-
       {
         key: "round2",
         seeds: Generator.secondRound(pyramid),
@@ -130,7 +126,6 @@ export default function Pyramid({ typePyramid }) {
     );
   pyramid === 16 &&
     rounds.push(
-
       {
         key: "round2",
         seeds: Generator.secondRound(pyramid),

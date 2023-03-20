@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import Loader from "../layout/Loader";
 import CardIndividual from "./CardIndividual";
 
-export default function CardsBoard({ keysOfGroups, groupsByCode, setisActive, }) {
+export default function CardsBoard({ keysOfGroups, groupsByCode, setIsActive, isActive }) {
   const [isLoad, setisLoad] = useState(false);
 
   useEffect(() => {
-    keysOfGroups.length > 0 && groupsByCode ? setisLoad(true) : null;
+    keysOfGroups.length > 0 && groupsByCode && setisLoad(!isLoad)
   }, [keysOfGroups, groupsByCode]);
 
   return (
     <div className="grid grid-cols-12">
       {isLoad ? (
         keysOfGroups.map((key) => (
-          <CardIndividual setisActive={setisActive}  key={key} keyName={key} groupByCode={groupsByCode[key]} />
+          <CardIndividual setIsActive={setIsActive} isActive={isActive}  key={key} keyName={key} groupByCode={groupsByCode[key]} />
         ))
       ) : (
         // Loader

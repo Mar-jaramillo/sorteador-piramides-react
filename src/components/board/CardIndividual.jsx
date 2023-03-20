@@ -2,38 +2,49 @@ import React, { useContext, useState } from "react";
 import GlobalContext from "../../utils/GlobalContext";
 import iconRaffled from "../../assets/icons/iconRaffled.svg";
 
-export default function CardIndividual({ keyName, groupByCode, setisActive }) {
+export default function CardIndividual({
+  keyName,
+  groupByCode,
+  setIsActive
+}) {
   const [isReady, setIsReady] = useState(false);
   const context = useContext(GlobalContext);
-  
+
   const handleIsReady = () => {
     context.groupNow = groupByCode;
-    const cantidad = groupByCode.length;
-    let type = null;
-    if (cantidad === 1) {
-      type = null;
-    } else if (cantidad <= 2) {
-      type = 2;
-    } else if (cantidad <= 3) {
-      type = 6;
-    } else if (cantidad <= 4) {
-      type = 4;
-    } else if (cantidad <= 8) {
-      type = 8;
-    } else if (cantidad <= 16) {
-      type = 16;
-    } else if (cantidad <= 32) {
-      type = 32;
+    const amountParticipantsCard = groupByCode.length;
+    localStorage.setItem("groupNow ", JSON.stringify(groupByCode));
+    localStorage.setItem("amountParticipantsCard ", JSON.stringify(amountParticipantsCard));
+
+
+    let typePyramid = 0;
+    if (amountParticipantsCard === 1) {
+      typePyramid = 2;
+    } else if (amountParticipantsCard <= 2) {
+      typePyramid = 2;
+    } else if (amountParticipantsCard <= 3) {
+      typePyramid = 6;
+    } else if (amountParticipantsCard <= 4) {
+      typePyramid = 4;
+    } else if (amountParticipantsCard <= 8) {
+      typePyramid = 8;
+    } else if (amountParticipantsCard <= 16) {
+      typePyramid = 16;
+    } else if (amountParticipantsCard <= 32) {
+      typePyramid = 32;
     }
+
     setIsReady(true);
-    context.typePyramid = type;
-    setisActive(true);
+    context.typePyramid = typePyramid;
+    localStorage.setItem("typePyramid", JSON.stringify(typePyramid))
+    setIsActive(true)
   };
 
   const greenCard =
     "text-center grid grid-cols-12 p-4 border-b-2 rounded-t-2xl bg-green-500";
   const grayCard =
     "text-center grid grid-cols-12 p-4 border-b-2 rounded-t-2xl bg-white/30";
+
   return (
     <div className="col-span-12 lg:col-span-6 text-sm lg:text-md mx-3 my-3 bg-white/20 border-2 border-gray-200 rounded-2xl shadow">
       {/*Card exterior*/}

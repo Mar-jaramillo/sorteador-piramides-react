@@ -3,13 +3,13 @@ import { selectFiltersKeys } from "../../consts/selectFiltersKeys";
 import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 
-export default function SelectFilter({setKeysOfGroups, setgroupsByCode }) {
+export default function SelectFilter({setKeysOfGroups, setGroupsByCode }) {
   const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
 
   useEffect(() => {
     setValuesSelect(context.valuesUniques || getLocalStorage("valuesUniques"));
-    setgroupsByCode(context.groupsByCode || getLocalStorage("groupsByCode"));
+    setGroupsByCode(context.groupsByCode || getLocalStorage("groupsByCode"));
   }, []);
 
   return (
