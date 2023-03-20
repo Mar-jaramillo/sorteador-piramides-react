@@ -10,8 +10,11 @@ import GlobalContext from "../utils/GlobalContext";
 
 export default function Board() {
   const context = useContext(GlobalContext);
-  const [keysOfGroups, setKeysOfGroups] = useState({});
   const [groupsByCode, setGroupsByCode] = useState({});
+
+  const [keysOfGroups, setKeysOfGroups] = useState({});
+  const [searchValue, setsearchValue] = useState(""); // el valor que viene del componente Selects
+  const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]); // lo que le vamos a mandar a Selects
   const [typePyramid, setTypePyramid] = useState(2);
   const [isActive, setIsActive] = useState(false);
   const { pathname } = useLocation();
@@ -35,10 +38,15 @@ export default function Board() {
         <BreadCrumb />
         <HeaderBoard />
         <SelectFliter
+          setsearchValue={setsearchValue}
+          keysOfGroups={keysOfGroups}
           setKeysOfGroups={setKeysOfGroups}
           setGroupsByCode={setGroupsByCode}
+          groupsByCode={groupsByCode}
+          setFilteredKeysOfGroups={setFilteredKeysOfGroups}
         />
         <CardsBoard
+        filteredKeysOfGroups={filteredKeysOfGroups}
           keysOfGroups={keysOfGroups}
           groupsByCode={groupsByCode}
           setIsActive={setIsActive}

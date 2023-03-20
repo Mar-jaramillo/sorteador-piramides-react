@@ -3,7 +3,7 @@ import { selectFiltersKeys } from "../../consts/selectFiltersKeys";
 import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 
-export default function SelectFilter({setKeysOfGroups, setGroupsByCode }) {
+export default function SelectFilter({groupsByCode, setKeysOfGroups, setGroupsByCode, keysOfGroups, setFilteredKeysOfGroups, setsearchValue }) {
   const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
 
@@ -12,13 +12,30 @@ export default function SelectFilter({setKeysOfGroups, setGroupsByCode }) {
     setGroupsByCode(context.groupsByCode || getLocalStorage("groupsByCode"));
   }, []);
 
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    console.log(searchValue);
+  
+    const filteredArray = groupsByCode.filter((elemento) => {
+      return (
+        elemento["Delegación"].toLowerCase()
+          .includes(searchValue.toLowerCase())
+      );
+    });
+    console.log(filteredArray);
+    // setFilteredPerson(filteredArray);
+    // setSearchValue(searchValue);
+  };
+
+  
+
   return (
     <div className="flex items-center justify-center min-w-full mb-16">
       <div className="flex flex-col ">
         <div className="flex">
           {selectFiltersKeys.map((filter, i) => (
             <div key={i} className="flex flex-col mx-5">
-              <select className="w-40 border-2 bg-white/50 transition duration-500 hover:bg-white/10 font-semibold uppercase text-center rounded-lg py-3 px-4 shadow-lg text-md">
+              <select onChange={handleSearch}  className="w-40 border-2 bg-white/50 transition duration-500 hover:bg-white/10 font-semibold uppercase text-center rounded-lg py-3 px-4 shadow-lg text-md">
                 <option className="">
                   {filter}
                 </option>
