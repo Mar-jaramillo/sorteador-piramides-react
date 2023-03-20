@@ -13,27 +13,31 @@ export default function SelectFilter({
 }) {
   const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
-const [keysGroups, setKeysGroups] = useState([])
+  const [keysGroups, setKeysGroups] = useState([]);
+  const [filteredKeys, setFilteredKeys] = useState([]);
 
   useEffect(() => {
     setValuesSelect(context.valuesUniques || getLocalStorage("valuesUniques"));
     setGroupsByCode(context.groupsByCode || getLocalStorage("groupsByCode"));
- setKeysGroups(context.keysGroups)
+    setKeysGroups(context.keysGroups);
   }, []);
- console.log(keysOfGroups);
-const keyFiltered = [];
-const handleSearch = (e) => {
-  const valueSearch = e.target.value;
-  for (const key of keysOfGroups) {
-    const array = groupsByCode[key]; //traemos los valores de cada key
-    array.forEach((element) => {
-      if (element["Delegación"] === valueSearch && !keyFiltered.includes(key)) {
-        keyFiltered.push(key);
-      }
-    });
-  }
-  console.log(keyFiltered);
-};
+  console.log(keysOfGroups);
+  const keyFiltered = [];
+  const handleSearch = (e) => {
+    const valueSearch = e.target.value;
+    const filteredKeys = [];
+    for (const key of keysOfGroups) {
+      const array = groupsByCode[key];
+      array.forEach((element) => {
+        if (element["Delegación"] === valueSearch && !filteredKeys.includes(key)) {
+          filteredKeys.push(key);
+        }
+      });
+    }
+    setFilteredKeys(filteredKeys);
+    setFilteredKeysOfGroups(filteredKeys);
+    setsearchValue(valueSearch);
+  };
 
   return (
     <div className="flex items-center justify-center min-w-full mb-16">
