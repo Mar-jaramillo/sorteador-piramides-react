@@ -21,17 +21,19 @@ const [keysGroups, setKeysGroups] = useState([])
  setKeysGroups(context.keysGroups)
   }, []);
  console.log(keysOfGroups);
-  const keyFiltered = [];
-  const handleSearch = (e) => {
-    const valueSearch = e.target.value;
-    for (const key of keysOfGroups) {
-      const array = groupsByCode[key]; //traemos los valores de cada key
-      array.forEach((element) => {
-        element["Delegación"]=== valueSearch && (keyFiltered.push(key))
-      });
-    }
-    console.log(keyFiltered);
-  };
+const keyFiltered = [];
+const handleSearch = (e) => {
+  const valueSearch = e.target.value;
+  for (const key of keysOfGroups) {
+    const array = groupsByCode[key]; //traemos los valores de cada key
+    array.forEach((element) => {
+      if (element["Delegación"] === valueSearch && !keyFiltered.includes(key)) {
+        keyFiltered.push(key);
+      }
+    });
+  }
+  console.log(keyFiltered);
+};
 
   return (
     <div className="flex items-center justify-center min-w-full mb-16">
