@@ -19,6 +19,7 @@ export default function CardIndividual({
 
   const handleIsReady = () => {
     context.groupNow = groupByCode;
+    context.keyNameNow = keyName
     const amountParticipantsCard = groupByCode.length;
 
     localStorage.setItem("groupNow ", JSON.stringify(groupByCode));

@@ -44,7 +44,7 @@ export default function Pyramid() {
   let pyramid;
   switch (typePyramid) {
     case 2:
-      pyramid = 2;
+      pyramid = 4;
       break;
     case 3:
       pyramid = 6;
@@ -63,6 +63,7 @@ export default function Pyramid() {
       break;
     default:
   }
+  console.log(pyramid);
   const rounds = [
     {
       key: "round1",
@@ -74,31 +75,21 @@ export default function Pyramid() {
       key: "round2",
       seeds: Generator.secondRound(pyramid),
     });
-  pyramid === 6 &&
-    rounds.push(
-      {
-        key: "round2",
-        seeds: Generator.secondRound(pyramid),
-      },
-      {
-        key: "round3",
-        seeds: Generator.thirdRound(pyramid),
-      }
-    );
+
   pyramid === 4 &&
     rounds.push(
       {
         key: "round2",
         seeds: Generator.secondRound(pyramid),
       },
+ 
+    );
+    pyramid === 6 &&
+    rounds.push(
       {
-        key: "round3",
-        seeds: Generator.thirdRound(pyramid),
+        key: "round2",
+        seeds: Generator.secondRound(pyramid),
       },
-      {
-        key: "round4",
-        seeds: Generator.fourthRound(pyramid),
-      }
     );
   pyramid === 8 &&
     rounds.push(
@@ -110,10 +101,7 @@ export default function Pyramid() {
         key: "round3",
         seeds: Generator.thirdRound(pyramid),
       },
-      {
-        key: "round4",
-        seeds: Generator.fourthRound(pyramid),
-      }
+ 
     );
   pyramid === 16 &&
     rounds.push(

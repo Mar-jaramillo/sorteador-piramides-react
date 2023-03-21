@@ -90,7 +90,7 @@ export default function Board() {
       </div>
       {isActive.active ? (
         <div className="fixed top-0  left-0 w-full h-full grid place-content-center">
-          <div className="z-10 bg-white rounded-lg w-full  overflow-auto p-8">
+          <div className="z-10 bg-white rounded-lg w-full shadow-md  overflow-auto p-8">
             <ModalTemplate
               sorteado={sorteado}
               keysOfGroups={keysOfGroups}
