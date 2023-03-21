@@ -5,11 +5,13 @@ import { raffledGroup } from "./raffledGroup";
 const pyramidTree = (group) => group.concat(group)
 
 
-export function finalArrayPyramid(pyramid, group) {
+export function finalArrayPyramid(pyramid, arrayGroup) {
+  let group = [...arrayGroup] 
+  console.log(group);
   let finalPyramid = createArrayAndObjects(pyramid); //Se espera que cree un array con x posiciones
 
   if (group.length === 3) {
-    console.log(pyramidTree(group));
+    group = pyramidTree(group)
   }
 
   finalPyramid = finalPyramid.filter( // las ubica en orden en la piramide

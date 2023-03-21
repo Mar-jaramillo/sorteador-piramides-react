@@ -30,8 +30,8 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
           </SeedTeam>
         </div>
         <div className="border w-10 flex flex-col justify-around bg-white text-gray-700">
-          <div className="border-b border-gray-700 h-full w-full"></div>
-          <div className="h-full w-full"></div>
+          <div className="border-b border-gray-700 h-full w-full">pts</div>
+          <div className="h-full w-full">pts</div>
         </div>
       </SeedItem>
     </Wrapper>
@@ -90,10 +90,6 @@ export default function Pyramid() {
       {
         key: "round2",
         seeds: Generator.secondRound(pyramid),
-      },
-      {
-        key: "round3",
-        seeds: Generator.thirdRound(pyramid),
       },
     );
   pyramid === 8 &&
