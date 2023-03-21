@@ -7,11 +7,11 @@ export default function CardIndividual({
   groupByCode,
   setIsActive,
   handleSorteo,
-  
 }) {
   const [isReady, setIsReady] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   const context = useContext(GlobalContext);
+
   const handleClickSorteo = () => {
     setIsSorted(!isSorted);
     handleSorteo(!isSorted, 1); // se llama a la función handleSorteo
@@ -21,16 +21,16 @@ export default function CardIndividual({
     context.groupNow = groupByCode;
     const amountParticipantsCard = groupByCode.length;
 
-
     localStorage.setItem("groupNow ", JSON.stringify(groupByCode));
     localStorage.setItem(
       "amountParticipantsCard ",
       JSON.stringify(amountParticipantsCard)
     );
 
-    let typePyramid = 0;
+    let typePyramid = null;
+
     if (amountParticipantsCard === 1) {
-      typePyramid = 2;
+      typePyramid = null;
     } else if (amountParticipantsCard <= 2) {
       typePyramid = 2;
     } else if (amountParticipantsCard <= 3) {
@@ -137,18 +137,22 @@ export default function CardIndividual({
           </div>
           <div>
             <span className="grid grid-cols 12 justify-end">
-              {isReady ? (
+              {groupByCode.length === 1 ? (
+                <p className="col-span-6  text-white m-4 px-5 py-2  underline">
+                  No se puede sortear
+                </p>
+              ) : isReady ? (
                 <div>
                   <button className="col-span-6  text-white m-4 px-5 py-2  underline">
                     Ver sorteo
                   </button>
                 </div>
               ) : (
-               <button
-               onClick={() => {
-                handleIsReady();
-                handleClickSorteo();
-              }}
+                <button
+                  onClick={() => {
+                    handleIsReady();
+                    handleClickSorteo();
+                  }}
                   className=" m-4 px-5 py-2 rounded-lg font-medium border-2 border-white bg-white/30 transition duration-500 ease-in-out hover:bg-redbuttons hover:border-2 hover:border-redbuttons text-white "
                 >
                   Sortear
@@ -160,4 +164,4 @@ export default function CardIndividual({
       </div>
     </div>
   );
-} 
+}

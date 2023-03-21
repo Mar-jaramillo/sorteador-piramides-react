@@ -13,7 +13,7 @@ export default function CardsBoard({
   
 }) {
   const handleClick = (code, index) => {
-    setIsActive({ active: true, code: code });
+    setIsActive({ active: false, code: code });
     setIsSorted(true); // aquí se utiliza setIsSorted
   };
   const [isLoad, setisLoad] = useState(false);

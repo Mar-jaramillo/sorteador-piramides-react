@@ -17,15 +17,15 @@ export default function Board() {
   const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]); // lo que le vamos a mandar a Selects
   const [typePyramid, setTypePyramid] = useState(2);
   const [isActive, setIsActive] = useState({ active: false });
+  console.log(isActive);
   const [sorteado, setSorteado] = useState(0);
   const [sinSortear, setSinSortear] = useState(context.totalGroupsFiltered);
   const [isSorted, setIsSorted] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     setSinSortear(context.totalGroupsFiltered);
   }, [context.totalGroupsFiltered]);
-
-  const { pathname } = useLocation();
 
   useEffect(() => {
     const changePageTitle = () => {
@@ -39,8 +39,6 @@ export default function Board() {
     setKeysOfGroups(getLocalStorage("keysOfGroups") || context.keysOfGroups);
     setGroupsByCode(getLocalStorage("groupsByCode") || context.groupsByCode);
   }, []);
-
-
 
   const handleSorteo = (isSorted, add) => {
     if (isSorted) {
@@ -77,7 +75,8 @@ export default function Board() {
             Sorteado {sorteado}
           </div>
           <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-            Sin sortear{sinSortear}{""}
+            Sin sortear{sinSortear}
+            {""}
           </div>
         </div>
         <CardsBoard
@@ -89,10 +88,11 @@ export default function Board() {
           setIsSorted={isSorted} // se pasa el estado de isSorted a CardsBoard
         />
       </div>
-      {isActive ? (
+      {isActive.active ? (
         <div className="fixed top-0  left-0 w-full h-full grid place-content-center">
           <div className="z-10 bg-white rounded-lg w-full  overflow-auto p-8">
             <ModalTemplate
+              sorteado={sorteado}
               keysOfGroups={keysOfGroups}
               setIsActive={setIsActive}
               typePyramid={typePyramid}

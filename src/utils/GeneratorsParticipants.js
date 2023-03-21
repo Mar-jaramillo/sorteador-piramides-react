@@ -18,8 +18,8 @@ export const firstRound = (pyramid, group) => {
       participantes.push({
         id: i,
         teams: [
-          { name: `${raffledPartipants[i][0]["CodDep"]|| ''} - ${raffledPartipants[i][0]["Nombre Deportista"]}` },
-          { name: `${raffledPartipants[i][1]["CodDep"] || ''} - ${raffledPartipants[i][1]["Nombre Deportista"]}` },
+          { name: `${raffledPartipants[i][0]["CodDep"]|| ''}. ${raffledPartipants[i][0]["Nombre Deportista"].slice(0,23)}.` },
+          { name: `${raffledPartipants[i][1]["CodDep"] || ''}. ${raffledPartipants[i][1]["Nombre Deportista"].slice(0,23)}.` },
         ],
       });
     }
@@ -30,10 +30,10 @@ export const firstRound = (pyramid, group) => {
 
 export const secondRound = (pyramid) => {
   const participantes = [];
-  for (let index = 0; index < pyramid / 2; index++) {
+  for (let index = 0; index < pyramid / 4; index++) {
     participantes.push({
       id: index,
-      teams: [{ name: "Pts" }, { name: "Pts" }],
+      teams: [{ name: "" }, { name: "" }],
     });
   }
   return participantes;
@@ -41,10 +41,10 @@ export const secondRound = (pyramid) => {
 
 export const thirdRound = (pyramid) => {
   const participantes = [];
-  for (let index = 0; index < pyramid / 4; index++) {
+  for (let index = 0; index < pyramid / 8; index++) {
     participantes.push({
       id: index,
-      teams: [{ name: "Pts" }, { name: "Pts" }],
+      teams: [{ name: "" }, { name: "" }],
     });
   }
   return participantes;
@@ -52,10 +52,10 @@ export const thirdRound = (pyramid) => {
 
 export const fourthRound = (pyramid) => {
   const participantes = [];
-  for (let index = 0; index < pyramid / 8; index++) {
+  for (let index = 0; index < pyramid / 16; index++) {
     participantes.push({
       id: index,
-      teams: [{ name: "Pts" }, { name: "Pts" }],
+      teams: [{ name: "" }, { name: "" }],
     });
   }
   return participantes;
@@ -63,10 +63,10 @@ export const fourthRound = (pyramid) => {
 
 export const fifthRound = (pyramid) => {
   const participantes = [];
-  for (let index = 0; index < pyramid / 16; index++) {
+  for (let index = 0; index < pyramid / 32; index++) {
     participantes.push({
       id: index,
-      teams: [{ name: "Pts" }, { name: "Pts" }],
+      teams: [{ name: "" }, { name: "" }],
     });
   }
   return participantes;
@@ -74,10 +74,10 @@ export const fifthRound = (pyramid) => {
 
 export const sixthRound = (pyramid) => {
   const participantes = [];
-  for (let index = 0; index < pyramid / 32; index++) {
+  for (let index = 0; index < pyramid / 64; index++) {
     participantes.push({
       id: index,
-      teams: [{ name: "Pts" }, { name: "Pts" }],
+      teams: [{ name: "" }, { name: "" }],
     });
   }
   return participantes;

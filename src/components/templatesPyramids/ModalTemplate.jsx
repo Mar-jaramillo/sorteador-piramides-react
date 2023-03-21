@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { handleCapture } from "../../utils/handleCapture";
 import BodyTemplate from "./BodyTemplate";
 
-export default function ModalTemplate({ typePyramid, setIsActive, keysOfGroups }) {
+export default function ModalTemplate({ typePyramid, setIsActive, keysOfGroups, sorteado }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -14,7 +14,7 @@ export default function ModalTemplate({ typePyramid, setIsActive, keysOfGroups }
     <>
       <div className="flex justify-between gap-5 items-center mb-6">
         <p className="text-xl flex flex-col justify-end font-semibold">
-          2 de {keysOfGroups.length} grupos sorteados
+          {sorteado} de {keysOfGroups.length} grupos sorteados
         </p>
         <div className="flex gap-5">
           <button
@@ -23,7 +23,7 @@ export default function ModalTemplate({ typePyramid, setIsActive, keysOfGroups }
           >
             Imprimir PDF
           </button>
-          <button className="w-36 rounded-lg bg-green-500 ">
+          <button className="w-36 text-white rounded-lg bg-green-500 ">
             Siguiente Sorteo{" "}
           </button>
         </div>
@@ -32,7 +32,7 @@ export default function ModalTemplate({ typePyramid, setIsActive, keysOfGroups }
       <div className="grid place-content-center">
         <button
           onClick={pathname === "/templates" ? toBoard : close}
-          className="w-40 border py-2 bg-white/25 transition duration-500 ease-in-out hover:bg-redbuttons rounded-lg"
+          className="w-40 border py-2 bg-white/25 transition duration-500 ease-in-out hover:bg-redbuttons hover:text-white rounded-lg"
         >
           {" "}
           &lt;&lt; Volver

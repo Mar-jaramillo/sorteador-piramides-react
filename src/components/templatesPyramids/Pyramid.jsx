@@ -10,37 +10,28 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
 
   // mobileBreakpoint is required to be passed down to a seed
   return (
-    <Wrapper mobileBreakpoint={breakpoint} style={{ fontSize: 13 }}>
+    <Wrapper mobileBreakpoint={breakpoint} className="text-md ">
       {/* caja padre */}
       <SeedItem
-        key={`seeditem-${seedIndex}`}
-        style={{ fontSize: 13, boxShadow: "none", margin: "2px" }}
+        className="flex justify-between w-full  shadow-none bg-white m-2 border border-gray-700 rounded-none"
+        style={{
+          boxShadow: "none",
+          backgroundColor: "white",
+          minWidth: "260px",
+          width:"260px"
+        }}
       >
-        <div style={{ fontSize: 13 }}>
-          <SeedTeam
-            key={`team1-${seedIndex}`}
-            style={{
-              color: "black",
-              border: "1px solid gray",
-              backgroundColor: "white",
-              minWidth: "230px",
-              height:'25px'
-            }}
-          >
+        <div className="rounded-none w-full border-r border-gray-700">
+          <SeedTeam className="text-left  max-h-8  h-8  border-b border-gray-700 text-gray-700 w-full rounded-none">
             {seed.teams[0]?.name || ""}
           </SeedTeam>
-          <SeedTeam
-            key={`team2-${seedIndex}`}
-            style={{
-              color: "black",
-              border: "1px solid gray",
-              backgroundColor: "white",
-              minWidth: "230px",
-              height: "25px"
-            }}
-          >
+          <SeedTeam className="text-left max-h-8  h-8 bg-white text-gray-700 w-full rounded-none">
             {seed.teams[1]?.name || " "}
           </SeedTeam>
+        </div>
+        <div className="border w-10 flex flex-col justify-around bg-white text-gray-700">
+          <div className="border-b border-gray-700 h-full w-full"></div>
+          <div className="h-full w-full"></div>
         </div>
       </SeedItem>
     </Wrapper>
@@ -49,7 +40,7 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
 
 export default function Pyramid() {
   const context = useContext(GlobalContext);
- const typePyramid = context.typePyramid
+  const typePyramid = context.typePyramid;
   let pyramid;
   switch (typePyramid) {
     case 2:
@@ -78,7 +69,7 @@ export default function Pyramid() {
       seeds: Generator.firstRound(pyramid, context.groupNow),
     },
   ];
-  pyramid === 2 &&
+  pyramid == 2 &&
     rounds.push({
       key: "round2",
       seeds: Generator.secondRound(pyramid),
@@ -137,10 +128,6 @@ export default function Pyramid() {
       {
         key: "round4",
         seeds: Generator.fourthRound(pyramid),
-      },
-      {
-        key: "round5",
-        seeds: Generator.fifthRound(pyramid),
       }
     );
   pyramid === 32 &&

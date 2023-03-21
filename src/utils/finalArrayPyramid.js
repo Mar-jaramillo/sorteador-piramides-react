@@ -30,18 +30,10 @@ export function finalArrayPyramid(pyramid, group) {
   }
   finalPyramid.filter((participant) => participant["Delegación"] !== maxDelegation );
 
-let died =0
+  
   const pares = [];
   let i = 0;
   while (i + 1 < finalPyramid.length) {
-    died++;
-    if (died > 500) {
-      debugger;
-      console.log(delagationMayor);
-    
-      died=0
-      break;
-    }
     const participante1 = finalPyramid[i];
     const participante2 = finalPyramid[i + 1];
     i += 2;
