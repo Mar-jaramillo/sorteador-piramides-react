@@ -2,13 +2,25 @@ import React, { useContext, useState } from "react";
 import GlobalContext from "../../utils/GlobalContext";
 import iconRaffled from "../../assets/icons/iconRaffled.svg";
 
-export default function CardIndividual({ keyName, groupByCode, setIsActive }) {
+export default function CardIndividual({
+  keyName,
+  groupByCode,
+  setIsActive,
+  handleSorteo,
+  
+}) {
   const [isReady, setIsReady] = useState(false);
+  const [isSorted, setIsSorted] = useState(false);
   const context = useContext(GlobalContext);
+  const handleClickSorteo = () => {
+    setIsSorted(!isSorted);
+    handleSorteo(!isSorted, 1); // se llama a la función handleSorteo
+  };
 
   const handleIsReady = () => {
     context.groupNow = groupByCode;
     const amountParticipantsCard = groupByCode.length;
+
 
     localStorage.setItem("groupNow ", JSON.stringify(groupByCode));
     localStorage.setItem(
@@ -132,8 +144,11 @@ export default function CardIndividual({ keyName, groupByCode, setIsActive }) {
                   </button>
                 </div>
               ) : (
-                <button
-                  onClick={handleIsReady}
+               <button
+               onClick={() => {
+                handleIsReady();
+                handleClickSorteo();
+              }}
                   className=" m-4 px-5 py-2 rounded-lg font-medium border-2 border-white bg-white/30 transition duration-500 ease-in-out hover:bg-redbuttons hover:border-2 hover:border-redbuttons text-white "
                 >
                   Sortear
@@ -145,4 +160,4 @@ export default function CardIndividual({ keyName, groupByCode, setIsActive }) {
       </div>
     </div>
   );
-}
+} 

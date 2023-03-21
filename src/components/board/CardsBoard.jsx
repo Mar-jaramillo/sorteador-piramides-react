@@ -8,7 +8,14 @@ export default function CardsBoard({
   setIsActive,
   isActive,
   filteredKeysOfGroups,
+  handleSorteo,
+  setIsSorted
+  
 }) {
+  const handleClick = (code, index) => {
+    setIsActive({ active: true, code: code });
+    setIsSorted(true); // aquí se utiliza setIsSorted
+  };
   const [isLoad, setisLoad] = useState(false);
   const cardsToRender = filteredKeysOfGroups.length ? filteredKeysOfGroups : keysOfGroups;
 
@@ -26,6 +33,9 @@ export default function CardsBoard({
             key={key}
             keyName={key}
             groupByCode={groupsByCode[key]}
+            handleSorteo = {handleSorteo}
+            handleClick={() => handleClick(key, index)}
+            setIsSorted={setIsSorted} // se pasa setIsSorted como una prop
           />
         ))
       ) : (

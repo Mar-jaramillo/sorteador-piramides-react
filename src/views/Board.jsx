@@ -10,17 +10,21 @@ import GlobalContext from "../utils/GlobalContext";
 
 export default function Board() {
   const context = useContext(GlobalContext);
-  const [groupsByCode, setGroupsByCode] = useState({});
 
+  const [groupsByCode, setGroupsByCode] = useState({});
   const [keysOfGroups, setKeysOfGroups] = useState({});
   const [searchValue, setsearchValue] = useState(""); // el valor que viene del componente Selects
   const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]); // lo que le vamos a mandar a Selects
   const [typePyramid, setTypePyramid] = useState(2);
-  const [isActive, setIsActive] = useState({
-    active: false,
-  
-  });
-  console.log(isActive.amount);
+  const [isActive, setIsActive] = useState({ active: false });
+  const [sorteado, setSorteado] = useState(0);
+  const [sinSortear, setSinSortear] = useState(context.totalGroupsFiltered);
+  const [isSorted, setIsSorted] = useState(false);
+
+  useEffect(() => {
+    setSinSortear(context.totalGroupsFiltered);
+  }, [context.totalGroupsFiltered]);
+
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -35,6 +39,19 @@ export default function Board() {
     setKeysOfGroups(getLocalStorage("keysOfGroups") || context.keysOfGroups);
     setGroupsByCode(getLocalStorage("groupsByCode") || context.groupsByCode);
   }, []);
+
+
+
+  const handleSorteo = (isSorted, add) => {
+    if (isSorted) {
+      setSorteado(sorteado + add);
+      setSinSortear(sinSortear - add);
+    } else {
+      setSorteado(sorteado - add);
+      setSinSortear(sinSortear + add);
+    }
+    setIsSorted(isSorted); // se actualiza el estado de isSorted en Board
+  };
 
   return (
     <>
@@ -51,13 +68,16 @@ export default function Board() {
         />
         <div className="flex gap-3">
           <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-            Todos {context.totalGroupsFiltered >0 ? context.totalGroupsFiltered : keysOfGroups.length }{" "}
+            Todos{" "}
+            {context.totalGroupsFiltered > 0
+              ? context.totalGroupsFiltered
+              : keysOfGroups.length}{" "}
           </div>
           <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-            Sorteado {" "}
+            Sorteado {sorteado}
           </div>
           <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-            Sin sortear{" "}
+            Sin sortear{sinSortear}{""}
           </div>
         </div>
         <CardsBoard
@@ -65,6 +85,8 @@ export default function Board() {
           keysOfGroups={keysOfGroups}
           groupsByCode={groupsByCode}
           setIsActive={setIsActive}
+          handleSorteo={handleSorteo}
+          setIsSorted={isSorted} // se pasa el estado de isSorted a CardsBoard
         />
       </div>
       {isActive ? (
