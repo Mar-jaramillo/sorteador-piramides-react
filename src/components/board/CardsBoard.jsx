@@ -12,8 +12,8 @@ export default function CardsBoard({
   setIsSorted
   
 }) {
-  const handleClick = (code, index) => {
-    setIsActive({ active: false, code: code });
+  const handleClick = (index) => { 
+    setIsActive({ active: false});
     setIsSorted(true); // aquí se utiliza setIsSorted
   };
   const [isLoad, setisLoad] = useState(false);

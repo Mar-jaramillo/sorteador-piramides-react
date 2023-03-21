@@ -12,7 +12,7 @@ export default function CardIndividual({
   const [isSorted, setIsSorted] = useState(false);
   const context = useContext(GlobalContext);
 
-  const handleClickSorteo = () => {
+  const handleClickSorteo = () => { //captura el evento del click para SetIsSorteo 
     setIsSorted(!isSorted);
     handleSorteo(!isSorted, 1); // se llama a la función handleSorteo
   };

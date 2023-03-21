@@ -19,8 +19,9 @@ export default function Board() {
   const [isActive, setIsActive] = useState({ active: false });
   console.log(isActive);
   const [sorteado, setSorteado] = useState(0);
-  const [sinSortear, setSinSortear] = useState(context.totalGroupsFiltered);
+  const [sinSortear, setSinSortear] = useState(context.totalGroupsFiltered); //Espero inicializar con el valor de totalGroupsFilterd
   const [isSorted, setIsSorted] = useState(false);
+
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export default function Board() {
     setGroupsByCode(getLocalStorage("groupsByCode") || context.groupsByCode);
   }, []);
 
+  //Recibe el valor de is sorted y la suma o resta en SetSinSortear
   const handleSorteo = (isSorted, add) => {
     if (isSorted) {
       setSorteado(sorteado + add);
