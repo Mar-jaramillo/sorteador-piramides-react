@@ -41,6 +41,7 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
 export default function Pyramid() {
   const context = useContext(GlobalContext);
   const typePyramid = context.typePyramid;
+
   let pyramid;
   switch (typePyramid) {
     case 2:
@@ -89,6 +90,10 @@ export default function Pyramid() {
       {
         key: "round2",
         seeds: Generator.secondRound(pyramid),
+      },
+      {
+        key: "round3",
+        seeds: Generator.thirdRound(pyramid),
       },
     );
   pyramid === 8 &&

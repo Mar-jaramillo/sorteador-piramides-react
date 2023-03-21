@@ -35,7 +35,7 @@ export default function CardIndividual({
     } else if (amountParticipantsCard <= 2) {
       typePyramid = 2;
     } else if (amountParticipantsCard <= 3) {
-      typePyramid = 6;
+      typePyramid = 3;
     } else if (amountParticipantsCard <= 4) {
       typePyramid = 4;
     } else if (amountParticipantsCard <= 8) {
@@ -45,6 +45,7 @@ export default function CardIndividual({
     } else if (amountParticipantsCard <= 32) {
       typePyramid = 32;
     }
+    
     context.typePyramid = typePyramid;
     localStorage.setItem("typePyramid", JSON.stringify(typePyramid));
     setIsActive({

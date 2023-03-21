@@ -24,13 +24,13 @@ export default function App() {
     onLogin: () => setIsLogin(true), //
     nameEvent : "", // Se espera el nombre del evento
     totalGroups: 0, // Se espera el total de los grupos generados
-    totalDelegations: 0, // Se el total de delegaciones de los participantes
-    groupsByCode: {}, // Se espera los grupos de deportistas por codigo
-    keysOfGroups: [], // Se espera los codigos CBTE-IN de los grupos de deportistas
-    ValuesSelect: {}, // Se espera valores unicos de las propiedades de todos los deportistas
-    typePyramid: 0, //Se espera numeros 2, 3, 4, 8, 16, 32
-    totalGroupsFiltered: 0,
-    keyNameNow: ""
+    totalDelegations: 0, // Se espera el total de delegaciones de los participantes
+    groupsByCode: {}, // Se espera un objeto de los grupos de deportistas por codigo
+    keysOfGroups: [], // Se espera un array los codigos CBTE-IN de los grupos de deportistas
+    ValuesSelect: {}, // Se espera un objeto con valores unicos de las propiedades de todos los deportistas
+    typePyramid: 0, //Se espera el tipo de piramide a usar 2, 3, 4, 8, 16, 32
+    totalGroupsFiltered: 0, //Se espera un numero que varia dependiendo la busqueda en los selects
+    keyNameNow: "" //Se espera el nombre del codigo del grupo seleccionado
   };
 
   return (
