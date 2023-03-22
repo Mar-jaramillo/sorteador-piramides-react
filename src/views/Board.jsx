@@ -54,8 +54,9 @@ export default function Board() {
   };
 
   return (
-    <>
-      <div id="board" className="px-32 pt-10 text-white">
+    <div id="board"  className="h-full ">
+
+      <div className="px-32 pt-10 text-white">
         <BreadCrumb />
         <HeaderBoard />
         <SelectFliter
@@ -89,10 +90,6 @@ export default function Board() {
           handleSorteo={handleSorteo}
           setIsSorted={isSorted} // se pasa el estado de isSorted a CardsBoard
         />
-        <div className="flex flex-col bottom-8 items-end text-white">
-          <p className="text-sm px-12">Desarrollado por:</p>
-          <img className="h-16" src={logoqubulowhite} alt="" />
-        </div>
       </div>
 
       {isActive.active ? (
@@ -115,6 +112,10 @@ export default function Board() {
        </div>
      </div>
       ) : null}
-    </>
+          <div className="flex flex-col bottom-8 items-end text-white">
+          <p className="text-sm px-12">Desarrollado por:</p>
+          <img className="h-16" src={logoqubulowhite} alt="" />
+        </div>
+    </div>
   );
 }
