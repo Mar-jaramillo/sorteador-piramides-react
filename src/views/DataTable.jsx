@@ -6,6 +6,7 @@ import Layout from "../components/layout/Layout";
 import Loader from "../components/layout/Loader";
 import BreadCrumb from "../components/layout/BreadCrumb";
 import GlobalContext from "../utils/GlobalContext";
+import FooterGeneral from "../components/layout/FooterGeneral";
 
 export default function DataTable() {
 
@@ -48,8 +49,8 @@ export default function DataTable() {
       {isLoading ? (
         <Loader mensaje='Cargando Grupos de Deportistas'/>
       ) : (
-        <div id="data" className="h-screen text-white">
-          <div className="h-full grid place-content-center ">
+        <div id="data" className="  h-screen text-white">
+          <div className=" h-full grid place-content-center ">
             <BreadCrumb />
             <div className="grid grid-cols-12">
               <div className="col-span-6 flex flex-col">
@@ -103,6 +104,8 @@ export default function DataTable() {
           </div>
         </div>
       )}
+      <FooterGeneral/>
     </Layout>
+    
   );
 }

@@ -7,6 +7,8 @@ import BreadCrumb from "../components/layout/BreadCrumb";
 import ModalTemplate from "../components/templatesPyramids/ModalTemplate";
 import { getLocalStorage } from "../utils/getLocalStorage";
 import GlobalContext from "../utils/GlobalContext";
+import logoqubulowhite from "../assets/logos/logoqubulowhite.png";
+
 
 export default function Board() {
   const context = useContext(GlobalContext);
@@ -89,7 +91,12 @@ export default function Board() {
           handleSorteo={handleSorteo}
           setIsSorted={isSorted} // se pasa el estado de isSorted a CardsBoard
         />
+        <div className="flex flex-col bottom-8 items-end text-white">
+          <p className="text-sm px-12">Desarrollado por:</p>
+          <img className="h-16" src={logoqubulowhite} alt="" />
+        </div>
       </div>
+
       {isActive.active ? (
         <div className="fixed top-0  left-0 w-full h-full grid place-content-center">
           <div className="z-10 bg-white rounded-lg w-full shadow-md  overflow-auto p-8">
