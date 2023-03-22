@@ -1,27 +1,34 @@
 import React, { useContext } from "react";
+import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 import Pyramid from "./Pyramid";
 import TableCategories from "./TableCategories";
 import TablePositions from "./TablePositions";
 
-export default function BodyTemplate() {
-  const context = useContext(GlobalContext)
+export default function BodyTemplate({ activeDetails, setActiveDetails }) {
+  const context = useContext(GlobalContext);
   return (
     <details
+      onClick={() => setActiveDetails(!activeDetails)}
       id="capture"
-      className="  max-w-96 rounded-2xl  bg-white p-3 mb-7"
+      className="p-3 "
     >
-      <h3 className="text-gray-700 text-center text-xl font-bold my-6">CODIGO {context.keyNameNow}</h3>
-      <summary className="text-bluePrimary py-2 font-semibold bg-gray-300/25 max-w-md rounded-lg px-4 text-lg hover:text-blueSecondary focus:outline-none focus:text-blue-500 transition duration-150 ease-in">
+      <h3 className="text-gray-700 text-center text-xl w-full font-bold my-5">
+        CODIGO {context.keyNameNow}
+      </h3>
+      <div className="flex items-center justify-between px-5">
+        <h2 className="bg-gray-300 py-1 px-7 rounded-lg">{context.nameEvent || getLocalStorage("nameEvent")}</h2>
+
+        <TableCategories />
+      </div>
+      <summary className="text-bluePrimary py-2 font-semibold bg-gray-500/25 max-w-md rounded-lg px-4 text-md hover:text-blueSecondary focus:outline-none focus:text-blue-500 transition duration-150 ease-in">
         Pirámide de {context.typePyramid} Competidores
       </summary>
       <div className="py-2">
         <Pyramid typePyramid={context.typePyramid} />
       </div>
-      <div className="flex  justify-between px-12 mb-10 items-center w-full">
-        <TablePositions />
-        <TableCategories />
-      </div>
+
+      {/* <TablePositions /> */}
     </details>
   );
 }

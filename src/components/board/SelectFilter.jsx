@@ -40,7 +40,7 @@ export default function SelectFilter({
     }
     const filteredKeysList = Object.keys(filteredKeys); // Convertir el objeto en una lista
     context.totalGroupsFiltered = filteredKeysList.length;
-    console.log(filteredKeysList);
+ 
   
     setFilteredKeys(filteredKeysList);
     setFilteredKeysOfGroups(filteredKeysList);

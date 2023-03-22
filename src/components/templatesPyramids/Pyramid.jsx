@@ -10,28 +10,27 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
 
   // mobileBreakpoint is required to be passed down to a seed
   return (
-    <Wrapper mobileBreakpoint={breakpoint} className="text-md ">
+    <Wrapper mobileBreakpoint={breakpoint} className="">
       {/* caja padre */}
       <SeedItem
-        className="flex justify-between w-full  shadow-none bg-white m-2 border border-gray-700 rounded-none"
+        className="flex justify-between w-full  shadow-none bg-white border border-gray-700 rounded-md"
         style={{
           boxShadow: "none",
           backgroundColor: "white",
-          minWidth: "260px",
-          width:"260px"
+          minWidth:"220px"
         }}
       >
         <div className="rounded-none w-full border-r border-gray-700">
-          <SeedTeam className="text-left  max-h-8  h-8  border-b border-gray-700 text-gray-700 w-full rounded-none">
+          <SeedTeam className="text-left text-xs max-h-8  h-8  border-b border-gray-700 text-gray-700 w-full rounded-md">
             {seed.teams[0]?.name || ""}
           </SeedTeam>
-          <SeedTeam className="text-left max-h-8  h-8 bg-white text-gray-700 w-full rounded-none">
+          <SeedTeam className="text-left text-xs  max-h-8  h-8 bg-white text-gray-700 w-full rounded-md">
             {seed.teams[1]?.name || " "}
           </SeedTeam>
         </div>
         <div className="border w-10 flex flex-col justify-around bg-white text-gray-700">
-          <div className="border-b border-gray-700 h-full w-full">pts</div>
-          <div className="h-full w-full">pts</div>
+          <div className="border-b border-gray-700 h-full w-full text-xs">pts</div>
+          <div className="h-full w-full text-xs">pts</div>
         </div>
       </SeedItem>
     </Wrapper>
@@ -64,7 +63,7 @@ export default function Pyramid() {
       break;
     default:
   }
-  console.log(pyramid);
+ 
   const rounds = [
     {
       key: "round1",
