@@ -9,7 +9,6 @@ import { getLocalStorage } from "../utils/getLocalStorage";
 import GlobalContext from "../utils/GlobalContext";
 import logoqubulowhite from "../assets/logos/logoqubulowhite.png";
 
-
 export default function Board() {
   const context = useContext(GlobalContext);
   const [groupsByCode, setGroupsByCode] = useState({});
@@ -19,13 +18,15 @@ export default function Board() {
   const [typePyramid, setTypePyramid] = useState(2);
   const [isActive, setIsActive] = useState({ active: false });
   const [sorteado, setSorteado] = useState(0);
-  const [sinSortear, setSinSortear] = useState(context.totalGroupsFiltered); //Espero inicializar con el valor de totalGroupsFilterd
+  const [sinSortear, setSinSortear] = useState(groupsByCode.length); //Espero inicializar con el valor de totalGroupsFilterd
   const [isSorted, setIsSorted] = useState(false);
 
   const { pathname } = useLocation();
 
   useEffect(() => {
-    setSinSortear(context.totalGroupsFiltered);
+    context.totalGroupsFiltered === 0
+      ? setSinSortear(context.totalGroups || getLocalStorage("totalGroups") || groupsByCode.length)
+      : setSinSortear(context.totalGroupsFiltered);
   }, [context.totalGroupsFiltered]);
 
   useEffect(() => {
@@ -54,8 +55,7 @@ export default function Board() {
   };
 
   return (
-    <div id="board"  className="h-full ">
-
+    <div id="board" className="h-full ">
       <div className="px-32 pt-10 text-white">
         <BreadCrumb />
         <HeaderBoard />
@@ -78,8 +78,7 @@ export default function Board() {
             Sorteado {sorteado}
           </div>
           <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-            Sin sortear{sinSortear}
-            {""}
+            Sin sortear {sinSortear}
           </div>
         </div>
         <CardsBoard
@@ -93,29 +92,29 @@ export default function Board() {
       </div>
 
       {isActive.active ? (
-       <div
-       className="
+        <div
+          className="
          fixed top-0 left-0 z-50 w-full h-full
          flex items-center justify-center 
          bg-gray-900 bg-opacity-75
        "
-       // Aquí se agrega la lógica para activar/desactivar el modal
-       style={{ display: isActive.active ? 'flex' : 'none' }}
-     >
-       <div className=" rounded-lg">
-         <ModalTemplate
-           sorteado={sorteado}
-           keysOfGroups={keysOfGroups}
-           setIsActive={setIsActive}
-           typePyramid={typePyramid}
-         />
-       </div>
-     </div>
-      ) : null}
-          <div className="flex flex-col bottom-8 items-end text-white">
-          <p className="text-sm px-12">Desarrollado por:</p>
-          <img className="h-16" src={logoqubulowhite} alt="" />
+          // Aquí se agrega la lógica para activar/desactivar el modal
+          style={{ display: isActive.active ? "flex" : "none" }}
+        >
+          <div className=" rounded-lg">
+            <ModalTemplate
+              sorteado={sorteado}
+              keysOfGroups={keysOfGroups}
+              setIsActive={setIsActive}
+              typePyramid={typePyramid}
+            />
+          </div>
         </div>
+      ) : null}
+      <div className="flex flex-col bottom-8 items-end text-white">
+        <p className="text-sm px-12">Desarrollado por:</p>
+        <img className="h-16" src={logoqubulowhite} alt="" />
+      </div>
     </div>
   );
 }
