@@ -44,7 +44,7 @@ export default function Pyramid() {
   let pyramid;
   switch (typePyramid) {
     case 2:
-      pyramid = 4;
+      pyramid = 2;
       break;
     case 3:
       pyramid = 6;
@@ -70,12 +70,6 @@ export default function Pyramid() {
       seeds: Generator.firstRound(pyramid, context.groupNow),
     },
   ];
-  pyramid == 2 &&
-    rounds.push({
-      key: "round2",
-      seeds: Generator.secondRound(pyramid),
-    });
-
   pyramid === 4 &&
     rounds.push(
       {

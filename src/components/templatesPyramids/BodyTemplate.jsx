@@ -13,7 +13,7 @@ export default function BodyTemplate({ activeDetails, setActiveDetails }) {
       id="capture"
       className="p-3 "
     >
-      <h3 className="text-gray-700 text-center text-xl w-full font-bold my-5">
+      <h3 className="text-gray-700 text-center text-xl w-full font-bold my-7">
         CODIGO {context.keyNameNow}
       </h3>
       <div className="flex items-center justify-between px-5">

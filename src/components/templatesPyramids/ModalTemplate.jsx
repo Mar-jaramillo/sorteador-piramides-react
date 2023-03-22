@@ -4,7 +4,8 @@ import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 import { handleCapture } from "../../utils/handleCapture";
 import BodyTemplate from "./BodyTemplate";
-
+import logoHapkido  from "../../assets/logos/federacion colombiana de hapkido.svg"
+import logoKorea from "../../assets/logos/logoKorea.svg"
 export default function ModalTemplate({ setIsActive, sorteado }) {
   const navigate = useNavigate();
   const context = useContext(GlobalContext);
@@ -40,8 +41,10 @@ export default function ModalTemplate({ setIsActive, sorteado }) {
         activeDetails={activeDetails}
         typePyramid={context.typePyramid}
       />
-      <div>
-        aqui van los logos
+      <div className="h-20 flex gap-5 px-7">
+        <img src={logoKorea} alt="logo" />
+        <img src={logoHapkido} alt="logo" />
+        
       </div>
   </div>
       <div className="grid place-content-center mt-5">
