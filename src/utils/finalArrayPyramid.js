@@ -2,46 +2,51 @@ import { createArrayAndObjects } from "./createArrayAndObjects";
 import { raffledGroup } from "./raffledGroup";
 
 //Retorna un array de objetos duplicados solo si su longitud es de 3
-const pyramidTree = (group) => group.concat(group)
-
+const pyramidTree = (group) => group.concat(group);
 
 export function finalArrayPyramid(pyramid, arrayGroup) {
-  let group = [...arrayGroup] 
-  console.log(group);
+  let group = [...arrayGroup];
+
   let finalPyramid = createArrayAndObjects(pyramid); //Se espera que cree un array con x posiciones
 
   if (group.length === 3) {
-    group = pyramidTree(group)
+    debugger;
+    group = pyramidTree(group);
   }
 
-  finalPyramid = finalPyramid.filter( // las ubica en orden en la piramide
+  finalPyramid = finalPyramid.filter(
+    // las ubica en orden en la piramide
     (participant) => !group.includes(participant)
   );
 
   // remplaza los datos de la piramide por los nuevos datos de la piramide en caso de que la piramide no este vacia
-  finalPyramid.splice(0, group.length, ...group); 
+  finalPyramid.splice(0, group.length, ...group);
 
   const delegations = {}; //Se espera las delegaciones como key y las veces que se repite como number
-  for (let i = 0; i < finalPyramid.length; i++) { //Crea el objeto delegations para saber cuantos hay por cada delegacion
+  for (let i = 0; i < finalPyramid.length; i++) {
+    //Crea el objeto delegations para saber cuantos hay por cada delegacion
     const delegation = finalPyramid[i]["Delegación"];
     if (!delegations[delegation]) {
       delegations[delegation] = 0;
     }
     delegations[delegation]++;
   }
-  const maxDelegation = Object.keys(delegations).reduce( //Se espera que retorne un string con la delegacion que mas se repite
+  const maxDelegation = Object.keys(delegations).reduce(
+    //Se espera que retorne un string con la delegacion que mas se repite
     (a, b) => (delegations[a] > delegations[b] ? a : b),
     []
-  ); 
+  );
 
-  const delagationMayor = delegations[maxDelegation]; //retorna el valor de la propiedad del obj delegations 
+  const delagationMayor = delegations[maxDelegation]; //retorna el valor de la propiedad del obj delegations
 
-  if (delagationMayor > finalPyramid.length / 2) { // Divide el valor de la propiedad delegationMayor y lo divide con la longitud del grupo finalPyramid
+  if (delagationMayor > finalPyramid.length / 2) {
+    // Divide el valor de la propiedad delegationMayor y lo divide con la longitud del grupo finalPyramid
     const eliminados = finalPyramid.filter(
       (participant) => participant["Delegación"] === maxDelegation
     );
   }
-  finalPyramid.filter( // filtra los que no son mayores
+  finalPyramid.filter(
+    // filtra los que no son mayores
     (participant) => participant["Delegación"] !== maxDelegation
   );
 
@@ -71,4 +76,3 @@ export function finalArrayPyramid(pyramid, arrayGroup) {
 
   return pares;
 }
-

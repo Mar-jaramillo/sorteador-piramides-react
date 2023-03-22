@@ -2,7 +2,6 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
 export const handleCapture = (typePyramid) => {
-
   let contenido = document.getElementById("capture");
 
   // Opcionalmente, descargar también una imagen PNG de la pirámide
@@ -14,14 +13,16 @@ export const handleCapture = (typePyramid) => {
   });
 
   // Convertir la imagen en PDF y descargarla
-  html2canvas(contenido).then((canvas) => {
-    const imgData = canvas.toDataURL('image/png');
-    const pdfDoc = new jsPDF('p', 'pt', 'letter');
-    const width = pdfDoc.internal.pageSize.getWidth();
-    const height = pdfDoc.internal.pageSize.getHeight();
-    pdfDoc.addImage(imgData, 'PNG', 0, 0, width, height);
-    pdfDoc.save(`Piramide de ${typePyramid}.pdf`);
-  });
+  setTimeout(() => {
+    html2canvas(contenido, { scale: 1 }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png', 1.0);
+      const pdfDoc = new jsPDF('l', 'pt', 'letter');
+      const width = pdfDoc.internal.pageSize.getWidth();
+      const height = pdfDoc.internal.pageSize.getHeight();
+      pdfDoc.addImage(imgData, 'PNG', 0, 0, width, height, '', 'FAST', false, 0.8);
+      pdfDoc.save(`Piramide de ${typePyramid}.pdf`);
+    });
+  }, 1000);
 }
 
 

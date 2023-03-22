@@ -2,53 +2,19 @@ import React from "react";
 
 export default function TableCategories() {
   return (
-
-      <table className="text-left">
-        <thead className="text-center text-lg">
-          <tr>
-            <th>CÓDIGO</th>
-            <th>CMDYA372</th>
-          </tr>
-        </thead>
-        <tbody className=" text-sm">
-          <tr className=" border border-gray-500 ">
-            <th
-              scope="row"
-              className="px-6 py-2 font-medium    text-white"
-            >
-              CATEGORÍA
-            </th>
-            <td className="border border-gray-500 px-4 ">Nombre de la categoría</td>
-          </tr>
-          <tr className="border border-gray-500 ">
-            <th
-              scope="row"
-              className="px-6 py-2 font-medium   "
-            >
-              GRADO
-            </th>
-            <td className="border border-gray-500 px-6 ">Nombre del Grado</td>
-          </tr>
-          <tr className="border border-gray-500 ">
-            <th
-              scope="row"
-              className="px-6 py-2 font-medium   "
-            >
-              RAMA
-            </th>
-            <td className="border border-gray-500 px-6">Nombre de la Rama</td>
-          </tr>
-          <tr className="border border-gray-500 ">
-            <th
-              scope="row"
-              className="px-6 py-2 font-medium   "
-            >
-              DIVISIÓN
-            </th>
-            <td className="border border-gray-500 px-6 ">Nombre de la división</td>
-          </tr>
-        </tbody>
-      </table>
- 
+    <div className="grid grid-cols-12 text-sm max-w-xs min-w-sm rounded-md bg-gray-300/70">
+      <ul className="col-span-6  p-2 border-r">
+        <li className="w-full">CATEGORÍA</li>
+        <li className="w-full">GRADO</li>
+        <li className="w-full">RAMA</li>
+        <li className="w-full">DIVISIÓN</li>
+      </ul>
+      <ul className="col-span-6 p-2">
+        <li className="w-full">CATEGORÍA</li>
+        <li className="w-full">GRADO</li>
+        <li className="w-full">RAMA</li>
+        <li className="w-full">DIVISIÓN</li>
+      </ul>
+    </div>
   );
 }

@@ -10,14 +10,12 @@ import GlobalContext from "../utils/GlobalContext";
 
 export default function Board() {
   const context = useContext(GlobalContext);
-
   const [groupsByCode, setGroupsByCode] = useState({});
   const [keysOfGroups, setKeysOfGroups] = useState({});
   const [searchValue, setsearchValue] = useState(""); // el valor que viene del componente Selects
   const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]); // lo que le vamos a mandar a Selects
   const [typePyramid, setTypePyramid] = useState(2);
   const [isActive, setIsActive] = useState({ active: false });
-  console.log(isActive);
   const [sorteado, setSorteado] = useState(0);
   const [sinSortear, setSinSortear] = useState(context.totalGroupsFiltered);
   const [isSorted, setIsSorted] = useState(false);
@@ -89,16 +87,24 @@ export default function Board() {
         />
       </div>
       {isActive.active ? (
-        <div className="fixed top-0  left-0 w-full h-full grid place-content-center">
-          <div className="z-10 bg-white rounded-lg w-full shadow-md  overflow-auto p-8">
-            <ModalTemplate
-              sorteado={sorteado}
-              keysOfGroups={keysOfGroups}
-              setIsActive={setIsActive}
-              typePyramid={typePyramid}
-            />
-          </div>
-        </div>
+       <div
+       className="
+         fixed top-0 left-0 z-50 w-full h-full 
+         flex items-center justify-center 
+         bg-gray-900 bg-opacity-75
+       "
+       // Aquí se agrega la lógica para activar/desactivar el modal
+       style={{ display: isActive.active ? 'flex' : 'none' }}
+     >
+       <div className=" rounded-lg">
+         <ModalTemplate
+           sorteado={sorteado}
+           keysOfGroups={keysOfGroups}
+           setIsActive={setIsActive}
+           typePyramid={typePyramid}
+         />
+       </div>
+     </div>
       ) : null}
     </>
   );
