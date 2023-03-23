@@ -13,7 +13,7 @@ export default function ModalTemplate({ sorteado }) {
   const { pathname } = useLocation();
 
   return (
-    <div className="pb-56">
+    <div className="px-20 pb-56">
       <div className="flex w-full  justify-between items-center gap-5 mb-4">
         <p className="text-lg   flex flex-col justify-end font-semibold">
           {context.raffledCard} de{" "}
@@ -23,7 +23,7 @@ export default function ModalTemplate({ sorteado }) {
         <div className="flex gap-5 ">
           <button
             onClick={() => handleCapture(context.typePyramid)}
-            className="btnPrimary w-32"
+            className="btnPrimary"
           >
             Imprimir PDF
           </button>

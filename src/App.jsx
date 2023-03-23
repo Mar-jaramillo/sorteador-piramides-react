@@ -33,6 +33,7 @@ export default function App() {
     keyNameNow: "", //Se espera el nombre del codigo del grupo seleccionado
     raffledCard: 0,
     cardNotRaffled: 0,
+    
   };
 
   return (

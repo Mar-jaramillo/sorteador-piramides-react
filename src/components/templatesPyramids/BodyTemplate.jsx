@@ -3,8 +3,9 @@ import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 import Pyramid from "./Pyramid";
 import TableCategories from "./TableCategories";
-import logoHapkido from "../../assets/logos/federacion colombiana de hapkido.svg";
-import logoKorea from "../../assets/logos/logoKorea.svg";
+import groupLogos from "../../assets/logos/groupLogos.svg";
+import logoqubilo from "../../assets/logos/logoqubilo.svg";
+import firmas from "../../assets/firmas.svg";
 import TablePositions from "./TablePositions";
 
 export default function BodyTemplate() {
@@ -12,16 +13,20 @@ export default function BodyTemplate() {
   const context = useContext(GlobalContext);
   return (
     <>
-      <div id="capture" className="p-3 w-full h-full bg-white">
+      <div id="capture" className="p-3 bg-white">
         <div
           onClick={() => setActiveAcordeon(!activeAcordeon)}
           className="w-full text-gray-700 flex justify-between"
         >
           <h3>Pirámide de {context.typePyramid} Competidores</h3>
           <div>
-          <svg
+            <svg
               data-accordion-icon
-              className={!activeAcordeon ?"w-6 h-6 shrink-0" : "w-6 h-6 rotate-180 shrink-0"}
+              className={
+                !activeAcordeon
+                  ? "w-6 h-6 shrink-0"
+                  : "w-6 h-6 rotate-180 shrink-0"
+              }
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -36,29 +41,42 @@ export default function BodyTemplate() {
         </div>
         {activeAcordeon ? (
           <div>
-            <h3 className="text-gray-700 text-center text-xl w-full font-bold my-7 p-2">
-              CODIGO {context.keyNameNow}
-            </h3>
-            <div className="flex items-center justify-between px-5">
-              <h2 className="bg-gray-300 py-1 px-7 rounded-lg">
-                {context.nameEvent || getLocalStorage("nameEvent")}
-              </h2>
+            <div className="flex justify-center m-5">
+              <img className="h-24" src={groupLogos} alt="logo" />
+            </div>
+            <div className="flex justify-between">
+              <div className="">
+                <span className="text-xl py-3 px-14 rounded-lg bg-gray-200 text-slate-600 ">
+                  {context.nameEvent || getLocalStorage("nameEvent")}
+                </span>
+              </div>
 
-              <TableCategories />
+              <div className="flex flex-col px-32">
+                <h3 className="text-gray-700  px-10 text-right text-lg w-full font-bold my-7">
+                  Grupo{" "}
+                  <span className="px-3 rounded-md">
+                    {context.keyNameNow}
+                  </span>
+                </h3>
+                <TableCategories/>
+              </div>
+              
             </div>
 
             <div className="py-2">
               <Pyramid typePyramid={context.typePyramid} />
             </div>
-            <div className="h-20 flex gap-5 px-7 my-7">
-              <img src={logoKorea} alt="logo" />
-              <img src={logoHapkido} alt="logo" />
+            <TablePositions/> 
+            <div className="flex justify-center p-24">
+            <img classname="" src={firmas} alt="firmas" />
             </div>
           </div>
         ) : null}
+        <div className="flex flex-col justify-center">
+          <p className="text-center p-2 text-gray-600">Desarrollado por:</p>
+            <img className="h-12" src={logoqubilo} alt="logo"/>
+            </div>
       </div>
-
-      {/* <TablePositions /> */}
     </>
   );
 }
