@@ -70,12 +70,12 @@ export default function BodyTemplate() {
             <div className="flex justify-center p-24">
             <img classname="" src={firmas} alt="firmas" />
             </div>
+            <div className="flex flex-col justify-center">
+          <p className="text-center p-2 text-gray-600">Desarrollado por:</p>
+            <img className="h-10 mb-3" src={logoqubilo} alt="logo"/>
+            </div>
           </div>
         ) : null}
-        <div className="flex flex-col justify-center">
-          <p className="text-center p-2 text-gray-600">Desarrollado por:</p>
-            <img className="h-12" src={logoqubilo} alt="logo"/>
-            </div>
       </div>
     </>
   );
