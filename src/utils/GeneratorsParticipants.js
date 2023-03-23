@@ -17,14 +17,16 @@ export const firstRound = (pyramid, group) => {
         id: i,
         teams: [
           {
-            name: `${
-              raffledPartipants[i][0]["CodDep"] || ""
-            }- ${raffledPartipants[i][0]["Nombre Deportista"].slice(0, 23)}.`,
+            id: raffledPartipants[i][0]["CodDep"],
+            delegation: raffledPartipants[i][0]["Delegación"],
+            name: `
+              
+            ${raffledPartipants[i][0]["Nombre Deportista"].slice(0, 23)}.`,
           },
           {
-            name: `${
-              raffledPartipants[i][1]["CodDep"] || ""
-            }- ${raffledPartipants[i][1]["Nombre Deportista"].slice(0, 23)}.`,
+            id: raffledPartipants[i][1]["CodDep"],
+            delegation: raffledPartipants[i][1]["Delegación"],
+            name: `${raffledPartipants[i][1]["Nombre Deportista"].slice(0, 23)}.`,
           },
         ],
       });

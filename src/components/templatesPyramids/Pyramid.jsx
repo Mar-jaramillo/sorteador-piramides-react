@@ -4,33 +4,51 @@ import * as Generator from "../../utils/GeneratorsParticipants";
 import GlobalContext from "../../utils/GlobalContext";
 
 const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
-  const isLineConnector = rounds;
-
   const Wrapper = Seed;
 
   // mobileBreakpoint is required to be passed down to a seed
   return (
-    <Wrapper mobileBreakpoint={breakpoint} className="">
+    <Wrapper mobileBreakpoint={breakpoint} className="text-md font-semibold ">
       {/* caja padre */}
       <SeedItem
-        className="flex justify-between w-full  shadow-none bg-white border border-gray-700 rounded-md"
+        className="flex justify-between w-full  shadow-none bg-white "
         style={{
           boxShadow: "none",
           backgroundColor: "white",
-          minWidth:"220px"
         }}
       >
-        <div className="rounded-none w-full border-r border-gray-700">
-          <SeedTeam className="text-left text-xs max-h-8  h-8  border-b border-gray-700 text-gray-700 w-full rounded-md">
-            {seed.teams[0]?.name || ""}
-          </SeedTeam>
-          <SeedTeam className="text-left text-xs  max-h-8  h-8 bg-white text-gray-700 w-full rounded-md">
-            {seed.teams[1]?.name || " "}
-          </SeedTeam>
+        {/* box id */}
+        <div className="rounded-md w-12 flex flex-col justify-around bg-white text-gray-700">
+          <div className="mb-1 flex justify-center items-center rounded-md border-2 border-gray-400/50 bg-gray-200  h-full w-full text-xs">
+            {seed.teams[0].id || " "}
+          </div>
+          <div className="flex w-12 justify-center items-center h-full rounded-md border-2 border-gray-400/50 bg-gray-200 text-xs">
+            {seed.teams[1].id || " "}
+          </div>
         </div>
-        <div className="border w-10 flex flex-col justify-around bg-white text-gray-700">
-          <div className="border-b border-gray-700 h-full w-full text-xs">pts</div>
-          <div className="h-full w-full text-xs">pts</div>
+        {/* box names */}
+        <div className="flex flex-col mr-2" style={{ minWidth: "170px" }}>
+          <div className="mb-1 border-2 border-gray-400/50  rounded-md">
+            <div className="text-left flex items-center px-2 text-xs  h-6 border-b border-gray-400/50 text-gray-700 w-full">
+              {seed.teams[0]?.name || ""}
+            </div>
+            <div className=" text-left flex items-center px-2 text-xs  h-6  text-gray-700 w-full rounded-md">
+              {seed.teams[0].delegation || ""}
+            </div>
+          </div>
+          <div className="border-2 border-gray-400/50  rounded-md">
+            <div className="text-left flex items-center px-2 text-xs   h-6 border-b border-gray-400/50 bg-white text-gray-700 w-full ">
+              {seed.teams[1]?.name || " "}
+            </div>
+            <div className="text-left flex items-center px-2 text-xs  h-6   text-gray-700 w-full ">
+              {seed.teams[1].delegation || ""}
+            </div>
+          </div>
+        </div>
+        {/* box puntos */}
+        <div className="  w-12 flex flex-col justify-around bg-white text-gray-700 border-r-2 rounded-md border-gray-400/50">
+          <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-full w-full text-xs rounded-md"></div>
+          <div className=" flex justify-center items-center border-2 border-gray-400/50  h-full w-full text-xs rounded-md"></div>
         </div>
       </SeedItem>
     </Wrapper>
@@ -41,29 +59,16 @@ export default function Pyramid() {
   const context = useContext(GlobalContext);
   const typePyramid = context.typePyramid;
 
-  let pyramid;
-  switch (typePyramid) {
-    case 2:
-      pyramid = 2;
-      break;
-    case 3:
-      pyramid = 6;
-      break;
-    case 4:
-      pyramid = 4;
-      break;
-    case 8:
-      pyramid = 8;
-      break;
-    case 16:
-      pyramid = 16;
-      break;
-    case 32:
-      pyramid = 32;
-      break;
-    default:
-  }
- 
+  const pyramidValues = {
+    2: 2,
+    3: 6,
+    4: 4,
+    8: 8,
+    16: 16,
+    32: 32
+  };
+  const pyramid = pyramidValues[typePyramid] || null;
+
   const rounds = [
     {
       key: "round1",
@@ -71,20 +76,15 @@ export default function Pyramid() {
     },
   ];
   pyramid === 4 &&
-    rounds.push(
-      {
-        key: "round2",
-        seeds: Generator.secondRound(pyramid),
-      },
- 
-    );
-    pyramid === 6 &&
-    rounds.push(
-      {
-        key: "round2",
-        seeds: Generator.secondRound(pyramid),
-      },
-    );
+    rounds.push({
+      key: "round2",
+      seeds: Generator.secondRound(pyramid),
+    });
+  pyramid === 6 &&
+    rounds.push({
+      key: "round2",
+      seeds: Generator.secondRound(pyramid),
+    });
   pyramid === 8 &&
     rounds.push(
       {
@@ -94,8 +94,7 @@ export default function Pyramid() {
       {
         key: "round3",
         seeds: Generator.thirdRound(pyramid),
-      },
- 
+      }
     );
   pyramid === 16 &&
     rounds.push(

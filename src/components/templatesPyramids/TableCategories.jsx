@@ -2,7 +2,7 @@ import React from "react";
 
 export default function TableCategories() {
   return (
-    <div className="grid grid-cols-12 text-sm max-w-xs min-w-sm rounded-md bg-gray-300/70">
+    <div className="grid grid-cols-12 text-sm max-w-lg rounded-md bg-gray-300/70">
       <ul className="col-span-6  p-2 border-r">
         <li className="w-full">CATEGORÍA</li>
         <li className="w-full">GRADO</li>

@@ -5,15 +5,14 @@ import Pyramid from "./Pyramid";
 import TableCategories from "./TableCategories";
 import TablePositions from "./TablePositions";
 
-export default function BodyTemplate({ activeDetails, setActiveDetails }) {
+export default function BodyTemplate( ) {
   const context = useContext(GlobalContext);
   return (
     <details
-      onClick={() => setActiveDetails(!activeDetails)}
-      id="capture"
-      className="p-3 "
+  id="capture"
+      className="p-3 w-full bg-white"
     >
-      <h3 className="text-gray-700 text-center text-xl w-full font-bold my-7">
+      <h3 className="text-gray-700 text-center text-xl w-full font-bold my-7 p-2">
         CODIGO {context.keyNameNow}
       </h3>
       <div className="flex items-center justify-between px-5">

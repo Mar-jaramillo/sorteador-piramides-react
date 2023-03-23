@@ -1,33 +1,28 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CardsBoard from "../components/board/CardsBoard";
 import HeaderBoard from "../components/board/HeaderBoard";
 import SelectFliter from "../components/board/SelectFilter";
 import BreadCrumb from "../components/layout/BreadCrumb";
-import ModalTemplate from "../components/templatesPyramids/ModalTemplate";
 import { getLocalStorage } from "../utils/getLocalStorage";
 import GlobalContext from "../utils/GlobalContext";
 import logoqubulowhite from "../assets/logos/logoqubulowhite.png";
 
 export default function Board() {
+
   const context = useContext(GlobalContext);
+  context.cardNotRaffled =  context.totalGroups || getLocalStorage("totalGroups")
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [groupsByCode, setGroupsByCode] = useState({});
   const [keysOfGroups, setKeysOfGroups] = useState({});
-  const [searchValue, setsearchValue] = useState(""); // el valor que viene del componente Selects
-  const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]); // lo que le vamos a mandar a Selects
-  const [typePyramid, setTypePyramid] = useState(2);
-  const [isActive, setIsActive] = useState({ active: false });
+  const [searchValue, setsearchValue] = useState("");  
+  const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]);  
+  const [isActive, setIsActive] = useState(false);
   const [sorteado, setSorteado] = useState(0);
-  const [sinSortear, setSinSortear] = useState(groupsByCode.length); //Espero inicializar con el valor de totalGroupsFilterd
+  const [sinSortear, setSinSortear] = useState(0);  
   const [isSorted, setIsSorted] = useState(false);
 
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    context.totalGroupsFiltered === 0
-      ? setSinSortear(context.totalGroups || getLocalStorage("totalGroups") || groupsByCode.length)
-      : setSinSortear(context.totalGroupsFiltered);
-  }, [context.totalGroupsFiltered]);
 
   useEffect(() => {
     const changePageTitle = () => {
@@ -38,18 +33,27 @@ export default function Board() {
   }, []);
 
   useEffect(() => {
+
     setKeysOfGroups(getLocalStorage("keysOfGroups") || context.keysOfGroups);
     setGroupsByCode(getLocalStorage("groupsByCode") || context.groupsByCode);
   }, []);
 
+  useEffect(() => {
+    setSorteado(context.raffledCard);
+  }, [context.raffledCard]);
+
   //Recibe el valor de is sorted y la suma o resta en SetSinSortear
   const handleSorteo = (isSorted, add) => {
     if (isSorted) {
-      setSorteado(sorteado + add);
-      setSinSortear(sinSortear - add);
+      let sumSorted = sorteado + add;
+      context.raffledCard = sumSorted;
+      setSinSortear(context.totalGroups--)
     } else {
-      setSorteado(sorteado - add);
-      setSinSortear(sinSortear + add);
+      let sumSorted = sorteado - add;
+      context.raffledCard = sumSorted;
+
+      let notRaffled = sinSortear + add;
+      context.cardNotRaffled = notRaffled;
     }
     setIsSorted(isSorted); // se actualiza el estado de isSorted en Board
   };
@@ -75,10 +79,10 @@ export default function Board() {
               : keysOfGroups.length}{" "}
           </div>
           <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-            Sorteado {sorteado}
+            Sorteado {context.raffledCard}
           </div>
           <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-            Sin sortear {sinSortear}
+            Sin sortear {context.cardNotRaffled}
           </div>
         </div>
         <CardsBoard
@@ -91,7 +95,7 @@ export default function Board() {
         />
       </div>
 
-      {isActive.active ? (
+      {isActive ? (
         <div
           className="
          fixed top-0 left-0 z-50 w-full h-full
@@ -99,15 +103,19 @@ export default function Board() {
          bg-gray-900 bg-opacity-75
        "
           // Aquí se agrega la lógica para activar/desactivar el modal
-          style={{ display: isActive.active ? "flex" : "none" }}
+          style={{ display: isActive ? "flex" : "none" }}
         >
-          <div className=" rounded-lg">
-            <ModalTemplate
-              sorteado={sorteado}
-              keysOfGroups={keysOfGroups}
-              setIsActive={setIsActive}
-              typePyramid={typePyramid}
-            />
+          <div
+            className={
+              // activeDetails === true
+              // ? "h-screen w-full  bg-white rounded-lg p-16 overflow-auto":
+              "h-96 w-96 grid place-content-center bg-white rounded-lg  p-2"
+            }
+          >
+            <h1>Sorteando...</h1>
+            {setTimeout(() => {
+              navigate("/templates");
+            }, 3000)}
           </div>
         </div>
       ) : null}
