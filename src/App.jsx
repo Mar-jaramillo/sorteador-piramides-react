@@ -31,8 +31,8 @@ export default function App() {
     typePyramid: 0, //Se espera el tipo de piramide a usar 2, 3, 4, 8, 16, 32
     totalGroupsFiltered: 0, //Se espera un numero que varia dependiendo la busqueda en los selects
     keyNameNow: "", //Se espera el nombre del codigo del grupo seleccionado
-    raffledCard: 0,
-    cardNotRaffled: 0,
+    raffledCards: [],
+    cardsNotRaffled: [],
   };
 
   return (

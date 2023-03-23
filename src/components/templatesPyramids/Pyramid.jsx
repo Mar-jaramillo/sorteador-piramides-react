@@ -58,6 +58,8 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
 export default function Pyramid() {
   const context = useContext(GlobalContext);
   const typePyramid = context.typePyramid;
+  const group = context.groupNow.arrayGroup
+ 
 
   const pyramidValues = {
     2: 2,
@@ -72,7 +74,7 @@ export default function Pyramid() {
   const rounds = [
     {
       key: "round1",
-      seeds: Generator.firstRound(pyramid, context.groupNow),
+      seeds: Generator.firstRound(pyramid, group),
     },
   ];
   pyramid === 4 &&

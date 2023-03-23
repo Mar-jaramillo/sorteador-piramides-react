@@ -3,28 +3,27 @@ import GlobalContext from "../../utils/GlobalContext";
 import iconRaffled from "../../assets/icons/iconRaffled.svg";
 import { useNavigate } from "react-router-dom";
 
-export default function CardIndividual({
-  keyName,
-  groupByCode,
-  setIsActive,
-  handleSorteo,
-}) {
+export default function CardIndividual({ keyName, groupNow, setIsActive }) {
   const [isReady, setIsReady] = useState(false);
-  const [isSorted, setIsSorted] = useState(false);
-  const context = useContext(GlobalContext);
-  const navigate= useNavigate()
 
-  const handleClickSorteo = () => { //captura el evento del click para SetIsSorteo 
-    setIsSorted(!isSorted);
-    handleSorteo(!isSorted, 1); // se llama a la función handleSorteo
-  };
+  const context = useContext(GlobalContext);
+  const navigate = useNavigate();
+  const amountParticipantsCard = groupNow.arrayGroup.length;
+
+  const handleClickSorteo = () => {
+    //captura el evento del click para SetIsSorteo
+    context.groupsByCode[keyName]["isRaffled"] = true
+    console.log(context.groupsByCode[keyName]["isRaffled"] );
+    const actuGroups = JSON.stringify(context.groupsByCode)
+    localStorage.removeItem("groupsByCode")
+    localStorage.setItem("groupsByCode", actuGroups)
+    context.raffledCards++
+    };
 
   const handleIsReady = () => {
-    context.groupNow = groupByCode;
-    context.keyNameNow = keyName
-    const amountParticipantsCard = groupByCode.length;
-
-    localStorage.setItem("groupNow ", JSON.stringify(groupByCode));
+    context.groupNow = groupNow;
+    context.keyNameNow = keyName;
+    localStorage.setItem("groupNow ", JSON.stringify(groupNow));
     localStorage.setItem(
       "amountParticipantsCard ",
       JSON.stringify(amountParticipantsCard)
@@ -34,11 +33,20 @@ export default function CardIndividual({
 
     if (amountParticipantsCard === 1) {
       typePyramid = null;
-    } else {
-      typePyramid = Math.pow(2, Math.ceil(Math.log2(amountParticipantsCard)));
+    } else if (amountParticipantsCard <= 2) {
+      typePyramid = 2;
+    } else if (amountParticipantsCard <= 3) {
+      typePyramid = 3;
+    } else if (amountParticipantsCard <= 4) {
+      typePyramid = 4;
+    } else if (amountParticipantsCard <= 8) {
+      typePyramid = 8;
+    } else if (amountParticipantsCard <= 16) {
+      typePyramid = 16;
+    } else if (amountParticipantsCard <= 32) {
+      typePyramid = 32;
     }
 
-    
     context.typePyramid = typePyramid;
     localStorage.setItem("typePyramid", JSON.stringify(typePyramid));
     setIsActive({
@@ -55,14 +63,14 @@ export default function CardIndividual({
   return (
     <div className="col-span-12 lg:col-span-6 text-sm lg:text-md mx-3 my-3 bg-white/20 border-2 border-gray-200 rounded-2xl shadow">
       {/*Card exterior*/}
-      <div className={isReady ? greenCard : grayCard}>
+      <div className={groupNow.isRaffled ? greenCard : grayCard}>
         <div className=" col-span-6 flex gap-2 items-center">
           <p className="text-left text-white"> Grupo {keyName}</p>
           {isReady ? <img src={iconRaffled} alt="icon" /> : null}
         </div>
         <div className="col-span-6 flex justify-end">
           <p className="text-white font-normal">
-            {groupByCode.length} Competidores
+            {amountParticipantsCard} Competidores
           </p>
         </div>
       </div>
@@ -71,7 +79,7 @@ export default function CardIndividual({
       <div className="p-2 grid grid-cols-12 text-white">
         <div className="col-span-6 ">
           <ul className="h-36 overflow-auto">
-            {groupByCode.map((deportista, index) => (
+            {groupNow.arrayGroup.map((deportista, index) => (
               <div key={index} className="">
                 <li className="">
                   {index + 1} {deportista["Nombre Deportista"]}
@@ -90,7 +98,7 @@ export default function CardIndividual({
             <div className="col-span-6">
               <p className="text-center bg-white/30 rounded-lg">
                 {" "}
-                {groupByCode[0]["Categoría"]}
+                {groupNow.arrayGroup[0]["Categoría"]}
               </p>
             </div>
           </div>
@@ -102,7 +110,7 @@ export default function CardIndividual({
             <div className="col-span-6">
               <p className="text-center bg-white/30 rounded-lg">
                 {" "}
-                {groupByCode[0]["Grado"]}
+                {groupNow.arrayGroup[0]["Grado"]}
               </p>
             </div>
           </div>
@@ -114,7 +122,7 @@ export default function CardIndividual({
             <div className="col-span-6">
               <p className="text-center bg-white/30 rounded-lg">
                 {" "}
-                {groupByCode[0]["Rama"]}
+                {groupNow.arrayGroup[0]["Rama"]}
               </p>
             </div>
           </div>
@@ -126,13 +134,13 @@ export default function CardIndividual({
             <div className="col-span-6">
               <p className="text-center bg-white/30 rounded-lg">
                 {" "}
-                {groupByCode[0]["División"]}
+                {groupNow.arrayGroup[0]["División"]}
               </p>
             </div>
           </div>
           <div>
             <span className="grid grid-cols 12 justify-end">
-              {groupByCode.length === 1 ? (
+              {groupNow.length === 1 ? (
                 <p className="col-span-6  text-white m-4 px-5 py-2  underline">
                   No se puede sortear
                 </p>
@@ -147,8 +155,7 @@ export default function CardIndividual({
                   onClick={() => {
                     handleIsReady();
                     handleClickSorteo();
-                    navigate("/templates")
-                    
+                    navigate("/templates");
                   }}
                   className=" m-4 px-5 py-2 rounded-lg font-medium border-2 border-white bg-white/30 transition duration-500 ease-in-out hover:bg-redbuttons hover:border-2 hover:border-redbuttons text-white "
                 >

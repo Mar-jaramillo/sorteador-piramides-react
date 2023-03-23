@@ -30,7 +30,7 @@ export default function CardsBoard({
             isActive={isActive}
             key={key}
             keyName={key}
-            groupByCode={groupsByCode[key]}
+            groupNow={groupsByCode[key]}
             handleSorteo = {handleSorteo}
             handleClick={() => handleClick(key, index)}
             setIsSorted={setIsSorted} // se pasa setIsSorted como una prop

@@ -11,9 +11,14 @@ export const createGroupsByCode = (dataFromLocalStorage) => {
   dataFromLocalStorage.forEach((deportista) => {
     const codigo = deportista["CBTE IND"];
     if (!datosPorCodigo[codigo]) {
-      datosPorCodigo[codigo] = [];
+     
+      datosPorCodigo[codigo] = {
+        isRaffled: false,
+        arrayGroup: []
+      }
+      
     }
-    datosPorCodigo[codigo].push(deportista);
+    datosPorCodigo[codigo].arrayGroup.push(deportista);
   });
   return datosPorCodigo;
 };

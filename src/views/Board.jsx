@@ -15,7 +15,7 @@ export default function Board() {
     context.totalGroups || getLocalStorage("totalGroups");
   const { pathname } = useLocation();
   const [groupsByCode, setGroupsByCode] = useState({});
-  const [keysOfGroups, setKeysOfGroups] = useState({});
+  const [keysOfGroups, setKeysOfGroups] = useState([]);
   const [searchValue, setsearchValue] = useState("");
   const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]);
   const [isActive, setIsActive] = useState(false);
@@ -40,21 +40,6 @@ export default function Board() {
     setSorteado(context.raffledCard);
   }, [context.raffledCard]);
 
-  //Recibe el valor de is sorted y la suma o resta en SetSinSortear
-  const handleSorteo = (isSorted, add) => {
-    if (isSorted) {
-      let sumSorted = sorteado + add;
-      context.raffledCard = sumSorted;
-      setSinSortear(context.totalGroups--);
-    } else {
-      let sumSorted = sorteado - add;
-      context.raffledCard = sumSorted;
-
-      let notRaffled = sinSortear + add;
-      context.cardNotRaffled = notRaffled;
-    }
-    setIsSorted(isSorted); // se actualiza el estado de isSorted en Board
-  };
 
   return (
     <div id="board" className="h-full ">
@@ -76,7 +61,6 @@ export default function Board() {
           groupsByCode={groupsByCode}
           setIsActive={setIsActive}
           isActive={isActive}
-          handleSorteo={handleSorteo}
           setIsSorted={isSorted} // se pasa el estado de isSorted a CardsBoard
         />
       </div>
