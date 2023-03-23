@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import GlobalContext from "../../utils/GlobalContext";
 import iconRaffled from "../../assets/icons/iconRaffled.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function CardIndividual({
   keyName,
@@ -11,6 +12,7 @@ export default function CardIndividual({
   const [isReady, setIsReady] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   const context = useContext(GlobalContext);
+  const navigate= useNavigate()
 
   const handleClickSorteo = () => { //captura el evento del click para SetIsSorteo 
     setIsSorted(!isSorted);
@@ -154,6 +156,8 @@ export default function CardIndividual({
                   onClick={() => {
                     handleIsReady();
                     handleClickSorteo();
+                    navigate("/templates")
+                    
                   }}
                   className=" m-4 px-5 py-2 rounded-lg font-medium border-2 border-white bg-white/30 transition duration-500 ease-in-out hover:bg-redbuttons hover:border-2 hover:border-redbuttons text-white "
                 >

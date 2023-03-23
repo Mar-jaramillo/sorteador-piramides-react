@@ -7,22 +7,21 @@ import BreadCrumb from "../components/layout/BreadCrumb";
 import { getLocalStorage } from "../utils/getLocalStorage";
 import GlobalContext from "../utils/GlobalContext";
 import logoqubulowhite from "../assets/logos/logoqubulowhite.png";
+import BotonGroup from "../components/board/BotonGroup";
 
 export default function Board() {
-
   const context = useContext(GlobalContext);
-  context.cardNotRaffled =  context.totalGroups || getLocalStorage("totalGroups")
-  const navigate = useNavigate();
+  context.cardNotRaffled =
+    context.totalGroups || getLocalStorage("totalGroups");
   const { pathname } = useLocation();
   const [groupsByCode, setGroupsByCode] = useState({});
   const [keysOfGroups, setKeysOfGroups] = useState({});
-  const [searchValue, setsearchValue] = useState("");  
-  const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]);  
+  const [searchValue, setsearchValue] = useState("");
+  const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [sorteado, setSorteado] = useState(0);
-  const [sinSortear, setSinSortear] = useState(0);  
+  const [sinSortear, setSinSortear] = useState(0);
   const [isSorted, setIsSorted] = useState(false);
-
 
   useEffect(() => {
     const changePageTitle = () => {
@@ -33,7 +32,6 @@ export default function Board() {
   }, []);
 
   useEffect(() => {
-
     setKeysOfGroups(getLocalStorage("keysOfGroups") || context.keysOfGroups);
     setGroupsByCode(getLocalStorage("groupsByCode") || context.groupsByCode);
   }, []);
@@ -47,7 +45,7 @@ export default function Board() {
     if (isSorted) {
       let sumSorted = sorteado + add;
       context.raffledCard = sumSorted;
-      setSinSortear(context.totalGroups--)
+      setSinSortear(context.totalGroups--);
     } else {
       let sumSorted = sorteado - add;
       context.raffledCard = sumSorted;
@@ -71,54 +69,18 @@ export default function Board() {
           groupsByCode={groupsByCode}
           setFilteredKeysOfGroups={setFilteredKeysOfGroups}
         />
-        <div className="flex gap-3">
-          <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-            Todos{" "}
-            {context.totalGroupsFiltered > 0
-              ? context.totalGroupsFiltered
-              : keysOfGroups.length}{" "}
-          </div>
-          <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-            Sorteado {context.raffledCard}
-          </div>
-          <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-            Sin sortear {context.cardNotRaffled}
-          </div>
-        </div>
+        <BotonGroup keysOfGroups={keysOfGroups}/>
         <CardsBoard
           filteredKeysOfGroups={filteredKeysOfGroups}
           keysOfGroups={keysOfGroups}
           groupsByCode={groupsByCode}
           setIsActive={setIsActive}
+          isActive={isActive}
           handleSorteo={handleSorteo}
           setIsSorted={isSorted} // se pasa el estado de isSorted a CardsBoard
         />
       </div>
 
-      {isActive ? (
-        <div
-          className="
-         fixed top-0 left-0 z-50 w-full h-full
-         flex items-center justify-center 
-         bg-gray-900 bg-opacity-75
-       "
-          // Aquí se agrega la lógica para activar/desactivar el modal
-          style={{ display: isActive ? "flex" : "none" }}
-        >
-          <div
-            className={
-              // activeDetails === true
-              // ? "h-screen w-full  bg-white rounded-lg p-16 overflow-auto":
-              "h-96 w-96 grid place-content-center bg-white rounded-lg  p-2"
-            }
-          >
-            <h1>Sorteando...</h1>
-            {setTimeout(() => {
-              navigate("/templates");
-            }, 3000)}
-          </div>
-        </div>
-      ) : null}
       <div className="flex flex-col bottom-8 items-end text-white">
         <p className="text-sm px-12">Desarrollado por:</p>
         <img className="h-16" src={logoqubulowhite} alt="" />

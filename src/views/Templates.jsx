@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import BotonGroup from "../components/board/BotonGroup";
 import BreadCrumb from "../components/layout/BreadCrumb";
 import ModalTemplate from "../components/templatesPyramids/ModalTemplate";
 import GlobalContext from "../utils/GlobalContext";
@@ -17,11 +18,12 @@ export default function Templates() {
   }, []);
 
   return (
-    <div id="pyramid" className="p-10 text-white  w-full h-full ">
+    <div id="pyramid" className="pt-10 px-3 text-white  w-full  ">
       <BreadCrumb />
       <h2 className="text-3xl font-bold  mb-16">
         Pirámide de {context.typePyramid} competidores ( Grupo XXXXXXX ){" "}
       </h2>
+      <BotonGroup/>
       {/* <HeaderTemplates typePyramid={typePyramid} setTypePyramid={setTypePyramid} /> */}
       <ModalTemplate typePyramid={typePyramid} />
     </div>
