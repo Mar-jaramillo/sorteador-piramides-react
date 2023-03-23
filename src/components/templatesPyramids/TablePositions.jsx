@@ -2,43 +2,35 @@ import React from "react";
 
 export default function TablePositions() {
   return (
-<div className="px-10">
-    <table className="text-left rounded-md">
-        <tbody className="py-2 text-sm">
-            <tr className=" border border-gray-500 ">
-                <th scope="row" className="px-6  font-medium   border border-gray-500   ">
-                Primer puesto
-                </th>
-                <td className="border border-gray-500 px-4 py-4">
-                    
-                </td>
-            </tr>
-            <tr className="border border-gray-500">
-                <th scope="row" className="px-6  font-medium   ">
-                    Segundo puesto
-                </th>
-                <td className="border border-gray-500 px-6 py-4">
-                    
-                </td>
-            </tr>
-            <tr className="border border-gray-500">
-                <th scope="row" className="px-6 font-medium   ">
-                    Tercer puesto
-                </th>
-                <td className="border border-gray-500 px-6 py-4">
-                    
-                </td>
-            </tr>
-            <tr className="border border-gray-500">
-                 <th scope="row" className="px-6  font-medium    ">
-                    Cuarto Puesto
-                </th>
-                <td className="border border-gray-500 px-40 py-4">
-                    
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    <div className="px-12">
+    <div className="flex justify-end p-1 text-gray-500">
+        <p className="border py-1 px-14 rounded-l-lg bg-gray-200 border-gray-400">
+        Primer puesto     
+        </p>
+        <div className="border px-32 rounded-r-lg border-gray-400">
+        </div>
+    </div>
+    <div className="flex justify-end p-1 text-gray-500">
+        <p className="border py-1  px-12 rounded-l-lg bg-gray-200 border-gray-400">
+        Segundo puesto
+        </p>
+        <div className="border px-32 rounded-r-lg border-gray-400">
+        </div>
+    </div>
+    <div className="flex justify-end p-1 text-gray-500 ">
+        <p className="border py-1  px-14 rounded-l-lg bg-gray-200 border-gray-400">
+        Tercer puesto
+        </p>
+        <div className="border px-32 rounded-r-lg border-gray-400">
+        </div>
+    </div>
+    <div className="flex justify-end p-1 text-gray-500">
+        <p className="border py-1  px-14 rounded-l-lg bg-gray-200 border-gray-400">
+        Cuarto puesto
+        </p>
+        <div className="border px-32 rounded-r-lg border-gray-400">
+        </div>
+    </div>
+    </div>
   );
 }
