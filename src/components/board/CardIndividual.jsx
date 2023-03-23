@@ -34,19 +34,10 @@ export default function CardIndividual({
 
     if (amountParticipantsCard === 1) {
       typePyramid = null;
-    } else if (amountParticipantsCard <= 2) {
-      typePyramid = 2;
-    } else if (amountParticipantsCard <= 3) {
-      typePyramid = 3;
-    } else if (amountParticipantsCard <= 4) {
-      typePyramid = 4;
-    } else if (amountParticipantsCard <= 8) {
-      typePyramid = 8;
-    } else if (amountParticipantsCard <= 16) {
-      typePyramid = 16;
-    } else if (amountParticipantsCard <= 32) {
-      typePyramid = 32;
+    } else {
+      typePyramid = Math.pow(2, Math.ceil(Math.log2(amountParticipantsCard)));
     }
+
     
     context.typePyramid = typePyramid;
     localStorage.setItem("typePyramid", JSON.stringify(typePyramid));

@@ -5,22 +5,18 @@ import GlobalContext from "../../utils/GlobalContext";
 
 export default function SelectFilter({
   groupsByCode,
-  setKeysOfGroups,
-  setGroupsByCode,
   keysOfGroups,
   setFilteredKeysOfGroups,
   setsearchValue,
 }) {
   const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
-  const [keysGroups, setKeysGroups] = useState([]);
-  const [filteredKeys, setFilteredKeys] = useState([]);
 
   useEffect(() => {
-    setValuesSelect(context.valuesUniques || getLocalStorage("valuesUniques"));
-    setGroupsByCode(context.groupsByCode || getLocalStorage("groupsByCode"));
-    setKeysGroups(context.keysGroups);
+    setValuesSelect(getLocalStorage("valuesUniques"));
   }, []);
+
+
   const handleSearch = (e) => {
     const valueSearch = e.target.value;
     const filteredKeys = {};
@@ -40,9 +36,7 @@ export default function SelectFilter({
     }
     const filteredKeysList = Object.keys(filteredKeys); // Convertir el objeto en una lista
     context.totalGroupsFiltered = filteredKeysList.length;
- 
-  
-    setFilteredKeys(filteredKeysList);
+   
     setFilteredKeysOfGroups(filteredKeysList);
     setsearchValue(valueSearch);
   };

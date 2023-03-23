@@ -10,7 +10,6 @@ export default function CardsBoard({
   filteredKeysOfGroups,
   handleSorteo,
   setIsSorted
-  
 }) {
   const handleClick = () => { 
     setIsActive({ active: false});
@@ -40,7 +39,8 @@ export default function CardsBoard({
       ) : (
         // Loader
         <div className="col-span-12 h-screen grid place-content-center">
-          <Loader mensaje="Cargando Grupos de Deportistas" />
+          Cargando grupos por codigo...
+          {/* <Loader mensaje="Cargando Grupos de Deportistas" /> */}
         </div>
       )}
     </div>
