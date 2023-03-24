@@ -8,49 +8,83 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
 
   // mobileBreakpoint is required to be passed down to a seed
   return (
-    <Wrapper mobileBreakpoint={breakpoint} className="text-md font-semibold ">
+    <Wrapper
+      mobileBreakpoint={breakpoint}
+      className={`text-md font-semibold ${
+        roundIndex > 0 ? "rounded-sm" : ""
+      }`}
+    >
       {/* caja padre */}
-      <SeedItem
-        className="flex justify-between w-full  shadow-none bg-white "
+      {roundIndex > 0 ? (
+        //Segunda ronda stylos
+        <SeedItem
+        className="flex justify-between shadow-none bg-white "
         style={{
           boxShadow: "none",
           backgroundColor: "white",
         }}
       >
-        {/* box id */}
-        <div className="rounded-md w-12 flex flex-col justify-around bg-white text-gray-700">
-          <div className="mb-1 flex justify-center items-center rounded-md border-2 border-gray-400/50 bg-gray-200  h-full w-full text-xs">
-            {seed.teams[0].id || " "}
-          </div>
-          <div className="flex w-12 justify-center items-center h-full rounded-md border-2 border-gray-400/50 bg-gray-200 text-xs">
-            {seed.teams[1].id || " "}
-          </div>
+        <div className="rounded-md w-12 bg-white text-gray-700">
+        <div className="mb-1 rounded-md border-2 border-gray-400/50 bg-gray-200 h-12">
+          
         </div>
-        {/* box names */}
-        <div className="flex flex-col mr-2" style={{ minWidth: "170px" }}>
-          <div className="mb-1 border-2 border-gray-400/50  rounded-md">
-            <div className="text-left flex items-center px-2 text-xs  h-6 border-b border-gray-400/50 text-gray-700 w-full">
-              {seed.teams[0]?.name || ""}
-            </div>
-            <div className=" text-left flex items-center px-2 text-xs  h-6  text-gray-700 w-full rounded-md">
-              {seed.teams[0].delegation || ""}
-            </div>
-          </div>
-          <div className="border-2 border-gray-400/50  rounded-md">
-            <div className="text-left flex items-center px-2 text-xs   h-6 border-b border-gray-400/50 bg-white text-gray-700 w-full ">
-              {seed.teams[1]?.name || " "}
-            </div>
-            <div className="text-left flex items-center px-2 text-xs  h-6   text-gray-700 w-full ">
-              {seed.teams[1].delegation || ""}
-            </div>
-          </div>
+        <div className="flex w-12 h-12 justify-center items-center  rounded-md border-2 border-gray-400/50 bg-gray-200 text-xs">
+          
         </div>
-        {/* box puntos */}
-        <div className="  w-12 flex flex-col justify-around bg-white text-gray-700 border-r-2 rounded-md border-gray-400/50">
-          <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-full w-full text-xs rounded-md"></div>
-          <div className=" flex justify-center items-center border-2 border-gray-400/50  h-full w-full text-xs rounded-md"></div>
-        </div>
+      </div>
+       {/* box puntos */}
+       <div className="  w-12 flex flex-col justify-around bg-white text-gray-700 border-r-2 rounded-md border-gray-400/50">
+            <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-12 w-12 text-xs rounded-md"></div>
+            <div className=" flex justify-center items-center border-2 border-gray-400/50  h-12 w-12 text-xs rounded-md"></div>
+          </div>
       </SeedItem>
+      ) : (
+        <SeedItem
+          className="flex justify-between w-full shadow-none bg-white "
+          style={{
+            boxShadow: "none",
+            backgroundColor: "white",
+          }}
+        >
+          
+          {/* box id */}
+
+          <div className="rounded-md w-12 flex flex-col justify-around bg-white text-gray-700">
+            <div className="mb-1 flex justify-center items-center rounded-md border-2 border-gray-400/50 bg-gray-200  h-full w-full text-xs">
+              {seed.teams[0].id || " "}
+            </div>
+            <div className="flex w-12 justify-center items-center h-full rounded-md border-2 border-gray-400/50 bg-gray-200 text-xs">
+              {seed.teams[1].id || " "}
+            </div>
+          </div>
+          {/* box names */}
+
+          <div className=" flex flex-col mr-2" style={{ minWidth: "170px" }}>
+            <div className="mb-1 border-2  border-gray-400/50  rounded-md">
+              <div className="text-left flex items-center px-2 text-xs  h-6 border-b border-gray-400/50 text-gray-700 w-full">
+                {seed.teams[0]?.name || ""}
+              </div>
+              <div className=" text-left flex items-center px-2 text-xs  h-6  text-gray-700 w-full rounded-md">
+                {seed.teams[0].delegation || ""}
+              </div>
+            </div>
+            <div className="border-2 border-gray-400/50  rounded-md">
+              <div className="text-left flex items-center px-2 text-xs   h-6 border-b border-gray-400/50 bg-white text-gray-700 w-full ">
+                {seed.teams[1]?.name || " "}
+              </div>
+              <div className="text-left flex items-center px-2 text-xs  h-6   text-gray-700 w-full ">
+                {seed.teams[1].delegation || ""}
+              </div>
+            </div>
+          </div>
+
+          {/* box puntos */}
+          <div className="  w-12 flex flex-col justify-around bg-white text-gray-700 border-r-2 rounded-md border-gray-400/50">
+            <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-full w-full text-xs rounded-md"></div>
+            <div className=" flex justify-center items-center border-2 border-gray-400/50  h-full w-full text-xs rounded-md"></div>
+          </div>
+        </SeedItem>
+      )}
     </Wrapper>
   );
 };
@@ -58,8 +92,7 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
 export default function Pyramid() {
   const context = useContext(GlobalContext);
   const typePyramid = context.typePyramid;
-  const group = context.groupNow.arrayGroup
- 
+  const group = context.groupNow.arrayGroup;
 
   const pyramidValues = {
     2: 2,
@@ -67,7 +100,7 @@ export default function Pyramid() {
     4: 4,
     8: 8,
     16: 16,
-    32: 32
+    32: 32,
   };
   const pyramid = pyramidValues[typePyramid] || null;
 
