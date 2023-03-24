@@ -24,7 +24,8 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
           backgroundColor: "white",
         }}
       >
-        <div className="rounded-md w-12 bg-white text-gray-700">
+         {/* box id */}
+        <div className="rounded-md w-12 bg-white text-gray-700"> ID
         <div className="mb-1 rounded-md border-2 border-gray-400/50 bg-gray-200 h-12">
           
         </div>
@@ -33,7 +34,7 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
         </div>
       </div>
        {/* box puntos */}
-       <div className="  w-12 flex flex-col justify-around bg-white text-gray-700 border-r-2 rounded-md border-gray-400/50">
+       <div className="  w-12 flex flex-col justify-around bg-white text-gray-700 border-r-2 rounded-md border-gray-400/50"> PTS
             <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-12 w-12 text-xs rounded-md"></div>
             <div className=" flex justify-center items-center border-2 border-gray-400/50  h-12 w-12 text-xs rounded-md"></div>
           </div>
