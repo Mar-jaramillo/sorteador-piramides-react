@@ -4,7 +4,7 @@ import GlobalContext from "../../utils/GlobalContext";
 import Pyramid from "./Pyramid";
 import TableCategories from "./TableCategories";
 import groupLogos from "../../assets/logos/groupLogos.svg";
-import logoqubilo from "../../assets/logos/logoqubilo.svg";
+import logoqubilo from "../../assets/logos/logoqubilo.png";
 import firmas from "../../assets/firmas.svg";
 import TablePositions from "./TablePositions";
 
