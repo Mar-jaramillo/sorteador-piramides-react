@@ -66,7 +66,7 @@ export default function CardIndividual({ keyName, groupNow, setIsActive }) {
       <div className={groupNow.isRaffled ? greenCard : grayCard}>
         <div className=" col-span-6 flex gap-2 items-center">
           <p className="text-left text-white"> Grupo {keyName}</p>
-          {isReady ? <img src={iconRaffled} alt="icon" /> : null}
+          {groupNow.isRaffled ? <img src={iconRaffled} alt="icon" /> : null}
         </div>
         <div className="col-span-6 flex justify-end">
           <p className="text-white font-normal">
@@ -140,14 +140,17 @@ export default function CardIndividual({ keyName, groupNow, setIsActive }) {
           </div>
           <div>
             <span className="grid grid-cols 12 justify-end">
-              {groupNow.length === 1 ? (
+              {groupNow.arrayGroup.length === 1 ? (
                 <p className="col-span-6  text-white m-4 px-5 py-2  underline">
                   No se puede sortear
                 </p>
-              ) : isReady ? (
+              ) : groupNow.isRaffled  ? (
                 <div>
-                  <button className="col-span-6  text-white m-4 px-5 py-2  underline">
-                    Ver sorteo
+                  <button onClick={()=>{
+                        handleClickSorteo();
+                        navigate("/templates");
+                  }} className="col-span-6  text-white m-4 px-5 py-2  underline">
+                   Volver a sortear
                   </button>
                 </div>
               ) : (
