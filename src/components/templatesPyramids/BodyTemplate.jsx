@@ -68,7 +68,7 @@ export default function BodyTemplate() {
             </div>
             <TablePositions/> 
             <div className="flex justify-center p-24">
-            <img classname="" src={firmas} alt="firmas" />
+            <img className="" src={firmas} alt="firmas" />
             </div>
             <div className="flex flex-col justify-center">
           <p className="text-center p-2 text-gray-600">Desarrollado por:</p>

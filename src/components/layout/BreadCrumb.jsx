@@ -1,13 +1,14 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function BreadCrumb() {
   const location = useLocation();
+
   return (
     <nav className="pt-6 text-white" aria-label="Breadcrumb">
       <ol className="inline-flex items-center gap-3">
         <li className="inline-flex items-center">
-          <Link to="/" className="inline-flex items-center text-sm ">
+          <Link to="/" onClick={()=>localStorage.clear()} className="inline-flex items-center text-sm ">
             Ingresar a la plataforma /
           </Link>
         </li>

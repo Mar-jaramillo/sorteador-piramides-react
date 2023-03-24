@@ -2,14 +2,27 @@ import React, { useContext, useEffect, useState } from "react";
 import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 
-export default function BotonGroup({ keysOfGroups }) {
+export default function BotonGroup({ keysOfGroups, groupsByCode }) {
   const context = useContext(GlobalContext);
-  const [notRaffled, setNotRaffled] = useState(context.cardNotRaffled)
-
-  useEffect(() => {  
-    setNotRaffled(context.raffledCards - context.cardNotRaffled)
-  }, [context.raffledCards])
+  const [cardsRaffleds, setCardsRaffleds] = useState(0);
+  const [notRaffled, setnotRaffled] = useState(context.totalGroups || getLocalStorage("totalGroups"));
   
+  useEffect(() => {  
+    const keys = getLocalStorage("keysOfGroups") || context.keysOfGroups || keysOfGroups
+    const groups = getLocalStorage("groupsByCode") || context.groupsByCode || groupsByCode
+   
+    let count = 0
+    for (let i = 0; i < keys.length; i++) {
+      const keyTemp = keys[i]
+      if(groups[keyTemp].isRaffled){
+        count++
+      }
+    }
+    setCardsRaffleds(count)
+    setnotRaffled(count ? notRaffled - count : notRaffled)
+  }, [context.groupsByCode])
+
+
   const participants =
     context.totalGroupsFiltered > 0
       ? context.totalGroupsFiltered
@@ -21,7 +34,7 @@ export default function BotonGroup({ keysOfGroups }) {
         Todos {participants}
       </div>
       <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
-        Sorteado {context.raffledCards}
+        Sorteado {cardsRaffleds}
       </div>
       <div className="bg-white/50 px-2 py-1 font-bold rounded-md">
         Sin sortear {notRaffled}
