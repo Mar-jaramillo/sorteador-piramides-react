@@ -68,10 +68,13 @@ export default function BodyTemplate() {
               <img className="" src={firmas} alt="firmas" />
             </div>
             <div className="flex flex-col justify-center w-32 h-32">
-  <p className="text-gray-600">Desarrollado por:</p>
-  <img className="object-contain w-full h-full" src={logoqubilo} alt="logo" />
-</div>
-
+              <p className="text-gray-600">Desarrollado por:</p>
+              <img
+                className="object-cover w-full h-full"
+                src={logoqubilo}
+                alt="logo"
+              />
+            </div>
           </div>
         ) : null}
       </div>
