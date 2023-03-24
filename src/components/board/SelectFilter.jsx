@@ -21,7 +21,7 @@ export default function SelectFilter({
     const valueSearch = e.target.value;
     const filteredKeys = {};
     for (const key of keysOfGroups) {
-      const array = groupsByCode[key];
+      const array = context.groupsByCode[key].arrayGroup;
       array.forEach((element) => {
         if (
           element["Delegación"] === valueSearch ||

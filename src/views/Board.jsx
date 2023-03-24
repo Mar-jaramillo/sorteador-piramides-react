@@ -40,7 +40,6 @@ export default function Board() {
     setSorteado(context.raffledCard);
   }, [context.raffledCard]);
 
-
   return (
     <div id="board" className="h-full ">
       <div className="px-32 pt-10 text-white">
@@ -54,7 +53,7 @@ export default function Board() {
           groupsByCode={groupsByCode}
           setFilteredKeysOfGroups={setFilteredKeysOfGroups}
         />
-        <BotonGroup keysOfGroups={keysOfGroups}/>
+        <BotonGroup keysOfGroups={keysOfGroups} groupsByCode={groupsByCode} />
         <CardsBoard
           filteredKeysOfGroups={filteredKeysOfGroups}
           keysOfGroups={keysOfGroups}
