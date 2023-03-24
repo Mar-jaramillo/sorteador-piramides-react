@@ -54,26 +54,24 @@ export default function BodyTemplate() {
               <div className="flex flex-col px-32">
                 <h3 className="text-gray-700  px-10 text-right text-lg w-full font-bold my-7">
                   Grupo{" "}
-                  <span className="px-3 rounded-md">
-                    {context.keyNameNow}
-                  </span>
+                  <span className="px-3 rounded-md">{context.keyNameNow}</span>
                 </h3>
-                <TableCategories/>
+                <TableCategories />
               </div>
-              
             </div>
 
             <div className="py-2">
               <Pyramid typePyramid={context.typePyramid} />
             </div>
-            <TablePositions/> 
+            <TablePositions />
             <div className="flex justify-center p-24">
-            <img className="" src={firmas} alt="firmas" />
+              <img className="" src={firmas} alt="firmas" />
             </div>
-            <div className="flex flex-col justify-center">
-          <p className="text-center p-2 text-gray-600">Desarrollado por:</p>
-            <img className="h-10 mb-3" src={logoqubilo} alt="logo"/>
-            </div>
+            <div className="flex flex-col justify-center w-32 h-32">
+  <p className="text-gray-600">Desarrollado por:</p>
+  <img className="object-contain w-full h-full" src={logoqubilo} alt="logo" />
+</div>
+
           </div>
         ) : null}
       </div>

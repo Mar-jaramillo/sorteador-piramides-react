@@ -38,7 +38,7 @@ export const handleCapture = (typePyramid) => {
 
   // Convertir la imagen en PDF y descargarla
   setTimeout(() => {
-    html2canvas(contenido).then((canvas) => {
+    html2canvas(contenido, { scale: 1 }).then((canvas) => {
       const imgWidth = canvas.width;
       const imgHeight = canvas.height;
       const pdf = new jsPDF("p", "mm", "a4");
