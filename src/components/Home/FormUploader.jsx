@@ -1,8 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import icondowload from "../../assets/icons/icondowload.svg";
 
 export default function FormUploader({handleSubmit, setNameEvent, handleFileUpload}) {
-
+  const navigate = useNavigate()
   const downloadFile = () => {
     const url = "/documents/Plantilla Obligatoria.xlsx";
     const link = document.createElement("a");

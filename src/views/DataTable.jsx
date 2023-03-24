@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Finder from "../components/dataTable/Finder";
 import Table from "../components/dataTable/Table";
-import Layout from "../components/layout/Layout";
 import Loader from "../components/layout/Loader";
 import BreadCrumb from "../components/layout/BreadCrumb";
 import GlobalContext from "../utils/GlobalContext";
@@ -45,7 +44,7 @@ export default function DataTable() {
   };
 
   return (
-    <Layout>
+    <>
       {isLoading ? (
         <Loader mensaje='Cargando Grupos de Deportistas'/>
       ) : (
@@ -105,7 +104,7 @@ export default function DataTable() {
         </div>
       )}
       <FooterGeneral/>
-    </Layout>
+    </>
     
   );
 }

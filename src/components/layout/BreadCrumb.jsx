@@ -1,20 +1,37 @@
-import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
+import GlobalContext from "../../utils/GlobalContext";
 
 export default function BreadCrumb() {
+  const context = useContext(GlobalContext)
   const location = useLocation();
 
+  const clearData = ()=>{
+    context.nameEvent = ""
+    context.totalGroups= 0
+    context.totalDelegations= 0 
+    context.groupsByCode= {}
+    context.groupNow={}
+    context.keysOfGroups= []
+    context.valuesUniques= {}
+    context.typePyramid= 0
+    context.totalGroupsFiltered= 0
+    context.keyNameNow= ""
+    context.raffledCards= []
+    context.cardsNotRaffled= []
+    localStorage.clear()
+  }
   return (
     <nav className="pt-6 text-white" aria-label="Breadcrumb">
       <ol className="inline-flex items-center gap-3">
         <li className="inline-flex items-center">
-          <Link to="/" onClick={()=>localStorage.clear()} className="inline-flex items-center text-sm ">
+          <Link to="/" onClick={clearData} className="inline-flex items-center text-sm ">
             Ingresar a la plataforma /
           </Link>
         </li>
         {location.pathname === "/data" || location.pathname === "/board" ? (
           <li className="inline-flex items-center">
-            <Link to="/home" className="inline-flex items-center text-sm ">
+            <Link onClick={clearData} to="/home" className="inline-flex items-center text-sm ">
               Cargue deportistas /
             </Link>
           </li>
