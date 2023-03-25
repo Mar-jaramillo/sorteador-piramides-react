@@ -70,7 +70,7 @@ export default function BodyTemplate() {
             <div className="flex flex-col justify-center w-32 h-32">
               <p className="text-gray-600">Desarrollado por:</p>
               <img
-                className="object-cover w-full h-full"
+                className=""
                 src={logoqubilo}
                 alt="logo"
               />
