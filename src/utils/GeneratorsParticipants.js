@@ -11,7 +11,7 @@ export const firstRound = (pyramid, group) => {
     }
   } else {
     const raffledPartipants = finalArrayPyramid(pyramid, group);
-    console.log(raffledPartipants);
+
     for (let i = 0; i < raffledPartipants.length; i++) {
       participantes.push({
         id: i,
