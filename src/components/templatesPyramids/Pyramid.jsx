@@ -1,44 +1,94 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Bracket, Seed, SeedItem, SeedTeam } from "react-brackets";
 import * as Generator from "../../utils/GeneratorsParticipants";
+import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 
-const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
+
+const CustomSeed = ({ seed, breakpoint, roundIndex, }) => {
   const Wrapper = Seed;
+  const [efectName0, setEfectName0] = useState("Sorteando...");
+  const [efectName1, setEfectName1] = useState("Sorteando...");
+  const [efectDelegation0, setEfectDelegation0] = useState("Sorteando...");
+  const [efectDelegation1, setEfectDelegation1] = useState("Sorteando...");
+
+  useEffect(() => {
+    const timeout1 = setTimeout(() => {
+      setEfectName0(seed.teams[1]?.name);// incorrecto
+      setEfectDelegation0(seed.teams[1]?.delegation) // incorrecto
+
+      setEfectName1(seed.teams[0]?.name);// incorrecto
+      setEfectDelegation1(seed.teams[0]?.delegation) // incorrecto
+    }, 2000);
+
+    // Cambiar el texto después de 2 segundos
+    const timeout2 = setTimeout(() => {
+      setEfectName0(seed.teams[0]?.name); // correcto para la posicion 0
+      setEfectDelegation0(seed.teams[0]?.delegation) // correcto para la posicion 0
+
+      setEfectName1(seed.teams[1]?.name); // correcto para la posicion 1
+      setEfectDelegation1(seed.teams[1]?.delegation) // correcto para la posicion 1
+    }, 3000);
+
+    const timeout3 = setTimeout(() => {
+      setEfectName0(seed.teams[1]?.name);// incorrecto 0
+      setEfectDelegation0(seed.teams[1]?.delegation) // incorrecto 0
+
+      setEfectName1(seed.teams[0]?.name);// incorrecto 1
+      setEfectDelegation1(seed.teams[0]?.delegation) // incorrecto 1
+    }, 4000);
+
+    // Cambiar el texto después de 2 segundos
+    const timeout4 = setTimeout(() => {
+      setEfectName0(seed.teams[0]?.name); // correcto para la posicion 0
+      setEfectDelegation0(seed.teams[0]?.delegation) // correcto para la posicion 0
+
+      setEfectName1(seed.teams[1]?.name); // correcto para la posicion 1
+      setEfectDelegation1(seed.teams[1]?.delegation) // correcto para la posicion 1
+    }, 5000);
+
+
+    // Limpiar los timeouts al desmontar el componente
+    return () => {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+      clearTimeout(timeout3);
+      clearTimeout(timeout4);
+    };
+  }, []);
+
 
   // mobileBreakpoint is required to be passed down to a seed
   return (
     <Wrapper
       mobileBreakpoint={breakpoint}
-      className={`text-md font-semibold ${
-        roundIndex > 0 ? "rounded-sm" : ""
-      }`}
+      className={`text-md font-semibold ${roundIndex > 0 ? "rounded-sm" : ""}`}
     >
       {/* caja padre */}
       {roundIndex > 0 ? (
         //Segunda ronda stylos
         <SeedItem
-        className="flex justify-between shadow-none bg-white "
-        style={{
-          boxShadow: "none",
-          backgroundColor: "white",
-        }}
-      >
-         {/* box id */}
-        <div className="rounded-md w-12 bg-white text-gray-700"> ID
-        <div className="mb-1 rounded-md border-2 border-gray-400/50 bg-gray-200 h-12">
-          
-        </div>
-        <div className="flex w-12 h-12 justify-center items-center  rounded-md border-2 border-gray-400/50 bg-gray-200 text-xs">
-          
-        </div>
-      </div>
-       {/* box puntos */}
-       <div className="  w-12 flex flex-col justify-around bg-white text-gray-700 border-r-2 rounded-md border-gray-400/50"> PTS
+          className="flex justify-between shadow-none bg-white "
+          style={{
+            boxShadow: "none",
+            backgroundColor: "white",
+          }}
+        >
+          {/* box id */}
+          <div className="rounded-md w-12 bg-white text-gray-700">
+            {" "}
+            ID
+            <div className="mb-1 rounded-md border-2 border-gray-400/50 bg-gray-200 h-12"></div>
+            <div className="flex w-12 h-12 justify-center items-center  rounded-md border-2 border-gray-400/50 bg-gray-200 text-xs"></div>
+          </div>
+          {/* box puntos */}
+          <div className="w-12 flex flex-col justify-around bg-white text-gray-700 border-r-2 rounded-md border-gray-400/50">
+            {" "}
+            PTS
             <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-12 w-12 text-xs rounded-md"></div>
             <div className=" flex justify-center items-center border-2 border-gray-400/50  h-12 w-12 text-xs rounded-md"></div>
           </div>
-      </SeedItem>
+        </SeedItem>
       ) : (
         <SeedItem
           className="flex justify-between w-full shadow-none bg-white "
@@ -47,7 +97,6 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
             backgroundColor: "white",
           }}
         >
-          
           {/* box id */}
 
           <div className="rounded-md w-12 flex flex-col justify-around bg-white text-gray-700">
@@ -63,18 +112,22 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
           <div className=" flex flex-col mr-2" style={{ minWidth: "170px" }}>
             <div className="mb-1 border-2  border-gray-400/50  rounded-md">
               <div className="text-left flex items-center px-2 text-xs  h-6 border-b border-gray-400/50 text-gray-700 w-full">
-                {seed.teams[0]?.name || ""}
+                {/* {seed.teams[0]?.name || "" } */}
+                {efectName0}
               </div>
-              <div className=" text-left flex items-center px-2 text-xs  h-6  text-gray-700 w-full rounded-md">
-                {seed.teams[0].delegation || ""}
+              <div className="text-left flex items-center px-2 text-xs  h-6  text-gray-700 w-full rounded-md">
+                {/* {seed.teams[0]?.delegation || ""} */}
+                {efectDelegation0}
               </div>
             </div>
             <div className="border-2 border-gray-400/50  rounded-md">
               <div className="text-left flex items-center px-2 text-xs   h-6 border-b border-gray-400/50 bg-white text-gray-700 w-full ">
-                {seed.teams[1]?.name || " "}
+                {/* {seed.teams[1]?.name || " "} */}
+                {efectName1}
               </div>
               <div className="text-left flex items-center px-2 text-xs  h-6   text-gray-700 w-full ">
-                {seed.teams[1].delegation || ""}
+                {/* {seed.teams[1]?.delegation || ""} */}
+                {efectDelegation1}
               </div>
             </div>
           </div>
@@ -93,8 +146,10 @@ const CustomSeed = ({ seed, breakpoint, roundIndex, seedIndex, rounds }) => {
 export default function Pyramid() {
   const context = useContext(GlobalContext);
   const typePyramid = context.typePyramid;
-  const group = context.groupNow.arrayGroup;
+  const groupLocal = getLocalStorage("groupNow");
 
+  const group = context.groupNow.arrayGroup || groupLocal.arrayGroup
+ 
   const pyramidValues = {
     2: 2,
     3: 6,

@@ -13,7 +13,6 @@ export default function CardIndividual({ keyName, groupNow, setIsActive }) {
   const handleClickSorteo = () => {
     //captura el evento del click para SetIsSorteo
     context.groupsByCode[keyName]["isRaffled"] = true
-    console.log(context.groupsByCode[keyName]["isRaffled"] );
     const actuGroups = JSON.stringify(context.groupsByCode)
     localStorage.removeItem("groupsByCode")
     localStorage.setItem("groupsByCode", actuGroups)

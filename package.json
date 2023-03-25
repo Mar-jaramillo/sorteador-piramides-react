@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "orgchart": "^3.5.0",
