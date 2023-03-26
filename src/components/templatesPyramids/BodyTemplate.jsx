@@ -41,8 +41,8 @@ export default function BodyTemplate() {
         </div>
         {activeAcordeon ? (
           <div>
-            <div className="flex justify-center m-5">
-              <img className="h-24" src={groupLogos} alt="logo" />
+            <div className=" flex justify-center m-5">
+              <img className=" h-24" src={groupLogos} alt="logo" />
             </div>
             <div className="flex justify-between">
               <div className="">
@@ -60,20 +60,22 @@ export default function BodyTemplate() {
               </div>
             </div>
 
-            <div className="py-2">
+            <div className=" py-2">
               <Pyramid typePyramid={context.typePyramid} />
             </div>
             <TablePositions />
             <div className="flex justify-center p-24">
-              <img className="" src={firmas} alt="firmas" />
+              <img className="max-w-5xl" src={firmas} alt="firmas" />
             </div>
-            <div className="flex flex-col justify-center w-32 h-32">
+            <div className="flex justify-center">
+            <div className="flex flex-col items-center  w-32 h-32">
               <p className="text-gray-600">Desarrollado por:</p>
               <img
                 className=""
                 src={logoqubilo}
                 alt="logo"
               />
+            </div>
             </div>
           </div>
         ) : null}

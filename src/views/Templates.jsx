@@ -20,7 +20,7 @@ export default function Templates() {
 
   useEffect(() => {
     const changePageTitle = () => {
-      const newPageTitle = "Plantillas Vacías";
+      const newPageTitle = "Pirámide";
       pathname === "/templates" && (document.title = newPageTitle);
     };
     changePageTitle();
