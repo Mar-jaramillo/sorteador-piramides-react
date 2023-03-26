@@ -66,7 +66,7 @@ export default function Board() {
 
       <div className="flex flex-col bottom-8 items-end text-white">
         <p className="text-sm px-12">Desarrollado por:</p>
-        <img className="h-16" src={logoqubulowhite} alt="" />
+        <img className="h-10 mx-8 mb-5" src={logoqubulowhite} alt="" />
       </div>
     </div>
   );
