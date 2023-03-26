@@ -6,7 +6,7 @@ const CustomSeed = ({ seed, breakpoint, roundIndex }) => {
   const Wrapper = Seed;
   return (
     
-    <Wrapper mobileBreakpoint={breakpoint} className={"text-md font-semibold"}>
+    <Wrapper mobileBreakpoint={breakpoint} className={"text-md font-semibold"}style={{minWidth:"0"}}>
       <SeedItem
         className="flex justify-end  min-w-0 gap-2 shadow-none bg-white "
         style={{

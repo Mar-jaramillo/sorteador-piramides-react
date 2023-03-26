@@ -15,6 +15,7 @@ const CustomSeed = ({ seed, breakpoint, roundIndex }) => {
     <Wrapper
       mobileBreakpoint={breakpoint}
       className={`text-md font-semibold ${roundIndex > 0 ? "rounded-sm" : ""}`}
+      style={{minWidth:"0"}}
     >
       {/* caja padre */}
       {roundIndex > 0 ? (
