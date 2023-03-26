@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import GlobalContext from "../../utils/GlobalContext";
 import iconRaffled from "../../assets/icons/iconRaffled.svg";
 import { useNavigate } from "react-router-dom";
-import { getLocalStorage } from "../../utils/getLocalStorage";
 
 export default function CardIndividual({ keyName, groupNow, setIsActive }) {
   const [isReady, setIsReady] = useState(false);
@@ -12,20 +11,13 @@ export default function CardIndividual({ keyName, groupNow, setIsActive }) {
   const amountParticipantsCard = groupNow.arrayGroup.length;
 
   const handleClickSorteo = () => {
-    const groups = getLocalStorage("groupsByCode");
-    if (groups[keyName] && groups[keyName].isRaffled === false) {
-      groups[keyName].isRaffled = true;
-    }
-    if (context.groupsByCode[keyName] && context.groupsByCode[keyName].isRaffled === false) {
-      context.groupsByCode[keyName].isRaffled = true;
-    }
-  
-    localStorage.removeItem("groupsByCode");
-    localStorage.setItem("groupsByCode", JSON.stringify(groups));
-    const prueba = getLocalStorage("groupsByCode");
-    console.log(prueba[keyName]);
-    context.raffledCards++;
-  };
+    //captura el evento del click para SetIsSorteo
+    context.groupsByCode[keyName]["isRaffled"] = true
+    const actuGroups = JSON.stringify(context.groupsByCode)
+    localStorage.removeItem("groupsByCode")
+    localStorage.setItem("groupsByCode", actuGroups)
+    context.raffledCards++
+    };
 
   const handleIsReady = () => {
     context.groupNow = groupNow;
