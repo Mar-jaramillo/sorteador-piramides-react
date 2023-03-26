@@ -7,6 +7,8 @@ import groupLogos from "../../assets/logos/groupLogos.svg";
 import logoqubilo from "../../assets/logos/logoqubilo.png";
 import firmas from "../../assets/firmas.svg";
 import TablePositions from "./TablePositions";
+import EliminationPyramid from "./EliminationPyramid";
+
 
 export default function BodyTemplate() {
   const [activeAcordeon, setActiveAcordeon] = useState(true);
@@ -61,8 +63,12 @@ export default function BodyTemplate() {
             </div>
          
 
-            <div className=" w-min-0 py-2">
+            <div className="w-min-0 py-2">
               <Pyramid typePyramid={context.typePyramid} />
+              <p className="mx-72 text-end font-semibold text-gray-500"> Tercer y Cuarto puesto</p>
+              <div className="mb-11 flex justify-end">
+              <EliminationPyramid/>
+              </div>
               <TablePositions />
             </div>
             

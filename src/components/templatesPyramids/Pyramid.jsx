@@ -95,7 +95,9 @@ const CustomSeed = ({ seed, breakpoint, roundIndex }) => {
           </div>
         </SeedItem>
       )}
+      
     </Wrapper>
+    
   );
 };
 
