@@ -41,16 +41,16 @@ export default function BodyTemplate() {
         </div>
         {activeAcordeon ? (
           <div>
-            <div className=" flex justify-center m-5">
-              <img className=" h-24" src={groupLogos} alt="logo" />
-            </div>
-            <div className="flex justify-between">
-              <div className="">
+               <div className="flex justify-end mx-32">
+              <div className="mt-5">
                 <span className="text-xl py-3 px-14 rounded-lg bg-gray-200 text-slate-600 ">
                   {context.nameEvent || getLocalStorage("nameEvent")}
                 </span>
               </div>
 
+            </div>
+            <div className=" flex justify-end m-5">
+              <img className=" h-24" src={groupLogos} alt="logo" />
               <div className="flex flex-col px-32">
                 <h3 className="text-gray-700  px-10 text-right text-lg w-full font-bold my-7">
                   Grupo{" "}
@@ -59,11 +59,13 @@ export default function BodyTemplate() {
                 <TableCategories />
               </div>
             </div>
+         
 
             <div className=" py-2">
               <Pyramid typePyramid={context.typePyramid} />
+              <TablePositions />
             </div>
-            <TablePositions />
+            
             <div className="flex justify-center p-24">
               <img className="max-w-5xl" src={firmas} alt="firmas" />
             </div>
