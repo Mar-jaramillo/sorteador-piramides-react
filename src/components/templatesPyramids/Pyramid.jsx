@@ -20,10 +20,11 @@ const CustomSeed = ({ seed, breakpoint, roundIndex }) => {
       {roundIndex > 0 ? (
         //Segunda ronda stylos
         <SeedItem
-          className="flex justify-between shadow-none bg-white "
+          className="flex gap-2 shadow-none bg-white "
           style={{
             boxShadow: "none",
             backgroundColor: "white",
+            minWidth: 0 ,
           }}
         >
           {/* box id */}
@@ -45,11 +46,13 @@ const CustomSeed = ({ seed, breakpoint, roundIndex }) => {
           style={{
             boxShadow: "none",
             backgroundColor: "white",
+            minWidth: "0px" ,
           }}
         >
           {/* box id */}
 
           <div className="rounded-md w-12 flex flex-col justify-around bg-white text-gray-700">
+          <div>ID</div>
             <div className="mb-1 flex justify-center items-center rounded-md border-2 border-gray-400/50 bg-gray-200  h-full w-full text-xs">
               {seed.teams[0].id || " "}
             </div>
@@ -60,6 +63,7 @@ const CustomSeed = ({ seed, breakpoint, roundIndex }) => {
           {/* box names */}
 
           <div className=" flex flex-col mr-2" style={{ minWidth: "170px" }}>
+          <div>Deportistas</div>
             <div className="mb-1 border-2  border-gray-400/50  rounded-md">
               <div className=" text-left flex items-center px-2 text-xs  h-6 border-b border-gray-400/50 text-gray-700 w-full">
                 {seed.teams[0]?.name || ""}
@@ -83,9 +87,11 @@ const CustomSeed = ({ seed, breakpoint, roundIndex }) => {
           </div>
 
           {/* box puntos */}
-          <div className="  w-12 flex flex-col justify-around bg-white text-gray-700 border-r-2 rounded-md border-gray-400/50">
-            <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-full w-full text-xs rounded-md"></div>
-            <div className=" flex justify-center items-center border-2 border-gray-400/50  h-full w-full text-xs rounded-md"></div>
+          
+          <div className="  w-12 flex flex-col justify-around bg-white text-gray-700  rounded-md border-gray-400/50">
+          <div>PTS</div>
+            <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-full w-full rounded-md"></div>
+            <div className=" flex justify-center items-center border-2 border-gray-400/50  h-full w-full rounded-md"></div>
           </div>
         </SeedItem>
       )}
