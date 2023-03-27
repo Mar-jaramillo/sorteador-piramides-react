@@ -24,6 +24,7 @@ export default function ExcelUploader({ setIsLoading, setError }) {
         const valuesUniques = obtenerPropiedadesUnicas(excelData); // crea las propiedades unicas para usar en los selects de board
         const groupsByCode = createGroupsByCode(excelData); // crea los grupos de deportistas por codigo
         const keysOfGroups = Object.keys(groupsByCode);
+        const keysNoMutar = keysOfGroups
         // crea un array de lo codigos para usar en el board
         const totalGroups = keysOfGroups.length;
         const totalDelegations = valuesUniques["Delegación"].length;
@@ -34,6 +35,7 @@ export default function ExcelUploader({ setIsLoading, setError }) {
         context.totalDelegations = totalDelegations;
         context.groupsByCode = groupsByCode;
         context.keysOfGroups = keysOfGroups;
+        context.keysNoMutar = keysOfGroups.slice()
         context.valuesUniques = valuesUniques;
   
         //Guardados en LocalStorage
@@ -45,6 +47,7 @@ export default function ExcelUploader({ setIsLoading, setError }) {
         );
         localStorage.setItem("groupsByCode", JSON.stringify(groupsByCode));
         localStorage.setItem("keysOfGroups", JSON.stringify(keysOfGroups));
+        localStorage.setItem("keysNoMutar", JSON.stringify(keysNoMutar));
         localStorage.setItem("valuesUniques", JSON.stringify(valuesUniques));
         localStorage.setItem("excelData", JSON.stringify(excelData));
         // const eventData = {
@@ -59,6 +62,7 @@ export default function ExcelUploader({ setIsLoading, setError }) {
         }, 1000);
       }
     } catch (error) {
+      console.log(error);
       error && setError(true)
     }
   };
