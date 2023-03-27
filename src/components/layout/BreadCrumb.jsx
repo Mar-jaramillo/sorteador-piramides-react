@@ -58,7 +58,7 @@ export default function BreadCrumb() {
           <li aria-current="page">
             <div className="flex items-center">
               <span className="ml-1 text-sm  md:ml-2">
-                Plantillas de pirámides
+                Pirámide
               </span>
             </div>
           </li>
