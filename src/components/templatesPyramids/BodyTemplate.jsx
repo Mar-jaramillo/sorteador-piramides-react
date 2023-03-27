@@ -7,6 +7,8 @@ import groupLogos from "../../assets/logos/groupLogos.svg";
 import logoqubilo from "../../assets/logos/logoqubilo.png";
 import firmas from "../../assets/firmas.svg";
 import TablePositions from "./TablePositions";
+import EliminationPyramid from "./EliminationPyramid";
+
 
 export default function BodyTemplate() {
   const [activeAcordeon, setActiveAcordeon] = useState(true);
@@ -41,39 +43,47 @@ export default function BodyTemplate() {
         </div>
         {activeAcordeon ? (
           <div>
-            <div className="flex justify-center m-5">
-              <img className="h-24" src={groupLogos} alt="logo" />
-            </div>
-            <div className="flex justify-between">
-              <div className="">
+               <div className="flex justify-between my-3 mx-20">
+               <img className="mt-5 h-24" src={groupLogos} alt="logo" />
+              <div className="mt-14">
                 <span className="text-xl py-3 px-14 rounded-lg bg-gray-200 text-slate-600 ">
                   {context.nameEvent || getLocalStorage("nameEvent")}
                 </span>
               </div>
 
-              <div className="flex flex-col px-32">
-                <h3 className="text-gray-700  px-10 text-right text-lg w-full font-bold my-7">
+            </div>
+            <div className=" flex justify-end">
+              <div className="flex flex-col mx-20">
+                <h3 className="text-gray-700  px-10 text-right text-lg font-bold">
                   Grupo{" "}
                   <span className="px-3 rounded-md">{context.keyNameNow}</span>
                 </h3>
                 <TableCategories />
               </div>
             </div>
+         
 
-            <div className="py-2">
+            <div className="w-min-0 py-2">
               <Pyramid typePyramid={context.typePyramid} />
+              <p className="mx-72 text-end font-semibold text-gray-500"> Tercer y Cuarto puesto</p>
+              <div className="mb-11 flex justify-end">
+              <EliminationPyramid/>
+              </div>
+              <TablePositions />
             </div>
-            <TablePositions />
+            
             <div className="flex justify-center p-24">
-              <img className="" src={firmas} alt="firmas" />
+              <img className="max-w-5xl" src={firmas} alt="firmas" />
             </div>
-            <div className="flex flex-col justify-center w-32 h-32">
+            <div className="flex justify-center">
+            <div className="flex flex-col items-center  w-32 h-32">
               <p className="text-gray-600">Desarrollado por:</p>
               <img
                 className=""
                 src={logoqubilo}
                 alt="logo"
               />
+            </div>
             </div>
           </div>
         ) : null}
