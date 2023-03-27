@@ -79,7 +79,7 @@ export default function BodyTemplate() {
             </div>
 
             <div className="flex justify-center p-24">
-              <img className="max-w-5xl" src={firmas} alt="firmas" />
+              <img className="max-w-screen-lg" src={firmas} alt="firmas" />
             </div>
             <div className="flex justify-center">
               <div className="flex flex-col items-center  w-32 h-32">
