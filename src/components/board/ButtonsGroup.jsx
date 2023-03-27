@@ -69,16 +69,16 @@ export default function ButtonsGroup({
 
   return (
     <div className="flex gap-3 px-3">
-      <button onClick={HandleAllKeys} className="bg-white/50 px-2 py-1 font-bold rounded-md hover:bg-white/25 ">
+      <button onClick={HandleAllKeys} className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-white/25 ">
         Todos 
       </button>
       <button
         onClick={handleSearchRaffled}
-        className="bg-white/50 px-2 py-1 font-bold rounded-md hover:bg-greenPrimary"
+        className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-greenPrimary"
       >
         Sorteado {cardsRaffleds}
       </button>
-      <button onClick={handleSearchNotRaffled} className="bg-white/50 px-2 py-1 font-bold rounded-md hover:bg-redPrimary">
+      <button onClick={handleSearchNotRaffled} className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-redPrimary">
         Sin sortear {notRaffled}
       </button>
     </div>
