@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 
-export default function BotonGroup({
+export default function ButtonsGroup({
   keysOfGroups,
   groupsByCode,
   setFilteredKeysOfGroups,

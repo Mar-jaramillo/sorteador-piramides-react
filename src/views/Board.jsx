@@ -7,7 +7,8 @@ import BreadCrumb from "../components/layout/BreadCrumb";
 import { getLocalStorage } from "../utils/getLocalStorage";
 import GlobalContext from "../utils/GlobalContext";
 import logoqubulowhite from "../assets/logos/logoqubulowhite.png";
-import BotonGroup from "../components/board/BotonGroup";
+import ButtonsGroup from "../components/board/ButtonsGroup";
+
 
 export default function Board() {
   const context = useContext(GlobalContext);
@@ -53,7 +54,7 @@ export default function Board() {
           groupsByCode={groupsByCode}
           setFilteredKeysOfGroups={setFilteredKeysOfGroups}
         />
-        <BotonGroup  setFilteredKeysOfGroups={setFilteredKeysOfGroups} keysOfGroups={keysOfGroups} groupsByCode={groupsByCode} />
+        <ButtonsGroup  setFilteredKeysOfGroups={setFilteredKeysOfGroups} keysOfGroups={keysOfGroups} groupsByCode={groupsByCode} />
         <CardsBoard
           filteredKeysOfGroups={filteredKeysOfGroups}
           keysOfGroups={keysOfGroups}
