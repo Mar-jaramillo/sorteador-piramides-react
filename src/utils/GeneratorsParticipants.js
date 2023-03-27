@@ -92,3 +92,15 @@ export const sixthRound = (pyramid) => {
   }
   return participantes;
 };
+
+export const forPyramidThree = () => {
+  const participantes = [];
+  for (let index = 0; index < 3; index++) {
+    participantes.push({
+      id: index,
+      teams: [{ name: "" }, { name: "" }],
+    });
+  }
+  return participantes;
+};
+
