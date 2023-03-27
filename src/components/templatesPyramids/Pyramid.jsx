@@ -93,7 +93,7 @@ export default function Pyramid() {
   pyramid === 6 &&
     rounds.push({
       key: "round2",
-      seeds: Generator.secondRound(pyramid),
+      seeds: Generator.forPyramidThree(),
     });
   pyramid === 8 &&
     rounds.push(
