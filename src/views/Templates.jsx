@@ -30,7 +30,7 @@ export default function Templates() {
     <>
       <div id="pyramid" className=" text-white  w-full">
         {showAnimation && (
-          <div className="fixed w-full z-50 h-screen  backdrop-blur-sm bg-black/75 grid place-content-center">
+          <div className="fixed w-full z-50 h-screen bg-black/50 grid place-content-center">
             <LoaderSorteo />
           </div>
         )}

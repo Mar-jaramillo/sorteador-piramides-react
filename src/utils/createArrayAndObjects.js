@@ -7,6 +7,7 @@
 
 export const createArrayAndObjects = (pyramid) => {
   return new Array(pyramid).fill({
+ 
     "Nombre Deportista": "Bay",
     Delegación: "",
   });
