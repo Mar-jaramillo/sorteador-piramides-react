@@ -1,3 +1,3 @@
 export const changePageTitle = (pathName, title) => {
-  pathname === "/" && (document.title = title);
+  pathName === "/" && (document.title = title);
 };
