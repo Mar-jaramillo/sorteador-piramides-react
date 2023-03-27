@@ -1,34 +1,27 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../../utils/GlobalContext";
 import iconRaffled from "../../assets/icons/iconRaffled.svg";
 import { useNavigate } from "react-router-dom";
 
-export default function CardIndividual({ keyName, groupNow, setIsActive }) {
-  const [isReady, setIsReady] = useState(false);
-
+export default function CardIndividual({
+  keyName,
+  groupNow,
+  setIsActive,
+  groupsByCode,
+}) {
   const context = useContext(GlobalContext);
   const navigate = useNavigate();
   const amountParticipantsCard = groupNow.arrayGroup.length;
+  let typePyramid = null;
 
   const handleClickSorteo = () => {
-    //captura el evento del click para SetIsSorteo
-    context.groupsByCode[keyName]["isRaffled"] = true
-    const actuGroups = JSON.stringify(context.groupsByCode)
-    localStorage.removeItem("groupsByCode")
-    localStorage.setItem("groupsByCode", actuGroups)
-    context.raffledCards++
-    };
-
-  const handleIsReady = () => {
     context.groupNow = groupNow;
-    context.keyNameNow = keyName;
+    context.keyNameNow = keyName; 
+    context.typePyramid = typePyramid;
+ 
     localStorage.setItem("groupNow ", JSON.stringify(groupNow));
-    localStorage.setItem(
-      "amountParticipantsCard ",
-      JSON.stringify(amountParticipantsCard)
-    );
-
-    let typePyramid = null;
+    localStorage.setItem("amountParticipantsCard ",JSON.stringify(amountParticipantsCard))
+    localStorage.setItem("keyNameNow", JSON.stringify(keyName));
 
     if (amountParticipantsCard === 1) {
       typePyramid = null;
@@ -46,13 +39,23 @@ export default function CardIndividual({ keyName, groupNow, setIsActive }) {
       typePyramid = 32;
     }
 
-    context.typePyramid = typePyramid;
     localStorage.setItem("typePyramid", JSON.stringify(typePyramid));
     setIsActive({
       active: true,
     });
-    setIsReady(true);
+
+    if (groupsByCode[keyName].isRaffled === false) {
+      groupsByCode[keyName].isRaffled = true;
+      localStorage.setItem("groupsByCode", JSON.stringify(groupsByCode)); 
+      context.groupsByCode = groupsByCode;
+      context.raffledCards++;
+    }
   };
+
+ 
+
+
+
 
   const greenCard =
     "text-center grid grid-cols-12 p-4 border-b-2 rounded-t-2xl bg-green-500";
@@ -143,19 +146,23 @@ export default function CardIndividual({ keyName, groupNow, setIsActive }) {
                 <p className="col-span-6  text-white m-4 px-5 py-2  underline">
                   No se puede sortear
                 </p>
-              ) : groupNow.isRaffled  ? (
+              ) : groupNow.isRaffled ? (
                 <div>
-                  <button onClick={()=>{
-                        handleClickSorteo();
-                        navigate("/templates");
-                  }} className="col-span-6  text-white m-4 px-5 py-2  underline">
-                   Volver a sortear
+                  <button
+                    onClick={() => {
+         
+                      handleClickSorteo();
+                      navigate("/templates");
+                    }}
+                    className="col-span-6  text-white m-4 px-5 py-2  underline"
+                  >
+                    Volver a sortear
                   </button>
                 </div>
               ) : (
                 <button
                   onClick={() => {
-                    handleIsReady();
+         
                     handleClickSorteo();
                     navigate("/templates");
                   }}

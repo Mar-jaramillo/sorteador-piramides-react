@@ -140,3 +140,12 @@ thead{
       transform: scale(1.0);
     }
   }
+
+  .animate1 {
+    animation:  fadeInLeft; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 3s; /* don't forget to set a duration! */
+  }
+  .animate2 {
+    animation:  fadeInLeft; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 8s; /* don't forget to set a duration! */
+  }

@@ -30,11 +30,11 @@ export default function Templates() {
     <>
       <div id="pyramid" className=" text-white  w-full">
         {showAnimation && (
-          <div className="fixed w-full z-50 h-screen  backdrop-blur-sm bg-black/50 grid place-content-center">
+          <div className="fixed w-full z-50 h-screen  backdrop-blur-sm bg-black/75 grid place-content-center">
             <LoaderSorteo />
           </div>
         )}
-        <div className="px-32">
+        <div className="px-32 pt-10">
         <BreadCrumb />
    
         <h2 className="text-3xl font-bold  mb-16">

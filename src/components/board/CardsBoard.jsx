@@ -26,6 +26,7 @@ export default function CardsBoard({
       {isLoad ? (
         cardsToRender.map((key) => (
           <CardIndividual
+          groupsByCode={groupsByCode}
             setIsActive={setIsActive}
             isActive={isActive}
             key={key}

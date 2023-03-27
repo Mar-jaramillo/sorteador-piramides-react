@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { getLocalStorage } from "./utils/getLocalStorage";
 import GlobalContext from "./utils/GlobalContext";
 import Board from "./views/Board";
 import DataTable from "./views/DataTable";
@@ -33,6 +34,7 @@ export default function App() {
     keyNameNow: "", //Se espera el nombre del codigo del grupo seleccionado
     raffledCards: [],
     cardsNotRaffled: [],
+    groupNow: {},
   };
 
   return (

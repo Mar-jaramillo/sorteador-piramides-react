@@ -16,12 +16,13 @@ export default function SelectFilter({
     setValuesSelect(getLocalStorage("valuesUniques"));
   }, []);
 
+  const groups = groupsByCode || getLocalStorage("groupsByCode")
 
   const handleSearch = (e) => {
     const valueSearch = e.target.value;
     const filteredKeys = {};
     for (const key of keysOfGroups) {
-      const array = context.groupsByCode[key].arrayGroup;
+      const array = groups[key].arrayGroup;
       array.forEach((element) => {
         if (
           element["Delegación"] === valueSearch ||

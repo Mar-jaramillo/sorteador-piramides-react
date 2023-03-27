@@ -7,10 +7,6 @@ import GlobalContext from "../../utils/GlobalContext";
 const CustomSeed = ({ seed, breakpoint, roundIndex }) => {
   const Wrapper = Seed;
 
-  // const [efectDelegation0, setEfectDelegation0] = useState("Sorteando...");
-  // const [efectDelegation1, setEfectDelegation1] = useState("Sorteando...");
-
-  // mobileBreakpoint is required to be passed down to a seed
   return (
     <Wrapper
       mobileBreakpoint={breakpoint}
@@ -43,7 +39,7 @@ const CustomSeed = ({ seed, breakpoint, roundIndex }) => {
         </SeedItem>
       ) : (
         <SeedItem
-          className=" flex justify-between w-full shadow-none bg-white "
+          className="flex justify-between w-full shadow-none bg-white "
           style={{
             boxShadow: "none",
             backgroundColor: "white",
@@ -51,33 +47,33 @@ const CustomSeed = ({ seed, breakpoint, roundIndex }) => {
         >
           {/* box id */}
 
-          <div className="rounded-md w-12 flex flex-col justify-around bg-white text-gray-700">
-            <div className="mb-1 flex justify-center items-center rounded-md border-2 border-gray-400/50 bg-gray-200  h-full w-full text-xs">
+          <div className=" rounded-md w-12 flex flex-col justify-around bg-white text-gray-700">
+            <div className="animate1 mb-1 flex justify-center items-center rounded-md border-2 border-gray-400/50 bg-gray-200  h-full w-full text-xs">
               {seed.teams[0].id || " "}
             </div>
-            <div className="flex w-12 justify-center items-center h-full rounded-md border-2 border-gray-400/50 bg-gray-200 text-xs">
+            <div className="animate2 flex w-12 justify-center items-center h-full rounded-md border-2 border-gray-400/50 bg-gray-200 text-xs">
               {seed.teams[1].id || " "}
             </div>
           </div>
           {/* box names */}
 
           <div className=" flex flex-col mr-2" style={{ minWidth: "170px" }}>
-            <div className="mb-1 border-2  border-gray-400/50  rounded-md">
+            <div className="animate1  mb-1 border-2  border-gray-400/50  rounded-md">
               <div className=" text-left flex items-center px-2 text-xs  h-6 border-b border-gray-400/50 text-gray-700 w-full">
                 {seed.teams[0]?.name || ""}
                 {/* {efectName0} */}
               </div>
-              <div className=" text-left flex items-center px-2 text-xs  h-6  text-gray-700 w-full rounded-md">
+              <div className="text-left flex items-center px-2 text-xs  h-6  text-gray-700 w-full rounded-md">
                 {seed.teams[0]?.delegation || ""}
                 {/* {efectDelegation0} */}
               </div>
             </div>
-            <div className="border-2 border-gray-400/50  rounded-md">
+            <div className="animate2  border-2 border-gray-400/50  rounded-md">
               <div className=" text-left flex items-center px-2 text-xs   h-6 border-b border-gray-400/50 bg-white text-gray-700 w-full ">
                 {seed.teams[1]?.name || " "}
                 {/* {efectName1} */}
               </div>
-              <div className=" text-left flex items-center px-2 text-xs  h-6   text-gray-700 w-full ">
+              <div className="text-left flex items-center px-2 text-xs  h-6   text-gray-700 w-full ">
                 {seed.teams[1]?.delegation || ""}
                 {/* {efectDelegation1} */}
               </div>
@@ -97,10 +93,13 @@ const CustomSeed = ({ seed, breakpoint, roundIndex }) => {
 
 export default function Pyramid() {
   const context = useContext(GlobalContext);
-  const typePyramid = context.typePyramid;
+  const typePyramid = getLocalStorage("typePyramid")
   const groupLocal = getLocalStorage("groupNow");
+  const groupsByCode = getLocalStorage("groupsByCode");
+  const keyNameNow = getLocalStorage("keyNameNow");
+  const grouptem = groupsByCode[keyNameNow];
 
-  const group = context.groupNow.arrayGroup || groupLocal.arrayGroup;
+  const group = grouptem.arrayGroup || context.groupNow.arrayGroup || groupLocal.arrayGroup;
 
   const pyramidValues = {
     2: 2,

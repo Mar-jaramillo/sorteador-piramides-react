@@ -53,7 +53,7 @@ export default function Board() {
           groupsByCode={groupsByCode}
           setFilteredKeysOfGroups={setFilteredKeysOfGroups}
         />
-        <BotonGroup keysOfGroups={keysOfGroups} groupsByCode={groupsByCode} />
+        <BotonGroup  setFilteredKeysOfGroups={setFilteredKeysOfGroups} keysOfGroups={keysOfGroups} groupsByCode={groupsByCode} />
         <CardsBoard
           filteredKeysOfGroups={filteredKeysOfGroups}
           keysOfGroups={keysOfGroups}

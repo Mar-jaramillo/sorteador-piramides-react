@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 
-export default function BotonGroup({ keysOfGroups, groupsByCode }) {
+export default function BotonGroup({ keysOfGroups, groupsByCode, setFilteredKeysOfGroups }) {
   const context = useContext(GlobalContext);
   const [cardsRaffleds, setCardsRaffleds] = useState(0);
   const [notRaffled, setnotRaffled] = useState(context.totalGroups || getLocalStorage("totalGroups"));
@@ -27,6 +27,26 @@ export default function BotonGroup({ keysOfGroups, groupsByCode }) {
     context.totalGroupsFiltered > 0
       ? context.totalGroupsFiltered
       : context.keysOfGroups.length;
+
+      // const handleSearch = (e) => {
+
+      //   const filteredKeys = {};
+      //   for (const key of keysOfGroups) {
+      //     const array = groups[key];
+      //     array.forEach((element) => {
+      //       if (
+
+      //       ) {
+      //         filteredKeys[key] = true; // Agregar el grupo a la lista de filtrados
+      //       }
+      //     });
+      //   }
+      //   const filteredKeysList = Object.keys(filteredKeys); // Convertir el objeto en una lista
+      //   context.totalGroupsFiltered = filteredKeysList.length;
+       
+      //   setFilteredKeysOfGroups(filteredKeysList);
+      //   setsearchValue(valueSearch);
+      // };
 
   return (
     <div className="flex gap-3 px-3">

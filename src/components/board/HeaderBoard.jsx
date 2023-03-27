@@ -10,9 +10,7 @@ export default function HeaderBoard() {
           Grupos de competidores
         </h2>
       </div>
-      <div className="text-right">
-        <NavBar/>
-      </div>
+
     </div>
   );
 }

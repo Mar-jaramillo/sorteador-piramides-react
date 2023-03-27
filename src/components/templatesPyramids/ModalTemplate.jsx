@@ -13,7 +13,7 @@ export default function ModalTemplate({ sorteado }) {
   const { pathname } = useLocation();
 
   return (
-    <div className="px-20 pb-56">
+    <div className="px-32 pb-56">
       <div className="flex w-full  justify-between items-center gap-5 mb-4">
         <p className="text-lg   flex flex-col justify-end font-semibold">
           {context.raffledCard} de{" "}
