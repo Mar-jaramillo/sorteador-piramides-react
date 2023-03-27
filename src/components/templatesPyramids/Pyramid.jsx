@@ -1,24 +1,37 @@
-import React, { useContext } from "react";
-import { Bracket, Seed, SeedItem, SingleLineSeed   } from "react-brackets";
+import React, { useContext, useEffect } from "react";
+import { Bracket, Seed, SeedItem, SingleLineSeed } from "react-brackets";
 import * as Generator from "../../utils/GeneratorsParticipants";
 import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 import { ItemSeed } from "./ItemSeed";
 
 const CustomSeed = ({ seed, roundIndex, seedIndex }) => {
-  
+  const context = useContext(GlobalContext);
 
-  const Wrapper = Seed; 
+
+  const typePyramid = context.typePyramid || getLocalStorage("typePyramid");
+
+  useEffect(() => {
+    const wrapper = document.querySelectorAll(".wrapper");
+    if (typePyramid !== 3) {
+      wrapper.forEach((ele) => ele.classList.remove("item"));
+      console.log("se cumplio la condicion");
+    }
+  }, [typePyramid]);
+
+  const Wrapper = Seed;
   return (
     <Wrapper
-      className={`text-md font-semibold ${roundIndex > 0 ? "rounded-sm" : ""}`}
+      className={`wrapper item text-md font-semibold ${
+        roundIndex > 0 ? "rounded-sm" : ""
+      }`}
       style={{ minWidth: "0" }}
     >
       {/* caja padre */}
       {roundIndex > 0 ? (
         //Segunda ronda stylos
         <SeedItem
-          className="flex gap-2 shadow-none bg-white "
+          className="wrapper item flex gap-2 shadow-none bg-white "
           style={{
             boxShadow: "none",
             backgroundColor: "white",
