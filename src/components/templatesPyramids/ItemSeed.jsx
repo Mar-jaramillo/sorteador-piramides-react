@@ -3,8 +3,8 @@ import { SeedItem } from "react-brackets";
 
 export const ItemSeed = ({ seed }) => {
   return (
-    <SeedItem
-      className=" flex justify-between w-full shadow-none bg-white "
+    <SeedItem 
+      className="item flex justify-between w-full shadow-none bg-white "
       style={{
         boxShadow: "none",
         backgroundColor: "white",
@@ -15,10 +15,10 @@ export const ItemSeed = ({ seed }) => {
 
       <div className=" text-gray-700   rounded-md w-12 flex flex-col justify-around bg-white ">
         <div>ID</div>
-        <div className="animate1 mb-1 flex justify-center items-center rounded-md border-2 border-gray-400/50 bg-gray-200  h-full w-full text-xs">
+        <div className=" mb-1 flex justify-center items-center rounded-md border-2 border-gray-400/50 bg-gray-200  h-full w-full text-xs">
           {seed.teams[0].id || " "}
         </div>
-        <div className="animate2  flex w-12 justify-center items-center h-full rounded-md border-2 border-gray-400/50 bg-gray-200 text-xs">
+        <div className="  flex w-12 justify-center items-center h-full rounded-md border-2 border-gray-400/50 bg-gray-200 text-xs">
           {seed.teams[1].id || " "}
         </div>
       </div>
@@ -29,7 +29,7 @@ export const ItemSeed = ({ seed }) => {
         style={{ minWidth: "170px" }}
       >
         <div className="text-white">Deportistas</div>
-        <div className=" animate1 mb-1 border-2  border-gray-400/50  rounded-md">
+        <div className="  mb-1 border-2  border-gray-400/50  rounded-md">
           <div className=" text-left flex items-center px-2 text-xs  h-6 border-b border-gray-400/50  w-full">
             {seed.teams[0]?.name || ""}
             {/* {efectName0} */}
@@ -39,7 +39,7 @@ export const ItemSeed = ({ seed }) => {
             {/* {efectDelegation0} */}
           </div>
         </div>
-        <div className=" animate2  border-2 border-gray-400/50  rounded-md">
+        <div className="   border-2 border-gray-400/50  rounded-md">
           <div className=" text-left flex items-center px-2 text-xs   h-6 border-b border-gray-400/50 bg-white  w-full ">
             {seed.teams[1]?.name || " "}
             {/* {efectName1} */}

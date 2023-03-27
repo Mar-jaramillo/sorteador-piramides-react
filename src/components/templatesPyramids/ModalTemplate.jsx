@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getLocalStorage } from "../../utils/getLocalStorage";
+
 import GlobalContext from "../../utils/GlobalContext";
 import { handleCapture } from "../../utils/handleCapture";
 import BackButton from "./BackButton";
@@ -16,9 +16,6 @@ export default function ModalTemplate({ sorteado }) {
     <div className="px-32 pb-56">
       <div className="flex w-full  justify-between items-center gap-5 mb-4">
         <p className="text-lg   flex flex-col justify-end font-semibold">
-          {context.raffledCard} de{" "}
-          {context.totalGroups || getLocalStorage("totalGroups")} grupos
-          sorteados
         </p>
         <div className="flex gap-5 ">
           <button

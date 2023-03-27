@@ -1,10 +1,14 @@
+ 
 import { createArrayAndObjects } from "./createArrayAndObjects";
+ 
 import { raffledGroup } from "./raffledGroup";
+
 
 //Retorna un array de objetos duplicados solo si su longitud es de 3
 const pyramidTree = (group) => group.concat(group);
 
 export function finalArrayPyramid(pyramid, arrayGroup) {
+ 
   const pares = [];
   let i = 0;
   let group = [...arrayGroup];
@@ -84,7 +88,7 @@ export function finalArrayPyramid(pyramid, arrayGroup) {
 
       pares.push([participante1, participante2]);
     }
-
+ 
     return pares;
   }
 }

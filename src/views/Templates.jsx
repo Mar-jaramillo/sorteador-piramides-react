@@ -4,20 +4,24 @@ import BotonGroup from "../components/board/BotonGroup";
 import BreadCrumb from "../components/layout/BreadCrumb";
 import ModalTemplate from "../components/templatesPyramids/ModalTemplate";
 import GlobalContext from "../utils/GlobalContext";
-import LoaderSorteo from "./LoadSorteo";
+import LoaderSorteo from "../components/templatesPyramids/LoaderSorteo";
+ 
 
 export default function Templates() {
   const [typePyramid, setTypePyramid] = useState(6);
   const { pathname } = useLocation();
   const context = useContext(GlobalContext);
   const [showAnimation, setShowAnimation] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setShowAnimation(false);
-    }, 3000);
-    return () => clearTimeout();
-  }, []);
-
+ useEffect(() => {
+   const controller = setTimeout(() => {
+    setShowAnimation(false)
+   }, 2000);
+ 
+   return () => {
+     
+   }
+ }, [])
+ 
   useEffect(() => {
     const changePageTitle = () => {
       const newPageTitle = "Pirámide";
@@ -30,8 +34,8 @@ export default function Templates() {
     <>
       <div id="pyramid" className=" text-white  w-full">
         {showAnimation && (
-          <div className="fixed w-full z-50 h-screen bg-black/50 grid place-content-center">
-            <LoaderSorteo />
+          <div className="fixed w-full z-50 h-screen bg-blueSecondary/50 backdrop-blur-sm grid place-content-center">
+            <LoaderSorteo setShowAnimation={setShowAnimation}/>
           </div>
         )}
         <div className="px-32 pt-10">
