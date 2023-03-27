@@ -103,63 +103,7 @@ thead{
 
   }
 
-  .loadSorteo{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);
-    /*change these sizes to fit into your project*/
-    width:100px;
-    height:100px;
-  }
-  .loadSorteo hr{border:0;margin:0;width:40%;height:40%;position:absolute;border-radius:50%;animation:spin 2s ease infinite}
-  
-  .loadSorteo :first-child{background:#19A68C;animation-delay:-1.5s}
-  .loadSorteo :nth-child(2){background:#F63D3A;animation-delay:-1s}
-  .loadSorteo :nth-child(3){background:#FDA543;animation-delay:-0.5s}
-  .loadSorteo :last-child{background:#193B48}
-  
-  @keyframes spin{
-    0%,100%{transform:translate(0)}
-    25%{transform:translate(160%)}
-    50%{transform:translate(160%, 160%)}
-    75%{transform:translate(0, 160%)}
-  }
-
-
-/*   
-  .spinnerSorteo > div {
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
-      ;
-  
-    border-radius: 100%;
-    display: inline-block;
-    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-  } */
-  
-  .spinnerSorteo .bounce1 {
-    -webkit-animation-delay: -0.32s;
-    animation-delay: -0.32s;
-  }
-  
-  .spinnerSorteo .bounce2 {
-    -webkit-animation-delay: -0.16s;
-    animation-delay: -0.16s;
-  }
-  
-  @-webkit-keyframes sk-bouncedelay {
-    0%, 80%, 100% { -webkit-transform: scale(0) }
-    40% { -webkit-transform: scale(1.0) }
-  }
-  
-  @keyframes sk-bouncedelay {
-    0%, 80%, 100% { 
-      -webkit-transform: scale(0);
-      transform: scale(0);
-    } 40% { 
-      -webkit-transform: scale(1.0);
-      transform: scale(1.0);
-    }
-  }
+ 
 
   .animate1 {
     animation: backInDown; /* referring directly to the animation's @keyframe declaration */

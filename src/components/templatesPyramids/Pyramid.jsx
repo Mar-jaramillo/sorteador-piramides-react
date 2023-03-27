@@ -6,6 +6,7 @@ import GlobalContext from "../../utils/GlobalContext";
 import { ItemSeed } from "./ItemSeed";
 
 const CustomSeed = ({ seed, roundIndex, seedIndex }) => {
+  
 
   const Wrapper = Seed; 
   return (
