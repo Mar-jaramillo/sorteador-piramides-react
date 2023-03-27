@@ -134,7 +134,7 @@ select option {
 .fade-in0 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 0.5s;
+  animation-duration: 0.2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -144,7 +144,7 @@ select option {
 .fade-in1 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 1s;
+  animation-duration: 0.4s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -154,7 +154,7 @@ select option {
 .fade-in2 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 1.5s;
+  animation-duration: 0.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -162,25 +162,17 @@ select option {
 .fade-in3 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 2s;
+  animation-duration: 1.2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
 
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
+ 
 
 .fade-in4 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 2.5s;
+  animation-duration: 1.4s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -188,7 +180,7 @@ select option {
 .fade-in5 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 3s;
+  animation-duration: 1.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -196,7 +188,7 @@ select option {
 .fade-in6 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 3.5s;
+  animation-duration: 2.2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -204,7 +196,7 @@ select option {
 .fade-in7 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 4s;
+  animation-duration: 2.6s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -212,7 +204,7 @@ select option {
 .fade-in8 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 4.5s;
+  animation-duration: 3s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -220,7 +212,7 @@ select option {
 .fade-in9 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 5s;
+  animation-duration: 3.4s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -228,7 +220,7 @@ select option {
 .fade-in10 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 5.5s;
+  animation-duration: 3.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -236,7 +228,7 @@ select option {
 .fade-in11 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 6s;
+  animation-duration: 4.2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -244,7 +236,7 @@ select option {
 .fade-in12 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 6.5s;
+  animation-duration: 4.6s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -252,7 +244,7 @@ select option {
 .fade-in13 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -260,7 +252,7 @@ select option {
 .fade-in14 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.4s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -268,7 +260,7 @@ select option {
 .fade-in15 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7;
+  animation-duration: 5.8;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -276,7 +268,7 @@ select option {
 .fade-in16 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -284,7 +276,7 @@ select option {
 .fade-in17 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -292,7 +284,7 @@ select option {
 .fade-in18 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -300,7 +292,7 @@ select option {
 .fade-in19 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -308,25 +300,15 @@ select option {
 .fade-in20 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 .fade-in21 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -334,7 +316,7 @@ select option {
 .fade-in22 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -342,7 +324,7 @@ select option {
 .fade-in23 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -350,7 +332,7 @@ select option {
 .fade-in24 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -358,7 +340,7 @@ select option {
 .fade-in25 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -366,7 +348,7 @@ select option {
 .fade-in26 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -374,7 +356,7 @@ select option {
 .fade-in27 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -382,7 +364,7 @@ select option {
 .fade-in28 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -390,7 +372,7 @@ select option {
 .fade-in29 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -398,7 +380,7 @@ select option {
 .fade-in30 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -406,7 +388,7 @@ select option {
 .fade-in31 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -414,7 +396,7 @@ select option {
 .fade-in32 {
   opacity: 0;
   animation-name: fadeInLeft;
-  animation-duration: 7s;
+  animation-duration: 5.8s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }

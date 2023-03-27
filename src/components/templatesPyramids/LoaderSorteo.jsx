@@ -8,7 +8,7 @@ const LoaderSorteo = ({ setShowAnimation }) => {
   const group = context.groupNow.arrayGroup || groupLocal.arrayGroup;
 
   return (
-    <div className="grid place-content-center overflow-auto">
+    <div className="flex flex-col justify-center  pt-28">
   <div className=" grid place-content-center  w-full">
   <img className="h-32 " src={ruleta} alt="" />
   <p className="text-center my-3">Sorteando...</p>
