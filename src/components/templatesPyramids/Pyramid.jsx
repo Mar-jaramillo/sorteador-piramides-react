@@ -10,10 +10,6 @@ const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
 
   const [rounded, setRounded] = useState(roundIndex)
   const isLastRound = rounded;
-  
-  console.log(roundIndex);
-  console.log(isLastRound);
-
 
   const typePyramid = context.typePyramid || getLocalStorage("typePyramid");
 
@@ -34,7 +30,7 @@ const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
       style={{ minWidth: "0" }}
     >
       {/* caja padre */}
-      {roundIndex > 0  ? (
+      {roundIndex > 0 && roundIndex < 3 ? (
         <SeedItem
           className="wrapper item flex gap-2 shadow-none bg-white "
           style={{
