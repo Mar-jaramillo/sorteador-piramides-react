@@ -1,12 +1,18 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Bracket, Seed, SeedItem, SingleLineSeed } from "react-brackets";
 import * as Generator from "../../utils/GeneratorsParticipants";
 import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 import { ItemSeed } from "./ItemSeed";
 
-const CustomSeed = ({ seed, roundIndex, seedIndex }) => {
+const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
   const context = useContext(GlobalContext);
+
+  const [rounded, setRounded] = useState(roundIndex)
+  const isLastRound = rounded;
+  
+  console.log(roundIndex);
+  console.log(isLastRound);
 
 
   const typePyramid = context.typePyramid || getLocalStorage("typePyramid");
@@ -28,8 +34,7 @@ const CustomSeed = ({ seed, roundIndex, seedIndex }) => {
       style={{ minWidth: "0" }}
     >
       {/* caja padre */}
-      {roundIndex > 0 ? (
-        //Segunda ronda stylos
+      {roundIndex > 0  ? (
         <SeedItem
           className="wrapper item flex gap-2 shadow-none bg-white "
           style={{
@@ -50,11 +55,32 @@ const CustomSeed = ({ seed, roundIndex, seedIndex }) => {
             <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-12 w-12 rounded-md"></div>
             <div className=" flex justify-center items-center border-2 border-gray-400/50  h-12 w-12 rounded-md"></div>
           </div>
-        </SeedItem>
-      ) : (
+        </SeedItem>)
+        : 
+        isLastRound === 3 ? (
+        <SeedItem
+        className="flex justify-end min-w-0 gap-2 shadow-none bg-white"
+        style={{
+          boxShadow: "none",
+          backgroundColor: "white",
+        }}
+      >
+        {/* box id */}
+        <div className="rounded-md w-12 bg-white text-gray-700">
+          ID
+          <div className="mb-1 rounded-md border-2 border-gray-400/50 bg-gray-200 h-12"></div>
+        </div>
+        {/* box puntos */}
+        <div className="flex flex-col bg-white text-gray-700 rounded-md border-gray-400/50">
+          PTS
+          <div className="mb-1 flex justify-center items-center border-2 border-gray-400/50 h-12 w-12 rounded-md"></div>
+        </div>
+      </SeedItem>
+      )  : (
         <ItemSeed seed={seed} />
       )}
     </Wrapper>
+      
   );
 };
 

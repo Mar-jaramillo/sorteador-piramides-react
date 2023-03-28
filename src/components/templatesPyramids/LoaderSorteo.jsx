@@ -10,7 +10,7 @@ const LoaderSorteo = ({ setShowAnimation }) => {
   return (
     <div className="flex flex-col justify-center  pt-28">
   <div className=" grid place-content-center  w-full">
-  <img className="h-32 " src={ruleta} alt="" />
+  <img className="h-40 " src={ruleta} alt="" />
   <p className="text-center my-3">Sorteando...</p>
   </div>
       <ListModal group={group} setShowAnimation={setShowAnimation} />
