@@ -50,11 +50,11 @@ const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
             <div className="flex w-12 h-12 justify-center items-center  rounded-md border-2 border-gray-400/50 bg-gray-200"></div>
           </div>
           {/* box puntos */}
-          <div className=" flex flex-col bg-white text-gray-700 rounded-md border-gray-400/50">
+          {typePyramid !== 3 &&  <div className=" flex flex-col bg-white text-gray-700 rounded-md border-gray-400/50">
             PTS
             <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-12 w-12 rounded-md"></div>
             <div className=" flex justify-center items-center border-2 border-gray-400/50  h-12 w-12 rounded-md"></div>
-          </div>
+          </div>}
         </SeedItem>)
         : 
         isLastRound === 3 ? (
@@ -71,7 +71,7 @@ const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
           <div className="mb-1 rounded-md border-2 border-gray-400/50 bg-gray-200 h-12"></div>
         </div>
         {/* box puntos */}
-        <div className="flex flex-col bg-white text-gray-700 rounded-md border-gray-400/50">
+<div className="flex flex-col bg-white text-gray-700 rounded-md border-gray-400/50">
           PTS
           <div className="mb-1 flex justify-center items-center border-2 border-gray-400/50 h-12 w-12 rounded-md"></div>
         </div>
