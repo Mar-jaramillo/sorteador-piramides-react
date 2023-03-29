@@ -1,13 +1,13 @@
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
-export const handleCapture = (typePyramid) => {
+export const handleCapture = (typePyramid, keyNameNow) => {
   let contenido = document.getElementById("capture");
 
   // Opcionalmente, descargar también una imagen PNG de la pirámide
   html2canvas(contenido, { scale: 2 }).then((canvas) => {
     let link = document.createElement("a");
-    link.download = `Piramide de ${typePyramid}.png`;
+    link.download = `Pirámide de ${typePyramid}  ${keyNameNow}.png`;
     link.href = canvas.toDataURL();
     link.click();
   });
@@ -35,7 +35,7 @@ export const handleCapture = (typePyramid) => {
         imgWidthScaled,
         imgHeightScaled
       );
-      pdf.save(`Piramide de ${typePyramid}.pdf`);
+      pdf.save(`Piramide de ${typePyramid}  ${keyNameNow}.pdf`);
     });
   }, 1000);
 }  
