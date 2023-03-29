@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getLocalStorage } from "../../utils/getLocalStorage";
 
 import GlobalContext from "../../utils/GlobalContext";
 import { handleCapture } from "../../utils/handleCapture";
@@ -11,7 +12,8 @@ export default function ModalTemplate({ sorteado }) {
 
   const context = useContext(GlobalContext);
   const { pathname } = useLocation();
-
+  const typePyramid = context.typePyramid || getLocalStorage("typePyramid")
+  const keyNameNow = context.keyNameNow || getLocalStorage("keyNameNow")
   return (
     <div className="px-32 pb-56">
       <div className="flex w-full  justify-between items-center gap-5 mb-4">
@@ -19,7 +21,7 @@ export default function ModalTemplate({ sorteado }) {
         </p>
         <div className="flex gap-5 ">
           <button
-            onClick={() => handleCapture(context.typePyramid)}
+            onClick={() => handleCapture(typePyramid, keyNameNow)}
             className="btnPrimary"
           >
             Imprimir PDF
@@ -32,7 +34,7 @@ export default function ModalTemplate({ sorteado }) {
         </div>
       </div>
       <div className="h-full w-full   rounded-lg bg-white p-5 mb-9">
-        <BodyTemplate typePyramid={context.typePyramid} />
+        <BodyTemplate typePyramid={typePyramid} />
       </div>
       <BackButton/>
     </div>
