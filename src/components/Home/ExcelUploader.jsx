@@ -1,68 +1,96 @@
-import React, { useState } from "react";
-import ModalError from "./ModalError";
+import React, { useContext, useState } from "react";
+import GlobalContext from "../../utils/GlobalContext";
+import { useNavigate } from "react-router-dom";
 
-export default function ExcelUploader() {
-  const XLSX_MIME_TYPE =
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-  const XLSM_MIME_TYPE = "application/vnd.ms-excel.sheet.macroEnabled.12";
+import { processExcelFile } from "../../utils/excelUploader/processExcelFile";
+import { validateFile } from "../../utils/excelUploader/validateFile";
+import { obtenerPropiedadesUnicas } from "../../utils/obtenerPropiedadesUnicas";
+import { createGroupsByCode } from "../../utils/createGroupsByCode";
+import FormUploader from "./FormUploader";
 
-  const [file, setFile] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+export default function ExcelUploader({ setIsLoading, setError }) {
+  const [nameEvent, setNameEvent] = useState("");
+  const [excelFile, setExcelFile] = useState(null);
+  const navigate = useNavigate();
+  const context = useContext(GlobalContext);
 
- 
+  const handleSubmit = (e) => {
+    //Este funcion va tratar todo los datos de la aplicacion
+    e.preventDefault();
+    try {
+      if (excelFile !== null) {
+        //Operaciones
+        const excelData = processExcelFile(excelFile);
+        const valuesUniques = obtenerPropiedadesUnicas(excelData); // crea las propiedades unicas para usar en los selects de board
+        const groupsByCode = createGroupsByCode(excelData); // crea los grupos de deportistas por codigo
+        const keysOfGroups = Object.keys(groupsByCode);
+        const keysNoMutar = keysOfGroups
+        // crea un array de lo codigos para usar en el board
+        const totalGroups = keysOfGroups.length;
+        const totalDelegations = valuesUniques["Delegación"].length;
+  
+        //Guardados en contexto
+        context.nameEvent = nameEvent;
+        context.totalGroups = totalGroups;
+        context.totalDelegations = totalDelegations;
+        context.groupsByCode = groupsByCode;
+        context.keysOfGroups = keysOfGroups;
+        context.keysNoMutar = keysOfGroups.slice()
+        context.valuesUniques = valuesUniques;
+  
+        //Guardados en LocalStorage
+        localStorage.setItem("nameEvent", JSON.stringify(nameEvent));
+        localStorage.setItem("totalGroups", JSON.stringify(totalGroups));
+        localStorage.setItem(
+          "totalDelegations",
+          JSON.stringify(totalDelegations)
+        );
+        localStorage.setItem("groupsByCode", JSON.stringify(groupsByCode));
+        localStorage.setItem("keysOfGroups", JSON.stringify(keysOfGroups));
+        localStorage.setItem("keysNoMutar", JSON.stringify(keysNoMutar));
+        localStorage.setItem("valuesUniques", JSON.stringify(valuesUniques));
+        localStorage.setItem("excelData", JSON.stringify(excelData));
+        // const eventData = {
+        //   nameEvent: nameEvent,
+        //   data: data,
+        // };
+        // saveEventData(eventData); hacer funcionar para guardar el eventData en archivo JSON con electron
+        setIsLoading(true);
+        setTimeout(() => {
+          setIsLoading(false);
+          navigate("/data");
+        }, 1000);
+      }
+    } catch (error) {
+      console.log(error);
+      error && setError(true)
+    }
+  };
+
   const handleFileUpload = (event) => {
-    const selectedFile = event.target.files[0];
-    if (
-      selectedFile &&
-      (selectedFile.type === XLSX_MIME_TYPE ||
-        selectedFile.type === XLSM_MIME_TYPE)
-    ) {
-      setFile(selectedFile);
+    const file = event.target.files[0];
+    if (file) {
+      if (validateFile(file)) {
+        let reader = new FileReader();
+        reader.readAsArrayBuffer(file);
+        reader.onload = (e) => {
+          setExcelFile(e.target.result);
+        };
+      } else {
+        setError(true);
+      }
     } else {
-      setFile(null);
-      setShowModal(true);
+      console.log("plz select your file");
     }
   };
 
   return (
-    <div className="">
-      <h2>Nombre del evento</h2>
-      <input type="text"/>
-      <h3 className="text-white text-center text-2xl mb-8">
-        Cargar archivo de Pirámide de competencia
-      </h3>
-      <div className="flex place-content-center gap-3  mb-3">
-        <div className="flex pl-8 pr-4 pt-3 justify-between gap-8 file-upload relative rounded-xl bg-white">
-          <div>
-            <span className="font-bold">
-              {file ? file.name : "Seleccionar archivo"}
-            </span>
-            <input
-              onChange={handleFileUpload}
-              type="file"
-              name="FileAttachment"
-              id="FileAttachment"
-              className="opacity-0 absolute"
-            />
-          </div>
-          <button
-            id="buttonAdd"
-            className="grid place-content-center w-7 h-7 pb-1 font-light text-xl bg-blueSecondary text-white rounded-full"
-          >
-            +
-          </button>
-        </div>
-
-        <button className="bg-greenPrimary text-white p-3 rounded-xl">
-          Comenzar
-        </button>
-      </div>
-
-      <span className="text-white">
-        * Verifica que el archivo esté en formato Excel y extensión .xlsm
-      </span>
-
-      {showModal && <ModalError setShowModal={setShowModal} />}
+    <div className="mt-16 flex items-center flex-col">
+      <FormUploader
+        handleSubmit={handleSubmit}
+        setNameEvent={setNameEvent}
+        handleFileUpload={handleFileUpload}
+      />
     </div>
   );
 }
