@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import iconTemplate from "../../assets/icons/iconTemplate.svg";
-import upLoad from "../../assets/icons/upLoad.svg";
 
 export default function NavBar() {
   return (
