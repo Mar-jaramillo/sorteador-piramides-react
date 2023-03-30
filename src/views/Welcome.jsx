@@ -21,11 +21,12 @@ export default function Welcome() {
       <div className="col-span-6"></div>
 
       {/* section rigth */}
-      <div className="col-span-6 flex flex-col justify-end h-full">
-        <div className="flex flex-col justify-between items-center py-12">
+      <div className="col-span-6 flex flex-col justify-around h-full">
+
+          <div></div>
           <LoginForm />
           <FooterLogosWelcome/>
-        </div>
+    
         {/* section Logos */}
       </div>
     </div>

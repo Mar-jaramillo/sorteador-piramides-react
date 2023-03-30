@@ -22,7 +22,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex flex-col justify-between items-center mb-28">
+    <div className="flex flex-col justify-between items-center ">
     <img className="h-12 mb-4" src={iconhapkido} alt="" />
     <p className="text-center font-bold text-2xl mb-10  max-w-md">
       Bienvenido al Sorteador de Pirámides de Competencias para Hapkido
@@ -35,10 +35,12 @@ export default function LoginForm() {
       <div className="flex">
         <div className="flex flex-col w-60">
           <input
+          autoFocus
+          
             onChange={(e) => setValues(e.target.value)}
             placeholder="Código de acceso"
-            className="rounded-xl text-lg border-2 h-12  px-2 right-10 border-white bg-blueSecondary/50"
-            type="text"
+            className="rounded-xl text-lg border-2 h-12  px-2 right-10 border-white bg-blueSecondary/50 focus:outline-gray-400"
+            type="password"
           />
           {error ? (
             <span className="text-yellow-500 text-sm py-1 mb-3">
@@ -48,7 +50,7 @@ export default function LoginForm() {
         </div>
         <button
           type="submit"
-          className="mx-2 px-10 rounded-lg mb-5 border-2 h-12 font-medium border-redborderbuttons bg-redbuttons"
+          className="mx-2 px-10 rounded-lg mb-5 border-2 h-12 font-medium border-redborderbuttons bg-redbuttons hover:border-red-700"
         >
           Ingresar
         </button>
