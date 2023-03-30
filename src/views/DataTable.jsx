@@ -89,13 +89,13 @@ export default function DataTable() {
             <div className="flex justify-center text-center gap-5 items-center mt-2 p-3 text-white">
               <Link
                 to="/home"
-                className="bg-white/30 border border-white w-32 py-2 rounded-md"
+                className="bg-white/30 border border-white w-32 py-2 rounded-md hover:border-gray-400"
               >
                 &lt;&lt; Volver
               </Link>
               <button
                 onClick={navigateBoard}
-                className="bg-red-600 border border-gray-700 w-32 py-2 rounded-md"
+                className="bg-red-600 border border-gray-700 w-32 py-2 rounded-md hover:border-red-700"
               >
                 Ver grupos
               </button>

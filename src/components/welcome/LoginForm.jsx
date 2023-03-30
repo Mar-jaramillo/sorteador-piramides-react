@@ -37,7 +37,7 @@ export default function LoginForm() {
           <input
             onChange={(e) => setValues(e.target.value)}
             placeholder="Código de acceso"
-            className="rounded-xl text-lg border-2 h-12  px-2 right-10 border-white bg-blueSecondary/50"
+            className="rounded-xl text-lg border-2 h-12  px-2 right-10 border-white bg-blueSecondary/50 focus:outline-gray-400"
             type="text"
           />
           {error ? (
@@ -48,7 +48,7 @@ export default function LoginForm() {
         </div>
         <button
           type="submit"
-          className="mx-2 px-10 rounded-lg mb-5 border-2 h-12 font-medium border-redborderbuttons bg-redbuttons"
+          className="mx-2 px-10 rounded-lg mb-5 border-2 h-12 font-medium border-redborderbuttons bg-redbuttons hover:border-red-700"
         >
           Ingresar
         </button>
