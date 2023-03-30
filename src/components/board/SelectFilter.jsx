@@ -16,7 +16,7 @@ export default function SelectFilter({
     setValuesSelect(getLocalStorage("valuesUniques"));
   }, []);
 
-  const groups = groupsByCode || getLocalStorage("groupsByCode")
+  const groups = groupsByCode || getLocalStorage("groupsByCode");
 
   const handleSearch = (e) => {
     const valueSearch = e.target.value;
@@ -37,7 +37,7 @@ export default function SelectFilter({
     }
     const filteredKeysList = Object.keys(filteredKeys); // Convertir el objeto en una lista
     context.totalGroupsFiltered = filteredKeysList.length;
-   
+
     setFilteredKeysOfGroups(filteredKeysList);
     setsearchValue(valueSearch);
   };
@@ -54,11 +54,14 @@ export default function SelectFilter({
               >
                 <option className="">{filter}</option>
                 {valuesSelect[filter] &&
-                  valuesSelect[filter].map((option, j) => (
-                    <option key={j} value={option}>
-                      {option}
-                    </option>
-                  ))}
+                  valuesSelect[filter]
+                    .filter((option) => typeof option === "string")
+                    .sort((a, b) => a.localeCompare(b)) // Ordenar los datos alfabéticamente
+                    .map((option, j) => (
+                      <option key={j} value={option}>
+                        {option}
+                      </option>
+                    ))}
               </select>
             </div>
           ))}
