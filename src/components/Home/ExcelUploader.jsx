@@ -8,13 +8,15 @@ import { obtenerPropiedadesUnicas } from "../../utils/obtenerPropiedadesUnicas";
 import { createGroupsByCode } from "../../utils/createGroupsByCode";
 import FormUploader from "./FormUploader";
 
-export default function ExcelUploader({ setIsLoading, setError }) {
+export default function ExcelUploader({ setError }) {
   const [nameEvent, setNameEvent] = useState("");
   const [excelFile, setExcelFile] = useState(null);
+  const [loading, setloading] = useState(false)
   const navigate = useNavigate();
   const context = useContext(GlobalContext);
 
   const handleSubmit = (e) => {
+    setloading(true)
     //Este funcion va tratar todo los datos de la aplicacion
     e.preventDefault();
     try {
@@ -55,11 +57,10 @@ export default function ExcelUploader({ setIsLoading, setError }) {
         //   data: data,
         // };
         // saveEventData(eventData); hacer funcionar para guardar el eventData en archivo JSON con electron
-        setIsLoading(true);
-        setTimeout(() => {
-          setIsLoading(false);
+  
+ 
           navigate("/data");
-        }, 1000);
+ 
       }
     } catch (error) {
       console.log(error);
@@ -87,6 +88,7 @@ export default function ExcelUploader({ setIsLoading, setError }) {
   return (
     <div className="mt-20   2xl:mt-52 flex items-center flex-col">
       <FormUploader
+      loading={loading}
         handleSubmit={handleSubmit}
         setNameEvent={setNameEvent}
         handleFileUpload={handleFileUpload}

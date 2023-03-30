@@ -17,7 +17,6 @@ export default function Home() {
     changePageTitle();
   }, []);
 
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
   if (error) {
@@ -25,19 +24,15 @@ export default function Home() {
   } else {
     return (
       <>
-        {isLoading ? (
-          <Loader mensaje="Cargando consolidado de deportistas..." />
-        ) : (
-          <div id="home" className="h-screen text-white">
-            <h2 className="text-left px-32 text-3xl font-bold">
-              <BreadCrumb />
-              Cargar Consolidado de Deportistas
-            </h2>
-  
-           <ExcelUploader setIsLoading={setIsLoading} setError={setError} />
-           </div>
+        <div id="home" className="fadeinfast h-screen text-white">
+          <h2 className="text-left px-32 text-3xl font-bold">
+            <BreadCrumb />
+            Cargar Consolidado de Deportistas
+          </h2>
 
-        )}
+          <ExcelUploader setError={setError} />
+        </div>
+
         <FooterGeneral />
       </>
     );
