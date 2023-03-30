@@ -55,10 +55,11 @@ export default function SelectFilter({
                 >
                   <option className="">{filter}</option>
                   {valuesSelect[filter] &&
-  [...new Set(valuesSelect[filter])]
+  [...new Set(valuesSelect[filter].map(val => val.toString().trim()))]
     .filter(
       (option) =>
-        typeof option === "string" || typeof option === "number"
+        typeof option === "string" ||
+        typeof option === "number"
     )
     .filter((option) => option.toString().trim() !== "") // Filtrar opciones vacías
     .sort((a, b) => {
@@ -77,7 +78,6 @@ export default function SelectFilter({
         </option>
       );
     })}
-
                 </select>
               </div>
             );
