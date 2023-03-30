@@ -22,7 +22,7 @@ export default function CardsBoard({
   }, [keysOfGroups, groupsByCode]);
 
   return (
-    <div className="grid grid-cols-12">
+    <div className="fadeInDown grid grid-cols-12">
       {isLoad ? (
         cardsToRender.map((key) => (
           <CardIndividual

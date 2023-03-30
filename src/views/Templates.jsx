@@ -30,7 +30,7 @@ export default function Templates() {
 
   return (
     <>
-      <div id="pyramid" className=" text-white  w-full">
+      <div id="pyramid" className="fadeinfast text-white  w-full">
         {showAnimation && (
           <div className="fixed w-full z-50 h-screen bg-blueSecondary/50 backdrop-blur-sm grid place-content-center">
             <LoaderSorteo setShowAnimation={setShowAnimation} />

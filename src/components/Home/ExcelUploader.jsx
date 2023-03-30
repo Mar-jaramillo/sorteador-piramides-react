@@ -7,16 +7,17 @@ import { validateFile } from "../../utils/excelUploader/validateFile";
 import { obtenerPropiedadesUnicas } from "../../utils/obtenerPropiedadesUnicas";
 import { createGroupsByCode } from "../../utils/createGroupsByCode";
 import FormUploader from "./FormUploader";
+import { getLocalStorage } from "../../utils/getLocalStorage";
 
 export default function ExcelUploader({ setError }) {
-  const [nameEvent, setNameEvent] = useState("");
+  const [nameEvent, setNameEvent] = useState(getLocalStorage("nameEvent"));
   const [excelFile, setExcelFile] = useState(null);
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(false);
   const navigate = useNavigate();
   const context = useContext(GlobalContext);
 
   const handleSubmit = (e) => {
-    setloading(true)
+    setloading(true);
     //Este funcion va tratar todo los datos de la aplicacion
     e.preventDefault();
     try {
@@ -26,20 +27,20 @@ export default function ExcelUploader({ setError }) {
         const valuesUniques = obtenerPropiedadesUnicas(excelData); // crea las propiedades unicas para usar en los selects de board
         const groupsByCode = createGroupsByCode(excelData); // crea los grupos de deportistas por codigo
         const keysOfGroups = Object.keys(groupsByCode);
-        const keysNoMutar = keysOfGroups
+        const keysNoMutar = keysOfGroups;
         // crea un array de lo codigos para usar en el board
         const totalGroups = keysOfGroups.length;
         const totalDelegations = valuesUniques["Delegación"].length;
-  
+
         //Guardados en contexto
         context.nameEvent = nameEvent;
         context.totalGroups = totalGroups;
         context.totalDelegations = totalDelegations;
         context.groupsByCode = groupsByCode;
         context.keysOfGroups = keysOfGroups;
-        context.keysNoMutar = keysOfGroups.slice()
+        context.keysNoMutar = keysOfGroups.slice();
         context.valuesUniques = valuesUniques;
-  
+
         //Guardados en LocalStorage
         localStorage.setItem("nameEvent", JSON.stringify(nameEvent));
         localStorage.setItem("totalGroups", JSON.stringify(totalGroups));
@@ -57,15 +58,20 @@ export default function ExcelUploader({ setError }) {
         //   data: data,
         // };
         // saveEventData(eventData); hacer funcionar para guardar el eventData en archivo JSON con electron
-  
- 
-          navigate("/data");
- 
+
+        setloading(false)
+        setError(false);
+        navigate("/data");
       }
     } catch (error) {
       console.log(error);
-      error && setError(true)
+      context.nameEvent = nameEvent;
+      localStorage.setItem("nameEvent", JSON.stringify(nameEvent));
+      error && setError(true);
+      setloading(false)
     }
+    
+
   };
 
   const handleFileUpload = (event) => {
@@ -88,7 +94,7 @@ export default function ExcelUploader({ setError }) {
   return (
     <div className="mt-20   2xl:mt-52 flex items-center flex-col">
       <FormUploader
-      loading={loading}
+        loading={loading}
         handleSubmit={handleSubmit}
         setNameEvent={setNameEvent}
         handleFileUpload={handleFileUpload}

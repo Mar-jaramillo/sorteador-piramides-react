@@ -69,7 +69,7 @@ export default function CardIndividual({
     "text-center grid grid-cols-12 p-4 border-b-2 rounded-t-2xl bg-white/30";
 
   return (
-    <div className="col-span-12 lg:col-span-6 text-sm lg:text-md mx-3 my-3 bg-white/20 border-2 border-gray-200 0 transition duration-150 ease-in-out rounded-2xl shadow">
+    <div className=" col-span-12 lg:col-span-6 text-sm lg:text-md mx-3 my-3 bg-white/20 border-2 border-gray-200 0 transition duration-150 ease-in-out rounded-2xl shadow">
       {/*Card exterior*/}
       <div className={groupNow.isRaffled ? greenCard : grayCard}>
         <div className=" col-span-6 flex gap-2 items-center">

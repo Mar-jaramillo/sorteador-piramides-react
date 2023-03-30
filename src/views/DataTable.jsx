@@ -6,6 +6,7 @@ import Loader from "../components/layout/Loader";
 import BreadCrumb from "../components/layout/BreadCrumb";
 import GlobalContext from "../utils/GlobalContext";
 import FooterGeneral from "../components/layout/FooterGeneral";
+import { getLocalStorage } from "../utils/getLocalStorage";
 
 export default function DataTable() {
   const { pathname } = useLocation();
@@ -62,7 +63,7 @@ export default function DataTable() {
                 </div>
                 <div className="text-right font-medium col-span-6 mb-2">
                   <h3 className=" first-letter:uppercase">
-                    {context.nameEvent || localStorage.getItem("nameEvent")}
+                    {context.nameEvent || getLocalStorage("nameEvent")}
                   </h3>
                   <div>
                     <h3 alt="" />

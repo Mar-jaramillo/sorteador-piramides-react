@@ -16,7 +16,7 @@ export default function Welcome() {
  
 
   return (
-    <div id="welcome" className="grid grid-cols-12 h-screen text-white">
+    <div id="welcome" className="fadeinfast grid grid-cols-12 h-screen text-white">
       {/* section left */}
       <div className="col-span-6"></div>
 
