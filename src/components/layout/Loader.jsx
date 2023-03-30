@@ -3,7 +3,7 @@ import React from "react";
 export default function Loader({mensaje}) {
   return (
     <>
-       <div className="fixed top-0 left-0 w-screen h-screen flex flex-col items-center justify-center ">
+       <div className="fadeinfast fixed top-0 left-0 w-screen h-screen flex flex-col items-center justify-center ">
        <svg
         className="animate-spin h-12 w-12"
         viewBox="0 0 24 24"

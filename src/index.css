@@ -108,10 +108,17 @@ select option {
 }
 
 .btnPrimary {
-  @apply bg-redbuttons border-2 border-redborderbuttons text-white p-3 rounded-lg
+  @apply bg-redbuttons border-2 border-redborderbuttons text-white p-3 rounded-lg hover:border-red-700
+}
+.btnLoading {
+  @apply bg-gray-500 border-2  text-white py-3 px-6 rounded-lg
 }
 
 
+.fadeinfast {
+  animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 0.3s; /* don't forget to set a duration! */
+}
 
 .animate1 {
   animation: backInDown;
@@ -130,6 +137,8 @@ select option {
 .textSeedItems {
   color: red;
 }
+
+
 
 .fade-in0 {
   opacity: 0;

@@ -6,6 +6,7 @@ export default function FormUploader({
   handleSubmit,
   setNameEvent,
   handleFileUpload,
+  loading
 }) {
   const navigate = useNavigate();
   const downloadFile = () => {
@@ -80,8 +81,8 @@ export default function FormUploader({
             >
               Cerrar
             </button>
-            <button className="btnPrimary hover:border-red-700">
-              Cargar deportistas
+            <button className={loading? "btnLoading ": "btnPrimary hover:border-red-700"}>
+              {loading ? "Cargando...":"Cargar deportistas "}
             </button>
           </div>
         </div>

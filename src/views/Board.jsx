@@ -8,7 +8,7 @@ import { getLocalStorage } from "../utils/getLocalStorage";
 import GlobalContext from "../utils/GlobalContext";
 import logoqubulowhite from "../assets/logos/logoqubulowhite.png";
 import ButtonsGroup from "../components/board/ButtonsGroup";
-
+import Loader from "../components/layout/Loader";
 
 export default function Board() {
   const context = useContext(GlobalContext);
@@ -23,6 +23,7 @@ export default function Board() {
   const [sorteado, setSorteado] = useState(0);
   const [sinSortear, setSinSortear] = useState(0);
   const [isSorted, setIsSorted] = useState(false);
+  const [isLoading, setisLoading] = useState(true)
 
   useEffect(() => {
     const changePageTitle = () => {
@@ -35,6 +36,9 @@ export default function Board() {
   useEffect(() => {
     setKeysOfGroups(getLocalStorage("keysOfGroups") || context.keysOfGroups);
     setGroupsByCode(getLocalStorage("groupsByCode") || context.groupsByCode);
+    setTimeout(() => {
+      setisLoading(false)
+    }, 500);
   }, []);
 
   useEffect(() => {
@@ -42,33 +46,43 @@ export default function Board() {
   }, [context.raffledCard]);
 
   return (
-    <div id="board" className="h-full ">
-      <div className="px-32 pt-10 text-white">
-        <BreadCrumb />
-        <HeaderBoard />
-        <SelectFliter
-          setsearchValue={setsearchValue}
-          keysOfGroups={keysOfGroups}
-          setKeysOfGroups={setKeysOfGroups}
-          setGroupsByCode={setGroupsByCode}
-          groupsByCode={groupsByCode}
-          setFilteredKeysOfGroups={setFilteredKeysOfGroups}
-        />
-        <ButtonsGroup  setFilteredKeysOfGroups={setFilteredKeysOfGroups} keysOfGroups={keysOfGroups} groupsByCode={groupsByCode} />
-        <CardsBoard
-          filteredKeysOfGroups={filteredKeysOfGroups}
-          keysOfGroups={keysOfGroups}
-          groupsByCode={groupsByCode}
-          setIsActive={setIsActive}
-          isActive={isActive}
-          setIsSorted={isSorted} // se pasa el estado de isSorted a CardsBoard
-        />
-      </div>
+    <>
+      {isLoading ? (
+        <Loader mensaje="Cargando Grupos de Deportistas" />
+      ) : (
+        <div id="board" className="fadeinfast h-full ">
+          <div className="px-32 pt-10 text-white">
+            <BreadCrumb />
+            <HeaderBoard />
+            <SelectFliter
+              setsearchValue={setsearchValue}
+              keysOfGroups={keysOfGroups}
+              setKeysOfGroups={setKeysOfGroups}
+              setGroupsByCode={setGroupsByCode}
+              groupsByCode={groupsByCode}
+              setFilteredKeysOfGroups={setFilteredKeysOfGroups}
+            />
+            <ButtonsGroup
+              setFilteredKeysOfGroups={setFilteredKeysOfGroups}
+              keysOfGroups={keysOfGroups}
+              groupsByCode={groupsByCode}
+            />
+            <CardsBoard
+              filteredKeysOfGroups={filteredKeysOfGroups}
+              keysOfGroups={keysOfGroups}
+              groupsByCode={groupsByCode}
+              setIsActive={setIsActive}
+              isActive={isActive}
+              setIsSorted={isSorted} // se pasa el estado de isSorted a CardsBoard
+            />
+          </div>
 
-      <div className="flex flex-col bottom-8 items-end text-white">
-        <p className="text-sm px-12">Desarrollado por:</p>
-        <img className="h-10 mx-8 mb-5" src={logoqubulowhite} alt="" />
-      </div>
-    </div>
+          <div className="flex flex-col bottom-8 items-end text-white">
+            <p className="text-sm px-12">Desarrollado por:</p>
+            <img className="h-10 mx-8 mb-5" src={logoqubulowhite} alt="" />
+          </div>
+        </div>
+      )}
+    </>
   );
 }

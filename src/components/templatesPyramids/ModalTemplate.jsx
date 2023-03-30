@@ -15,7 +15,7 @@ export default function ModalTemplate({ sorteado }) {
   const typePyramid = context.typePyramid || getLocalStorage("typePyramid")
   const keyNameNow = context.keyNameNow || getLocalStorage("keyNameNow")
   return (
-    <div className="px-32 pb-56">
+    <div className="px-32 pb-56 ">
       <div className="flex w-full  justify-between items-center gap-5 mb-4">
         <p className="text-lg   flex flex-col justify-end font-semibold">
         </p>
