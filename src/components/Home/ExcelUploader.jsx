@@ -85,7 +85,7 @@ export default function ExcelUploader({ setIsLoading, setError }) {
   };
 
   return (
-    <div className="mt-16 flex items-center flex-col">
+    <div className="mt-28  2xl:mt-52 flex items-center flex-col">
       <FormUploader
         handleSubmit={handleSubmit}
         setNameEvent={setNameEvent}

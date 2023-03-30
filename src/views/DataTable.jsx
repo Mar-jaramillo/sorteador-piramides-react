@@ -48,7 +48,7 @@ export default function DataTable() {
       {isLoading ? (
         <Loader mensaje='Cargando Grupos de Deportistas'/>
       ) : (
-        <div id="data" className="  h-screen text-white">
+        <div id="data" className="h-screen text-white">
           <div className=" h-full grid place-content-center ">
             <BreadCrumb />
             <div className="grid grid-cols-12">
