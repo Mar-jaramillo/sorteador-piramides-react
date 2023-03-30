@@ -47,6 +47,7 @@ export default function FormUploader({
             type="file"
             name="FileAttachment"
             id="FileAttachment"
+            accept=".xlsx, .xls"
             className="pl-0 pr-44 relative file:text-white file:border-r-white file:bg-white/30 file:h-10  file:border-r-4 file:border-l-0 file:border-y-0 file:rounded-xl rounded-xl text-lg text-white px-24 border-2  bg-white/30 border-white focus:outline-gray-400"
           />
         </div>
@@ -79,7 +80,9 @@ export default function FormUploader({
             >
               Cerrar
             </button>
-            <button className="btnPrimary hover:border-red-700">Cargar deportistas</button>
+            <button className="btnPrimary hover:border-red-700">
+              Cargar deportistas
+            </button>
           </div>
         </div>
       </div>
