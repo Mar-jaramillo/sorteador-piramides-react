@@ -35,10 +35,12 @@ export default function LoginForm() {
       <div className="flex">
         <div className="flex flex-col w-60">
           <input
+          autoFocus
+          
             onChange={(e) => setValues(e.target.value)}
             placeholder="Código de acceso"
             className="rounded-xl text-lg border-2 h-12  px-2 right-10 border-white bg-blueSecondary/50 focus:outline-gray-400"
-            type="text"
+            type="password"
           />
           {error ? (
             <span className="text-yellow-500 text-sm py-1 mb-3">
