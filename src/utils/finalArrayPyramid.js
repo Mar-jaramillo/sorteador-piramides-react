@@ -3,7 +3,6 @@ import { createArrayAndObjects } from "./createArrayAndObjects";
  
 import { raffledGroup } from "./raffledGroup";
 
-
 //Retorna un array de objetos duplicados solo si su longitud es de 3
 const pyramidTree = (group) => group.concat(group);
 
@@ -14,7 +13,7 @@ export function finalArrayPyramid(pyramid, arrayGroup) {
   let group = [...arrayGroup];
   let finalPyramid = createArrayAndObjects(pyramid); //Se espera que cree un array con x posiciones
 
-  if (group.length === 3) {
+  if (group.length === 3 ) {
     group = pyramidTree(group);
     finalPyramid = finalPyramid.filter(
       // las ubica en orden en la piramide
@@ -28,8 +27,26 @@ export function finalArrayPyramid(pyramid, arrayGroup) {
       i += 2;
       pares.push([participante1, participante2]);
     }
+
     return pares;
-  } else {
+  } 
+  else if(group.length === 2){
+    finalPyramid = finalPyramid.filter(
+      // las ubica en orden en la piramide
+      (participant) => !group.includes(participant)
+    );
+    finalPyramid.splice(0, group.length, ...group);
+
+    while (i + 1 < finalPyramid.length) {
+      const participante1 = finalPyramid[i];
+      const participante2 = finalPyramid[i + 1];
+      i += 2;
+      pares.push([participante1, participante2]);
+    }
+
+    return pares;
+  }  
+  else {
     finalPyramid = finalPyramid.filter(
       // las ubica en orden en la piramide
       (participant) => !group.includes(participant)

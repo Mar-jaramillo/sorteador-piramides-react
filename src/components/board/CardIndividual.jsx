@@ -18,7 +18,8 @@ export default function CardIndividual({
     context.groupNow = groupNow;
     context.keyNameNow = keyName; 
     context.typePyramid = typePyramid;
- 
+
+
     localStorage.setItem("groupNow ", JSON.stringify(groupNow));
     localStorage.setItem("amountParticipantsCard ",JSON.stringify(amountParticipantsCard))
     localStorage.setItem("keyNameNow", JSON.stringify(keyName));
@@ -39,16 +40,21 @@ export default function CardIndividual({
       typePyramid = 32;
     }
 
+
     localStorage.setItem("typePyramid", JSON.stringify(typePyramid));
     setIsActive({
       active: true,
     });
 
-    if (groupsByCode[keyName].isRaffled === false) {
+
+    if (groupsByCode[keyName].isRaffled === false ) {
+      console.log(groupsByCode[keyName].isRaffled);
       groupsByCode[keyName].isRaffled = true;
+      console.log(groupsByCode[keyName].isRaffled);
       localStorage.setItem("groupsByCode", JSON.stringify(groupsByCode)); 
       context.groupsByCode = groupsByCode;
-      context.raffledCards++;
+      console.log(context.groupsByCode );
+ 
     }
   };
 
