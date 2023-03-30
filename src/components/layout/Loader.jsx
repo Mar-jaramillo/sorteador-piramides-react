@@ -27,8 +27,6 @@ export default function Loader({mensaje}) {
       </svg>
         <span className="mt-10 text-white">{mensaje}</span>
         </div>
-
- 
     </>
   );
 }

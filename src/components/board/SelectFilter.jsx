@@ -51,33 +51,37 @@ export default function SelectFilter({
               <div key={i} className="flex flex-col mx-5">
                 <select
                   onChange={handleSearch}
-                  className="w-40 border-2 bg-white/50 transition duration-500 hover:bg-white/10 font-semibold uppercase text-center rounded-lg py-3 px-4 shadow-lg text-md"
+                  className="w-40 border-2 bg-white/50 transition duration-500 hover:bg-white/10 font-semibold uppercase text-center rounded-lg py-3  shadow-lg text-md"
                 >
                   <option className="">{filter}</option>
                   {valuesSelect[filter] &&
-  [...new Set(valuesSelect[filter].map(val => val.toString().trim()))]
-    .filter(
-      (option) =>
-        typeof option === "string" ||
-        typeof option === "number"
-    )
-    .filter((option) => option.toString().trim() !== "") // Filtrar opciones vacías
-    .sort((a, b) => {
-      // Usar a.toString() si a no es una cadena de texto
-      const aString =
-        typeof a === "string" ? a : a.toString();
-      // Usar b.toString() si b no es una cadena de texto
-      const bString =
-        typeof b === "string" ? b : b.toString();
-      return aString.localeCompare(bString);
-    }) // Ordenar los datos alfabéticamente
-    .map((option, j) => {
-      return (
-        <option key={j} value={option}>
-          {option.toString()}
-        </option>
-      );
-    })}
+                    [
+                      ...new Set(
+                        valuesSelect[filter].map((val) => val.toString().trim())
+                      ),
+                    ]
+                      .filter(
+                        (option) =>
+                          typeof option === "string" ||
+                          typeof option === "number"
+                      )
+                      .filter((option) => option.toString().trim() !== "") // Filtrar opciones vacías
+                      .sort((a, b) => {
+                        // Usar a.toString() si a no es una cadena de texto
+                        const aString =
+                          typeof a === "string" ? a : a.toString();
+                        // Usar b.toString() si b no es una cadena de texto
+                        const bString =
+                          typeof b === "string" ? b : b.toString();
+                        return aString.localeCompare(bString);
+                      }) // Ordenar los datos alfabéticamente
+                      .map((option, j) => {
+                        return (
+                          <option key={j} value={option}>
+                            {option.toString()}
+                          </option>
+                        );
+                      })}
                 </select>
               </div>
             );
