@@ -33,8 +33,10 @@ export default function Home() {
               <BreadCrumb />
               Cargar Consolidado de Deportistas
             </h2>
-            <ExcelUploader setIsLoading={setIsLoading} setError={setError} />
-          </div>
+  
+           <ExcelUploader setIsLoading={setIsLoading} setError={setError} />
+           </div>
+
         )}
         <FooterGeneral />
       </>
