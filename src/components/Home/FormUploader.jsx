@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import icondowload from "../../assets/icons/icondowload.svg";
+import GlobalContext from "../../utils/GlobalContext";
 
 export default function FormUploader({
   handleSubmit,
@@ -8,6 +9,8 @@ export default function FormUploader({
   handleFileUpload,
   loading
 }) {
+
+const context = useContext(GlobalContext)
   const navigate = useNavigate();
   const downloadFile = () => {
     const url = "/documents/Plantilla Obligatoria.xlsx";
@@ -31,6 +34,7 @@ export default function FormUploader({
           <input
             autoFocus
             required
+            defaultValue={context.nameEvent}
             onChange={(e) => setNameEvent(e.target.value)}
             className="rounded-xl text-white placeholder:text-white/30 pl-2  backdrop-blur-md text-lg py-1 border-2 bg-white/20 border-white focus:outline-gray-400"
             type="text"
@@ -48,6 +52,7 @@ export default function FormUploader({
             type="file"
             name="FileAttachment"
             id="FileAttachment"
+ 
             accept=".xlsx, .xls"
             className="pl-0 pr-44 relative file:text-white file:border-r-white file:bg-white/30 file:h-10  file:border-r-4 file:border-l-0 file:border-y-0 file:rounded-xl rounded-xl text-lg text-white px-24 border-2  bg-white/30 border-white focus:outline-gray-400"
           />
