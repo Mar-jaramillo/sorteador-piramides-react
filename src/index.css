@@ -107,6 +107,11 @@ select option {
   color: #FFFFFF;
 }
 
+.selected {
+  background-color: greenyellow;
+  color: white;
+}
+
 .btnPrimary {
   @apply bg-redbuttons border-2 border-redborderbuttons text-white p-3 rounded-lg hover:border-red-700
 }

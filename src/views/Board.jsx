@@ -50,10 +50,10 @@ export default function Board() {
       {isLoading ? (
         <Loader mensaje="Cargando Grupos de Deportistas" />
       ) : (
-        <div id="board" className="fadeinfast h-full ">
+        <div id="board" className="fadeinfast h-full">
           <div className="px-32 pt-10 text-white">
-            <BreadCrumb />
-            <HeaderBoard />
+            <BreadCrumb/>
+            <HeaderBoard/>
             <SelectFliter
               setsearchValue={setsearchValue}
               keysOfGroups={keysOfGroups}
@@ -86,5 +86,5 @@ export default function Board() {
         </div>
       )}
     </>
-  );
+  )
 }
