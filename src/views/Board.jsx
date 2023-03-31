@@ -23,7 +23,7 @@ export default function Board() {
   const [sorteado, setSorteado] = useState(0);
   const [sinSortear, setSinSortear] = useState(0);
   const [isSorted, setIsSorted] = useState(false);
-  const [isLoading, setisLoading] = useState(true)
+  const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
     const changePageTitle = () => {
@@ -37,7 +37,7 @@ export default function Board() {
     setKeysOfGroups(getLocalStorage("keysOfGroups") || context.keysOfGroups);
     setGroupsByCode(getLocalStorage("groupsByCode") || context.groupsByCode);
     setTimeout(() => {
-      setisLoading(false)
+      setisLoading(false);
     }, 500);
   }, []);
 
@@ -79,7 +79,9 @@ export default function Board() {
 
           <div className="flex flex-col bottom-8 items-end text-white">
             <p className="text-sm px-12">Desarrollado por:</p>
-            <img className="h-10 mx-8 mb-5" src={logoqubulowhite} alt="" />
+            <a href="https://qubilo.com/">
+              <img className="h-10 mx-8 mb-5" src={logoqubulowhite} alt="" />
+            </a>
           </div>
         </div>
       )}
