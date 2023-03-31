@@ -51,7 +51,7 @@ export default function SelectFilter({
               <div key={i} className="flex flex-col mx-5">
                 <select
                   onChange={handleSearch}
-                  className="w-40 border-2 hover:bg-blue-600 hover:underline text-white bg-white/50 transition duration-500  font-semibold uppercase text-center rounded-lg py-3  shadow-lg text-md"
+                  className="select-filter w-40 border-2 hover:bg-greenPrimary  text-white bg-white/50 transition duration-500  font-semibold uppercase text-center rounded-lg py-3  shadow-lg text-md"
                 >
                   <option className="">{filter}</option>
                   {valuesSelect[filter] &&

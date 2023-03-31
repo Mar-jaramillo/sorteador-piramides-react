@@ -107,9 +107,8 @@ select option {
   color: #FFFFFF;
 }
 
-.selected {
-  background-color: greenyellow;
-  color: white;
+.select-filter:focus {
+  background-color: #58AA56;
 }
 
 .btnPrimary {
