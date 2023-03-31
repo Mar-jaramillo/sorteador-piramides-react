@@ -84,7 +84,9 @@ export default function BodyTemplate() {
             <div className="flex justify-center">
               <div className="flex flex-col items-center  w-32 h-32">
                 <p className="text-gray-600">Desarrollado por:</p>
+                <a href="https://qubilo.com/">
                 <img className="" src={logoqubilo} alt="logo" />
+                </a>
               </div>
             </div>
           </div>
