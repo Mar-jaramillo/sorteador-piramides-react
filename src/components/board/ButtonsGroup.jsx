@@ -8,13 +8,19 @@ export default function ButtonsGroup({
   setFilteredKeysOfGroups,
 }) {
   const context = useContext(GlobalContext);
-  
   const [cardsRaffleds, setCardsRaffleds] = useState(0);
+  const [participants, setParticipants] = useState(
+    context.keysOfGroups.length || getLocalStorage("totalGroups")
+  );
   const [notRaffled, setnotRaffled] = useState(
     context.totalGroups || getLocalStorage("totalGroups")
   );
+  const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar");
 
-  const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar")
+  useEffect(() => {
+    context.totalGroupsFiltered > 0 &&
+      setParticipants(context.totalGroupsFiltered);
+  }, [context.totalGroupsFiltered]);
 
   useEffect(() => {
     const keys =
@@ -33,18 +39,13 @@ export default function ButtonsGroup({
     setnotRaffled(count ? notRaffled - count : notRaffled);
   }, [context.groupsByCode]);
 
-  const participants =
-    context.totalGroupsFiltered > 0
-      ? context.totalGroupsFiltered
-      : context.keysOfGroups.length;
-
   const handleSearchRaffled = (e) => {
     e.preventDefault();
     const filteredKeysRaffled = [];
     for (const key of keysOfGroups) {
       const array = groupsByCode[key];
       if (array.isRaffled) {
-        filteredKeysRaffled.push(key)
+        filteredKeysRaffled.push(key);
         context.totalGroupsFiltered = filteredKeysRaffled.length;
         setFilteredKeysOfGroups(filteredKeysRaffled);
       }
@@ -56,21 +57,27 @@ export default function ButtonsGroup({
     for (const key of keysOfGroups) {
       const array = groupsByCode[key];
       if (!array.isRaffled) {
-        filteredKeysRaffled.push(key)
+        filteredKeysRaffled.push(key);
         context.totalGroupsFiltered = filteredKeysRaffled.length;
         setFilteredKeysOfGroups(filteredKeysRaffled);
       }
     }
   };
 
-  const HandleAllKeys =()=>{
-    setFilteredKeysOfGroups(keysOriginals)
-  }
+  const HandleAllKeys = () => {
+    setFilteredKeysOfGroups(keysOriginals);
+    setParticipants(
+      context.keysOfGroups.length || getLocalStorage("totalGroups")
+    );
+  };
 
   return (
     <div className="flex gap-3 px-3">
-      <button onClick={HandleAllKeys} className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-white/25 ">
-        Todos 
+      <button
+        onClick={HandleAllKeys}
+        className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-white/25 "
+      >
+        Todos {participants}
       </button>
       <button
         onClick={handleSearchRaffled}
@@ -78,7 +85,10 @@ export default function ButtonsGroup({
       >
         Sorteado {cardsRaffleds}
       </button>
-      <button onClick={handleSearchNotRaffled} className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-redPrimary">
+      <button
+        onClick={handleSearchNotRaffled}
+        className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-redPrimary"
+      >
         Sin sortear {notRaffled}
       </button>
     </div>
