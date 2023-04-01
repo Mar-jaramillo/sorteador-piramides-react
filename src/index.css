@@ -73,7 +73,7 @@ thead {
 
 /* color del relleno de la barra */
 ::-webkit-scrollbar-thumb {
-  background-color: #FFFFFF;
+  background-color: #a9b2db;
   border-radius: 10px;
 
 }
