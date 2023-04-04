@@ -158,6 +158,10 @@ export default function CardIndividual({
                     Volver a sortear
                   </button>
                 </div>
+              ) : keyName === "undefined" ? (
+                <p className="col-span-6  text-white m-4 px-5 py-2  underline">
+                  No se puede sortear
+                </p>
               ) : (
                 <button
                   onClick={() => {
