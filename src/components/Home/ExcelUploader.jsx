@@ -27,6 +27,17 @@ export default function ExcelUploader({ setError }) {
         const valuesUniques = obtenerPropiedadesUnicas(excelData); // crea las propiedades unicas para usar en los selects de board
         const groupsByCode = createGroupsByCode(excelData); // crea los grupos de deportistas por codigo
         const keysOfGroups = Object.keys(groupsByCode);
+        
+        let countKeysUndifined = 0
+            //0     //1    //2
+        //["key1", "key2", "key3"]
+
+        for (let i = 0; i < keysOfGroups.length; i++) {
+            if (keysOfGroups[i] === "undefined") {
+              countKeysUndifined++
+            }
+        }
+
         const keysNoMutar = keysOfGroups;
         // crea un array de lo codigos para usar en el board
         const totalGroups = keysOfGroups.length;
@@ -40,8 +51,10 @@ export default function ExcelUploader({ setError }) {
         context.keysOfGroups = keysOfGroups;
         context.keysNoMutar = keysOfGroups.slice();
         context.valuesUniques = valuesUniques;
+        context.totalGroupsUndefined = countKeysUndifined
 
         //Guardados en LocalStorage
+        localStorage.setItem("totalGroupsUndefined", JSON.stringify(countKeysUndifined));
         localStorage.setItem("nameEvent", JSON.stringify(nameEvent));
         localStorage.setItem("totalGroups", JSON.stringify(totalGroups));
         localStorage.setItem(

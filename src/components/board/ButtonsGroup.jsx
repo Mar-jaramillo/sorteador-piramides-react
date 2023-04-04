@@ -15,12 +15,21 @@ export default function ButtonsGroup({
   const [notRaffled, setnotRaffled] = useState(
     context.totalGroups || getLocalStorage("totalGroups")
   );
+  const [cardsUndifined, setCardsUndifined] = useState(context.totalGroupsUndefined || getLocalStorage("totalGroupsUndefined"))
   const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar");
 
   useEffect(() => {
     context.totalGroupsFiltered > 0 &&
       setParticipants(context.totalGroupsFiltered);
   }, [context.totalGroupsFiltered]);
+
+  useEffect(() => {
+    context.totalGroupsUndefined > 0 &&
+    setCardsUndifined(context.totalGroupsUndefined);
+  }, [ context.totalGroupsUndefined])
+  
+
+
 
   useEffect(() => {
     const keys =
@@ -64,12 +73,27 @@ export default function ButtonsGroup({
     }
   };
 
-  const HandleAllKeys = () => {
+  const HandleAllKeys = (e) => {
+    e.preventDefault();
     setFilteredKeysOfGroups(keysOriginals);
     setParticipants(
       context.keysOfGroups.length || getLocalStorage("totalGroups")
     );
   };
+
+  const handleUndefinedCards =(e)=>{
+    e.preventDefault();
+    const filteredKeysUndefined = [];
+    for (const key of keysOfGroups) {
+      console.log(key);
+      if (key === 'undefined' ) {
+        filteredKeysUndefined.push(key)
+        context.totalGroupsFiltered = filteredKeysUndefined.length;
+        setFilteredKeysOfGroups(filteredKeysUndefined);
+      }
+    }
+    
+  }
 
   return (
     <div className="flex gap-3 px-3">
@@ -90,6 +114,12 @@ export default function ButtonsGroup({
         className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-redPrimary"
       >
         Sin sortear {notRaffled}
+      </button>
+      <button
+        onClick={handleUndefinedCards}
+        className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-redPrimary"
+      >
+        Indefinidos {cardsUndifined}
       </button>
     </div>
   );
