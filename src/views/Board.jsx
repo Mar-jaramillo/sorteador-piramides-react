@@ -50,10 +50,17 @@ export default function Board() {
       {isLoading ? (
         <Loader mensaje="Cargando Grupos de Deportistas" />
       ) : (
-        <div id="board" className="fadeinfast h-full">
-          <div className="px-32 pt-10 text-white">
-            <BreadCrumb/>
-            <HeaderBoard/>
+        <div
+          id="board"
+          className={
+            keysOfGroups.length < 2
+              ? "fadeinfast h-screen"
+              : "fadeinfast h-full"
+          }
+        >
+          <div className="px-32 pt-10 text-white h-full">
+            <BreadCrumb />
+            <HeaderBoard />
             <SelectFliter
               setsearchValue={setsearchValue}
               keysOfGroups={keysOfGroups}
@@ -76,15 +83,16 @@ export default function Board() {
               setIsSorted={isSorted} // se pasa el estado de isSorted a CardsBoard
             />
           </div>
-
-          <div className="flex flex-col bottom-8 items-end text-white">
-            <p className="text-sm px-12">Desarrollado por:</p>
-            <a href="https://qubilo.com/">
-              <img className="h-10 mx-8 mb-5" src={logoqubulowhite} alt="" />
-            </a>
-          </div>
+ 
+            <div className={keysOfGroups.length < 2 ?"flex flex-col bottom-8 right-8  fixed text-white ":"flex flex-col p-4 items-end text-white "}>
+              <p className="text-sm">Desarrollado por:</p>
+              <a href="https://qubilo.com/">
+                <img className="h-10" src={logoqubulowhite} alt="" />
+              </a>
+            </div>
+           
         </div>
       )}
     </>
-  )
+  );
 }
