@@ -16,12 +16,14 @@ export default function CardIndividual({
 
   const handleClickSorteo = () => {
     context.groupNow = groupNow;
-    context.keyNameNow = keyName; 
+    context.keyNameNow = keyName;
     context.typePyramid = typePyramid;
 
-
     localStorage.setItem("groupNow ", JSON.stringify(groupNow));
-    localStorage.setItem("amountParticipantsCard ",JSON.stringify(amountParticipantsCard))
+    localStorage.setItem(
+      "amountParticipantsCard ",
+      JSON.stringify(amountParticipantsCard)
+    );
     localStorage.setItem("keyNameNow", JSON.stringify(keyName));
 
     if (amountParticipantsCard === 1) {
@@ -40,28 +42,20 @@ export default function CardIndividual({
       typePyramid = 32;
     }
 
-
     localStorage.setItem("typePyramid", JSON.stringify(typePyramid));
     setIsActive({
       active: true,
     });
 
-
-    if (groupsByCode[keyName].isRaffled === false ) {
+    if (groupsByCode[keyName].isRaffled === false) {
       console.log(groupsByCode[keyName].isRaffled);
       groupsByCode[keyName].isRaffled = true;
       console.log(groupsByCode[keyName].isRaffled);
-      localStorage.setItem("groupsByCode", JSON.stringify(groupsByCode)); 
+      localStorage.setItem("groupsByCode", JSON.stringify(groupsByCode));
       context.groupsByCode = groupsByCode;
-      console.log(context.groupsByCode );
- 
+      console.log(context.groupsByCode);
     }
   };
-
- 
-
-
-
 
   const greenCard =
     "text-center grid grid-cols-12 p-4 border-b-2 rounded-t-2xl bg-green-500";
@@ -156,7 +150,6 @@ export default function CardIndividual({
                 <div>
                   <button
                     onClick={() => {
-         
                       handleClickSorteo();
                       navigate("/templates");
                     }}
@@ -165,10 +158,13 @@ export default function CardIndividual({
                     Volver a sortear
                   </button>
                 </div>
+              ) : keyName === "undefined" ? (
+                <p className="col-span-6  text-white m-4 px-5 py-2  underline">
+                  No se puede sortear
+                </p>
               ) : (
                 <button
                   onClick={() => {
-         
                     handleClickSorteo();
                     navigate("/templates");
                   }}

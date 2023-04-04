@@ -62,29 +62,36 @@ export default function BodyTemplate() {
               </div>
             </div>
 
-            <div className="w-min-0 py-2">
+            <div className="w-min-0 py-2 ">
               <Pyramid typePyramid={context.typePyramid} />
-              {typePyramid >= 4 ? (
-                <>
-                  <p className="mx-72 text-end font-semibold text-gray-500">
-                    {" "}
-                    Tercer y Cuarto puesto
-                  </p>
-                  <div className="mb-11 flex justify-end">
-                    <EliminationPyramid />
+
+              <div className="flex flex-row-reverse items-center my-7">
+                {typePyramid >= 4 ? (
+                  <div className="grid place-content-center  ">
+                    <p className="font-semibold text-center text-gray-500  ">
+                      {" "}
+                      Tercer y Cuarto puesto
+                    </p>
+                    <div className="mb-11">
+                      <EliminationPyramid />
+                    </div>
                   </div>
-                </>
-              ) : null}
-              <TablePositions />
+                ) : null}
+                <TablePositions />
+              </div>
             </div>
 
-            <div className="flex justify-center p-24">
-              <img className="max-w-screen-lg" src={firmas} alt="firmas" />
+            <div className="flex justify-center my-7 text-gray-700 gap-5">
+              <p>Vo Bo Juez central ____________________</p>
+              <p>Registro Consolidador ____________________</p>
+              <p>Vo Bo Coor. Juzgamiento ____________________</p>
             </div>
             <div className="flex justify-center">
-              <div className="flex flex-col items-center  w-32 h-32">
+              <div className="flex flex-col items-center mt-7 w-32 h-32">
                 <p className="text-gray-600">Desarrollado por:</p>
-                <img className="" src={logoqubilo} alt="logo" />
+                <a href="https://qubilo.com/">
+                  <img className="" src={logoqubilo} alt="logo" />
+                </a>
               </div>
             </div>
           </div>

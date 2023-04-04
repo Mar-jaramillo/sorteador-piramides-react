@@ -8,13 +8,27 @@ export default function ButtonsGroup({
   setFilteredKeysOfGroups,
 }) {
   const context = useContext(GlobalContext);
-  
   const [cardsRaffleds, setCardsRaffleds] = useState(0);
-  const [notRaffled, setnotRaffled] = useState(
-    context.totalGroups || getLocalStorage("totalGroups")
+  const [participants, setParticipants] = useState(
+    context.keysOfGroups.length || getLocalStorage("totalGroups")
   );
+  const [notRaffled, setnotRaffled] = useState(
+    getLocalStorage("totalGroupsNotRaffled")
+  );
+  const [cardsUndifined, setCardsUndifined] = useState(
+    context.totalGroupsUndefined || getLocalStorage("totalGroupsUndefined")
+  );
+  const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar");
 
-  const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar")
+  useEffect(() => {
+    context.totalGroupsFiltered > 0 &&
+      setParticipants(context.totalGroupsFiltered);
+  }, [context.totalGroupsFiltered]);
+
+  useEffect(() => {
+    context.totalGroupsUndefined > 0 &&
+      setCardsUndifined(context.totalGroupsUndefined);
+  }, [context.totalGroupsUndefined]);
 
   useEffect(() => {
     const keys =
@@ -22,21 +36,20 @@ export default function ButtonsGroup({
     const groups =
       getLocalStorage("groupsByCode") || context.groupsByCode || groupsByCode;
 
-    let count = 0;
+    let countRaffled = 0;
+    let countNotRaffled = 0;
     for (let i = 0; i < keys.length; i++) {
       const keyTemp = keys[i];
       if (groups[keyTemp].isRaffled) {
-        count++;
+        countRaffled++;
+      } else {
+        countNotRaffled++;
       }
     }
-    setCardsRaffleds(count);
-    setnotRaffled(count ? notRaffled - count : notRaffled);
+    setCardsRaffleds(countRaffled);
+    setnotRaffled(countRaffled ? notRaffled - countRaffled : notRaffled);
+    // setnotRaffled(countNotRaffled );
   }, [context.groupsByCode]);
-
-  const participants =
-    context.totalGroupsFiltered > 0
-      ? context.totalGroupsFiltered
-      : context.keysOfGroups.length;
 
   const handleSearchRaffled = (e) => {
     e.preventDefault();
@@ -44,33 +57,60 @@ export default function ButtonsGroup({
     for (const key of keysOfGroups) {
       const array = groupsByCode[key];
       if (array.isRaffled) {
-        filteredKeysRaffled.push(key)
+        filteredKeysRaffled.push(key);
         context.totalGroupsFiltered = filteredKeysRaffled.length;
         setFilteredKeysOfGroups(filteredKeysRaffled);
       }
     }
   };
+  
   const handleSearchNotRaffled = (e) => {
     e.preventDefault();
     const filteredKeysRaffled = [];
+   
     for (const key of keysOfGroups) {
-      const array = groupsByCode[key];
-      if (!array.isRaffled) {
-        filteredKeysRaffled.push(key)
-        context.totalGroupsFiltered = filteredKeysRaffled.length;
-        setFilteredKeysOfGroups(filteredKeysRaffled);
+      
+      const group = groupsByCode[key];
+      if (key !== "undefined" && group.arrayGroup.length >= 2) {
+       
+        if (!group.isRaffled) {
+          filteredKeysRaffled.push(key);
+          context.totalGroupsFiltered = filteredKeysRaffled.length;
+          setFilteredKeysOfGroups(filteredKeysRaffled);
+        }
+
+      }
+    };
+  };
+
+  const HandleAllKeys = (e) => {
+    e.preventDefault();
+    setFilteredKeysOfGroups(keysOriginals);
+    setParticipants(
+      context.keysOfGroups.length || getLocalStorage("totalGroups")
+    );
+  };
+
+  const handleUndefinedCards = (e) => {
+    e.preventDefault();
+    const filteredKeysUndefined = [];
+    for (const key of keysOfGroups) {
+      if (key === "undefined" || groupsByCode[key].arrayGroup.length < 2) {
+        filteredKeysUndefined.push(key);
+        context.totalGroupsFiltered = filteredKeysUndefined.length;
+        setFilteredKeysOfGroups(filteredKeysUndefined);
+        
       }
     }
   };
 
-  const HandleAllKeys =()=>{
-    setFilteredKeysOfGroups(keysOriginals)
-  }
-
   return (
     <div className="flex gap-3 px-3">
-      <button onClick={HandleAllKeys} className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-white/25 ">
-        Todos 
+      <button
+        onClick={HandleAllKeys}
+        className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-white/25 "
+      >
+        Todos {participants}
       </button>
       <button
         onClick={handleSearchRaffled}
@@ -78,8 +118,17 @@ export default function ButtonsGroup({
       >
         Sorteado {cardsRaffleds}
       </button>
-      <button onClick={handleSearchNotRaffled} className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-redPrimary">
+      <button
+        onClick={handleSearchNotRaffled}
+        className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-redPrimary"
+      >
         Sin sortear {notRaffled}
+      </button>
+      <button
+        onClick={handleUndefinedCards}
+        className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-redPrimary"
+      >
+        Indefinidos {cardsUndifined}
       </button>
     </div>
   );

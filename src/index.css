@@ -73,7 +73,7 @@ thead {
 
 /* color del relleno de la barra */
 ::-webkit-scrollbar-thumb {
-  background-color: #FFFFFF;
+  background-color: #a9b2db;
   border-radius: 10px;
 
 }
@@ -107,6 +107,10 @@ select option {
   color: #FFFFFF;
 }
 
+.select-filter:focus {
+  background-color: #58AA56;
+}
+
 .btnPrimary {
   @apply bg-redbuttons border-2 border-redborderbuttons text-white p-3 rounded-lg hover:border-red-700
 }
@@ -119,6 +123,7 @@ select option {
   animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 0.3s; /* don't forget to set a duration! */
 }
+
 .fadeInDown {
   animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 1.5s; /* don't forget to set a duration! */

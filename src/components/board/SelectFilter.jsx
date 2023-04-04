@@ -51,7 +51,7 @@ export default function SelectFilter({
               <div key={i} className="flex flex-col mx-5">
                 <select
                   onChange={handleSearch}
-                  className="w-40 border-2 bg-white/50 transition duration-500 hover:bg-white/10 font-semibold uppercase text-center rounded-lg py-3  shadow-lg text-md"
+                  className="select-filter w-40 border-2 hover:bg-greenPrimary  text-white bg-white/50 transition duration-500  font-semibold uppercase text-center rounded-lg py-3  shadow-lg text-md"
                 >
                   <option className="">{filter}</option>
                   {valuesSelect[filter] &&
@@ -78,7 +78,7 @@ export default function SelectFilter({
                       .map((option, j) => {
                         return (
                           <option key={j} value={option}>
-                            {option.toString()}
+                            {option.toString().replace(/,/g, "")}
                           </option>
                         );
                       })}

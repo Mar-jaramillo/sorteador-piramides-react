@@ -4,7 +4,7 @@ import { SeedItem } from "react-brackets";
 export const ItemSeed = ({ seed }) => {
   return (
     <SeedItem 
-      className="item flex justify-between w-full shadow-none bg-white "
+      className=" item flex justify-between w-full shadow-none bg-white "
       style={{
         boxShadow: "none",
         backgroundColor: "white",

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ExcelUploader from "../components/Home/ExcelUploader";
-import Loader from "../components/layout/Loader";
+
 import ErrorComponent from "../components/layout/error/ErrorComponent";
 import BreadCrumb from "../components/layout/BreadCrumb";
 import { useLocation } from "react-router-dom";
