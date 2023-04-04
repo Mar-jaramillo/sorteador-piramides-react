@@ -86,7 +86,7 @@ export default function ButtonsGroup({
     const filteredKeysUndefined = [];
     for (const key of keysOfGroups) {
       console.log(key);
-      if (key === 'undefined' ) {
+      if (key === 'undefined' || groupsByCode[key].arrayGroup.length <2 ) {
         filteredKeysUndefined.push(key)
         context.totalGroupsFiltered = filteredKeysUndefined.length;
         setFilteredKeysOfGroups(filteredKeysUndefined);
