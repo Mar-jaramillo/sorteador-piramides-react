@@ -34,6 +34,7 @@ export default function App() {
     totalGroupsUndefined: 0, //Se espera un numero que varia dependiendo la busqueda en los selects
     keyNameNow: "", //Se espera el nombre del codigo del grupo seleccionado
     groupNow: {},
+    totalGroupsNotRaffled: 0,
   };
 
   return (

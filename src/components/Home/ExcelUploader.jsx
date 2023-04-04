@@ -28,20 +28,20 @@ export default function ExcelUploader({ setError }) {
         const groupsByCode = createGroupsByCode(excelData); // crea los grupos de deportistas por codigo
         const keysOfGroups = Object.keys(groupsByCode);
         
-        let countKeysUndifined = 0
-            //0     //1    //2
-        //["key1", "key2", "key3"]
+        let countKeysUndefined = 0
 
         for (let i = 0; i < keysOfGroups.length; i++) {
-            if (keysOfGroups[i] === "undefined") {
-              countKeysUndifined++
-            }
+          const key = keysOfGroups[i];
+          if (key === 'undefined' || groupsByCode[key].arrayGroup.length < 2) {
+              countKeysUndefined++
+            } 
         }
 
         const keysNoMutar = keysOfGroups;
         // crea un array de lo codigos para usar en el board
         const totalGroups = keysOfGroups.length;
         const totalDelegations = valuesUniques["Delegación"].length;
+        const notRaffled = totalGroups - countKeysUndefined;
 
         //Guardados en contexto
         context.nameEvent = nameEvent;
@@ -51,10 +51,11 @@ export default function ExcelUploader({ setError }) {
         context.keysOfGroups = keysOfGroups;
         context.keysNoMutar = keysOfGroups.slice();
         context.valuesUniques = valuesUniques;
-        context.totalGroupsUndefined = countKeysUndifined
+        context.totalGroupsUndefined = countKeysUndefined;
+        context.totalGroupsNotRaffled = notRaffled;
 
         //Guardados en LocalStorage
-        localStorage.setItem("totalGroupsUndefined", JSON.stringify(countKeysUndifined));
+        localStorage.setItem("totalGroupsUndefined", JSON.stringify(countKeysUndefined));
         localStorage.setItem("nameEvent", JSON.stringify(nameEvent));
         localStorage.setItem("totalGroups", JSON.stringify(totalGroups));
         localStorage.setItem(
@@ -66,6 +67,8 @@ export default function ExcelUploader({ setError }) {
         localStorage.setItem("keysNoMutar", JSON.stringify(keysNoMutar));
         localStorage.setItem("valuesUniques", JSON.stringify(valuesUniques));
         localStorage.setItem("excelData", JSON.stringify(excelData));
+        localStorage.setItem("totalGroupsUndefined", JSON.stringify(countKeysUndefined));
+        localStorage.setItem("totalGroupsNotRaffled", JSON.stringify(notRaffled));
         // const eventData = {
         //   nameEvent: nameEvent,
         //   data: data,

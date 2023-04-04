@@ -13,9 +13,11 @@ export default function ButtonsGroup({
     context.keysOfGroups.length || getLocalStorage("totalGroups")
   );
   const [notRaffled, setnotRaffled] = useState(
-    context.totalGroups || getLocalStorage("totalGroups")
+    getLocalStorage("totalGroupsNotRaffled")
   );
-  const [cardsUndifined, setCardsUndifined] = useState(context.totalGroupsUndefined || getLocalStorage("totalGroupsUndefined"))
+  const [cardsUndifined, setCardsUndifined] = useState(
+    context.totalGroupsUndefined || getLocalStorage("totalGroupsUndefined")
+  );
   const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar");
 
   useEffect(() => {
@@ -25,11 +27,8 @@ export default function ButtonsGroup({
 
   useEffect(() => {
     context.totalGroupsUndefined > 0 &&
-    setCardsUndifined(context.totalGroupsUndefined);
-  }, [ context.totalGroupsUndefined])
-  
-
-
+      setCardsUndifined(context.totalGroupsUndefined);
+  }, [context.totalGroupsUndefined]);
 
   useEffect(() => {
     const keys =
@@ -37,15 +36,19 @@ export default function ButtonsGroup({
     const groups =
       getLocalStorage("groupsByCode") || context.groupsByCode || groupsByCode;
 
-    let count = 0;
+    let countRaffled = 0;
+    let countNotRaffled = 0;
     for (let i = 0; i < keys.length; i++) {
       const keyTemp = keys[i];
       if (groups[keyTemp].isRaffled) {
-        count++;
+        countRaffled++;
+      } else {
+        countNotRaffled++;
       }
     }
-    setCardsRaffleds(count);
-    setnotRaffled(count ? notRaffled - count : notRaffled);
+    setCardsRaffleds(countRaffled);
+    setnotRaffled(countRaffled ? notRaffled - countRaffled : notRaffled);
+    // setnotRaffled(countNotRaffled );
   }, [context.groupsByCode]);
 
   const handleSearchRaffled = (e) => {
@@ -60,17 +63,24 @@ export default function ButtonsGroup({
       }
     }
   };
+  
   const handleSearchNotRaffled = (e) => {
     e.preventDefault();
     const filteredKeysRaffled = [];
+   
     for (const key of keysOfGroups) {
-      const array = groupsByCode[key];
-      if (!array.isRaffled) {
-        filteredKeysRaffled.push(key);
-        context.totalGroupsFiltered = filteredKeysRaffled.length;
-        setFilteredKeysOfGroups(filteredKeysRaffled);
+      
+      const group = groupsByCode[key];
+      if (key !== "undefined" && group.arrayGroup.length >= 2) {
+       
+        if (!group.isRaffled) {
+          filteredKeysRaffled.push(key);
+          context.totalGroupsFiltered = filteredKeysRaffled.length;
+          setFilteredKeysOfGroups(filteredKeysRaffled);
+        }
+
       }
-    }
+    };
   };
 
   const HandleAllKeys = (e) => {
@@ -81,19 +91,18 @@ export default function ButtonsGroup({
     );
   };
 
-  const handleUndefinedCards =(e)=>{
+  const handleUndefinedCards = (e) => {
     e.preventDefault();
     const filteredKeysUndefined = [];
     for (const key of keysOfGroups) {
-      console.log(key);
-      if (key === 'undefined' || groupsByCode[key].arrayGroup.length <2 ) {
-        filteredKeysUndefined.push(key)
+      if (key === "undefined" || groupsByCode[key].arrayGroup.length < 2) {
+        filteredKeysUndefined.push(key);
         context.totalGroupsFiltered = filteredKeysUndefined.length;
         setFilteredKeysOfGroups(filteredKeysUndefined);
+        
       }
     }
-    
-  }
+  };
 
   return (
     <div className="flex gap-3 px-3">

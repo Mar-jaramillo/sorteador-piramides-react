@@ -78,7 +78,7 @@ export default function SelectFilter({
                       .map((option, j) => {
                         return (
                           <option key={j} value={option}>
-                            {option.toString()}
+                            {option.toString().replace(/,/g, "")}
                           </option>
                         );
                       })}
