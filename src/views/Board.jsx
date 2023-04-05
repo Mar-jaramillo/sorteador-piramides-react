@@ -17,13 +17,16 @@ export default function Board() {
   const { pathname } = useLocation();
   const [groupsByCode, setGroupsByCode] = useState({});
   const [keysOfGroups, setKeysOfGroups] = useState([]);
-  const [searchValue, setsearchValue] = useState("");
   const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]);
   const [isActive, setIsActive] = useState(false);
-  const [sorteado, setSorteado] = useState(0);
-  const [sinSortear, setSinSortear] = useState(0);
   const [isSorted, setIsSorted] = useState(false);
   const [isLoading, setisLoading] = useState(true);
+  const [listParamsSearch, setListParamsSearch] = useState({
+    Categoría: "Categoría",
+    Rama: "Rama",
+    Grado: "Grado",
+    División: "División",
+  });
 
   useEffect(() => {
     const changePageTitle = () => {
@@ -41,9 +44,10 @@ export default function Board() {
     }, 500);
   }, []);
 
-  useEffect(() => {
-    setSorteado(context.raffledCard);
-  }, [context.raffledCard]);
+  const handleCards = (filteredKeys) => {
+    console.log(filteredKeys);
+    setFilteredKeysOfGroups(filteredKeys);
+  };
 
   return (
     <>
@@ -62,12 +66,14 @@ export default function Board() {
             <BreadCrumb />
             <HeaderBoard />
             <SelectFliter
-              setsearchValue={setsearchValue}
               keysOfGroups={keysOfGroups}
               setKeysOfGroups={setKeysOfGroups}
               setGroupsByCode={setGroupsByCode}
               groupsByCode={groupsByCode}
-              setFilteredKeysOfGroups={setFilteredKeysOfGroups}
+              // setFilteredKeysOfGroups={setFilteredKeysOfGroups}
+              handleCards={handleCards}
+              setListParamsSearch={setListParamsSearch}
+              listParamsSearch={listParamsSearch}
             />
             <ButtonsGroup
               setFilteredKeysOfGroups={setFilteredKeysOfGroups}
@@ -80,17 +86,21 @@ export default function Board() {
               groupsByCode={groupsByCode}
               setIsActive={setIsActive}
               isActive={isActive}
-              setIsSorted={isSorted} // se pasa el estado de isSorted a CardsBoard
             />
           </div>
- 
-            <div className={keysOfGroups.length < 2 ?"flex flex-col bottom-8 right-8  fixed text-white ":"flex flex-col p-4 items-end text-white "}>
-              <p className="text-sm">Desarrollado por:</p>
-              <a href="https://qubilo.com/">
-                <img className="h-10" src={logoqubulowhite} alt="" />
-              </a>
-            </div>
-           
+
+          <div
+            className={
+              keysOfGroups.length < 2
+                ? "flex flex-col bottom-8 right-8  fixed text-white "
+                : "flex flex-col p-4 items-end text-white "
+            }
+          >
+            <p className="text-sm">Desarrollado por:</p>
+            <a href="https://qubilo.com/">
+              <img className="h-10" src={logoqubulowhite} alt="" />
+            </a>
+          </div>
         </div>
       )}
     </>
