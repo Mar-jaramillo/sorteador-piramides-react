@@ -13,23 +13,17 @@ export default function CardsBoard({
     setIsActive({ active: false });
   };
   const [isLoad, setisLoad] = useState(false);
-
-  let cardsToRender = []
-  // filteredKeysOfGroups.length
-  //   ? filteredKeysOfGroups
-  //   : keysOfGroups;
-
+const [cardsToRender, setCardsToRender] = useState(keysOfGroups)
+ 
   useEffect(() => {
     keysOfGroups.length > 0 && groupsByCode && setisLoad(!isLoad);
-    cardsToRender = keysOfGroups
   }, [keysOfGroups, groupsByCode]);
 
   useEffect(() => {
-    
-    cardsToRender = keysOfGroups
-    console.log(keysOfGroups);
-  }, [])
+    filteredKeysOfGroups.length > 0 && setCardsToRender(filteredKeysOfGroups)
+  }, [filteredKeysOfGroups])
   
+
 
   return (
     <div className="fadeInDown grid grid-cols-12">
