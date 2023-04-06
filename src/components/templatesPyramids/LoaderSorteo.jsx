@@ -2,10 +2,13 @@ import React, { useContext } from "react";
 import ListModal from "./ListModal";
 import GlobalContext from "../../utils/GlobalContext";
 import ruleta from "../../assets/ruleta.gif";
+import { getLocalStorage } from "../../utils/getLocalStorage";
 
 const LoaderSorteo = ({ setShowAnimation }) => {
   const context = useContext(GlobalContext);
-  const group = context.groupNow.arrayGroup || groupLocal.arrayGroup;
+  const localGroup = getLocalStorage("groupNow ")
+  console.log(localGroup);
+  const group = context.groupNow.arrayGroup || localGroup.arrayGroup;
 
   return (
     <div className="flex flex-col justify-center  pt-28">

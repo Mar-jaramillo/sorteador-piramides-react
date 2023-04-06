@@ -20,6 +20,7 @@ export default function ModalTemplate({ sorteado }) {
         <p className="text-lg   flex flex-col justify-end font-semibold">
         </p>
         <div className="flex gap-5 ">
+           <button onClick={()=>window.location.reload()} className="underline">Volver a sortear</button>
           <button
             onClick={() => handleCapture(typePyramid, keyNameNow)}
             className="btnPrimary"
