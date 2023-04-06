@@ -11,7 +11,7 @@ import BodyTemplate from "./BodyTemplate";
 export default function ModalTemplate({ sorteado }) {
 
   const context = useContext(GlobalContext);
-  const { pathname } = useLocation();
+
   const typePyramid = context.typePyramid || getLocalStorage("typePyramid")
   const keyNameNow = context.keyNameNow || getLocalStorage("keyNameNow")
   return (
