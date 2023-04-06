@@ -44,10 +44,10 @@ export default function Board() {
     }, 500);
   }, []);
 
-  const handleCards = (filteredKeys) => {
-    console.log(filteredKeys);
-    setFilteredKeysOfGroups(filteredKeys);
-  };
+  // const handleCards = (filteredKeys) => {
+  //   console.log(filteredKeys);
+  //   setFilteredKeysOfGroups(filteredKeys);
+  // };
 
   return (
     <>
@@ -70,8 +70,8 @@ export default function Board() {
               setKeysOfGroups={setKeysOfGroups}
               setGroupsByCode={setGroupsByCode}
               groupsByCode={groupsByCode}
-              // setFilteredKeysOfGroups={setFilteredKeysOfGroups}
-              handleCards={handleCards}
+              setFilteredKeysOfGroups={setFilteredKeysOfGroups}
+              // handleCards={handleCards}
               setListParamsSearch={setListParamsSearch}
               listParamsSearch={listParamsSearch}
             />

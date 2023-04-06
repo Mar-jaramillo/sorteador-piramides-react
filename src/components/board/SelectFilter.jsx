@@ -7,7 +7,7 @@ export default function SelectFilter({
   groupsByCode,
   keysOfGroups,
   setFilteredKeysOfGroups,
-  handleCards,
+  // handleCards,
   setListParamsSearch,
   listParamsSearch
 }) {
@@ -35,18 +35,21 @@ export default function SelectFilter({
     const filteredKeys = [];
     for (const key of keysOfGroups) {
       const objParticipant = groups[key].arrayGroup[0];
+
       if (
         (objParticipant["Categoría"] === listParamsSearch["Categoría"] || listParamsSearch["Categoría"] === "Categoría") &&
         (objParticipant["Rama"] === listParamsSearch["Rama"] || listParamsSearch["Rama"] === "Rama" ) && 
         (objParticipant["Grado"] === listParamsSearch["Grado"] || listParamsSearch["Grado"] ==="Grado" ) &&
-        (objParticipant["División"] === listParamsSearch["División"] || listParamsSearch["División"] ==="División")
+        (objParticipant["División"] == listParamsSearch["División"] || listParamsSearch["División"] == "División")
       ) {
         filteredKeys.push(key)
       }
+
     }
+    console.log(filteredKeys);
     context.totalGroupsFiltered = filteredKeys.length;
-    handleCards(filteredKeys);
-    // setFilteredKeysOfGroups(filteredKeys);
+    // handleCards(filteredKeys);
+    setFilteredKeysOfGroups(filteredKeys);
   };
 
   return (
