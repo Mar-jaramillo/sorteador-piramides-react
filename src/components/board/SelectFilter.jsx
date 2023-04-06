@@ -15,6 +15,7 @@ export default function SelectFilter({
 
   const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
+  const [notFound, setNotFound] = useState(false)
 
   useEffect(() => {
     setValuesSelect(getLocalStorage("valuesUniques"));
@@ -24,6 +25,7 @@ export default function SelectFilter({
 
 
   const addParamsSearch = (e, filter) => {
+    setNotFound(false)
     const valueTemp = e.target.value;
     listParamsSearch[filter] = valueTemp
     setListParamsSearch({...listParamsSearch})
@@ -49,11 +51,13 @@ export default function SelectFilter({
     console.log(filteredKeys);
     context.totalGroupsFiltered = filteredKeys.length;
     // handleCards(filteredKeys);
-    setFilteredKeysOfGroups(filteredKeys);
+    filteredKeys.length > 0 ?
+    setFilteredKeysOfGroups(filteredKeys)
+    : setNotFound(true)
   };
 
   return (
-    <div className="flex items-center justify-center min-w-full mb-16">
+    <div className="flex flex-col items-center justify-center min-w-full mb-8">
       <div className="flex flex-col ">
         <form className="flex">
           {" "}
@@ -109,6 +113,7 @@ export default function SelectFilter({
           </button>
         </form>
       </div>
+     {notFound ? <span className="text-yellow-500 px-5  my-2 w-full">No se encontraron resultados</span>: null}
     </div>
   );
 }
