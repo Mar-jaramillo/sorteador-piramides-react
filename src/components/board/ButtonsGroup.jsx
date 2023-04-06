@@ -6,6 +6,7 @@ export default function ButtonsGroup({
   keysOfGroups,
   groupsByCode,
   setFilteredKeysOfGroups,
+  filteredKeysOfGroups
 }) {
   const context = useContext(GlobalContext);
   const [cardsRaffleds, setCardsRaffleds] = useState(0);
@@ -21,9 +22,9 @@ export default function ButtonsGroup({
   const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar");
 
   useEffect(() => {
-    context.totalGroupsFiltered > 0 &&
-      setParticipants(context.totalGroupsFiltered);
-  }, [context.totalGroupsFiltered]);
+    filteredKeysOfGroups.length > 0 &&
+      setParticipants(filteredKeysOfGroups.length);
+  }, [filteredKeysOfGroups]);
 
   useEffect(() => {
     context.totalGroupsUndefined > 0 &&
