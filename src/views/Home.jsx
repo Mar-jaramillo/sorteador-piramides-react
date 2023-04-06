@@ -6,10 +6,12 @@ import BreadCrumb from "../components/layout/BreadCrumb";
 import { useLocation } from "react-router-dom";
 import FooterGeneral from "../../src/components/layout/FooterGeneral";
 
+
 export default function Home() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+
     const changePageTitle = () => {
       const newPageTitle = "Cargar Archivo";
       pathname === "/home" && (document.title = newPageTitle);

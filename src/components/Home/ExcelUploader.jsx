@@ -8,6 +8,8 @@ import { obtenerPropiedadesUnicas } from "../../utils/obtenerPropiedadesUnicas";
 import { createGroupsByCode } from "../../utils/createGroupsByCode";
 import FormUploader from "./FormUploader";
 import { getLocalStorage } from "../../utils/getLocalStorage";
+import { clearData } from "../../utils/clearData";
+ 
 
 export default function ExcelUploader({ setError }) {
   const [nameEvent, setNameEvent] = useState(getLocalStorage("nameEvent"));
@@ -22,6 +24,8 @@ export default function ExcelUploader({ setError }) {
     e.preventDefault();
     try {
       if (excelFile !== null) {
+        clearData() // elimina la anterior data
+ 
         //Operaciones
         const excelData = processExcelFile(excelFile);
         const valuesUniques = obtenerPropiedadesUnicas(excelData); // crea las propiedades unicas para usar en los selects de board
