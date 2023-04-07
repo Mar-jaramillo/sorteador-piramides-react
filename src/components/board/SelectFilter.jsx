@@ -130,9 +130,9 @@ export default function SelectFilter({
         <div className="gap-3">
           <button
             onClick={cleanFilter}
-            className="flex bg-redbuttons hover:bg-redbuttons/50 py-3 px-2 font-bold rounded-md transition duration-500 ease-in-out hover:bg-white/25 "
+            className="flex bg-redbuttons  py-3 px-2  font-bold rounded-md transition duration-500 ease-in-out hover:bg-white/25 "
           >
-            <img className="pr-2" src={iconCleanFilter} alt=""  />
+            <img className="pr-1" src={iconCleanFilter} alt=""  />
             Limpiar
           </button>
         </div>
@@ -141,6 +141,7 @@ export default function SelectFilter({
       </div>
       {notFound ? (
         <span className="text-yellow-500 px-5 py-10 my-2 w-full text-center">
+          <img src="" alt="" />
           No se encontraron resultados
         </span>
       ) : null}
