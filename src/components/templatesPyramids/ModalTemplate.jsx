@@ -35,7 +35,7 @@ export default function ModalTemplate({ sorteado }) {
           </button> */}
         </div>
       </div>
-      <div className="h-full w-full   rounded-lg bg-white p-5 mb-9 ">
+      <div className="h-full w-full flex justify-center rounded-lg bg-white p-5 mb-9 ">
         <BodyTemplate typePyramid={typePyramid} />
       </div>
       <BackButton/>

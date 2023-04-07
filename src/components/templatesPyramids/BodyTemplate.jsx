@@ -5,7 +5,6 @@ import Pyramid from "./Pyramid";
 import TableCategories from "./TableCategories";
 import groupLogos from "../../assets/logos/groupLogos.svg";
 import logoqubilo from "../../assets/logos/logoqubilo.png";
-import firmas from "../../assets/firmas.svg";
 import TablePositions from "./TablePositions";
 import EliminationPyramid from "./EliminationPyramid";
 
@@ -82,9 +81,9 @@ export default function BodyTemplate() {
             </div>
 
             <div className="flex justify-center my-7 text-gray-700 gap-5">
-              <p>Vo Bo Juez central ____________________</p>
-              <p>Registro Consolidador ____________________</p>
-              <p>Vo Bo Coor. Juzgamiento ____________________</p>
+              <p>Vo Bo Juez central ______________________</p>
+              <p>Registro Consolidador ______________________</p>
+              <p>Vo Bo Coor. Juzgamiento ______________________</p>
             </div>
             <div className="flex justify-center">
               <div className="flex flex-col items-center mt-7 w-32 h-32">
