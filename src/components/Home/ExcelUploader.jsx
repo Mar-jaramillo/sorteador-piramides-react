@@ -8,7 +8,8 @@ import { obtenerPropiedadesUnicas } from "../../utils/obtenerPropiedadesUnicas";
 import { createGroupsByCode } from "../../utils/createGroupsByCode";
 import FormUploader from "./FormUploader";
 import { getLocalStorage } from "../../utils/getLocalStorage";
-import { clearData } from "../../utils/clearData";
+ 
+import { cleanData } from "../../utils/cleanData";
  
 
 export default function ExcelUploader({ setError }) {
@@ -24,7 +25,7 @@ export default function ExcelUploader({ setError }) {
     e.preventDefault();
     try {
       if (excelFile !== null) {
-        clearData() // elimina la anterior data
+        cleanData() // elimina la anterior data
  
         //Operaciones
         const excelData = processExcelFile(excelFile);

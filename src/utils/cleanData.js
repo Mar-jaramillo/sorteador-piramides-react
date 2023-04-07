@@ -1,4 +1,4 @@
-export const clearData = () => {
+export const cleanData = () => {
   var elementosAEliminar = [
     "groupsByCode",
     "groupNow ",
@@ -14,8 +14,8 @@ export const clearData = () => {
     "excelData",
     "totalGroupsUndefined",
     "keyNameNow",
+    "amountfilteredKeys"
   ];
-
   for (let i = 0; i < elementosAEliminar.length; i++) {
     localStorage.removeItem(elementosAEliminar[i]);
   }

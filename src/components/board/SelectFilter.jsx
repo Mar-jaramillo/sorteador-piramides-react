@@ -16,7 +16,7 @@ export default function SelectFilter({
   const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
   const [notFound, setNotFound] = useState(false);
-  const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar");
+   const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar");
 
   useEffect(() => {
     setValuesSelect(getLocalStorage("valuesUniques"));
@@ -26,10 +26,8 @@ export default function SelectFilter({
 
   const cleanFilter = (e) => {
     e.preventDefault();
-    setFilteredKeysOfGroups(keysOriginals);
-    setParticipants(
-      context.keysOfGroups.length || getLocalStorage("totalGroups")
-    );
+     setFilteredKeysOfGroups(keysOriginals);
+
   };
 
   const addParamsSearch = (e, filter) => {
@@ -40,8 +38,7 @@ export default function SelectFilter({
   };
 
   const handleSearch = (e) => {
-    console.log(listParamsSearch);
-    e.preventDefault();
+     e.preventDefault();
     const filteredKeys = [];
     for (const key of keysOfGroups) {
       const objParticipant = groups[key].arrayGroup[0];
@@ -61,6 +58,7 @@ export default function SelectFilter({
     }
     console.log(filteredKeys);
     context.totalGroupsFiltered = filteredKeys.length;
+    localStorage.setItem("amountfilteredKeys", JSON.stringify(filteredKeys.length))
     // handleCards(filteredKeys);
     filteredKeys.length > 0
       ? setFilteredKeysOfGroups(filteredKeys)

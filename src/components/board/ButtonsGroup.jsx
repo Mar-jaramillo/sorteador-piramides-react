@@ -22,15 +22,16 @@ export default function ButtonsGroup({
   const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar");
 
   useEffect(() => {
+    const amount = getLocalStorage("amountfilteredKeys")
 
     if(filteredKeysOfGroups && filteredKeysOfGroups.length > 0 ) {
       setParticipants(filteredKeysOfGroups.length)
     }
     else{
-      context.totalGroupsFiltered > 0 && setParticipants(context.totalGroupsFiltered);
+      amount > 0 && setParticipants(amount);
     }
 
-  }, [filteredKeysOfGroups, context.totalGroupsFiltered]);
+  }, [filteredKeysOfGroups]);
 
   useEffect(() => {
     context.totalGroupsUndefined > 0 &&
