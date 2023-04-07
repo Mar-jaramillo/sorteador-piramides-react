@@ -26,6 +26,7 @@ const [cardsToRender, setCardsToRender] = useState(keysOfGroups)
 
 
   return (
+    <div className="min-h-screen">
     <div className="fadeInDown grid grid-cols-12">
       {isLoad ? (
         cardsToRender.map((key) => (
@@ -42,11 +43,12 @@ const [cardsToRender, setCardsToRender] = useState(keysOfGroups)
         ))
       ) : (
         // Loader
-        <div className="col-span-12 h-screen grid place-content-center">
+        <div className="min-h-screen col-span-12 grid place-content-center">
           Cargando grupos por codigo...
           {/* <Loader mensaje="Cargando Grupos de Deportistas" /> */}
         </div>
       )}
+    </div>
     </div>
   );
 }
