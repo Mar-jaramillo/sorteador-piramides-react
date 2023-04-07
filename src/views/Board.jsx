@@ -19,7 +19,7 @@ export default function Board() {
   const [keysOfGroups, setKeysOfGroups] = useState([]);
   const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]);
   const [isActive, setIsActive] = useState(false);
-  const [isSorted, setIsSorted] = useState(false);
+ 
   const [isLoading, setisLoading] = useState(true);
   const [listParamsSearch, setListParamsSearch] = useState({
     Categoría: "Categoría",
@@ -43,12 +43,7 @@ export default function Board() {
       setisLoading(false);
     }, 500);
   }, []);
-
-  // const handleCards = (filteredKeys) => {
-  //   console.log(filteredKeys);
-  //   setFilteredKeysOfGroups(filteredKeys);
-  // };
-
+ 
   return (
     <>
       {isLoading ? (
@@ -71,7 +66,7 @@ export default function Board() {
               setGroupsByCode={setGroupsByCode}
               groupsByCode={groupsByCode}
               setFilteredKeysOfGroups={setFilteredKeysOfGroups}
-              // handleCards={handleCards}
+ 
               setListParamsSearch={setListParamsSearch}
               listParamsSearch={listParamsSearch}
             />

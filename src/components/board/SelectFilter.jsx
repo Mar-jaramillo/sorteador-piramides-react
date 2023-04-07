@@ -9,7 +9,6 @@ export default function SelectFilter({
   groupsByCode,
   keysOfGroups,
   setFilteredKeysOfGroups,
-  // handleCards,
   setListParamsSearch,
   listParamsSearch,
 }) {
@@ -71,7 +70,7 @@ export default function SelectFilter({
         filteredKeys.push(key);
       }
     }
-    console.log(filteredKeys);
+ 
     context.totalGroupsFiltered = filteredKeys.length;
     localStorage.setItem("amountfilteredKeys", JSON.stringify(filteredKeys.length))
     // handleCards(filteredKeys);
