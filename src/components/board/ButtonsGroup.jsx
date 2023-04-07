@@ -112,7 +112,7 @@ export default function ButtonsGroup({
   };
 
   return (
-    <div className="flex gap-3 px-3">
+    <div className="flex gap-3 pt-16 px-3">
       <button
         onClick={HandleAllKeys}
         className="bg-white/50 px-2 py-1 font-bold rounded-md transition duration-500 ease-in-out hover:bg-white/25 "

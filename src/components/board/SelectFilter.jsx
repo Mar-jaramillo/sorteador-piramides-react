@@ -68,7 +68,7 @@ export default function SelectFilter({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-w-full mb-8">
+    <div className="flex pb-8 flex-col items-center justify-center min-w-full mb-8">
       <div className="flex flex-col ">
       <div className="flex">
         <form className="flex">

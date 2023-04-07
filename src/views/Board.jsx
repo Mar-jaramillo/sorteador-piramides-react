@@ -75,12 +75,14 @@ export default function Board() {
               setListParamsSearch={setListParamsSearch}
               listParamsSearch={listParamsSearch}
             />
+            <div className="">
             <ButtonsGroup
               setFilteredKeysOfGroups={setFilteredKeysOfGroups}
               keysOfGroups={keysOfGroups}
               groupsByCode={groupsByCode}
               filteredKeysOfGroups={filteredKeysOfGroups}
             />
+            </div>
             <CardsBoard
               filteredKeysOfGroups={filteredKeysOfGroups}
               keysOfGroups={keysOfGroups}

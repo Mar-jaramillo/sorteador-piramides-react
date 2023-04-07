@@ -20,13 +20,14 @@ export default function ModalTemplate({ sorteado }) {
         <p className="text-lg   flex flex-col justify-end font-semibold">
         </p>
         <div className="flex gap-5 ">
-           <button onClick={()=>window.location.reload()} className="underline">Volver a sortear</button>
+
           <button
             onClick={() => handleCapture(typePyramid, keyNameNow)}
-            className="btnPrimary"
+            className="bg-greenPrimary  text-white p-3 rounded-lg font-medium hover:bg-white/50"
           >
             Imprimir PDF
           </button>
+          <button onClick={()=>window.location.reload()} className="btnPrimary font-medium  hover:bg-white/50">Volver a sortear</button>
           <BackButton/>
 
           {/* <button className="w-36 text-white rounded-lg bg-green-500 ">
@@ -34,7 +35,7 @@ export default function ModalTemplate({ sorteado }) {
           </button> */}
         </div>
       </div>
-      <div className="h-full w-full   rounded-lg bg-white p-5 mb-9">
+      <div className="h-full w-full   rounded-lg bg-white p-5 mb-9 ">
         <BodyTemplate typePyramid={typePyramid} />
       </div>
       <BackButton/>
