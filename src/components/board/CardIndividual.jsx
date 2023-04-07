@@ -48,12 +48,12 @@ export default function CardIndividual({
     });
 
     if (groupsByCode[keyName].isRaffled === false) {
-      console.log(groupsByCode[keyName].isRaffled);
+ 
       groupsByCode[keyName].isRaffled = true;
-      console.log(groupsByCode[keyName].isRaffled);
+ 
       localStorage.setItem("groupsByCode", JSON.stringify(groupsByCode));
       context.groupsByCode = groupsByCode;
-      console.log(context.groupsByCode);
+ 
     }
   };
 

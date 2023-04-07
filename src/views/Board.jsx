@@ -19,7 +19,7 @@ export default function Board() {
   const [keysOfGroups, setKeysOfGroups] = useState([]);
   const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]);
   const [isActive, setIsActive] = useState(false);
-  const [isSorted, setIsSorted] = useState(false);
+ 
   const [isLoading, setisLoading] = useState(true);
   const [listParamsSearch, setListParamsSearch] = useState({
     Categoría: "Categoría",
@@ -43,12 +43,7 @@ export default function Board() {
       setisLoading(false);
     }, 500);
   }, []);
-
-  // const handleCards = (filteredKeys) => {
-  //   console.log(filteredKeys);
-  //   setFilteredKeysOfGroups(filteredKeys);
-  // };
-
+ 
   return (
     <div id="board" className=" min-h-screen">
       <>
@@ -102,6 +97,48 @@ export default function Board() {
           <a href="https://qubilo.com/">
             <img className="h-10" src={logoqubulowhite} alt="" />
           </a>
+          <div className="px-32 pt-10 text-white h-full">
+            <BreadCrumb />
+            <HeaderBoard />
+            <SelectFliter
+              keysOfGroups={keysOfGroups}
+              setKeysOfGroups={setKeysOfGroups}
+              setGroupsByCode={setGroupsByCode}
+              groupsByCode={groupsByCode}
+              setFilteredKeysOfGroups={setFilteredKeysOfGroups}
+ 
+              setListParamsSearch={setListParamsSearch}
+              listParamsSearch={listParamsSearch}
+            />
+            <div className="">
+            <ButtonsGroup
+              setFilteredKeysOfGroups={setFilteredKeysOfGroups}
+              keysOfGroups={keysOfGroups}
+              groupsByCode={groupsByCode}
+              filteredKeysOfGroups={filteredKeysOfGroups}
+            />
+            </div>
+            <CardsBoard
+              filteredKeysOfGroups={filteredKeysOfGroups}
+              keysOfGroups={keysOfGroups}
+              groupsByCode={groupsByCode}
+              setIsActive={setIsActive}
+              isActive={isActive}
+            />
+          </div>
+
+          <div
+            className={
+              keysOfGroups.length < 2
+                ? "flex flex-col bottom-8 right-8  fixed text-white "
+                : "flex flex-col p-4 items-end text-white "
+            }
+          >
+            <p className="text-sm">Desarrollado por:</p>
+            <a href="https://qubilo.com/">
+              <img className="h-10" src={logoqubulowhite} alt="" />
+            </a>
+          </div>
         </div>
     </div>
   );

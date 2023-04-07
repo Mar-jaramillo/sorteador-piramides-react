@@ -9,25 +9,39 @@ export default function SelectFilter({
   groupsByCode,
   keysOfGroups,
   setFilteredKeysOfGroups,
-  // handleCards,
   setListParamsSearch,
   listParamsSearch,
 }) {
   const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
   const [notFound, setNotFound] = useState(false);
+  const [activeClean, setActiveClean] = useState(false)
    const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar");
 
   useEffect(() => {
     setValuesSelect(getLocalStorage("valuesUniques"));
-  }, []);
+  }, [activeClean]);
 
   const groups = groupsByCode || getLocalStorage("groupsByCode");
 
   const cleanFilter = (e) => {
     e.preventDefault();
      setFilteredKeysOfGroups(keysOriginals);
-
+     setListParamsSearch(
+      {
+        Categoría: "Categoría",
+        Rama: "Rama",
+        Grado: "Grado",
+        División: "División",
+      }
+     )
+     const defaultValues = [];
+     selectFiltersKeys.forEach((title) => {
+       defaultValues.push(title)
+     });
+     setValuesSelect(defaultValues);
+     setActiveClean(!activeClean)
+     setNotFound(false)
   };
 
   const addParamsSearch = (e, filter) => {
@@ -56,7 +70,7 @@ export default function SelectFilter({
         filteredKeys.push(key);
       }
     }
-    console.log(filteredKeys);
+ 
     context.totalGroupsFiltered = filteredKeys.length;
     localStorage.setItem("amountfilteredKeys", JSON.stringify(filteredKeys.length))
     // handleCards(filteredKeys);
