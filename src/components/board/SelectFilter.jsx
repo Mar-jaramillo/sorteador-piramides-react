@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { selectFiltersKeys } from "../../consts/selectFiltersKeys";
 import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
+import iconCleanFilter from "../../assets/icons/iconCleanFilter.png";
+import iconFilter from "../../assets/icons/iconFilter.png";
 
 export default function SelectFilter({
   groupsByCode,
@@ -9,13 +11,12 @@ export default function SelectFilter({
   setFilteredKeysOfGroups,
   // handleCards,
   setListParamsSearch,
-  listParamsSearch
+  listParamsSearch,
 }) {
-
-
   const context = useContext(GlobalContext);
   const [valuesSelect, setValuesSelect] = useState({});
-  const [notFound, setNotFound] = useState(false)
+  const [notFound, setNotFound] = useState(false);
+  const keysOriginals = context.keysNoMutar || getLocalStorage("keysNoMutar");
 
   useEffect(() => {
     setValuesSelect(getLocalStorage("valuesUniques"));
@@ -23,12 +24,19 @@ export default function SelectFilter({
 
   const groups = groupsByCode || getLocalStorage("groupsByCode");
 
+  const cleanFilter = (e) => {
+    e.preventDefault();
+    setFilteredKeysOfGroups(keysOriginals);
+    setParticipants(
+      context.keysOfGroups.length || getLocalStorage("totalGroups")
+    );
+  };
 
   const addParamsSearch = (e, filter) => {
-    setNotFound(false)
+    setNotFound(false);
     const valueTemp = e.target.value;
-    listParamsSearch[filter] = valueTemp
-    setListParamsSearch({...listParamsSearch})
+    listParamsSearch[filter] = valueTemp;
+    setListParamsSearch({ ...listParamsSearch });
   };
 
   const handleSearch = (e) => {
@@ -39,26 +47,30 @@ export default function SelectFilter({
       const objParticipant = groups[key].arrayGroup[0];
 
       if (
-        (objParticipant["Categoría"] === listParamsSearch["Categoría"] || listParamsSearch["Categoría"] === "Categoría") &&
-        (objParticipant["Rama"] === listParamsSearch["Rama"] || listParamsSearch["Rama"] === "Rama" ) && 
-        (objParticipant["Grado"] === listParamsSearch["Grado"] || listParamsSearch["Grado"] ==="Grado" ) &&
-        (objParticipant["División"] == listParamsSearch["División"] || listParamsSearch["División"] == "División")
+        (objParticipant["Categoría"] === listParamsSearch["Categoría"] ||
+          listParamsSearch["Categoría"] === "Categoría") &&
+        (objParticipant["Rama"] === listParamsSearch["Rama"] ||
+          listParamsSearch["Rama"] === "Rama") &&
+        (objParticipant["Grado"] === listParamsSearch["Grado"] ||
+          listParamsSearch["Grado"] === "Grado") &&
+        (objParticipant["División"] == listParamsSearch["División"] ||
+          listParamsSearch["División"] == "División")
       ) {
-        filteredKeys.push(key)
+        filteredKeys.push(key);
       }
-
     }
     console.log(filteredKeys);
     context.totalGroupsFiltered = filteredKeys.length;
     // handleCards(filteredKeys);
-    filteredKeys.length > 0 ?
-    setFilteredKeysOfGroups(filteredKeys)
-    : setNotFound(true)
+    filteredKeys.length > 0
+      ? setFilteredKeysOfGroups(filteredKeys)
+      : setNotFound(true);
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-w-full mb-8">
       <div className="flex flex-col ">
+      <div className="flex">
         <form className="flex">
           {" "}
           <div className="flex">
@@ -105,15 +117,33 @@ export default function SelectFilter({
               );
             })}
           </div>
+          <div className="mx-5">
           <button
-            onClick={(e)=>handleSearch(e)}
-            className="py-2 px-7 rounded-md border-2 "
+            onClick={(e) => handleSearch(e)}
+            className="flex bg-greenPrimary py-3 px-2 font-bold rounded-md transition duration-500 ease-in-out hover:bg-white/25 "
           >
+             <img className="pr-2" src={iconFilter} alt="" />
             Filtrar
           </button>
+          </div>
         </form>
+        <div className="gap-3">
+          <button
+            onClick={cleanFilter}
+            className="flex bg-redbuttons hover:bg-redbuttons/50 py-3 px-2 font-bold rounded-md transition duration-500 ease-in-out hover:bg-white/25 "
+          >
+            <img className="pr-2" src={iconCleanFilter} alt=""  />
+            Limpiar
+          </button>
+        </div>
+        </div>
+       
       </div>
-     {notFound ? <span className="text-yellow-500 px-5  my-2 w-full">No se encontraron resultados</span>: null}
+      {notFound ? (
+        <span className="text-yellow-500 px-5 py-10 my-2 w-full text-center">
+          No se encontraron resultados
+        </span>
+      ) : null}
     </div>
   );
 }

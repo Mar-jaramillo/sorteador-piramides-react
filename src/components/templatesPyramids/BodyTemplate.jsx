@@ -16,7 +16,7 @@ export default function BodyTemplate() {
 
   return (
     <>
-      <div id="capture" className="p-3 bg-white">
+      <div id="capture" className="p-3 max-w-5xl w-full bg-white">
         <div
           onClick={() => setActiveAcordeon(!activeAcordeon)}
           className="w-full text-gray-700 flex justify-between"
