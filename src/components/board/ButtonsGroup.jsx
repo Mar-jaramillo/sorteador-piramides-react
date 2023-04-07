@@ -23,7 +23,6 @@ export default function ButtonsGroup({
 
   useEffect(() => {
     const amount = getLocalStorage("amountfilteredKeys")
-
     if(filteredKeysOfGroups && filteredKeysOfGroups.length > 0 ) {
       setParticipants(filteredKeysOfGroups.length)
     }
