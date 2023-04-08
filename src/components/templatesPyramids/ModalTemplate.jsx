@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+ 
 import { getLocalStorage } from "../../utils/getLocalStorage";
 
 import GlobalContext from "../../utils/GlobalContext";
 import { handleCapture } from "../../utils/handleCapture";
 import BackButton from "./BackButton";
 import BodyTemplate from "./BodyTemplate";
+ 
 
 
-export default function ModalTemplate({ sorteado }) {
+export default function ModalTemplate({setControllerAnimation,controllerAnimation }) {
+ 
 
   const context = useContext(GlobalContext);
 
@@ -27,7 +29,7 @@ export default function ModalTemplate({ sorteado }) {
           >
             Imprimir PDF
           </button>
-          <button onClick={()=>window.location.reload()} className="btnPrimary font-medium  hover:bg-white/50">Volver a sortear</button>
+          <button onClick={()=>setControllerAnimation(!controllerAnimation)} className="btnPrimary font-medium  hover:bg-white/50">Volver a sortear</button>
           <BackButton/>
 
           {/* <button className="w-36 text-white rounded-lg bg-green-500 ">
