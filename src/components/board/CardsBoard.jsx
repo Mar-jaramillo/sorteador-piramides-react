@@ -26,7 +26,7 @@ const [cardsToRender, setCardsToRender] = useState(keysOfGroups)
 
 
   return (
-    <div className="min-h-screen">
+ 
     <div className="fadeInDown grid grid-cols-12">
       {isLoad ? (
         cardsToRender.map((key) => (
@@ -49,6 +49,6 @@ const [cardsToRender, setCardsToRender] = useState(keysOfGroups)
         </div>
       )}
     </div>
-    </div>
+ 
   );
 }

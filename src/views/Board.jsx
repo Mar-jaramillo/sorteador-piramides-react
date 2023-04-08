@@ -45,13 +45,17 @@ export default function Board() {
   }, []);
 
   return (
-    <div id="board" className=" min-h-screen">
+    <div id="board" className="h-full">
       <>
         {isLoading ? (
           <Loader mensaje="Cargando Grupos de Deportistas" />
         ) : (
-          <div>
-            <div className="px-32 pt-10 text-white">
+          <div className={
+            keysOfGroups.length < 2
+              ? "fadeinfast h-screen"
+              : "fadeinfast h-full"
+          }>
+            <div className="px-32 pt-10 text-white h-full ">
               <BreadCrumb />
               <HeaderBoard />
               <SelectFliter
@@ -86,7 +90,7 @@ export default function Board() {
       <div
         className={
           keysOfGroups.length < 2
-            ? "flex flex-col right-8 text-white"
+            ? "flex flex-col bottom-8 right-8  fixed text-white"
             : "flex flex-col p-4 items-end text-white "
         }
       >
