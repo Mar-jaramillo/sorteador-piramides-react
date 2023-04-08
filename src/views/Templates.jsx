@@ -17,7 +17,9 @@ export default function Templates() {
       setShowAnimation(false);
     },3000);
 
-    return () => {};
+    return () => {
+      clearTimeout(controller)
+    };
   }, []);
 
   useEffect(() => {

@@ -7,7 +7,7 @@ export default function BackButton() {
     <div className="grid place-content-center">
       <button
         onClick={() => navigate("/board")}
-        className=" w-28 border py-3 bg-white/25   transition duration-500 ease-in-out  rounded-lg"
+        className=" w-28 border py-3 bg-white/25  hover:bg-white/50 transition duration-500 ease-in-out  rounded-lg"
       >
         {" "}
         &lt;&lt; Volver

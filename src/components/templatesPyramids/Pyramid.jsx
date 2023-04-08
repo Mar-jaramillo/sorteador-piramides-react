@@ -17,7 +17,7 @@ const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
     const wrapper = document.querySelectorAll(".wrapper");
     if (typePyramid !== 3) {
       wrapper.forEach((ele) => ele.classList.remove("item"));
-      console.log("se cumplio la condicion");
+ 
     }
   }, [typePyramid]);
 

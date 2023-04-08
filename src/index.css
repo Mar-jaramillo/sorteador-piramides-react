@@ -32,6 +32,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  background-position: top center;
+
 }
 
 #pyramid {
@@ -112,7 +114,7 @@ select option {
 }
 
 .btnPrimary {
-  @apply bg-redbuttons border-2 border-redborderbuttons text-white p-3 rounded-lg hover:border-red-700
+  @apply bg-redbuttons text-white p-3 rounded-lg hover:border-red-700
 }
 .btnLoading {
   @apply bg-gray-500 border-2  text-white py-3 px-6 rounded-lg

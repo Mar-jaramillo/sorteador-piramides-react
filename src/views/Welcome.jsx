@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import LoginForm from "../components/welcome/LoginForm";
 import FooterLogosWelcome from "../components/welcome/FooterLogosWelcome";
 import { useLocation } from "react-router-dom";
+ 
 
 export default function Welcome() {
   const { pathname } = useLocation();
 
  useEffect(() => {
+
   const changePageTitle = () => {
     const newPageTitle = "Sorteador - Bienvenido";
     pathname === "/" && (document.title = newPageTitle) 

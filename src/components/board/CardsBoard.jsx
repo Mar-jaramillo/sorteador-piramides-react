@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Loader from "../layout/Loader";
 import CardIndividual from "./CardIndividual";
 
 export default function CardsBoard({
@@ -9,41 +8,47 @@ export default function CardsBoard({
   isActive,
   filteredKeysOfGroups,
   handleSorteo,
-  setIsSorted
 }) {
-  const handleClick = () => { 
-    setIsActive({ active: false});
+  const handleClick = () => {
+    setIsActive({ active: false });
   };
   const [isLoad, setisLoad] = useState(false);
-  const cardsToRender = filteredKeysOfGroups.length ? filteredKeysOfGroups : keysOfGroups;
-
+const [cardsToRender, setCardsToRender] = useState(keysOfGroups)
+ 
   useEffect(() => {
     keysOfGroups.length > 0 && groupsByCode && setisLoad(!isLoad);
   }, [keysOfGroups, groupsByCode]);
 
+  useEffect(() => {
+    filteredKeysOfGroups.length > 0 && setCardsToRender(filteredKeysOfGroups)
+  }, [filteredKeysOfGroups])
+  
+
+
   return (
+ 
     <div className="fadeInDown grid grid-cols-12">
       {isLoad ? (
         cardsToRender.map((key) => (
           <CardIndividual
-          groupsByCode={groupsByCode}
+            groupsByCode={groupsByCode}
             setIsActive={setIsActive}
             isActive={isActive}
             key={key}
             keyName={key}
             groupNow={groupsByCode[key]}
-            handleSorteo = {handleSorteo}
+            handleSorteo={handleSorteo}
             handleClick={() => handleClick(key, index)}
-            setIsSorted={setIsSorted} // se pasa setIsSorted como una prop
           />
         ))
       ) : (
         // Loader
-        <div className="col-span-12 h-screen grid place-content-center">
+        <div className="min-h-screen col-span-12 grid place-content-center">
           Cargando grupos por codigo...
           {/* <Loader mensaje="Cargando Grupos de Deportistas" /> */}
         </div>
       )}
     </div>
+ 
   );
 }
