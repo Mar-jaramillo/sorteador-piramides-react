@@ -45,17 +45,13 @@ export default function Board() {
   }, []);
 
   return (
-    <div id="board" className="h-full">
-      <>
-        {isLoading ? (
+  <>
+   {isLoading ? (
           <Loader mensaje="Cargando Grupos de Deportistas" />
         ) : (
-          <div className={
-            keysOfGroups.length < 2
-              ? "fadeinfast h-screen"
-              : "fadeinfast h-full"
-          }>
-            <div className="px-32 pt-10 text-white h-full ">
+    <div id="board" className={keysOfGroups.length < 3 ?"fadeinfast min-h-screen":"fadeinfast h-full"}>
+ 
+            <div className="px-32 pt-10 text-white min-h-screen">
               <BreadCrumb />
               <HeaderBoard />
               <SelectFliter
@@ -68,14 +64,14 @@ export default function Board() {
                 setListParamsSearch={setListParamsSearch}
                 listParamsSearch={listParamsSearch}
               />
-              <div className="">
+       
                 <ButtonsGroup
                   setFilteredKeysOfGroups={setFilteredKeysOfGroups}
                   keysOfGroups={keysOfGroups}
                   groupsByCode={groupsByCode}
                   filteredKeysOfGroups={filteredKeysOfGroups}
                 />
-              </div>
+  
               <CardsBoard
                 filteredKeysOfGroups={filteredKeysOfGroups}
                 keysOfGroups={keysOfGroups}
@@ -84,21 +80,19 @@ export default function Board() {
                 isActive={isActive}
               />
             </div>
-          </div>
-        )}
-      </>
-      <div
-        className={
-          keysOfGroups.length < 2
-            ? "flex flex-col bottom-8 right-8  fixed text-white"
-            : "flex flex-col p-4 items-end text-white "
-        }
-      >
-        <p className="text-sm">Desarrollado por:</p>
-        <a href="https://qubilo.com/">
-          <img className="h-10" src={logoqubulowhite} alt="" />
-        </a>
+          
+        
+ 
+      <div className="w-full flex justify-end p-8 text-white  ">
+        <div className="flex flex-col ">
+          <p className="text-sm">Desarrollado por:</p>
+          <a href="https://qubilo.com/">
+            <img className="h-10" src={logoqubulowhite} alt="" />
+          </a>
+        </div>
       </div>
     </div>
+    )}
+    </>  
   );
 }
