@@ -8,19 +8,24 @@ import LoaderSorteo from "../components/templatesPyramids/LoaderSorteo";
 import ButtonsGroup from "../components/board/ButtonsGroup";
 
 export default function Templates() {
-  const [typePyramid, setTypePyramid] = useState(6);
+ 
   const { pathname } = useLocation();
   const context = useContext(GlobalContext);
   const [showAnimation, setShowAnimation] = useState(true);
+  const [controllerAnimation, setControllerAnimation] = useState(false)
+ 
+ 
   useEffect(() => {
+    setShowAnimation(true)
     const controller = setTimeout(() => {
       setShowAnimation(false);
+ 
     },3000);
 
     return () => {
       clearTimeout(controller)
     };
-  }, []);
+  }, [controllerAnimation]);
 
   useEffect(() => {
     const changePageTitle = () => {
@@ -48,7 +53,7 @@ export default function Templates() {
           <ButtonsGroup />
         </div>
         {/* <HeaderTemplates typePyramid={typePyramid} setTypePyramid={setTypePyramid} /> */}
-        <ModalTemplate typePyramid={typePyramid} />
+        <ModalTemplate  controllerAnimation={controllerAnimation} setControllerAnimation={setControllerAnimation} />
       </div>
     </>
   );
