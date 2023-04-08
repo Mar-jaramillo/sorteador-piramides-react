@@ -19,7 +19,7 @@ export default function Board() {
   const [keysOfGroups, setKeysOfGroups] = useState([]);
   const [filteredKeysOfGroups, setFilteredKeysOfGroups] = useState([]);
   const [isActive, setIsActive] = useState(false);
- 
+
   const [isLoading, setisLoading] = useState(true);
   const [listParamsSearch, setListParamsSearch] = useState({
     Categoría: "Categoría",
@@ -43,7 +43,7 @@ export default function Board() {
       setisLoading(false);
     }, 500);
   }, []);
- 
+
   return (
     <div id="board" className=" min-h-screen">
       <>
@@ -79,28 +79,22 @@ export default function Board() {
                 setIsActive={setIsActive}
                 isActive={isActive}
               />
-              
             </div>
-            
           </div>
         )}
-        
       </>
       <div
-          className={
-            keysOfGroups.length < 2
-              ? "flex flex-col right-8 text-white"
-              : "flex flex-col p-4 items-end text-white "
-          }
-        >
-          <p className="text-sm">Desarrollado por:</p>
-          <a href="https://qubilo.com/">
-            <img className="h-10" src={logoqubulowhite} alt="" />
-          </a>
-          
-
-          </div>
-        </div>
-    
+        className={
+          keysOfGroups.length < 2
+            ? "flex flex-col right-8 text-white"
+            : "flex flex-col p-4 items-end text-white "
+        }
+      >
+        <p className="text-sm">Desarrollado por:</p>
+        <a href="https://qubilo.com/">
+          <img className="h-10" src={logoqubulowhite} alt="" />
+        </a>
+      </div>
+    </div>
   );
 }
