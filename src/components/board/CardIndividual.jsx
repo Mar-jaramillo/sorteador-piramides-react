@@ -58,7 +58,7 @@ export default function CardIndividual({
   };
 
   const greenCard =
-    "text-center grid grid-cols-12 p-4 border-b-2 rounded-t-2xl bg-green-500";
+    "text-center grid grid-cols-12 p-4 border-b-2 rounded-t-2xl bg-greenPrimary";
   const grayCard =
     "text-center grid grid-cols-12 p-4 border-b-2 rounded-t-2xl bg-white/30";
 

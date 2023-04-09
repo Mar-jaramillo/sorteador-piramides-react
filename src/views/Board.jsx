@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import CardsBoard from "../components/board/CardsBoard";
 import HeaderBoard from "../components/board/HeaderBoard";
-import SelectFliter from "../components/board/SelectFilter";
+import SelectFilter from "../components/board/SelectFilter";
 import BreadCrumb from "../components/layout/BreadCrumb";
 import { getLocalStorage } from "../utils/getLocalStorage";
 import GlobalContext from "../utils/GlobalContext";
@@ -54,7 +54,7 @@ export default function Board() {
             <div className="px-32 pt-10 text-white min-h-screen">
               <BreadCrumb />
               <HeaderBoard />
-              <SelectFliter
+              <SelectFilter
                 keysOfGroups={keysOfGroups}
                 setKeysOfGroups={setKeysOfGroups}
                 setGroupsByCode={setGroupsByCode}

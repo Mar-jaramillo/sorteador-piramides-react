@@ -47,7 +47,7 @@ export default function Templates() {
           <BreadCrumb />
 
           <h2 className="text-3xl font-bold  mb-16">
-            Pirámide de {context.typePyramid} competidores {context.keyNameNow}{" "}
+            Pirámide de {context.typePyramid} Competidores {context.keyNameNow}{" "}
           </h2>
 
           <ButtonsGroup />
