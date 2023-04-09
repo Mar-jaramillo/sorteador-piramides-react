@@ -44,7 +44,7 @@ export default function DataTable() {
   return (
     <>
       {isLoading ? (
-        <Loader mensaje="Cargando consolidado de deportistas..." />
+        <Loader mensaje="Cargando Consolidado de Deportistas..." />
       ) : (
         <>
           <div id="data" className="fadeinfast h-screen text-white">
@@ -53,7 +53,7 @@ export default function DataTable() {
               <div className="grid grid-cols-12">
                 <div className="col-span-6 flex flex-col">
                   <h2 className="text-left text-3xl font-bold mb-3">
-                    Visualización de deportistas
+                    Visualización de Deportistas
                   </h2>
                   <Finder
                     dataExcel={dataExcel}

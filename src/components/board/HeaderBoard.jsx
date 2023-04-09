@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../layout/NavBar";
 
 export default function HeaderBoard() {
   return (
@@ -7,7 +6,7 @@ export default function HeaderBoard() {
       {/* Section Title and menu header*/}
       <div>
         <h2 className="text-3xl font-bold ">
-          Grupos de competidores
+          Grupos de Competidores
         </h2>
       </div>
 
