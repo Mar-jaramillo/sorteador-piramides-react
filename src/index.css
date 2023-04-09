@@ -111,6 +111,7 @@ select option {
 
 .select-filter:focus {
   background-color: #58AA56;
+  background-color: green;
 }
 
 .btnPrimary {
