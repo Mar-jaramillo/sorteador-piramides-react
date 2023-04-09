@@ -61,16 +61,14 @@ export default function DataTable() {
                     setFilteredPerson={setFilteredPerson}
                   />
                 </div>
-                <div className="text-right font-medium col-span-6 mb-2">
-                  <h3 className=" first-letter:uppercase">
+                <div className="text-right col-span-6 mb-2">
+                  <h3 className="font-bold text-lg first-letter:uppercase">
                     {context.nameEvent || getLocalStorage("nameEvent")}
                   </h3>
                   <div>
-                    <h3 alt="" />
-                    Total deportistas:{" "}
-                    {filteredPerson.length > 0
-                      ? filteredPerson.length
-                      : dataExcel.length}
+                    <h3 />
+                    Total grupos:{" "}
+                    {context.totalGroups || localStorage.getItem("totalGroups")}
                   </div>
                   <div>
                     <h3 />
@@ -79,10 +77,12 @@ export default function DataTable() {
                       localStorage.getItem("totalDelegations")}
                   </div>
                   <div>
-                    <h3 />
-                    Total grupos:{" "}
-                    {context.totalGroups || localStorage.getItem("totalGroups")}
-                  </div>
+                    <h3 alt="" />
+                    Total deportistas:{" "}
+                    {filteredPerson.length > 0
+                      ? filteredPerson.length
+                      : dataExcel.length}
+                  </div>             
                 </div>
               </div>
 
