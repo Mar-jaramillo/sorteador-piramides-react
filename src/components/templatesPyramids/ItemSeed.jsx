@@ -13,38 +13,38 @@ export const ItemSeed = ({ seed }) => {
     >
       {/* box id */}
 
-      <div className=" text-gray-700   rounded-md w-12 flex flex-col justify-around bg-white ">
+      <div className=" text-gray-700 rounded-md w-12 flex flex-col justify-around bg-white ">
         <div>ID</div>
-        <div className=" mb-1 flex justify-center items-center rounded-md border-2 border-gray-400/50 bg-gray-200  h-full w-full text-xs">
+        <div className=" mb-1 flex justify-center items-center rounded-md border-2 border-gray-400/50 bg-gray-200  h-full w-full  2xl:text-lg text-xs">
           {seed.teams[0].id || " "}
         </div>
-        <div className="  flex w-12 justify-center items-center h-full rounded-md border-2 border-gray-400/50 bg-gray-200 text-xs">
+        <div className=" flex w-12 justify-center items-center h-full rounded-md border-2 border-gray-400/50 bg-gray-200 2xl:text-lg text-xs">
           {seed.teams[1].id || " "}
         </div>
       </div>
       {/* box names */}
 
       <div
-        className=" text-gray-700  flex flex-col mr-2"
-        style={{ minWidth: "170px" }}
+        className=" text-gray-700 text-base flex flex-col mr-2"
+        style={{ minWidth: "210px" }}
       >
         <div className="text-white">Deportistas</div>
-        <div className="  mb-1 border-2  border-gray-400/50  rounded-md">
-          <div className=" text-left flex items-center px-2 text-xs  h-6 border-b border-gray-400/50  w-full">
+        <div className="mb-1 border-2  border-gray-400/50  rounded-md">
+          <div className=" text-left flex items-center px-2 text-base  h-6 border-b border-gray-400/50  w-full">
             {seed.teams[0]?.name || ""}
             {/* {efectName0} */}
           </div>
-          <div className="text-left flex items-center px-2 text-xs  h-6   w-full rounded-md">
+          <div className="text-left flex items-center px-2  h-6   w-full rounded-md">
             {seed.teams[0]?.delegation || ""}
             {/* {efectDelegation0} */}
           </div>
         </div>
-        <div className="   border-2 border-gray-400/50  rounded-md">
-          <div className=" text-left flex items-center px-2 text-xs   h-6 border-b border-gray-400/50 bg-white  w-full ">
+        <div className=" border-2 border-gray-400/50  rounded-md">
+          <div className=" text-left flex items-center px-2   h-6 border-b border-gray-400/50 bg-white  w-full ">
             {seed.teams[1]?.name || " "}
             {/* {efectName1} */}
           </div>
-          <div className="text-left flex items-center px-2 text-xs  h-6    w-full ">
+          <div className="text-left flex items-center px-2   h-6    w-full ">
             {seed.teams[1]?.delegation || ""}
             {/* {efectDelegation1} */}
           </div>
