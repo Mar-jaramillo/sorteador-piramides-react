@@ -143,7 +143,7 @@ export default function CardIndividual({
           <div>
             <span className="grid grid-cols 12 justify-end">
               {groupNow.arrayGroup.length === 1 ? (
-                <p className="col-span-6  text-white m-4 px-5 py-2  underline">
+                <p className="col-span-6  text-white m-4 px-5 py-2">
                   No se puede sortear
                 </p>
               ) : groupNow.isRaffled ? (
@@ -153,7 +153,7 @@ export default function CardIndividual({
                       handleClickSorteo();
                       navigate("/templates");
                     }}
-                    className="col-span-6  text-white m-4 px-5 py-2  underline"
+                    className="col-span-6 m-4 btnPrimary font-medium  hover:bg-white/50"
                   >
                     Volver a sortear
                   </button>
