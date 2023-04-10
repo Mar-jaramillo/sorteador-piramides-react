@@ -24,7 +24,7 @@ const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
   const Wrapper = Seed;
   return (
     <Wrapper
-      className={`wrapper item text-md xl:text-xl font-semibold ${
+      className={`wrapper item text-md xl:text-xl font-medium ${
         roundIndex > 0 ? "rounded-sm" : ""
       }`}
       style={{ minWidth: "0" }}
