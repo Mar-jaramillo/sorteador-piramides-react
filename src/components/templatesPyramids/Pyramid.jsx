@@ -11,10 +11,11 @@ const CustomSeed = ({ seed, roundIndex, seedIndex, rounds }) => {
   const [rounded, setRounded] = useState(roundIndex);
   const isLastRound = rounded;
   const typePyramid = context.typePyramid || getLocalStorage("typePyramid");
-  const ultimoNumeroRound1 = (typePyramid/2+1);
-  const ultimoNumeroRound2 = (typePyramid/2) + (typePyramid/4) + 1;
-  const ultimoNumeroRound3 = typePyramid;
-  
+  const ultimoNumeroRound1 = typePyramid / 2 + 1;
+  const ultimoNumeroRound2 = typePyramid / 2 + typePyramid / 4 + 1;
+  console.log(ultimoNumeroRound2);
+  const ultimoNumeroRound3 = ultimoNumeroRound2 + 4;
+
   useEffect(() => {
     const wrapper = document.querySelectorAll(".wrapper");
     if (typePyramid !== 3) {
@@ -48,11 +49,23 @@ const CustomSeed = ({ seed, roundIndex, seedIndex, rounds }) => {
           </div>
 
           <div className="   flex flex-col mr-2 ">
-            <div className="text-black text-sm text-center m-1 p-1 h-6 w-6 font-normal bg-gray-300 rounded-full" >{ 
-            roundIndex === 1 && seedIndex + ultimoNumeroRound1 ||
-            roundIndex === 2 && seedIndex + ultimoNumeroRound2 ||
-            roundIndex === 3 && ultimoNumeroRound3          
-            }</div>
+            <div className="text-black text-sm text-center m-1 p-1 h-6 w-6 font-normal bg-gray-300 rounded-full">
+              {typePyramid === 32
+                ? (roundIndex === 1 && seedIndex + ultimoNumeroRound1) ||
+                  (roundIndex === 2 && seedIndex + ultimoNumeroRound2) ||
+                  (roundIndex === 3 && seedIndex + ultimoNumeroRound3) ||
+                  (roundIndex === 4 && typePyramid)
+                : typePyramid === 16
+                ? (roundIndex === 1 && seedIndex + ultimoNumeroRound1) ||
+                  (roundIndex === 2 && seedIndex + ultimoNumeroRound2) ||
+                  (roundIndex === 3 && typePyramid)
+                : typePyramid === 8
+                ? (roundIndex === 1 && seedIndex + ultimoNumeroRound1) ||
+                  (roundIndex === 2 && typePyramid)
+                : typePyramid === 4
+                ? roundIndex === 1 && typePyramid  
+                : null }
+            </div>
           </div>
 
           {/* box puntos */}
