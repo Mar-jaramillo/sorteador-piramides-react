@@ -6,16 +6,16 @@ import { getLocalStorage } from "../../utils/getLocalStorage";
 
 const LoaderSorteo = ({ setShowAnimation }) => {
   const context = useContext(GlobalContext);
-  const localGroup = getLocalStorage("groupNow ")
- 
+  const localGroup = getLocalStorage("groupNow ");
+
   const group = context.groupNow.arrayGroup || localGroup.arrayGroup;
 
   return (
     <div className="flex flex-col justify-center  pt-28">
-  <div className=" grid place-content-center  w-full">
-  <img className="h-72 " src={ruleta} alt="" />
-  <p className="text-center my-3">Sorteando...</p>
-  </div>
+      <div className=" grid place-content-center  w-full">
+        <img className="h-60" src={ruleta} alt="" />
+        <p className="text-center my-3">Sorteando...</p>
+      </div>
       <ListModal group={group} setShowAnimation={setShowAnimation} />
     </div>
   );
