@@ -11,7 +11,7 @@ export default function HeaderBoard() {
         <h2 className="text-3xl font-bold ">
           Grupos de Competidores
         </h2>
-        <h3>{context.nameEvent || getLocalStorage("nameEvent")}</h3>
+        <h3 className="uppercase">{context.nameEvent || getLocalStorage("nameEvent")}</h3>
       </div>
 
     </div>

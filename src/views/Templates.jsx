@@ -50,7 +50,7 @@ export default function Templates() {
           <h2 className="text-3xl font-bold  ">
             Pirámide de {context.typePyramid} Competidores {context.keyNameNow}{" "}
           </h2>
-          <h3 className="">{context.nameEvent || getLocalStorage("nameEvent")}</h3>
+          <h3 className="uppercase">{context.nameEvent || getLocalStorage("nameEvent")}</h3>
 
           <ButtonsGroup />
         </div>
