@@ -10,8 +10,6 @@ const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
 
   const [rounded, setRounded] = useState(roundIndex)
   const isLastRound = rounded;
-
- 
   const typePyramid = context.typePyramid || getLocalStorage("typePyramid");
 
   useEffect(() => {

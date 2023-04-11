@@ -43,10 +43,10 @@ export default function BodyTemplate() {
         </div>
         {activeAcordeon ? (
           <div>
-            <div className="flex justify-between my-3 mx-20">
-              <img className="mt-5 h-24" src={groupLogos} alt="logo" />
-              <div className="mt-14">
-                <span className="text-xl py-3 px-14 rounded-lg bg-gray-200 text-slate-600 ">
+            <div className="flex justify-between w-full my-3 gap-10 items-center px-5 ">
+              <img className="h-24" src={groupLogos} alt="logo" />
+              <div className="grid place-content-center text-right">
+                <span className="text-xl  rounded-lg text-slate-600  ">
                   {context.nameEvent || getLocalStorage("nameEvent")}
                 </span>
               </div>
