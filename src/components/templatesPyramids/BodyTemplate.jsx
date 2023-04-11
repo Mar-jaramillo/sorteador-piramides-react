@@ -91,10 +91,11 @@ export default function BodyTemplate() {
               <p>Vo Bo Coor. Juzgamiento ______________________</p>
             </div>
             <div className="flex justify-center">
-              <div className="flex flex-col items-center mt-7 w-32 h-32">
+              <div className="flex flex-col items-center mt-7">
                 <p className="text-gray-600">Desarrollado por:</p>
                 <a href="https://qubilo.com/">
                   <img className="" src={logoqubilo} alt="logo" />
+                  <p className="text-center text-gray-600">www.qubilo.com</p>
                 </a>
               </div>
             </div>
