@@ -49,7 +49,7 @@ export default function ExcelUploader({ setError }) {
         const notRaffled = totalGroups - countKeysUndefined;
 
         //Guardados en contexto
-        context.nameEvent = nameEvent;
+        context.nameEvent = nameEvent.toUpperCase();
         context.totalGroups = totalGroups;
         context.totalDelegations = totalDelegations;
         context.groupsByCode = groupsByCode;

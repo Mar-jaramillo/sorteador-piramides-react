@@ -49,8 +49,8 @@ export default function Board() {
    {isLoading ? (
           <Loader mensaje="Cargando Grupos de Deportistas" />
         ) : (
-    <div id="board" className={keysOfGroups.length < 3 ?"fadeinfast min-h-screen":"fadeinfast h-full"}>
- 
+    <div id="board" className={keysOfGroups.length < 3 ? "fadeinfast min-h-screen":"fadeinfast h-full"}>
+
             <div className="px-32 pt-10 text-white min-h-screen">
               <BreadCrumb />
               <HeaderBoard />

@@ -47,8 +47,8 @@ export default function DataTable() {
         <Loader mensaje="Cargando Consolidado de Deportistas..." />
       ) : (
         <>
-          <div id="data" className="fadeinfast h-screen text-white">
-            <div className=" h-full grid place-content-center ">
+          <div id="data" className="fadeinfast h-screen grid place-content-center  text-white">
+            <div className=" h-full grid place-content-center  max-w-5xl">
               <BreadCrumb />
               <div className="grid grid-cols-12">
                 <div className="col-span-6 flex flex-col">
