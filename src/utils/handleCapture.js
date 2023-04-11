@@ -5,12 +5,12 @@ export const handleCapture = (typePyramid, keyNameNow) => {
   let contenido = document.getElementById("capture");
 
   // Opcionalmente, descargar también una imagen PNG de la pirámide
-  html2canvas(contenido, { scale: 2 }).then((canvas) => {
-    let link = document.createElement("a");
-    link.download = `Pirámide de ${typePyramid}  ${keyNameNow}.png`;
-    link.href = canvas.toDataURL();
-    link.click();
-  });
+  // html2canvas(contenido, { scale: 2 }).then((canvas) => {
+  //   let link = document.createElement("a");
+  //   link.download = `Pirámide de ${typePyramid}  ${keyNameNow}.png`;
+  //   link.href = canvas.toDataURL();
+  //   link.click();
+  // });
 
   // Convertir la imagen en PDF y descargarla
   setTimeout(() => {
