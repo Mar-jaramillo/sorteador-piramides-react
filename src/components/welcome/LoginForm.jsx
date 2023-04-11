@@ -23,7 +23,7 @@ export default function LoginForm() {
 
   return (
     <div className="flex flex-col justify-between items-center ">
-    <img className="h-12 mb-4" src={iconhapkido} alt="" />
+    <img className="h-16 mb-4" src={iconhapkido} alt="" />
     <p className="text-center font-bold text-2xl mb-10  max-w-md">
       Bienvenido al Sorteador de Pirámides de Competencias para Hapkido
     </p>
