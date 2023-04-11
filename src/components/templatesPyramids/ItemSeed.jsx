@@ -3,8 +3,8 @@ import { SeedItem } from "react-brackets";
 
 export const ItemSeed = ({ seed, seedIndex }) => {
   return (
-    <SeedItem 
-      className=" item flex justify-between w-full shadow-none bg-white "
+    <SeedItem
+      className="item flex justify-between w-full shadow-none bg-white "
       style={{
         boxShadow: "none",
         backgroundColor: "white",
@@ -13,7 +13,7 @@ export const ItemSeed = ({ seed, seedIndex }) => {
     >
       {/* box id */}
 
-      <div className=" text-gray-700 rounded-md w-12  flex flex-col justify-around bg-white text-base ">
+      <div className="mt-4 text-gray-700 rounded-md w-12  flex flex-col justify-around bg-white text-base ">
         <div>ID</div>
         <div className="mb-1 flex justify-center items-center rounded-md border-2 border-gray-400/50 bg-gray-200   w-full h-full ">
           {seed.teams[0].id || " "}
@@ -28,7 +28,11 @@ export const ItemSeed = ({ seed, seedIndex }) => {
         className=" text-gray-700 text-base flex flex-col mr-2 "
         style={{ minWidth: "230px" }}
       >
-        <div className="text-gray-700">{seedIndex}</div>
+        <div className="flex justify-center ">
+        <div className="text-black text-center m-1 p-1 h-8 w-8 font-medium bg-gray-300 rounded-full">
+          {seedIndex}
+        </div>
+        </div>
         <div className="mb-1 border-2  border-gray-400/50  rounded-md">
           <div className=" text-left flex items-center px-2 text-base  h-6 border-b border-gray-400/50  w-full">
             {seed.teams[0]?.name || ""}
@@ -53,7 +57,7 @@ export const ItemSeed = ({ seed, seedIndex }) => {
 
       {/* box puntos */}
 
-      <div className=" text-gray-700   w-12 flex flex-col justify-around bg-white   rounded-md border-gray-400/50">
+      <div className="mt-3 text-gray-700   w-12 flex flex-col justify-around bg-white   rounded-md border-gray-400/50">
         <div>PTS</div>
         <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-full w-full rounded-md"></div>
         <div className=" flex justify-center items-center border-2 border-gray-400/50  h-full w-full rounded-md"></div>
