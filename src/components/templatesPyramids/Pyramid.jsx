@@ -13,7 +13,7 @@ const CustomSeed = ({ seed, roundIndex, seedIndex, rounds }) => {
   const typePyramid = context.typePyramid || getLocalStorage("typePyramid");
   const ultimoNumeroRound1 = typePyramid / 2 + 1;
   const ultimoNumeroRound2 = typePyramid / 2 + typePyramid / 4 + 1;
-  console.log(ultimoNumeroRound2);
+
   const ultimoNumeroRound3 = ultimoNumeroRound2 + 4;
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const CustomSeed = ({ seed, roundIndex, seedIndex, rounds }) => {
       }`}
       style={{ minWidth: "0" }}
     >
-      <div className="text-base flex flex-col mr-2 ">
+ 
             <div className="text-black text-center m-1 p-1 font-medium">
               {typePyramid === 32
                 ? (roundIndex === 1 && seedIndex + ultimoNumeroRound1) ||
@@ -49,7 +49,7 @@ const CustomSeed = ({ seed, roundIndex, seedIndex, rounds }) => {
                 ? roundIndex === 1 && typePyramid  
                 : null }
             </div>
-          </div>
+ 
       {/* caja padre */}
       {roundIndex > 0 ? (
         <SeedItem

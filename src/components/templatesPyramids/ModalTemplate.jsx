@@ -14,7 +14,7 @@ export default function ModalTemplate({
   const context = useContext(GlobalContext);
   const typePyramid = context.typePyramid || getLocalStorage("typePyramid");
   const keyNameNow = context.keyNameNow || getLocalStorage("keyNameNow");
-
+ 
   return (
     <div className="px-32 pb-56 ">
       <div className="flex w-full  justify-between items-center gap-5 mb-4">

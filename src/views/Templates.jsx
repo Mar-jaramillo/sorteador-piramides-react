@@ -14,9 +14,11 @@ export default function Templates() {
   const context = useContext(GlobalContext);
   const [showAnimation, setShowAnimation] = useState(true);
   const [controllerAnimation, setControllerAnimation] = useState(false)
+
  
  
   useEffect(() => {
+
     setShowAnimation(true)
     const controller = setTimeout(() => {
       setShowAnimation(false);

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { json, useLocation } from "react-router-dom";
 import CardsBoard from "../components/board/CardsBoard";
 import HeaderBoard from "../components/board/HeaderBoard";
 import SelectFilter from "../components/board/SelectFilter";
@@ -60,7 +60,7 @@ export default function Board() {
                 setGroupsByCode={setGroupsByCode}
                 groupsByCode={groupsByCode}
                 setFilteredKeysOfGroups={setFilteredKeysOfGroups}
-                // handleCards={handleCards}
+ 
                 setListParamsSearch={setListParamsSearch}
                 listParamsSearch={listParamsSearch}
               />
