@@ -153,7 +153,7 @@ export default function CardIndividual({
                       handleClickSorteo();
                       navigate("/templates");
                     }}
-                    className="col-span-6 m-4 btnPrimary font-medium  hover:bg-white/50"
+                    className="col-span-6 m-4 px-5 py-2 rounded-lg font-medium border-2 border-white bg-white/30 transition duration-500 ease-in-out hover:bg-redbuttons hover:border-2 hover:border-redbuttons text-white"
                   >
                     Volver a sortear
                   </button>
