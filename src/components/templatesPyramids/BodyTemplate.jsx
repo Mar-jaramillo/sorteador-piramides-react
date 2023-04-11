@@ -20,7 +20,7 @@ export default function BodyTemplate() {
           onClick={() => setActiveAcordeon(!activeAcordeon)}
           className="w-full text-gray-700 flex justify-between"
         >
-          <h3>Pirámide de {typePyramid} Competidores</h3>
+          <h3> Pirámide de {typePyramid} Competidores</h3>
           <div>
             <svg
               data-accordion-icon
@@ -72,7 +72,9 @@ export default function BodyTemplate() {
                       Tercer y Cuarto puesto
                     </p>
                     <div className="flex flex-col mr-2 items-center ">
-                      <div className="text-black text-sm text-center m-1 p-1 h-6 w-6 font-normal bg-gray-300 rounded-full">{typePyramid - 1}</div>
+                      <div className="text-black text-center m-1 p-1 font-medium">
+                        {typePyramid - 1}
+                      </div>
                     </div>
                     <div className="mb-11">
                       <EliminationPyramid />

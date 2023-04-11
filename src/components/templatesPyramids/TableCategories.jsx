@@ -12,8 +12,8 @@ export default function TableCategories() {
       participantsOfCard.arrayGroup[1]; 
 
   return (
-    <div className="grid grid-cols-12 max-w-lg rounded-2xl text-md text-gray-500 bg-gray-200/60">
-      <ul className="col-span-6  p-2 m-3">
+    <div className="grid grid-cols-12 max-w-lg rounded-2xl text-md text-gray-800 bg-gray-300/60">
+      <ul className="font-medium col-span-6  p-2 m-3">
         <li className="w-full">CATEGORÍA</li>
         <li className="w-full">GRADO</li>
         <li className="w-full">RAMA</li>

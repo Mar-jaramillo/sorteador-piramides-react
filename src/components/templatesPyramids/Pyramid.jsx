@@ -31,25 +31,8 @@ const CustomSeed = ({ seed, roundIndex, seedIndex, rounds }) => {
       }`}
       style={{ minWidth: "0" }}
     >
-      {/* caja padre */}
-      {roundIndex > 0 ? (
-        <SeedItem
-          className="wrapper item flex gap-2 shadow-none bg-white "
-          style={{
-            boxShadow: "none",
-            backgroundColor: "white",
-            minWidth: 0,
-          }}
-        >
-          {/* box id */}
-          <div className="rounded-md w-12 bg-white text-gray-700">
-            ID
-            <div className="mb-1 rounded-md border-2 border-gray-400/50 bg-gray-200 h-12"></div>
-            <div className="flex w-12 h-12 justify-center items-center  rounded-md border-2 border-gray-400/50 bg-gray-200"></div>
-          </div>
-
-          <div className="   flex flex-col mr-2 ">
-            <div className="text-black text-sm text-center m-1 p-1 h-6 w-6 font-normal bg-gray-300 rounded-full">
+      <div className="text-base flex flex-col mr-2 ">
+            <div className="text-black text-center m-1 p-1 font-medium">
               {typePyramid === 32
                 ? (roundIndex === 1 && seedIndex + ultimoNumeroRound1) ||
                   (roundIndex === 2 && seedIndex + ultimoNumeroRound2) ||
@@ -67,6 +50,24 @@ const CustomSeed = ({ seed, roundIndex, seedIndex, rounds }) => {
                 : null }
             </div>
           </div>
+      {/* caja padre */}
+      {roundIndex > 0 ? (
+        <SeedItem
+          className="wrapper item flex gap-2 shadow-none bg-white "
+          style={{
+            boxShadow: "none",
+            backgroundColor: "white",
+            minWidth: 0,
+          }}
+        >
+          {/* box id */}
+          <div className="rounded-md w-12 bg-white text-gray-700">
+            ID
+            <div className="mb-1 rounded-md border-2 border-gray-400/50 bg-gray-200 h-12"></div>
+            <div className="flex w-12 h-12 justify-center items-center  rounded-md border-2 border-gray-400/50 bg-gray-200"></div>
+          </div>
+
+          
 
           {/* box puntos */}
           {typePyramid !== 3 ? (
