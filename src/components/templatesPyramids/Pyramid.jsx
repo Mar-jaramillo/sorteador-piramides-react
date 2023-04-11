@@ -11,6 +11,7 @@ const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
   const [rounded, setRounded] = useState(roundIndex)
   const isLastRound = rounded;
 
+ 
   const typePyramid = context.typePyramid || getLocalStorage("typePyramid");
 
   useEffect(() => {
@@ -54,7 +55,7 @@ const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
           </div> : null }
         </SeedItem>)
        : (
-        <ItemSeed seed={seed} />
+        <ItemSeed seed={seed} seedIndex={seedIndex+1}/>
       )}
     </Wrapper>
       

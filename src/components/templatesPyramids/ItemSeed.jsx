@@ -1,7 +1,7 @@
 import React from "react";
 import { SeedItem } from "react-brackets";
 
-export const ItemSeed = ({ seed }) => {
+export const ItemSeed = ({ seed, seedIndex }) => {
   return (
     <SeedItem 
       className=" item flex justify-between w-full shadow-none bg-white "
@@ -28,7 +28,7 @@ export const ItemSeed = ({ seed }) => {
         className=" text-gray-700 text-base flex flex-col mr-2 "
         style={{ minWidth: "230px" }}
       >
-        <div className="text-white">Deportistas</div>
+        <div className="text-gray-700">{seedIndex}</div>
         <div className="mb-1 border-2  border-gray-400/50  rounded-md">
           <div className=" text-left flex items-center px-2 text-base  h-6 border-b border-gray-400/50  w-full">
             {seed.teams[0]?.name || ""}
