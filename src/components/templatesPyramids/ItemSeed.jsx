@@ -13,9 +13,9 @@ export const ItemSeed = ({ seed, seedIndex }) => {
     >
       {/* box id */}
 
-      <div className="mt-4 text-gray-700 rounded-md w-12  flex flex-col justify-around bg-white text-base ">
+      <div className="mt-4 text-gray-700 rounded-md w-12 flex flex-col justify-around bg-white text-base">
         <div>ID</div>
-        <div className="mb-1 flex justify-center items-center rounded-md border-2 border-gray-400 bg-gray-200   w-full h-full ">
+        <div className="mb-1 flex justify-center items-center rounded-md border-2 border-gray-400  bg-gray-200 w-full h-full ">
           {seed.teams[0].id || " "}
         </div>
         <div className=" flex h-full justify-center items-center  rounded-md border-2 border-gray-400 bg-gray-200 ">
@@ -34,21 +34,21 @@ export const ItemSeed = ({ seed, seedIndex }) => {
         </div>
         </div>
         <div className="mb-1 border-2  border-gray-400  rounded-md">
-          <div className=" text-left flex items-center px-2 text-base  h-6 border-b border-gray-400  w-full">
+          <div className=" text-left flex items-center px-2 text-base  h-8 border-b border-gray-400  w-full">
             {seed.teams[0]?.name || ""}
             {/* {efectName0} */}
           </div>
-          <div className="text-left flex items-center px-2  h-6   w-full rounded-md">
+          <div className="text-left flex items-center px-2  h-8   w-full rounded-md">
             {seed.teams[0]?.delegation || ""}
             {/* {efectDelegation0} */}
           </div>
         </div>
         <div className=" border-2 border-gray-400  rounded-md">
-          <div className=" text-left flex items-center px-2   h-6 border-b border-gray-400 bg-white  w-full ">
+          <div className=" text-left flex items-center px-2  h-8 border-b border-gray-400 bg-white  w-full ">
             {seed.teams[1]?.name || " "}
             {/* {efectName1} */}
           </div>
-          <div className="text-left flex items-center px-2   h-6    w-full ">
+          <div className="text-left flex items-center px-2  h-8   w-full ">
             {seed.teams[1]?.delegation || ""}
             {/* {efectDelegation1} */}
           </div>
@@ -57,7 +57,7 @@ export const ItemSeed = ({ seed, seedIndex }) => {
 
       {/* box puntos */}
 
-      <div className="mt-3 text-gray-700   w-12 flex flex-col justify-around bg-white   rounded-md border-gray-400">
+      <div className="mt-3 text-gray-700 w-12 flex flex-col justify-around bg-white   rounded-md border-gray-400">
         <div>PTS</div>
         <div className="mb-1 flex justify-center items-center  border-2 border-gray-400 h-full w-full rounded-md"></div>
         <div className=" flex justify-center items-center border-2 border-gray-400  h-full w-full rounded-md"></div>
