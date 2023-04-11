@@ -72,7 +72,7 @@ export default function BodyTemplate() {
                       Tercer y Cuarto puesto
                     </p>
                     <div className="flex flex-col mr-2 items-center ">
-                      <div className="text-black text-center p-1 h-8 w-8 font-medium bg-gray-300 rounded-full">{typePyramid - 1}</div>
+                      <div className="text-black text-sm text-center m-1 p-1 h-6 w-6 font-normal bg-gray-300 rounded-full">{typePyramid - 1}</div>
                     </div>
                     <div className="mb-11">
                       <EliminationPyramid />

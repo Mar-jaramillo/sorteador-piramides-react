@@ -29,7 +29,7 @@ export const ItemSeed = ({ seed, seedIndex }) => {
         style={{ minWidth: "230px" }}
       >
         <div className="flex justify-center ">
-        <div className="text-black text-center m-1 p-1 h-8 w-8 font-medium bg-gray-300 rounded-full">
+        <div className="text-black text-sm text-center m-1 p-1 h-6 w-6 font-normal bg-gray-300 rounded-full">
           {seedIndex}
         </div>
         </div>

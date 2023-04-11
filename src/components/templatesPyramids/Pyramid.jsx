@@ -48,7 +48,7 @@ const CustomSeed = ({ seed, roundIndex, seedIndex, rounds }) => {
           </div>
 
           <div className="   flex flex-col mr-2 ">
-            <div className="text-black p-1 h-8 w-8 bg-gray-300 rounded-full" >{ 
+            <div className="text-black text-sm text-center m-1 p-1 h-6 w-6 font-normal bg-gray-300 rounded-full" >{ 
             roundIndex === 1 && seedIndex + ultimoNumeroRound1 ||
             roundIndex === 2 && seedIndex + ultimoNumeroRound2 ||
             roundIndex === 3 && ultimoNumeroRound3          
