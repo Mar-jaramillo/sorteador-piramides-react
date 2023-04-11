@@ -44,7 +44,7 @@ export default function BodyTemplate() {
         {activeAcordeon ? (
           <div>
             <div className="flex justify-between w-full my-3 gap-10 items-center px-5 ">
-              <img className="h-24" src={groupLogos} alt="logo" />
+              <img className="" src={groupLogos} alt="logo" />
               <div className="grid place-content-center text-right">
                 <span className="text-xl  rounded-lg text-slate-600  ">
                   {context.nameEvent || getLocalStorage("nameEvent")}
