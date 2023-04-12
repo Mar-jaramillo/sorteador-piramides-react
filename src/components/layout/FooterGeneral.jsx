@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <div className="absolute bottom-8 right-8 text-white">
     <p className="text-sm">Desarrollado por:</p>
-    <a href="https://qubilo.com/">
+    <a target="_blank" rel="noopener noreferrer" href="https://qubilo.com">
     <img
       className="h-10"
       src={logoqubulowhite}
