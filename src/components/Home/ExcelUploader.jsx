@@ -10,14 +10,20 @@ import FormUploader from "./FormUploader";
 import { getLocalStorage } from "../../utils/getLocalStorage";
  
 import { cleanData } from "../../utils/cleanData";
+import { useEffect } from "react";
  
 
 export default function ExcelUploader({ setError }) {
-  const [nameEvent, setNameEvent] = useState(getLocalStorage("nameEvent"));
+  const [nameEvent, setNameEvent] = useState(getLocalStorage("nameEvent") || "");
   const [excelFile, setExcelFile] = useState(null);
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
   const context = useContext(GlobalContext);
+
+  useEffect(() => {
+    nameEvent.length > 100 && alert("Maximo 100 caracteres")
+  }, [nameEvent])
+  
 
   const handleSubmit = (e) => {
     setloading(true);

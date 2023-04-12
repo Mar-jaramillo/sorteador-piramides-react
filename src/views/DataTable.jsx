@@ -61,9 +61,9 @@ export default function DataTable() {
                     setFilteredPerson={setFilteredPerson}
                   />
                 </div>
-                <div className="text-right col-span-6 mb-2">
-                  <h3 className="font-bold text-lg first-letter:uppercase">
-                    {context.nameEvent || getLocalStorage("nameEvent")}
+                <div className="text-right col-span-6 mb-2 ">
+                <h3 className="font-bold text-lg uppercase text-right truncate" title={context.nameEvent}>
+    {context.nameEvent || getLocalStorage("nameEvent")}
                   </h3>
                   <div>
                     <h3 />

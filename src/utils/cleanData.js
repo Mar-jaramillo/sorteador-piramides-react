@@ -14,7 +14,10 @@ export const cleanData = () => {
     "excelData",
     "totalGroupsUndefined",
     "keyNameNow",
-    "amountfilteredKeys"
+    "amountfilteredKeys",
+    "listParamsSearch",
+    "isLogin"
+
   ];
   for (let i = 0; i < elementosAEliminar.length; i++) {
     localStorage.removeItem(elementosAEliminar[i]);
