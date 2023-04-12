@@ -14,7 +14,7 @@ import { useEffect } from "react";
  
 
 export default function ExcelUploader({ setError }) {
-  const [nameEvent, setNameEvent] = useState(getLocalStorage("nameEvent"));
+  const [nameEvent, setNameEvent] = useState(getLocalStorage("nameEvent") || "");
   const [excelFile, setExcelFile] = useState(null);
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
