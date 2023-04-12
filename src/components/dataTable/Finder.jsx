@@ -7,14 +7,16 @@ export default function Finder({
 }) {
   const handleSearch = (e) => {
     const searchValue = e.target.value;
+
     const filteredArray = dataExcel.filter((deportista) => {
+ 
       return (
-        deportista["Nombre Deportista"]
-          .toLowerCase()
-          .includes(searchValue.toLowerCase()) ||
-        deportista["Delegación"]
-          .toLowerCase()
-          .includes(searchValue.toLowerCase())
+        (deportista["CBTE IND"] &&
+          deportista["CBTE IND"].toLowerCase().includes(searchValue.toLowerCase())) ||
+        (deportista["Delegación"] &&
+          deportista["Delegación"].toLowerCase().includes(searchValue.toLowerCase())) ||
+        (deportista["Nombre Deportista"] &&
+          deportista["Nombre Deportista"].toLowerCase().includes(searchValue.toLowerCase()))
       );
     });
     setFilteredPerson(filteredArray);
@@ -45,7 +47,7 @@ export default function Finder({
           type="text"
           id="table-search"
           className="pl-10 py-2 border text-sm rounded-md bg-white/25 w-full focus:outline-gray-400"
-          placeholder="Buscar competidores, delegaciones, edad..."
+          placeholder="Buscar competidores, delegaciones, codigo..."
         />
       </div>
     </div>

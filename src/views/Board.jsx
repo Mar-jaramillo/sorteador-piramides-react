@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { json, useLocation } from "react-router-dom";
 import CardsBoard from "../components/board/CardsBoard";
 import HeaderBoard from "../components/board/HeaderBoard";
 import SelectFilter from "../components/board/SelectFilter";
@@ -49,8 +49,8 @@ export default function Board() {
    {isLoading ? (
           <Loader mensaje="Cargando Grupos de Deportistas" />
         ) : (
-    <div id="board" className={keysOfGroups.length < 3 ?"fadeinfast min-h-screen":"fadeinfast h-full"}>
- 
+    <div id="board" className={keysOfGroups.length < 3 ? "fadeinfast min-h-screen":"fadeinfast h-full"}>
+
             <div className="px-32 pt-10 text-white min-h-screen">
               <BreadCrumb />
               <HeaderBoard />
@@ -60,7 +60,7 @@ export default function Board() {
                 setGroupsByCode={setGroupsByCode}
                 groupsByCode={groupsByCode}
                 setFilteredKeysOfGroups={setFilteredKeysOfGroups}
-                // handleCards={handleCards}
+ 
                 setListParamsSearch={setListParamsSearch}
                 listParamsSearch={listParamsSearch}
               />

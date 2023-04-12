@@ -20,7 +20,7 @@ export default function BodyTemplate() {
           onClick={() => setActiveAcordeon(!activeAcordeon)}
           className="w-full text-gray-700 flex justify-between"
         >
-          <h3>Pirámide de {typePyramid} Competidores</h3>
+          <h3> Pirámide de {typePyramid} Competidores</h3>
           <div>
             <svg
               data-accordion-icon
@@ -43,10 +43,10 @@ export default function BodyTemplate() {
         </div>
         {activeAcordeon ? (
           <div>
-            <div className="flex justify-between my-3 mx-20">
-              <img className="mt-5 h-24" src={groupLogos} alt="logo" />
-              <div className="mt-14">
-                <span className="text-xl py-3 px-14 rounded-lg bg-gray-200 text-slate-600 ">
+            <div className="flex justify-between w-full my-3 gap-10 items-center px-5 ">
+              <img className="" src={groupLogos} alt="logo" />
+              <div className="grid place-content-center text-right">
+                <span className="text-xl  rounded-lg text-slate-600  ">
                   {context.nameEvent || getLocalStorage("nameEvent")}
                 </span>
               </div>
@@ -67,10 +67,15 @@ export default function BodyTemplate() {
               <div className="flex flex-row-reverse items-center my-7">
                 {typePyramid >= 4 ? (
                   <div className="grid place-content-center  ">
-                    <p className="font-semibold text-center text-gray-500  ">
+                    <p className="font-semibold text-center text-gray-700  ">
                       {" "}
                       Tercer y Cuarto puesto
                     </p>
+                    <div className="flex flex-col mr-2 items-center ">
+                      <div className="text-black text-center m-1 p-1 font-medium">
+                        {typePyramid - 1}
+                      </div>
+                    </div>
                     <div className="mb-11">
                       <EliminationPyramid />
                     </div>
@@ -86,10 +91,11 @@ export default function BodyTemplate() {
               <p>Vo Bo Coor. Juzgamiento ______________________</p>
             </div>
             <div className="flex justify-center">
-              <div className="flex flex-col items-center mt-7 w-32 h-32">
+              <div className="flex flex-col items-center mt-7">
                 <p className="text-gray-600">Desarrollado por:</p>
                 <a href="https://qubilo.com/">
                   <img className="" src={logoqubilo} alt="logo" />
+                  <p className="text-center text-gray-600">www.qubilo.com</p>
                 </a>
               </div>
             </div>

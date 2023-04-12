@@ -6,6 +6,7 @@ import ModalTemplate from "../components/templatesPyramids/ModalTemplate";
 import GlobalContext from "../utils/GlobalContext";
 import LoaderSorteo from "../components/templatesPyramids/LoaderSorteo";
 import ButtonsGroup from "../components/board/ButtonsGroup";
+import { getLocalStorage } from "../utils/getLocalStorage";
 
 export default function Templates() {
  
@@ -13,9 +14,11 @@ export default function Templates() {
   const context = useContext(GlobalContext);
   const [showAnimation, setShowAnimation] = useState(true);
   const [controllerAnimation, setControllerAnimation] = useState(false)
+
  
  
   useEffect(() => {
+
     setShowAnimation(true)
     const controller = setTimeout(() => {
       setShowAnimation(false);
@@ -46,9 +49,10 @@ export default function Templates() {
         <div className="px-32 pt-10">
           <BreadCrumb />
 
-          <h2 className="text-3xl font-bold  mb-16">
+          <h2 className="text-3xl font-bold  ">
             Pirámide de {context.typePyramid} Competidores {context.keyNameNow}{" "}
           </h2>
+          <h3 className="uppercase">{context.nameEvent || getLocalStorage("nameEvent")}</h3>
 
           <ButtonsGroup />
         </div>

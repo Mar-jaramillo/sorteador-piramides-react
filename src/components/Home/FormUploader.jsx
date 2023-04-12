@@ -36,7 +36,7 @@ const context = useContext(GlobalContext)
             required
             defaultValue={context.nameEvent}
             onChange={(e) => setNameEvent(e.target.value)}
-            className="rounded-xl text-white placeholder:text-white/30 pl-2  backdrop-blur-md text-lg py-1 border-2 bg-white/20 border-white focus:outline-gray-400"
+            className="rounded-xl uppercase text-white placeholder:text-white/30 pl-2  backdrop-blur-md text-lg py-1 border-2 bg-white/20 border-white focus:outline-gray-400"
             type="text"
             placeholder="Ejemplo: Torneo Nacional de Hapkido 2023"
           />

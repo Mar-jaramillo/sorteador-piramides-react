@@ -5,19 +5,21 @@ import { getLocalStorage } from "../../utils/getLocalStorage";
 import GlobalContext from "../../utils/GlobalContext";
 import { ItemSeed } from "./ItemSeed";
 
-const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
+const CustomSeed = ({ seed, roundIndex, seedIndex, rounds }) => {
   const context = useContext(GlobalContext);
 
-  const [rounded, setRounded] = useState(roundIndex)
+  const [rounded, setRounded] = useState(roundIndex);
   const isLastRound = rounded;
-
   const typePyramid = context.typePyramid || getLocalStorage("typePyramid");
+  const ultimoNumeroRound1 = typePyramid / 2 + 1;
+  const ultimoNumeroRound2 = typePyramid / 2 + typePyramid / 4 + 1;
+
+  const ultimoNumeroRound3 = ultimoNumeroRound2 + 4;
 
   useEffect(() => {
     const wrapper = document.querySelectorAll(".wrapper");
     if (typePyramid !== 3) {
       wrapper.forEach((ele) => ele.classList.remove("item"));
- 
     }
   }, [typePyramid]);
 
@@ -29,6 +31,25 @@ const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
       }`}
       style={{ minWidth: "0" }}
     >
+ 
+            <div className="text-black text-center m-1 p-1 font-medium">
+              {typePyramid === 32
+                ? (roundIndex === 1 && seedIndex + ultimoNumeroRound1) ||
+                  (roundIndex === 2 && seedIndex + ultimoNumeroRound2) ||
+                  (roundIndex === 3 && seedIndex + ultimoNumeroRound3) ||
+                  (roundIndex === 4 && typePyramid)
+                : typePyramid === 16
+                ? (roundIndex === 1 && seedIndex + ultimoNumeroRound1) ||
+                  (roundIndex === 2 && seedIndex + ultimoNumeroRound2) ||
+                  (roundIndex === 3 && typePyramid)
+                : typePyramid === 8
+                ? (roundIndex === 1 && seedIndex + ultimoNumeroRound1) ||
+                  (roundIndex === 2 && typePyramid)
+                : typePyramid === 4
+                ? roundIndex === 1 && typePyramid  
+                : null }
+            </div>
+ 
       {/* caja padre */}
       {roundIndex > 0 ? (
         <SeedItem
@@ -42,22 +63,25 @@ const CustomSeed = ({ seed, roundIndex, seedIndex,}) => {
           {/* box id */}
           <div className="rounded-md w-12 bg-white text-gray-700">
             ID
-            <div className="mb-1 rounded-md border-2 border-gray-400/50 bg-gray-200 h-12"></div>
-            <div className="flex w-12 h-12 justify-center items-center  rounded-md border-2 border-gray-400/50 bg-gray-200"></div>
+            <div className="mb-1 rounded-md border-2 border-gray-400 bg-gray-200 h-14"></div>
+            <div className="flex w-12 h-14 justify-center items-center  rounded-md border-2 border-gray-400 bg-gray-200"></div>
           </div>
+
+          
+
           {/* box puntos */}
-          {typePyramid !==3 ?
-          <div className="flex flex-col bg-white text-gray-700 rounded-md border-gray-400/50">
-            PTS
-            <div className="mb-1 flex justify-center items-center  border-2 border-gray-400/50 h-12 w-12 rounded-md"></div>
-            <div className=" flex justify-center items-center border-2 border-gray-400/50  h-12 w-12 rounded-md"></div>
-          </div> : null }
-        </SeedItem>)
-       : (
-        <ItemSeed seed={seed} />
+          {typePyramid !== 3 ? (
+            <div className="flex flex-col bg-white text-gray-700 rounded-md border-gray-400">
+              PTS
+              <div className="mb-1 flex justify-center items-center  border-2 border-gray-400 h-14 w-12 rounded-md"></div>
+              <div className=" flex justify-center items-center border-2 border-gray-400  h-14 w-12 rounded-md"></div>
+            </div>
+          ) : null}
+        </SeedItem>
+      ) : (
+        <ItemSeed seed={seed} seedIndex={seedIndex + 1} />
       )}
     </Wrapper>
-      
   );
 };
 
