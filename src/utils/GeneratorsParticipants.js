@@ -20,22 +20,18 @@ export const firstRound = (pyramid, group) => {
           {
             id: raffledPartipants[i][0]["CodDep"],
             delegation: raffledPartipants[i][0]["Delegación"],
-            name: `
-            ${raffledPartipants[i][0]["Nombre Deportista"].slice(0, 23)}`,
+            name: `${raffledPartipants[i][0]["Nombre Deportista"].slice(0, 25)}${raffledPartipants[i][0]["Nombre Deportista"][24] !== " " && raffledPartipants[i][0]["Nombre Deportista"].length > 24 ? "." : ""}`,
           },
           {
             id: raffledPartipants[i][1]["CodDep"],
             delegation: raffledPartipants[i][1]["Delegación"],
-            name: `${raffledPartipants[i][1]["Nombre Deportista"].slice(
-              0,
-              23
-            )}`,
+            name: `${raffledPartipants[i][1]["Nombre Deportista"].slice(0, 24)}${raffledPartipants[i][0]["Nombre Deportista"][24] !== " " && raffledPartipants[i][1]["Nombre Deportista"].length > 24 ? "." : ""}`,
           },
+          
         ],
       });
     }
   }
-
   return participantes;
 };
 

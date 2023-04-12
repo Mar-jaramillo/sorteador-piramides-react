@@ -86,7 +86,7 @@ export default function Board() {
       <div className="w-full flex justify-end p-8 text-white  ">
         <div className="flex flex-col ">
           <p className="text-sm">Desarrollado por:</p>
-          <a href="https://qubilo.com/">
+          <a target="_blank" rel="noopener noreferrer" href="https://qubilo.com">
             <img className="h-10" src={logoqubulowhite} alt="" />
           </a>
         </div>

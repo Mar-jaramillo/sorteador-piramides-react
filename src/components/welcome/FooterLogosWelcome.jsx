@@ -13,7 +13,7 @@ export default function FooterLogosWelcome() {
       </div> */}
       <div>
         <p className="col-span-6 text-sm ">Desarrollado por:</p>
-        <a href="https://qubilo.com/">
+        <a target="_blank" rel="noopener noreferrer" href="https://qubilo.com">
           <img className="col-span-6   h-12  " src={logoqubulowhite} alt="" />
         </a>
       </div>

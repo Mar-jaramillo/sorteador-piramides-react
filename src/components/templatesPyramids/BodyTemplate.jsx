@@ -93,10 +93,10 @@ export default function BodyTemplate() {
             <div className="flex justify-center">
               <div className="flex flex-col items-center mt-7">
                 <p className="text-gray-600">Desarrollado por:</p>
-                <a href="https://qubilo.com/">
-                  <img className="" src={logoqubilo} alt="logo" />
-                  <p className="text-center text-gray-600">www.qubilo.com</p>
+                <a target="_blank" rel="noopener noreferrer" href="https://qubilo.com">
+                  <img src={logoqubilo} alt="logo" />
                 </a>
+                  <a target="_blank" rel="noopener noreferrer" href="https://qubilo.com" className="text-center text-gray-600">www.qubilo.com</a>
               </div>
             </div>
           </div>
