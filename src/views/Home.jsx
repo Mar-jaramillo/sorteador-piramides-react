@@ -27,10 +27,13 @@ export default function Home() {
     return (
       <>
         <div id="home" className="fadeinfast h-screen text-white">
-          <h2 className="text-left px-32 text-3xl font-bold">
-            <BreadCrumb />
+          <div className="px-32">
+          <BreadCrumb/>
+          <h2 className="text-left text-3xl font-bold">
+            
             Cargar Consolidado de Deportistas
           </h2>
+          </div>
 
           <ExcelUploader setError={setError} />
         </div>
