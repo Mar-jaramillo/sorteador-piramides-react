@@ -9,7 +9,7 @@ export default function Finder({
     const searchValue = e.target.value;
 
     const filteredArray = dataExcel.filter((deportista) => {
-      console.log(deportista);
+ 
       return (
         (deportista["CBTE IND"] &&
           deportista["CBTE IND"].toLowerCase().includes(searchValue.toLowerCase())) ||
